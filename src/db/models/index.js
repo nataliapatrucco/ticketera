@@ -6,12 +6,14 @@ const Ticket = require("./Ticket");
 
 // relacion entre usuarios y preguntas
 User.hasMany(Ticket, { as: "author" });
-Ticket.belongsTo(User, { as: "author" });
-User.hasMany(Ticket, { as: "participant" });
+// Ticket.belongsTo(User, { as: "author" });
+User.belongsToMany(Ticket, { through: "ticket_participant" });
+Ticket.belongsToMany(User, { through: "ticket_participant" });
+
 //status de la pregunta
-Ticket.hasOne(Status);
+Ticket.belongsTo(Status);
 //respuestas
-Ticket.hasMany(Comment, { as: "reply" });
+Ticket.hasOne(Comment);
 //tags de la pregunta
 Ticket.hasMany(Tag);
 // respuestas de los usuarios

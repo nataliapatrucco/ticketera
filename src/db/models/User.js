@@ -23,7 +23,7 @@ User.init(
       type: S.STRING
     },
     img: {
-      type: S.TEXT
+      type: S.STRING
     }
   },
   { sequelize: db, modelName: "user" }
