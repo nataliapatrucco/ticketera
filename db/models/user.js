@@ -21,6 +21,9 @@ User.init(
     },
     salt: {
       type: S.STRING
+    },
+    img: {
+        type: S.TEXT
     }
   },
   { sequelize: db, modelName: "user" }
