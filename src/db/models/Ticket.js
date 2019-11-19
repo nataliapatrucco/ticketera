@@ -12,8 +12,8 @@ Ticket.init(
     content: {
       type: S.TEXT
     },
-    image: {
-      type: S.TEXT
+    images: {
+      type: S.ARRAY(S.STRING)
     }
   },
 
