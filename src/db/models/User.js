@@ -17,10 +17,13 @@ User.init(
     },
     password: {
       type: S.STRING,
-      defaultValue: Math.floor(Math.random() * 1000000).toString(10)
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     salt: {
-      type: S.STRING
+      type: S.TEXT
     },
     img: {
       type: S.STRING
