@@ -1,5 +1,5 @@
 const S = require("sequelize");
-const { Ticket, Status, Tag } = require("../db/models/index");
+const { Ticket, Status } = require("../db/models/index");
 
 const fetchTickets = (req, res) => {
   Ticket.findAll({})
@@ -22,25 +22,16 @@ const fetchStatus = (req, res) => {
     .catch(err => res.status(404).send(err));
 };
 
-// const fetchByTag = (req, res) => {
-//   Ticket.findAll({
-//     include: [
-//       {
-//         model: Tag,
-//         where: {
-//           name: req.params.id
-//         }
-//       }
-//     ]
-//   })
-//     .then(tickets => res.send(tickets))
-//     .catch(err => res.status(404).send(err));
-// };
-
 const createTicket = (req, res) => {
-  Ticket.create(req.body)
-    .then(ticket => ticket.createStatus().then(() => res.send(ticket)))
-    .catch(err => res.status(404).send(err));
+  if (req.body.title) {
+    Ticket.create(req.body)
+      .then(ticket =>
+        ticket.setStatus(5).then(() => res.status(201).send(ticket))
+      )
+      .catch(err => res.status(404).send(err));
+  } else {
+    res.sendStatus(400);
+  }
 };
 
 const updateTicket = (req, res) => {
@@ -64,7 +55,6 @@ const deleteTicket = (req, res) => {
 module.exports = {
   fetchTickets,
   fetchStatus,
-  fetchByTag,
   createTicket,
   updateTicket,
   deleteTicket

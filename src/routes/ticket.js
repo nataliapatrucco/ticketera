@@ -5,8 +5,7 @@ const {
   fetchStatus,
   updateTicket,
   createTicket,
-  deleteTicket,
-  fetchByTag
+  deleteTicket
 } = require("../resolvers/ticketResolver");
 
 // Traer todos los tickets
@@ -17,9 +16,6 @@ router.post("/", createTicket);
 
 // Buscar los tickets por status
 router.get("/:status", fetchStatus);
-
-// Buscar tickets por Tags
-// router.get("/:tag", fetchByTag);
 
 // Editar un ticket
 router.put("/:ticketId", updateTicket);
