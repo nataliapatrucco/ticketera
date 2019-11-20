@@ -6,7 +6,7 @@ Status.init(
   {
     state: {
       type: S.ENUM,
-      values: ["open", "close", "pending"]
+      values: ["open", "close", "process", "rejected"]
     }
   },
   { sequelize: db, modelName: "status" }

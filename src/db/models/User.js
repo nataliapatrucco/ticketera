@@ -27,6 +27,16 @@ User.init(
     },
     img: {
       type: S.STRING
+    },
+    isAdmin: {
+      type: S.INTEGER,
+      get() {
+        if (this.getDataValue("isAdmin") === 0) {
+          return false;
+        } else {
+          return true;
+        }
+      }
     }
   },
   { sequelize: db, modelName: "user" }
