@@ -17,7 +17,7 @@ Ticket.hasOne(Comment);
 //tags de la pregunta
 Ticket.hasMany(Tag);
 // respuestas de los usuarios
-User.hasMany(Comment, { as: "author" });
-Comment.belongsTo(User, { as: "author" });
+User.hasMany(Comment, { as: "replier" });
+// Comment.belongsTo(User, { as: "author" });
 
 module.exports = { User, Tag, Comment, Status, Ticket };
