@@ -2,7 +2,7 @@ var S = require("sequelize");
 var db = require("../index");
 const crypto = require("crypto");
 
-class User extends Sequelize.Model {}
+class User extends S.Model {}
 User.init(
   {
     name: S.STRING,
