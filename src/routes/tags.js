@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { isLoggedIn, isAdmin } = require("./middlewares");
 const {
   allTags,
   createTags,
@@ -7,11 +8,12 @@ const {
   filterTags
 } = require("../resolvers/tags-resolvers");
 
-router
-  .get("/", allTags)
+router;
+const { isLoggedIn, isAdmin } = require("./middlewares")
+  .get("/", isLoggedIn, allTags)
   .get("/:id", filterTags)
-  .post("/", createTags)
-  .put("/:id", updateTags)
-  .delete("/:id", deleteTags);
+  .post("/", isAdmin, createTags)
+  .put("/:id", isAdmin, updateTags)
+  .delete("/:id", isAdmin, deleteTags);
 
 module.exports = router;
