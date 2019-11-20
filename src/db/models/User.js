@@ -1,5 +1,5 @@
 var S = require("sequelize");
-var db = require('./index');
+var db = require("../index");
 const crypto = require("crypto");
 
 class User extends Sequelize.Model {}
@@ -23,7 +23,7 @@ User.init(
       type: S.STRING
     },
     img: {
-        type: S.TEXT
+      type: S.STRING
     }
   },
   { sequelize: db, modelName: "user" }
