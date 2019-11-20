@@ -15,7 +15,9 @@ Ticket.belongsTo(Status);
 //respuestas
 Ticket.hasOne(Comment);
 //tags de la pregunta
-Ticket.hasMany(Tag);
+Ticket.belongsToMany(Tag, { through: "ticket_tag" });
+Tag.belongsToMany(Ticket, { through: "ticket_tag" });
+
 // respuestas de los usuarios
 User.hasMany(Comment, { as: "replier" });
 // Comment.belongsTo(User, { as: "author" });
