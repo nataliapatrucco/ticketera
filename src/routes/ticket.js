@@ -3,28 +3,26 @@ const router = express.Router();
 const {
   fetchTickets,
   fetchStatus,
-  updateTicket,
+  editTicket,
   createTicket,
-  deleteTicket,
-  fetchByTag
+  deleteTicket
 } = require("../resolvers/ticketResolver");
 
+const { isLoggedIn } = require("../routes/middlewares");
+
 // Traer todos los tickets
-router.get("/", fetchTickets);
+router.get("/", isLoggedIn, fetchTickets);
 
 // Crear un ticket
-router.post("/", createTicket);
+router.post("/", isLoggedIn, createTicket);
 
 // Buscar los tickets por status
-router.get("/:status", fetchStatus);
-
-// Buscar tickets por Tags
-// router.get("/:tag", fetchByTag);
+router.get("/:status", isLoggedIn, fetchStatus);
 
 // Editar un ticket
-router.put("/:ticketId", updateTicket);
+router.put("/:ticketId", isLoggedIn, editTicket);
 
 // Borrar un ticket
-router.delete("/:id", deleteTicket);
+router.delete("/:id", isLoggedIn, deleteTicket);
 
 module.exports = router;
