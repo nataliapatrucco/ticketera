@@ -26,7 +26,7 @@ const createTicket = (req, res) => {
   if (req.body.title) {
     Ticket.create(req.body)
       .then(ticket =>
-        ticket.setStatus(5).then(() => res.status(201).send(ticket))
+        ticket.setStatus(1).then(() => res.status(201).send(ticket))
       )
       .catch(err => res.status(404).send(err));
   } else {
@@ -34,7 +34,7 @@ const createTicket = (req, res) => {
   }
 };
 
-const updateTicket = (req, res) => {
+const editTicket = (req, res) => {
   Ticket.update(req.body, {
     where: {
       id: req.params.ticketId
@@ -56,6 +56,6 @@ module.exports = {
   fetchTickets,
   fetchStatus,
   createTicket,
-  updateTicket,
+  editTicket,
   deleteTicket
 };
