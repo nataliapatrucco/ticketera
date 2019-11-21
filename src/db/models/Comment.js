@@ -7,7 +7,7 @@ Comment.init(
   {
     description: {
       type: S.TEXT,
-      allowNull: false
+      defaultValue: ""
     }
   },
   {

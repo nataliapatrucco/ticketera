@@ -26,7 +26,10 @@ const createTicket = (req, res) => {
   if (req.body.title) {
     Ticket.create(req.body)
       .then(ticket =>
-        ticket.setStatus(1).then(() => res.status(201).send(ticket))
+        ticket
+          .setStatus(1)
+          .then(() => ticket.setAuthor(req.user.id))
+          .then(() => res.status(201).send(ticket))
       )
       .catch(err => res.status(404).send(err));
   } else {
