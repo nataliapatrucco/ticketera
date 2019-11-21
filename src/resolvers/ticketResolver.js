@@ -57,8 +57,8 @@ const createTicket = (req, res) => {
     Ticket.create(req.body)
       .then(ticket =>
         ticket
-          .setAuthor(req.user.id)
-          .then(() => ticket.setStatus(1))
+          .setStatus(1)
+          .then(() => ticket.setAuthor(req.user.id))
           .then(() => res.status(201).send(ticket))
       )
       .catch(err => res.status(404).send(err));
