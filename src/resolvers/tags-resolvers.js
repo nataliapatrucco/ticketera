@@ -1,11 +1,13 @@
 const { Tag } = require("../db/models/");
 
 allTags = function(req, res) {
-  Tag.findAll({ order: [["createdAt", "DESC"]] }).then(tags => res.send(tags));
+  Tag.findAll({ order: [["createdAt", "DESC"]] }).then(tags =>
+    res.status(200).send(tags)
+  );
 };
 
 createTags = function(req, res) {
-  Tag.create(req.body).then(tag => res.send(tag));
+  Tag.create(req.body).then(tag => res.status(201).send(tag));
 };
 
 updateTags = function(req, res) {
@@ -13,7 +15,7 @@ updateTags = function(req, res) {
     .then(tag => tag.update(req.body))
     .then(() =>
       Tag.findAll({ order: [["createdAt", "DESC"]] }).then(tags =>
-        res.send(tags)
+        res.status(200).send(tags)
       )
     );
 };
@@ -23,7 +25,7 @@ deleteTags = function(req, res) {
     .then(tag => tag.destroy())
     .then(() =>
       Tag.findAll({ order: [["createdAt", "DESC"]] }).then(tags =>
-        res.send(tags)
+        res.status(200).send(tags)
       )
     );
 };
