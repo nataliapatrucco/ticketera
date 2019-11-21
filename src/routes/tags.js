@@ -8,8 +8,7 @@ const {
   filterTags
 } = require("../resolvers/tags-resolvers");
 
-router;
-const { isLoggedIn, isAdmin } = require("./middlewares")
+router
   .get("/", isLoggedIn, allTags)
   .get("/:id", filterTags)
   .post("/", isAdmin, createTags)

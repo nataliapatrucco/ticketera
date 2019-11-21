@@ -2,9 +2,11 @@
   "name": "ticketera",
   "version": "1.0.0",
   "description": "%PDF-1.5 %���� 4 0 obj << /Linearized 1 /L 29576 /H [ 687 135 ] /O 8 /E 26039 /N 2 /T 29290 >> endobj",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,5 +23,8 @@
     "pg": "^7.13.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
   }
 }
