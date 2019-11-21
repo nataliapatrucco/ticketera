@@ -12,6 +12,7 @@ Ticket.belongsToMany(User, { through: "ticket_participant" });
 
 //status de la pregunta
 Ticket.belongsTo(Status);
+
 //respuestas
 Ticket.hasOne(Comment);
 //tags de la pregunta

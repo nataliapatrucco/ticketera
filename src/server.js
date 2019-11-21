@@ -19,7 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 
-db.sync(/*{ force: true }*/).then(() =>
+db.sync(/*{force:true}*/).then(() =>
   app.listen(3000, function() {
     console.log("Example app listening on port 3000!");
   })
