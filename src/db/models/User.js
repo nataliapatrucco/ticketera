@@ -31,10 +31,10 @@ User.init(
     isAdmin: {
       type: S.INTEGER,
       get() {
-        if (this.getDataValue("isAdmin") === 0) {
-          return false;
-        } else {
+        if (this.getDataValue("isAdmin") === 1) {
           return true;
+        } else {
+          return false;
         }
       }
     }

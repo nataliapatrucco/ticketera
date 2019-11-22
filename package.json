@@ -2,8 +2,9 @@
   "name": "ticketera",
   "version": "1.0.0",
   "description": "%PDF-1.5 %���� 4 0 obj << /Linearized 1 /L 29576 /H [ 687 135 ] /O 8 /E 26039 /N 2 /T 29290 >> endobj",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "build": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -20,6 +21,31 @@
     "passport-local": "^1.0.0",
     "pg": "^7.13.0",
     "pg-hstore": "^2.3.3",
+    "query-string": "^6.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "sequelize": "^5.21.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@babel/register": "^7.7.0",
+    "babel-loader": "^8.0.6",
+    "nodemon": "^2.0.0",
+    "react-hot-loader": "^4.12.18",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-hot-server-middleware": "^0.6.0"
   }
 }
