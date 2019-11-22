@@ -1,4 +1,4 @@
-const { Status, Ticket } = require("./db/models/index");
+const { Status, Ticket, Tag } = require("./db/models/index");
 
 Status.create({ state: "open" }).then(state =>
   console.log(JSON.stringify(state))
@@ -26,5 +26,14 @@ Ticket.findByPk(2).then(ticket => {
 });
  */
 
+// Ticket.findByPk(2).then(ticket => {
+//   ticket.addTag(2);
+// });
 
- 
+// Ticket.findByPk(2).then(ticket => {
+//   ticket.addTag(3);
+// });
+
+// Ticket.findByPk(3).then(ticket => {
+//   ticket.addTag(2);
+// });

@@ -23,7 +23,7 @@ router.get("/search", isLoggedIn, fetchByTitleTag);
 router.post("/", isLoggedIn, createTicket);
 
 // Buscar los tickets por status
-router.get("/:status", isLoggedIn, fetchStatus);
+router.get("/status/:statusId", isLoggedIn, fetchStatus);
 
 // Editar un ticket
 router.put("/:ticketId", isLoggedIn, editTicket);
