@@ -1,4 +1,4 @@
 node_modules/
 
 .env
-/public/bundle.*
+src/public/bundle*
