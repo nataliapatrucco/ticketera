@@ -1,4 +1,5 @@
 const { Ticket, Comment, User, Tag } = require("../db/models/");
+const { fullTicket } = require("./index");
 
 const STATUS = {
   OPEN: 1,
@@ -25,7 +26,12 @@ const setStatus = function(req, res, next) {
             .createComment({})
             .then(comment => comment.setReplier(req.user.id))
             .then(() => ticket.setStatus(STATUS.PROCESS))
-            .then(() => Ticket.findOne({ where: { id: req.params.id } }))
+            .then(() =>
+              Ticket.findOne({
+                where: { id: req.params.id },
+                include: fullTicket
+              })
+            )
             .then(ticketUpdated => res.send(ticketUpdated));
           break;
 
@@ -44,14 +50,7 @@ const setStatus = function(req, res, next) {
             .then(() =>
               Ticket.findOne({
                 where: { id: req.params.id },
-                include: [
-                  {
-                    model: Comment,
-                    include: [{ model: User, as: "replier" }]
-                  },
-                  { model: Tag },
-                  { model: User, as: "author" }
-                ]
+                include: fullTicket
               })
             )
             .then(ticketUpdated => res.send(ticketUpdated));
@@ -68,14 +67,7 @@ const setStatus = function(req, res, next) {
             .then(() =>
               Ticket.findOne({
                 where: { id: req.params.id },
-                include: [
-                  {
-                    model: Comment,
-                    include: [{ model: User, as: "replier" }]
-                  },
-                  { model: Tag },
-                  { model: User, as: "author" }
-                ]
+                include: fullTicket
               })
             )
             .then(() => res.send(ticket));
