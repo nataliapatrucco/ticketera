@@ -1,3 +1,5 @@
+const {Commment, User, Tag} = require("../db/models")
+
 const fullTicket = [
   {
     model: Comment,
