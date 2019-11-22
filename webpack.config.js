@@ -16,7 +16,8 @@ module.exports = {
           exclude: /(node_modules|bower_components)/,
           loader: "babel-loader",
           query: {
-            presets: ["@babel/preset-react", "@babel/env"]
+            presets: ["@babel/preset-react", "@babel/env"],
+            plugins: ["react-hot-loader/babel"]
           }
         },
       ]
