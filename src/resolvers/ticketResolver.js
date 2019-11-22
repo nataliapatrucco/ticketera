@@ -1,28 +1,12 @@
 const S = require("sequelize");
 const Op = S.Op;
 const { Ticket, Tag, Comment, User } = require("../db/models/index");
+const { fullTicket } = require("./index");
 
 const fetchTickets = (req, res) => {
   Ticket.findAll({
     order: [["id", "ASC"]],
-    include: [
-      {
-        model: Comment,
-        include: [
-          {
-            model: User,
-            as: "replier",
-            attributes: ["name", "lastname", "img"]
-          }
-        ]
-      },
-      {
-        model: Tag,
-        attributes: ["name"],
-        through: { attributes: [] }
-      },
-      { model: User, as: "author", attributes: ["name", "lastname", "img"] }
-    ]
+    include: fullTicket
   })
     .then(tickets => res.send(tickets))
     .catch(err => res.status(404).send(err));
@@ -44,11 +28,7 @@ const fetchByTitleTag = (req, res) => {
         }
       ]
     },
-    include: [
-      {
-        model: Tag
-      }
-    ]
+    include: fullTicket
   })
     .then(tickets => res.send(tickets))
     .catch(err => res.status(404).send(err));
@@ -57,20 +37,7 @@ const fetchByTitleTag = (req, res) => {
 const fetchStatus = (req, res) => {
   Ticket.findAll({
     where: { statusId: req.params.statusId },
-    include: [
-      {
-        model: Comment,
-        include: [
-          {
-            model: User,
-            as: "replier",
-            attributes: ["name", "lastname", "img"]
-          }
-        ]
-      },
-      { model: Tag, attributes: ["name"] },
-      { model: User, as: "author", attributes: ["name", "lastname", "img"] }
-    ]
+    include: fullTicket
   })
     .then(tickets => res.send(tickets))
     .catch(err => res.status(404).send(err));
@@ -83,7 +50,18 @@ const createTicket = (req, res) => {
         ticket
           .setStatus(1)
           .then(() => ticket.setAuthor(req.user.id))
-          .then(() => res.status(201).send(ticket))
+          .then(() =>
+            Ticket.findOne({
+              where: { id: ticket.id },
+              include: [
+                {
+                  model: User,
+                  as: "author",
+                  attributes: ["name", "lastname", "img"]
+                }
+              ]
+            }).then(newTicket => res.status(201).send(newTicket))
+          )
       )
       .catch(err => res.status(404).send(err));
   } else {
@@ -97,7 +75,12 @@ const editTicket = (req, res) => {
       id: req.params.ticketId
     }
   })
-    .then(ticket => res.send(ticket))
+    .then(() =>
+      Ticket.findOne({
+        where: { id: req.params.ticketId },
+        include: fullTicket
+      }).then(ticket => res.status(200).send(ticket))
+    )
     .catch(err => res.status(404).send(err));
 };
 
@@ -121,7 +104,7 @@ const removeTag = (req, res) => {
         where: {
           id: req.params.ticketId
         },
-        include: [{ model: Tag }]
+        include: fullTicket
       }).then(updatedTicket => res.send(updatedTicket))
     )
     .catch(err => res.status(404).send(err));
@@ -139,7 +122,7 @@ const addTag = (req, res) => {
         where: {
           id: req.params.ticketId
         },
-        include: [{ model: Tag }]
+        include: fullTicket
       }).then(updatedTicket => res.send(updatedTicket))
     )
     .catch(err => res.status(404).send(err));
