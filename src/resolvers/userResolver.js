@@ -26,20 +26,40 @@ const update = function(req, res) {
 };
 
 const userDelete = function(req, res) {
-  User.findOne({ where: { id: req.params.id } })
-  .then(
-    function(user) {
-      if (user) {
-        return user.destroy().then(() => res.sendStatus(200));
-      } else {
-        return res.sendStatus(400);
-      }
+  User.findOne({ where: { id: req.params.id } }).then(function(user) {
+    if (user) {
+      return user.destroy().then(() => res.sendStatus(200));
+    } else {
+      return res.sendStatus(400);
     }
-  )
+  });
+};
+
+const changePassword = function(req, res) {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(user =>
+      user.update({
+        password: req.body.newPassword
+      })
+    )
+    .then(() => User.findByPk(req.params.id).then(user => res.send(user)))
+    .catch(err => (res.sendStatus(400), console.log(err)));
 };
 
 const me = function(req, res) {
   res.send(req.user);
 };
 
-module.exports = { register, logIn, logOut, update, userDelete, me };
+module.exports = {
+  register,
+  logIn,
+  logOut,
+  update,
+  userDelete,
+  changePassword,
+  me
+};
