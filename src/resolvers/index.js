@@ -1,4 +1,4 @@
-const {Commment, User, Tag} = require("../db/models")
+const {Comment, User, Tag} = require("../db/models")
 
 const fullTicket = [
   {
