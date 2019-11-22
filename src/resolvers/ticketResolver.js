@@ -1,11 +1,28 @@
 const S = require("sequelize");
 const Op = S.Op;
-const { Ticket, Status, Tag } = require("../db/models/index");
+const { Ticket, Tag, Comment, User } = require("../db/models/index");
 
 const fetchTickets = (req, res) => {
   Ticket.findAll({
     order: [["id", "ASC"]],
-    include: [{ all: true }]
+    include: [
+      {
+        model: Comment,
+        include: [
+          {
+            model: User,
+            as: "replier",
+            attributes: ["name", "lastname", "img"]
+          }
+        ]
+      },
+      {
+        model: Tag,
+        attributes: ["name"],
+        through: { attributes: [] }
+      },
+      { model: User, as: "author", attributes: ["name", "lastname", "img"] }
+    ]
   })
     .then(tickets => res.send(tickets))
     .catch(err => res.status(404).send(err));
@@ -39,13 +56,20 @@ const fetchByTitleTag = (req, res) => {
 
 const fetchStatus = (req, res) => {
   Ticket.findAll({
+    where: { statusId: req.params.statusId },
     include: [
       {
-        model: Status,
-        where: {
-          state: req.params.status
-        }
-      }
+        model: Comment,
+        include: [
+          {
+            model: User,
+            as: "replier",
+            attributes: ["name", "lastname", "img"]
+          }
+        ]
+      },
+      { model: Tag, attributes: ["name"] },
+      { model: User, as: "author", attributes: ["name", "lastname", "img"] }
     ]
   })
     .then(tickets => res.send(tickets))
