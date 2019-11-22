@@ -121,6 +121,23 @@ const addTag = (req, res) => {
     .catch(err => res.status(404).send(err));
 };
 
+const addParticipant=(req,res)=>{
+Ticket.findOne({
+  where:{
+    id:req.params.ticketId
+  }
+})
+.then((ticket)=>(ticket.addUser(req.user)))
+.then()
+
+.catch(err => res.status(404).send(err));
+}
+
+
+
+
+
+
 module.exports = {
   removeTag,
   addTag,
@@ -129,5 +146,6 @@ module.exports = {
   createTicket,
   editTicket,
   deleteTicket,
-  fetchByTitleTag
+  fetchByTitleTag,
+  addParticipant
 };

@@ -8,7 +8,8 @@ const {
   fetchByTitleTag,
   editTicket,
   createTicket,
-  deleteTicket
+  deleteTicket,
+  addParticipant
 } = require("../resolvers/ticketResolver");
 
 const { isLoggedIn, isAdmin } = require("../routes/middlewares");
@@ -35,5 +36,9 @@ router.put("/:ticketId/removeTag/:tagId", isLoggedIn, removeTag);
 
 // Borrar un ticket
 router.delete("/:id", isLoggedIn, deleteTicket);
+
+//Agregar participante
+router.post("/participant/:ticketId", isLoggedIn, addParticipant)
+
 
 module.exports = router;
