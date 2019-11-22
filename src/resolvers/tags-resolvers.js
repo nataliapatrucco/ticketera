@@ -1,7 +1,7 @@
 const { Tag } = require("../db/models/");
 
 allTags = function(req, res) {
-  Tag.findAll({ order: [["createdAt", "DESC"]] }).then(tags =>
+  Tag.findAll({ order: [["id", "ASC"]] }).then(tags =>
     res.status(200).send(tags)
   );
 };

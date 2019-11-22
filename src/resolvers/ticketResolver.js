@@ -89,7 +89,9 @@ const deleteTicket = (req, res) => {
     where: {
       id: req.params.id
     }
-  }).catch(err => res.status(404).send(err));
+  })
+    .then(() => res.sendStatus(202))
+    .catch(err => res.status(404).send(err));
 };
 
 const removeTag = (req, res) => {
