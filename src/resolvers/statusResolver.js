@@ -58,7 +58,8 @@ const setStatus = function(req, res, next) {
           break;
 
         case STATUS.REJECTED:
-          ticket
+          req.body.description ? (
+            ticket
             .createComment({
               description: req.body.description
             })
@@ -70,7 +71,11 @@ const setStatus = function(req, res, next) {
                 include: fullTicket
               })
             )
-            .then(() => res.send(ticket));
+            .then((ticket) => res.send(ticket))
+          ) : (
+            res.status(403).send("Ingresar motivo")
+          )
+         
       }
     })
     .catch(err => console.log(err));
