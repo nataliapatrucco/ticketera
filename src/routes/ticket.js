@@ -3,15 +3,16 @@ const router = express.Router();
 const {
   addTag,
   removeTag,
+  editComment,
   fetchTickets,
   fetchStatus,
   fetchByTitleTag,
   editTicket,
   createTicket,
   deleteTicket
-} = require("../resolvers/ticketResolver");
+} = require("../resolvers/ticket-Resolvers");
 
-const { isLoggedIn, isAdmin } = require("../routes/middlewares");
+const { isLoggedIn, isAdmin, checkUser } = require("../routes/middlewares");
 
 // Traer todos los tickets
 router.get("/", isLoggedIn, fetchTickets);
@@ -25,15 +26,18 @@ router.post("/", isLoggedIn, createTicket);
 router.get("/status/:statusId", isLoggedIn, fetchStatus);
 
 // Editar un ticket
-router.put("/:ticketId", isLoggedIn, editTicket);
+router.put("/:ticketId", isLoggedIn, checkUser, editTicket);
 
 //Agregar tags
-router.put("/:ticketId/addTag/:tagId", isLoggedIn, addTag);
+router.put("/:ticketId/addTag/:tagId", isAdmin, addTag);
 
 //Quitar tags
-router.put("/:ticketId/removeTag/:tagId", isLoggedIn, removeTag);
+router.put("/:ticketId/removeTag/:tagId", isAdmin, removeTag);
+
+//Editar comment
+router.put("/:ticketId/:commentId", isAdmin, editComment);
 
 // Borrar un ticket
-router.delete("/:id", isLoggedIn, deleteTicket);
+router.delete("/:id", isLoggedIn, checkUser, deleteTicket);
 
 module.exports = router;

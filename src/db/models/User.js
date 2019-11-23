@@ -5,8 +5,14 @@ const crypto = require("crypto");
 class User extends S.Model {}
 User.init(
   {
-    name: S.STRING,
-    lastname: S.STRING,
+    name: {
+      type: S.STRING,
+      allowNull: false
+    },
+    lastname: {
+      type: S.STRING,
+      allowNull: false
+    },
     email: {
       type: S.STRING,
       validate: {
