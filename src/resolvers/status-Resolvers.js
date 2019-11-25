@@ -12,12 +12,7 @@ const setStatus = function(req, res, next) {
   Ticket.findOne({
     where: {
       id: req.params.id
-    },
-    include: [
-      {
-        all: true
-      }
-    ]
+    }
   })
     .then(ticket => {
       switch (req.body.statusId) {
@@ -68,9 +63,8 @@ const setStatus = function(req, res, next) {
               Ticket.findOne({
                 where: { id: req.params.id },
                 include: fullTicket
-              })
-            )
-            .then(() => res.send(ticket));
+              }).then(ticketUpdated => res.send(ticketUpdated))
+            );
       }
     })
     .catch(err => console.log(err));
@@ -79,6 +73,3 @@ const setStatus = function(req, res, next) {
 module.exports = {
   setStatus
 };
-
-
-
