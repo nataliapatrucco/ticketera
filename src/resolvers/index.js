@@ -3,7 +3,7 @@ const { Comment, User, Tag } = require("../db/models");
 const fullTicket = [
   {
     model: Comment,
-    attributes: ["description", "updatedAt"],
+    attributes: ["description", "updatedAt", "id"],
     include: [
       {
         model: User,

@@ -167,8 +167,20 @@ const removeParticipant = (req, res) => {
     .catch(err => res.status(404).send(err));
 };
 
-
-
+const editComment = (req, res) => {
+  Comment.update(req.body, {
+    where: {
+      id: req.params.commentId
+    }
+  })
+    .then(() =>
+      Ticket.findOne({
+        where: { id: req.params.ticketId },
+        include: fullTicket
+      }).then(ticket => res.status(200).send(ticket))
+    )
+    .catch(err => res.status(404).send(err));
+};
 
 module.exports = {
   removeTag,
@@ -177,6 +189,7 @@ module.exports = {
   fetchStatus,
   createTicket,
   editTicket,
+  editComment,
   deleteTicket,
   fetchByTitleTag,
   addParticipant,

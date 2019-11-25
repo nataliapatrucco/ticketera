@@ -1,4 +1,6 @@
-isLoggedIn = function(req, res, next) {
+const { Ticket } = require("../db/models");
+
+const isLoggedIn = function(req, res, next) {
   if (req.isAuthenticated() && req.user) {
     next();
   } else {
@@ -6,7 +8,7 @@ isLoggedIn = function(req, res, next) {
   }
 };
 
-isAdmin = function(req, res, next) {
+const isAdmin = function(req, res, next) {
   if (req.isAuthenticated() && req.user.isAdmin) {
     next();
   } else {
@@ -14,4 +16,17 @@ isAdmin = function(req, res, next) {
   }
 };
 
-module.exports = { isLoggedIn, isAdmin };
+const checkUser = function(req, res, next) {
+  Ticket.findByPk(req.params.ticketId).then(ticket => {
+    if (
+      (req.user.id === ticket.authorId && ticket.statusId === 1) ||
+      req.user.isAdmin
+    ) {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  });
+};
+
+module.exports = { isLoggedIn, isAdmin, checkUser };
