@@ -1,7 +1,7 @@
 const express = require("express");
 const User = require("../db/models");
 const router = express.Router();
-const passport = require("../config/passport")
+const passport = require("../config/passport");
 const {
   register,
   logIn,
@@ -9,24 +9,27 @@ const {
   update,
   userDelete,
   me
-} = require("../resolvers/userResolver");
+} = require("../resolvers/user-Resolvers");
 
-//registrar usuario
+//register user
 router.post("/register", register);
 
-//logIn
-router.post("/login",passport.authenticate("local"), logIn);
+//logIn user
+router.post("/login", passport.authenticate("local"), logIn);
 
-//logOut
+//reset user password
+// router.post("/resetPassword", resetPassword);
+
+//logOut user
 router.get("/logout", logOut);
 
-//update
-router.put("/update", update);
-
-//delete
+//delete user
 router.get("/delete/:id", userDelete);
 
 //me
 router.get("/me", me);
+
+//Edit User
+router.put("/update", update);
 
 module.exports = router;

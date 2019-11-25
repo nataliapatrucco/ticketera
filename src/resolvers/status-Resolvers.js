@@ -1,4 +1,4 @@
-const { Ticket, Comment, User, Tag } = require("../db/models/");
+const { Ticket, Comment, User, Tag } = require("../db/models");
 const { fullTicket } = require("./index");
 
 const STATUS = {
@@ -84,3 +84,6 @@ const setStatus = function(req, res, next) {
 module.exports = {
   setStatus
 };
+
+
+
