@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { loginUser, registerUser } from "../../redux/actions/user";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
+import { login } from "./partials/login";
+import { register } from "./partials/register";
+import { view } from "./partials/view";
 
 function Session() {
   const [name, setName] = useState("");
@@ -9,15 +12,11 @@ function Session() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  this.handleName = this.handleName.bind(this);
-  this.handleLastName = this.handleLastName.bind(this);
-  this.handleEmail = this.handleEmail.bind(this);
-  this.handlePassword = this.handlePassword.bind(this);
+  this.handleChange = this.handleChange.bind(this);
   this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
   this.handleSubmitRegister = this.handleSubmitRegister.bind(this);
 
-  const handleName = e => {
-    e.preventDefault();
+  const handleChange = e => {
     setName(e.target.value);
   };
 
@@ -27,20 +26,20 @@ function Session() {
   };
 
   const handleEmail = e => {
-    e.preventDefault();
     setEmail(e.target.value);
   };
 
   const handlePassword = e => {
-    e.preventDefault();
     setPassword(e.target.value);
   };
 
   const handleSubmitLogin = e => {
+    e.preventDefault();
     this.props.loginUser(email, password);
   };
 
   const handleSubmitRegister = e => {
+    e.preventDefault();
     this.props.registerUser(name, lastname, email, password);
   };
 
