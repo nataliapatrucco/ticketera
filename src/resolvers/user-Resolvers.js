@@ -3,7 +3,15 @@ const { User } = require("../db/models");
 const register = (req, res) => {
   if (req.body.email && req.body.password) {
     User.create(req.body)
-      .then(user => res.status(201).send(user))
+      .then(user =>
+        req.login(user, function(err) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.status(201).send(user);
+          }
+        })
+      )
       .catch(err => console.log(err));
   } else {
     res.status(400).send("Email and password are required.");
