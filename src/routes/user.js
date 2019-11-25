@@ -10,19 +10,19 @@ const {
   userDelete,
   changePassword,
   me
-} = require("../resolvers/userResolver");
+} = require("../resolvers/user-Resolvers");
 
-//registrar usuario
+//register user
 router.post("/register", register);
 
-//logIn
+//logIn user
 router.post("/login", passport.authenticate("local"), logIn);
 
-//logOut
-router.get("/logout", logOut);
+//reset user password
+// router.post("/resetPassword", resetPassword);
 
-//update
-router.put("/update", update);
+//logOut user
+router.get("/logout", logOut);
 
 //change password
 router.put("/changePassword/:id", changePassword);
@@ -32,5 +32,8 @@ router.get("/delete/:id", userDelete);
 
 //me
 router.get("/me", me);
+
+//Edit User
+router.put("/update", update);
 
 module.exports = router;
