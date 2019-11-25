@@ -1,4 +1,4 @@
-const {Comment, User, Tag} = require("../db/models")
+const { Comment, User, Tag } = require("../db/models");
 
 const fullTicket = [
   {
@@ -13,7 +13,12 @@ const fullTicket = [
     ]
   },
   { model: Tag, attributes: ["name"], through: { attributes: [] } },
-  { model: User, as: "author", attributes: ["name", "lastname", "img"] }
+  { model: User, as: "author", attributes: ["name", "lastname", "img"] },
+  {
+    model: User,
+    attributes: ["name", "lastname", "img"],
+    through: "ticket_participant"
+  }  
 ];
 
 module.exports = { fullTicket };
