@@ -8,6 +8,7 @@ const {
   logOut,
   update,
   userDelete,
+  changePassword,
   me
 } = require("../resolvers/user-Resolvers");
 
@@ -23,7 +24,10 @@ router.post("/login", passport.authenticate("local"), logIn);
 //logOut user
 router.get("/logout", logOut);
 
-//delete user
+//change password
+router.put("/changePassword/:id", changePassword);
+
+//delete
 router.get("/delete/:id", userDelete);
 
 
