@@ -12,7 +12,7 @@ const {
   deleteTicket,
   addParticipant,
   removeParticipant
-} = require("../resolvers/ticketResolver");
+} = require("../resolvers/ticket-Resolvers");
 
 const { isLoggedIn, isAdmin, checkUser } = require("../routes/middlewares");
 
