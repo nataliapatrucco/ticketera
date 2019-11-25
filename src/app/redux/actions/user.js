@@ -20,7 +20,7 @@ export const loginUser = function({ email, password }) {
   };
 };
 
-export const registerUser = ({ username, email, password }) => dispatch =>
+export const registerUser = ({ name, lastname, email, password }) => dispatch =>
   axios
     .post("/api/user/register", {
       name,
