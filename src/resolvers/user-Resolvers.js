@@ -35,6 +35,23 @@ const userDelete = (req, res) => {
   });
 };
 
+const changePassword = function(req, res) {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(user =>
+      user.validPassword(req.body.password)
+        ? user.update({
+            password: req.body.newPassword
+          })
+        : null
+    )
+    .then(() => User.findByPk(req.params.id).then(user => res.send(user)))
+    .catch(err => (res.sendStatus(400), console.log(err)));
+};
+
 const me = (req, res) => {
   res.send(req.user);
 };
@@ -55,6 +72,6 @@ module.exports = {
   logOut,
   update,
   userDelete,
-  me,
-  
+  changePassword,
+  me
 };
