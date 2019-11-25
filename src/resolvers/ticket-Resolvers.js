@@ -123,6 +123,43 @@ const addTag = (req, res) => {
       Ticket.findOne({
         where: {
           id: req.params.ticketId
+        }/* ,
+        include: [{ all: true }] */
+      }).then(updatedTicket => res.send(updatedTicket))
+    )
+    .catch(err => res.status(404).send(err));
+};
+
+const addParticipant = (req, res) => {
+  Ticket.findOne({
+    where: {
+      id: req.params.ticketId
+    }
+  })
+    .then(ticket => ticket.addUser(req.user))
+    .then(() =>
+      Ticket.findOne({
+        where: {
+          id: req.params.ticketId
+        },
+        include: fullTicket
+      }).then(updatedTicket => res.send(updatedTicket))
+    )
+    .catch(err => res.status(404).send(err));
+};
+
+
+const removeParticipant = (req, res) => {
+  Ticket.findOne({
+    where: {
+      id: req.params.ticketId
+    }
+  })
+    .then(ticket => ticket.removeUser(req.user))
+    .then(() =>
+      Ticket.findOne({
+        where: {
+          id: req.params.ticketId
         },
         include: fullTicket
       }).then(updatedTicket => res.send(updatedTicket))
@@ -154,5 +191,7 @@ module.exports = {
   editTicket,
   editComment,
   deleteTicket,
-  fetchByTitleTag
+  fetchByTitleTag,
+  addParticipant,
+  removeParticipant
 };

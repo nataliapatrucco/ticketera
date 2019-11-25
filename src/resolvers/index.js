@@ -14,7 +14,11 @@ const fullTicket = [
   },
   { model: Tag, attributes: ["name"], through: { attributes: [] } },
   { model: User, as: "author", attributes: ["name", "lastname", "img"] },
-  { model: User, through: "ticket_participant" }
+  {
+    model: User,
+    attributes: ["name", "lastname", "img"],
+    through: "ticket_participant"
+  }
 ];
 
 module.exports = { fullTicket };
