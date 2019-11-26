@@ -123,7 +123,7 @@ const addTag = (req, res) => {
       Ticket.findOne({
         where: {
           id: req.params.ticketId
-        }/* ,
+        } /* ,
         include: [{ all: true }] */
       }).then(updatedTicket => res.send(updatedTicket))
     )
@@ -147,7 +147,6 @@ const addParticipant = (req, res) => {
     )
     .catch(err => res.status(404).send(err));
 };
-
 
 const removeParticipant = (req, res) => {
   Ticket.findOne({
