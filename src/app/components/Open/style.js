@@ -5,7 +5,7 @@ export const Ticket = styled.div({
   display: "flex",
   flexDirection: "column",
   border: "solid 1px",
-  backgroundColor: "#00172e"
+  backgroundColor: "#16374F"
 });
 
 export const Header = styled.div({
@@ -75,6 +75,10 @@ export const TicketButton = styled.button({
   fontSize: "15px"
 });
 
+export const Line = styled.hr({
+  color: "white"
+});
+
 export const TicketFooter = styled.section({
   flexDirection: "column",
   justifyContent: "spaceAround",
@@ -91,15 +95,15 @@ export const AddButton = styled.button({
   margin: "8px"
 });
 
-export const ShareButton = styled.button({
-  flexBasis: "40%",
-  borderRadius: "10px",
-  border: "solid 1px rgba(0,0,0,0)",
-  backgroundColor: "rgba(0,0,0,0)",
-  color: "#8c939f",
-  fontSize: "15px",
-  margin: "8px"
-});
+// export const ShareButton = styled.button({
+//   flexBasis: "40%",
+//   borderRadius: "10px",
+//   border: "solid 1px rgba(0,0,0,0)",
+//   backgroundColor: "rgba(0,0,0,0)",
+//   color: "#8c939f",
+//   fontSize: "15px",
+//   margin: "8px"
+// });
 
 export const PartipantsImg = styled.img({
   flex: "auto",

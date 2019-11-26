@@ -12,53 +12,45 @@ import {
   TicketContent,
   TicketButton,
   AddButton,
-  ShareButton,
+  // ShareButton,
   TicketFooter,
-  PartipantsImg
+  PartipantsImg,
+  Line
 } from "./style";
-
-export default function index({
-  name,
-  img,
-  lastname,
-  participants,
-  updatedAt,
-  Title,
-  Content
-}) {
+// 10 de noviembre 10:34am
+export default function index({ ticket }) {
+  console.log("soy propsssssssss", ticket);
   return (
     <Ticket>
       <Header>
-        <Img src="/images/perfil.jpeg" alt="foto usuario"></Img>
+        <Img src="/images/perfil.jpeg" alt="foto usuario" />
         <Author>
-          <AuthorName>Natalia Patrucco</AuthorName>
-          <TicketDate>18 de Noviembre a las 10:34am</TicketDate>
+          <AuthorName>
+            {ticket.author.name} {ticket.author.lastname}
+          </AuthorName>
+          <TicketDate>{ticket.updatedAt}</TicketDate>
         </Author>
-        <Icon className="fas fa-hashtag">1</Icon>
+        <Icon className="fas fa-hashtag"></Icon>
       </Header>
       <Body>
         <TicketTitle>
-          <strong>Como resolver error 3434231212</strong>
+          <strong>{ticket.title} hol </strong>
         </TicketTitle>
-        <TicketContent>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, placeat.
-          Sunt fugit ipsa dignissimos? Reiciendis, inventore quas eveniet
-          numquam corrupti cumque enim quibusdam ut facilis eaque impedit est
-          sint quod. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Aliquid obcaecati corrupti laudantium, quisquam ea quam error ab
-          facere impedit ex quia, non nobis placeat at. Laudantium dolores
-          sapiente exercitationem cum!
-        </TicketContent>
-        <br />
-        <TicketButton>Seguir leyendo</TicketButton>
+        {ticket.content.length > 140 ? (
+          <div>
+            <TicketContent>{ticket.content.slice(0, 140)}...</TicketContent>
+            <br />
+            <TicketButton>Seguir leyendo</TicketButton>
+          </div>
+        ) : (
+          <TicketContent> {ticket.content}</TicketContent>
+        )}
       </Body>
+      <Line />
       <TicketFooter>
         <AddButton>Sumarme</AddButton>
-        <ShareButton>Compartir</ShareButton>
-        <PartipantsImg
-          src={participants}
-          alt="fotos participantes"
-        ></PartipantsImg>
+        {/* <ShareButton>Compartir</ShareButton> */}
+        <PartipantsImg src="" alt="fotos participantes"></PartipantsImg>
       </TicketFooter>
     </Ticket>
   );
