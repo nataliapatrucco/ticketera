@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "../../components/input";
+import Input from "../../components/input";
 
 export default ({
   name,
@@ -12,31 +12,35 @@ export default ({
   return (
     <form onSubmit={handleSubmitRegister}>
       <Input
+        placeholder="agus"
         name="name"
         type="text"
-        value={name}
-        onChange={handleChange}
-      ></Input>
+        input={name}
+        handleChange={handleChange}
+      />
       <Input
+        placeholder="perkins"
         name="lastname"
         type="text"
-        value={lastname}
-        onChange={handleChange}
-      ></Input>
+        input={lastname}
+        handleChange={handleChange}
+      />
       <Input
+        placeholder="a@a.com"
         name="email"
-        type="email"
-        value={email}
-        onChange={handleChange}
-      ></Input>
+        type="text"
+        input={email}
+        handleChange={handleChange}
+      />
       <Input
+        placeholder="*******"
         name="password"
         type="password"
-        value={password}
+        input={password}
         type={password}
-        onChange={handleChange}
-      ></Input>
-      <button type="submit"></button>
+        handleChange={handleChange}
+      />
+      <button type="submit">hola</button>
     </form>
   );
 };

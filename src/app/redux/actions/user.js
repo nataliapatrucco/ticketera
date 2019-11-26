@@ -1,5 +1,5 @@
 import axios from "axios";
-import RECEIVE_USER from "../constants";
+import { RECEIVE_USER } from "../constants";
 
 const receiveUser = user => ({
   type: RECEIVE_USER,
@@ -20,14 +20,9 @@ export const loginUser = function({ email, password }) {
   };
 };
 
-export const registerUser = ({ name, lastname, email, password }) => dispatch =>
+export const registerUser = state => dispatch =>
   axios
-    .post("/api/user/register", {
-      name,
-      lastname,
-      email,
-      password
-    })
+    .post("/api/user/register", state)
     .then(res => res.data)
     .then(user => {
       dispatch(receiveUser(user));
