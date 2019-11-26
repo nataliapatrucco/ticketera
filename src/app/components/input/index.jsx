@@ -3,12 +3,7 @@ import { Input, Label } from "./style";
 
 export default props => {
   console.log("las props", props);
-  // const [focus, setFocus] = React.useState(false);
-  // const onFocus = () => {
-  //   if (focus === false) {
-  //     setFocus(true);
-  //   }
-  // };
+
   return (
     <div>
       <Label input={props.input}></Label>
@@ -25,10 +20,3 @@ export default props => {
     </div>
   );
 };
-
-//   handleChange = (e) {
-//     setInputs({
-//         ...inputs,
-//         [e.target.name]: e.target.value
-//     })
-//   }

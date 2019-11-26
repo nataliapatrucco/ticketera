@@ -15,9 +15,10 @@ export const Dashboard = () => {
 
   return (
     <div>
-      Skereeeee
       {open.map(ticket => (
-        <Open ticket={ticket} />
+        <div key={ticket.id}>
+          <Open ticket={ticket} />
+        </div>
       ))}
     </div>
   );
