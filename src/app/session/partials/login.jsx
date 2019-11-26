@@ -1,11 +1,22 @@
 import React from "react";
 import { Input } from "../../components/input";
 
-const Login = ({ handleEmail, handlePassword, handleSubmitLogin }) => {
+export default ({ email, password, handleChange, handleSubmitLogin }) => {
   return (
-    <div>
-      <Input></Input>
-      <Input></Input>
-    </div>
+    <form onSubmit={handleSubmitLogin}>
+      <Input
+        name="email"
+        type="email"
+        value={email}
+        onChange={handleChange}
+      ></Input>
+      <Input
+        name="password"
+        type="password"
+        value={password}
+        onChange={handleChange}
+      ></Input>
+      <button type="submit"></button>
+    </form>
   );
 };

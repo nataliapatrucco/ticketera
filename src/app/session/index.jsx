@@ -7,63 +7,63 @@ import { register } from "./partials/register";
 import { view } from "./partials/view";
 
 function Session() {
-  const [name, setName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [state, setState] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    password: ""
+  });
 
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
   this.handleSubmitRegister = this.handleSubmitRegister.bind(this);
 
   const handleChange = e => {
-    setName(e.target.value);
-  };
-
-  const handleLastName = e => {
-    e.preventDefault();
-    setLastName(e.target.value);
-  };
-
-  const handleEmail = e => {
-    setEmail(e.target.value);
-  };
-
-  const handlePassword = e => {
-    setPassword(e.target.value);
+    setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   const handleSubmitLogin = e => {
     e.preventDefault();
-    this.props.loginUser(email, password);
+    this.props.loginUser(this.state.email, this.state.password);
+    this.props.history.push("/");
   };
 
   const handleSubmitRegister = e => {
     e.preventDefault();
-    this.props.registerUser(name, lastname, email, password);
+    this.props.registerUser(
+      this.state.name,
+      this.state.lastname,
+      this.state.email,
+      this.state.password
+    );
+    this.props.history.push("/login");
   };
 
   return (
     <div>
       <Switch>
         <Route
-          path="/login"
+          path="/user/login"
           render={() => {
             <Login
-              handleEmail={this.handleEmail}
-              handlePassword={this.handlePassword}
+              email={this.state.email}
+              password={this.state.password}
+              handleChange={this.handleChange}
               handleSubmitLogin={this.handleSubmitLogin}
             />;
           }}
         />
         <Route
-          path="/register"
+          path="/user/register"
           render={() => {
             <Register
-              handleName={this.handleName}
-              handleLastName={this.handleLastName}
-              handleEmail={this.handleEmail}
-              handlePassword={this.handlePassword}
+              name={this.state.name}
+              lastname={this.state.lastname}
+              email={this.state.email}
+              password={this.state.password}
+              handleChange={this.handleChange}
               handleSubmitRegister={this.handleSubmitRegister}
             />;
           }}
@@ -77,4 +77,4 @@ const mapDispatchToProps = dispatch => ({
   registerUser: (name, lastname, email, password) =>
     dispatch(registerUser(name, lastname, email, password))
 });
-export default connect(null, mapDispatchToProps)(Session);
+export default connect({}, mapDispatchToProps)(Session);
