@@ -1,5 +1,5 @@
 import axios from "axios";
-import RECEIVE_USER from "../constants";
+import { RECEIVE_USER } from "../constants";
 
 const receiveUser = user => ({
   type: RECEIVE_USER,

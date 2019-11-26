@@ -1,16 +1,11 @@
-import React from 'react'
-import { Input } from './style'
+import React from "react";
+import { Input } from "./style";
 
-
-export const Input = (props) => (    
-    <Input 
-    type={props.type} 
-    placeholder={props.placeholder}  
+export default props => (
+  <Input
+    type={props.type}
+    placeholder={props.placeholder}
     onChange={props.handleChange}
-    name={props.name}>    
-    </Input>
-     
-) 
-
-
-
+    name={props.name}
+  ></Input>
+);
