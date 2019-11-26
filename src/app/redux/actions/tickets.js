@@ -13,12 +13,12 @@ const setProcessing = processing => ({
 
 export const fetchOpen = () => dispatch =>
   axios
-    .get("/api/status/1")
+    .get("/api/ticket/status/1")
     .then(res => res.data)
     .then(tickets => dispatch(setOpen(tickets)));
 
 export const fetchProcessing = () => dispatch =>
   axios
-    .get("/api/status/2")
+    .get("/api/ticket/status/2")
     .then(res => res.data)
     .then(tickets => dispatch(setProcessing(tickets)));
