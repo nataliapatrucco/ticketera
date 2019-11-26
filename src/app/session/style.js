@@ -7,7 +7,7 @@ export const ViewContainer = styled.div({
   width: "800px",
   height: "780px",
   backgroundBlendMode: "multiply",
-  backgroundImage: url("/images/view.jpg")
+  backgroundImage: 'url("/images/view.jpg")'
 });
 
 export const ViewTitle = styled.h1({

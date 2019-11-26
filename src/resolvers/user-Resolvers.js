@@ -1,6 +1,7 @@
 const { User } = require("../db/models");
 
 const register = (req, res) => {
+  console.log(req.body);
   if (req.body.email && req.body.password) {
     User.create(req.body)
       .then(user =>
