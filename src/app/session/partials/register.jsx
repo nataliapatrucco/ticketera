@@ -15,30 +15,30 @@ export default ({
         placeholder="agus"
         name="name"
         type="text"
-        value={name}
-        onChange={handleChange}
+        input={name}
+        handleChange={handleChange}
       />
       <Input
         placeholder="perkins"
         name="lastname"
         type="text"
-        value={lastname}
-        onChange={handleChange}
+        input={lastname}
+        handleChange={handleChange}
       />
       <Input
         placeholder="a@a.com"
         name="email"
         type="text"
-        value={email}
-        onChange={handleChange}
+        input={email}
+        handleChange={handleChange}
       />
       <Input
         placeholder="*******"
         name="password"
         type="password"
-        value={password}
+        input={password}
         type={password}
-        onChange={handleChange}
+        handleChange={handleChange}
       />
       <button type="submit">hola</button>
     </form>

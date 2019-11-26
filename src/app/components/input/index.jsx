@@ -1,11 +1,34 @@
 import React from "react";
-import { Input } from "./style";
+import { Input, Label } from "./style";
 
-export default props => (
-  <Input
-    type={props.type}
-    placeholder={props.placeholder}
-    onChange={props.handleChange}
-    name={props.name}
-  ></Input>
-);
+export default props => {
+  console.log("las props", props);
+  // const [focus, setFocus] = React.useState(false);
+  // const onFocus = () => {
+  //   if (focus === false) {
+  //     setFocus(true);
+  //   }
+  // };
+  return (
+    <div>
+      <Label input={props.input}></Label>
+      <Input
+        name={props.name}
+        onBlur={props.onBlur}
+        onClick={props.onClick}
+        onFocus={props.onFocus}
+        onChange={e => props.handleChange(e)}
+        placeholder={props.placeholder}
+        type={props.type}
+        value={props.input}
+      ></Input>
+    </div>
+  );
+};
+
+//   handleChange = (e) {
+//     setInputs({
+//         ...inputs,
+//         [e.target.name]: e.target.value
+//     })
+//   }

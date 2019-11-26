@@ -20,10 +20,8 @@ export const Session = props => {
   // this.handleSubmitRegister = this.handleSubmitRegister.bind(this);
 
   const handleChange = e => {
-    console.log("nombre", e.target.name);
-    console.log("value", e.target.value);
-
     setState({
+      ...state,
       [e.target.name]: e.target.value
     });
   };
@@ -35,12 +33,10 @@ export const Session = props => {
   };
 
   const handleSubmitRegister = e => {
-    console.log(state);
+    console.log("estado", state);
 
     e.preventDefault();
-    dispatch(
-      registerUser(state.name, state.lastname, state.email, state.password)
-    );
+    dispatch(registerUser(state));
     // props.history.push("/login");
   };
 
