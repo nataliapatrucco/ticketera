@@ -36,7 +36,7 @@ export default function index({ ticket }) {
         <TicketTitle>
           <strong>{ticket.title} hol </strong>
         </TicketTitle>
-        {ticket.content.length > 140 ? (
+        {ticket.content && ticket.content.length > 140 ? (
           <div>
             <TicketContent>{ticket.content.slice(0, 140)}...</TicketContent>
             <br />
