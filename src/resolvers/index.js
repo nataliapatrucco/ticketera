@@ -18,7 +18,7 @@ const fullTicket = [
     model: User,
     attributes: ["name", "lastname", "img"],
     through: "ticket_participant"
-  }  
+  }
 ];
 
 module.exports = { fullTicket };

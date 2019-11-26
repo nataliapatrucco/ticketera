@@ -12,12 +12,7 @@ const setStatus = function(req, res, next) {
   Ticket.findOne({
     where: {
       id: req.params.id
-    },
-    include: [
-      {
-        all: true
-      }
-    ]
+    }
   })
     .then(ticket => {
       switch (req.body.statusId) {
@@ -58,24 +53,21 @@ const setStatus = function(req, res, next) {
           break;
 
         case STATUS.REJECTED:
-          req.body.description ? (
-            ticket
-            .createComment({
-              description: req.body.description
-            })
-            .then(comment => comment.setReplier(req.user.id))
-            .then(() => ticket.setStatus(STATUS.REJECTED))
-            .then(() =>
-              Ticket.findOne({
-                where: { id: req.params.id },
-                include: fullTicket
-              })
-            )
-            .then((ticket) => res.send(ticket))
-          ) : (
-            res.status(403).send("Ingresar motivo")
-          )
-         
+          req.body.description
+            ? ticket
+                .createComment({
+                  description: req.body.description
+                })
+                .then(comment => comment.setReplier(req.user.id))
+                .then(() => ticket.setStatus(STATUS.REJECTED))
+                .then(() =>
+                  Ticket.findOne({
+                    where: { id: req.params.id },
+                    include: fullTicket
+                  })
+                )
+                .then(ticket => res.send(ticket))
+            : res.status(403).send("Ingresar motivo");
       }
     })
     .catch(err => console.log(err));
