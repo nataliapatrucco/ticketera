@@ -12,7 +12,7 @@ export const Input = styled.input({
   padding: "17px 15.1 15 12"
 });
 
-export const Label = style.p(
+export const Label = styled.p(
   {
     width: "322.9px",
     height: "24px",
