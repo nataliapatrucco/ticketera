@@ -17,7 +17,9 @@ import {
   PartipantsImg,
   Line
 } from "./style";
-// 10 de noviembre 10:34am
+
+
+
 export default function index({ ticket }) {
   console.log("soy propsssssssss", ticket);
   return (
@@ -34,11 +36,11 @@ export default function index({ ticket }) {
       </Header>
       <Body>
         <TicketTitle>
-          <strong>{ticket.title} hol </strong>
+          <strong>{ticket.title}</strong>
         </TicketTitle>
         {ticket.content && ticket.content.length > 140 ? (
           <div>
-            <TicketContent>{ticket.content.slice(0, 140)}...</TicketContent>
+            <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
             <br />
             <TicketButton>Seguir leyendo</TicketButton>
           </div>
