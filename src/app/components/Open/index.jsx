@@ -39,7 +39,7 @@ export default function index({ ticket }) {
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        <Icon className="fas fa-hashtag"></Icon>
+        <Icon></Icon>
       </Header>
       <Body>
         <TicketTitle>
@@ -59,13 +59,16 @@ export default function index({ ticket }) {
       <Line />
       <TicketFooter>
         <Buttons>
-          <AddButton>
+          <AddButton /* onClick={ticket.handleAdd(ticket.id)} */>
             <AddIcon src="/images/add.png" alt=""></AddIcon>
             Sumarme
           </AddButton>
           <ShareButton>Compartir</ShareButton>
         </Buttons>
-        <PartipantsImg src="" alt="fotos participantes"></PartipantsImg>
+        <PartipantsImg
+          src="/images/perfil.jpeg"
+          alt="fotos participantes"
+        ></PartipantsImg>
       </TicketFooter>
     </Ticket>
   );
