@@ -25,7 +25,7 @@ router.get("/search", isLoggedIn, fetchByTitleTag);
 router.post("/", isLoggedIn, createTicket);
 
 // Buscar los tickets por status
-router.get("/status/:statusId", isLoggedIn, fetchStatus);
+router.get("/status/:statusId", fetchStatus);
 
 // Editar un ticket
 router.put("/:ticketId", isLoggedIn, checkUser, editTicket);
@@ -43,10 +43,9 @@ router.put("/:ticketId/:commentId", isAdmin, editComment);
 router.delete("/:id", isLoggedIn, checkUser, deleteTicket);
 
 //Agregar participante
-router.post("/participant/:ticketId", isLoggedIn, addParticipant)
+router.post("/participant", isLoggedIn, addParticipant);
 
 //Eliminar participante
-router.put("/participant/:ticketId", isLoggedIn, removeParticipant)
-
+router.put("/participant", isLoggedIn, removeParticipant);
 
 module.exports = router;
