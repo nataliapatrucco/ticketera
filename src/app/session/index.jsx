@@ -7,7 +7,7 @@ import Register from "./partials/register";
 import View from "./partials/view";
 import { Container } from "./style";
 import { RegisterContainer } from "./style";
-import {RegisterTitle} from "./style"
+import { RegisterTitle } from "./style";
 
 export const Session = props => {
   const dispatch = useDispatch();
@@ -27,12 +27,12 @@ export const Session = props => {
 
   const handleSubmitLogin = e => {
     e.preventDefault();
-    dispatch(loginUser(state));
+    dispatch(loginUser(state)).then(() => props.history.push("/"));
   };
 
   const handleSubmitRegister = e => {
     e.preventDefault();
-    dispatch(registerUser(state));
+    dispatch(registerUser(state)).then(() => props.history.push("/"));
   };
 
   return (
