@@ -72,7 +72,8 @@ export const TicketButton = styled.button({
   color: "#8c939f",
   marginLeft: "15px",
   marginTop: "5px",
-  fontSize: "15px"
+  fontSize: "15px",
+  fontWeight: "bold"
 });
 
 export const Line = styled.hr({
@@ -92,6 +93,7 @@ export const AddButton = styled.button({
   backgroundColor: "rgba(0,0,0,0)",
   color: "#8c939f",
   fontSize: "15px",
+  fontWeight: "bold",
   margin: "8px"
 });
 

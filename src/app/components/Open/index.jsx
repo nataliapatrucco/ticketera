@@ -1,4 +1,8 @@
 import React from "react";
+import moment from 'moment';
+import 'moment/locale/es';
+moment.locale('es');
+
 import {
   Ticket,
   Header,
@@ -17,8 +21,11 @@ import {
   PartipantsImg,
   Line
 } from "./style";
-// 10 de noviembre 10:34am
+
+
+
 export default function index({ ticket }) {
+ const date = moment(ticket.createdAt)
   console.log("soy propsssssssss", ticket);
   return (
     <Ticket>
@@ -28,17 +35,17 @@ export default function index({ ticket }) {
           <AuthorName>
             {ticket.author.name} {ticket.author.lastname}
           </AuthorName>
-          <TicketDate>{ticket.updatedAt}</TicketDate>
+          <TicketDate>{`${date.format("dddd")} a las ${date.format("HH:mm a")}`}</TicketDate>
         </Author>
         <Icon className="fas fa-hashtag"></Icon>
       </Header>
       <Body>
         <TicketTitle>
-          <strong>{ticket.title} hol </strong>
+          <strong>{ticket.title}</strong>
         </TicketTitle>
         {ticket.content && ticket.content.length > 140 ? (
           <div>
-            <TicketContent>{ticket.content.slice(0, 140)}...</TicketContent>
+            <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
             <br />
             <TicketButton>Seguir leyendo</TicketButton>
           </div>
