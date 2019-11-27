@@ -10,6 +10,7 @@ import Open from "../../components/Open";
 import Processing from "../../components/Processing";
 import Sidebar from "../../components/sidebar/index";
 import { Container, Section, Title, ProcessTitle } from "./style";
+import MakeQuestion from "../../components/makeQuestion";
 
 export default () => {
   const dispatch = useDispatch();
@@ -31,10 +32,15 @@ export default () => {
   return (
     <Container>
       <Section>
-        <Title>HACÉ UNA PREGUNTA</Title>
+        <Title color={"white"} width={"426px"} opacity={"0.9"}>
+          HACÉ UNA PREGUNTA
+        </Title>
+        <MakeQuestion />
       </Section>
       <Section>
-        <Title>PREGUNTAS PENDIENTES ({open.length})</Title>
+        <Title color={"white"} width={"426px"} opacity={"0.9"}>
+          PREGUNTAS PENDIENTES ({open.length})
+        </Title>
         {open.map(ticket => (
           <div key={ticket.id}>
             <Open
@@ -46,7 +52,9 @@ export default () => {
         ))}
       </Section>
       <Section>
-        <Title>RESPONDIENDO AHORA!</Title>
+        <Title color={"#62d0ff"} width={"266px"}>
+          RESPONDIENDO AHORA!
+        </Title>
 
         {processing.map(ticket2 => (
           <div key={ticket2.id}>

@@ -7,14 +7,14 @@ export const Container = styled.div({
 
 export const RegisterContainer = styled.div({
   display: "flex",
-  flexDirection:"column",
+  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   width: "640px",
   height: "780px"
 });
 
-export const RegisterTitle=styled.h1({
+export const RegisterTitle = styled.h1({
   width: "350px",
   height: "30px",
   opacity: "0.9",
@@ -26,19 +26,19 @@ export const RegisterTitle=styled.h1({
   lineHeight: 1.25,
   letterSpacing: "normal",
   color: "white"
-})
+});
 
 export const ViewContainer = styled.div({
   display: "flex",
   justifyContent: "center",
-  alignItems: "center", 
+  alignItems: "center",
   flexDirection: "column",
   width: "800px",
   height: "780px",
   backgroundBlendMode: "multiply",
   backgroundImage: 'url("/images/view.jpg")',
-  backgroundPosition:"center",
-  backgroundSize:"cover"
+  backgroundPosition: "center",
+  backgroundSize: "cover"
 });
 
 export const ViewTitle = styled.h1({
@@ -65,4 +65,46 @@ export const ViewText = styled.p({
   lineHeight: "1.56",
   letterSpacing: "0.5px",
   color: "#ffffff"
+});
+
+export const SessionContainer = styled.div({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center"
+});
+
+export const SessionText = styled.p(
+  {
+    fontFamily: "Monserrat",
+    opacity: "0.9",
+    fontFamily: "Montserrat",
+    fontSize: "12px",
+    fontWeight: "normal",
+    fontStretch: "normal",
+    fontStyle: "normal",
+    lineHeight: "1.33",
+    letterSpacing: "0.4px",
+    marginRight: "10px"
+  },
+  props => ({
+    color: props.color
+  })
+);
+
+export const ButtonS = styled.button({
+  width: "350px",
+  height: "36px",
+  borderRadius: "4px",
+  backgroundColor: "#ff062e",
+  border: "none",
+  color: "white",
+  fontFamily: "Montserrat",
+  fontSize: "14px",
+  fontWeight: "500",
+  fontStretch: "normal",
+  fontStyle: "medium",
+  lineHeight: "normal",
+  letterSpacing: "0.75px",
+  textAlign: "center",
+  marginTop: "20px"
 });
