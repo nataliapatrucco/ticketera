@@ -43,9 +43,9 @@ router.put("/:ticketId/:commentId", isAdmin, editComment);
 router.delete("/:id", isLoggedIn, checkUser, deleteTicket);
 
 //Agregar participante
-router.post("/participant/:ticketId", isLoggedIn, addParticipant);
+router.post("/participant", isLoggedIn, addParticipant);
 
 //Eliminar participante
-router.put("/participant/:ticketId", isLoggedIn, removeParticipant);
+router.put("/participant", isLoggedIn, removeParticipant);
 
 module.exports = router;

@@ -5,12 +5,8 @@ export const Container = styled.div({
   backgroundColor: "#091e35"
 });
 
-// export const Sidebar = styled.div({
-//     float: 'right',
-//     backgroundColor: '#00172e',
-//     width: '18.4%',
-//     height: '1961px',
-//     display: 'inline-block'
-// })
+export const Section = styled.section({});
 
-export const Navbar = styled.div({});
+export const Title = styled.h2({});
+
+export const ProcessTitle = styled.h2({});

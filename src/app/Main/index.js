@@ -4,4 +4,4 @@ import { Switch, Route } from "react-router-dom";
 import Sidebar from "../components/sidebar";
 import Dashboard from "../containers/dashboard/index";
 
-export default () => <Dashboard />;
+export default () => <Sidebar />;
