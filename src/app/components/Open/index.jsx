@@ -1,8 +1,14 @@
 import React from "react";
+<<<<<<< HEAD
+import moment from 'moment';
+import 'moment/locale/es';
+moment.locale('es');
+=======
 import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
 import { Link } from "react-router-dom";
+>>>>>>> 55a0d1b9b18a7a15ef15b98d5966d8b7ce730b2f
 
 import {
   Ticket,
