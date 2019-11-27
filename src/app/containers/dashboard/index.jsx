@@ -17,11 +17,11 @@ export default () => {
 
   return (
     <div>
-      {open.map(ticket => (
+      {/* {open.map(ticket => (
         <div key={ticket.id}>
           <Open ticket={ticket} />
         </div>
-      ))}
+      ))} */}
       {processing.map(ticket2 => (
         <div key={ticket2.id}>
           <Processing ticket={ticket2} />
