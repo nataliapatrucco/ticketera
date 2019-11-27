@@ -11,7 +11,8 @@ const {
   createTicket,
   deleteTicket,
   addParticipant,
-  removeParticipant
+  removeParticipant,
+  myTickets
 } = require("../resolvers/ticket-Resolvers");
 
 const { isLoggedIn, isAdmin, checkUser } = require("../routes/middlewares");
@@ -43,9 +44,12 @@ router.put("/:ticketId/:commentId", isAdmin, editComment);
 router.delete("/:id", isLoggedIn, checkUser, deleteTicket);
 
 //Agregar participante
-router.post("/participant/:ticketId", isLoggedIn, addParticipant);
+router.post("/participant", isLoggedIn, addParticipant);
 
 //Eliminar participante
-router.put("/participant/:ticketId", isLoggedIn, removeParticipant);
+router.put("/participant", isLoggedIn, removeParticipant);
+
+//Traer mis tickets
+router.get("/myTickets", isLoggedIn, myTickets);
 
 module.exports = router;

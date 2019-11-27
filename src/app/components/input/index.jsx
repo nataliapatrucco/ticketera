@@ -6,7 +6,8 @@ export default props => {
 
   return (
     <div>
-      <Label input={props.input}></Label>
+     {/*  pendiente agregar luego del input segun diseño */}
+     {/*  <Label input={props.input}></Label> */}
       <Input
         name={props.name}
         onBlur={props.onBlur}

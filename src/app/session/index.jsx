@@ -5,6 +5,9 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./partials/login";
 import Register from "./partials/register";
 import View from "./partials/view";
+import { Container } from "./style";
+import { RegisterContainer } from "./style";
+import {RegisterTitle} from "./style"
 
 export const Session = props => {
   const dispatch = useDispatch();
@@ -15,10 +18,6 @@ export const Session = props => {
     password: ""
   });
 
-  // this.handleChange = this.handleChange.bind(this);
-  // this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
-  // this.handleSubmitRegister = this.handleSubmitRegister.bind(this);
-
   const handleChange = e => {
     setState({
       ...state,
@@ -28,56 +27,51 @@ export const Session = props => {
 
   const handleSubmitLogin = e => {
     e.preventDefault();
-    dispatch(loginUser(state.email, state.password));
-    props.history.push("/");
+    dispatch(loginUser(state));
   };
 
   const handleSubmitRegister = e => {
-    console.log("estado", state);
-
     e.preventDefault();
     dispatch(registerUser(state));
-    // props.history.push("/login");
   };
 
   return (
-    <div>
+    <Container>
       <View />
-      <Register
-        name={state.name}
-        lastname={state.lastname}
-        email={state.email}
-        password={state.password}
-        handleChange={handleChange}
-        handleSubmitRegister={handleSubmitRegister}
-      />
-
       <Switch>
         <Route
-          path="/login"
-          render={() => {
-            <Login
-              email={state.email}
-              password={state.password}
-              handleChange={handleChange}
-              handleSubmitLogin={handleSubmitLogin}
-            />;
-          }}
-        />
-        {/* <Route
+          exact
           path="/"
-          render={() => {
-            <Register
-              name={state.name}
-              lastname={state.lastname}
-              email={state.email}
-              password={state.password}
-              handleChange={handleChange}
-              handleSubmitRegister={handleSubmitRegister}
-            />;
-          }}
-        /> */}
+          render={() => (
+            <RegisterContainer>
+              <RegisterTitle>Iniciar Sesión</RegisterTitle>
+              <Login
+                email={state.email}
+                password={state.password}
+                handleChange={handleChange}
+                handleSubmitLogin={handleSubmitLogin}
+              />
+            </RegisterContainer>
+          )}
+        />
+        <Route
+          exact
+          path="/register"
+          render={() => (
+            <RegisterContainer>
+              <RegisterTitle>Registrarse</RegisterTitle>
+              <Register
+                name={state.name}
+                lastname={state.lastname}
+                email={state.email}
+                password={state.password}
+                handleChange={handleChange}
+                handleSubmitRegister={handleSubmitRegister}
+              />
+            </RegisterContainer>
+          )}
+        />
       </Switch>
-    </div>
+    </Container>
   );
 };
