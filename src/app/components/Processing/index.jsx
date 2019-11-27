@@ -36,7 +36,7 @@ export default ({ ticket }) => {
           </Alumn>
       </AlumnContainer>
       <Ticket>
-      sadjhjkdas jashdjkh sajdhkjad sdhjkh dasjhkjh
+      Como se hace un html?????????
       </Ticket>
         {/*{ticket.title}*/} 
       </TicketContainer>
