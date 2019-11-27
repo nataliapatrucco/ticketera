@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOpen, fetchProcessing } from "../../redux/actions/tickets";
 import Open from "../../components/Open";
-import Processing from '../../components/Processing'
-import Sidebar from '../../components/sidebar/index'
-
+import Processing from "../../components/Processing";
+import Sidebar from "../../components/sidebar/index";
 
 export default () => {
   const dispatch = useDispatch();
@@ -17,9 +16,7 @@ export default () => {
   }, []);
 
   return (
-   <div>
-
-         {/* <Sidebar/>
+    <div>
       {open.map(ticket => (
         <div key={ticket.id}>
           <Open ticket={ticket} />
@@ -27,12 +24,9 @@ export default () => {
       ))}
       {processing.map(ticket2 => (
         <div key={ticket2.id}>
-          <Processing ticket={ticket2}/>
+          <Processing ticket={ticket2} />
         </div>
-      ))} */}
-   </div>
-   
-   
-    
+      ))}
+    </div>
   );
 };
