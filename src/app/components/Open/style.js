@@ -12,13 +12,14 @@ export const Ticket = styled.div({
 export const Header = styled.div({
   display: "flex",
   flexDirection: "row",
-  margin: "10px"
+  margin: "10px",
+  padding: "0"
 });
 
 export const Img = styled.img({
   alignItems: "center",
-  width: "5%",
-  height: "5%",
+  width: "40px",
+  height: "40px",
   borderRadius: "50px",
   flexBasis: "5%",
   margin: "10px"
@@ -28,7 +29,6 @@ export const Author = styled.section({
   flexDirection: "column",
   color: "#8c939f",
   flexBasis: "90%",
-  // marginTop: "5px",
   marginLeft: "10px"
 });
 
@@ -39,7 +39,7 @@ export const AuthorName = styled.h4({
   marginTop: "5px",
   marginBottom: "10px",
   fontFamily: "Montserrat",
-  fontWeight: "SemiBold",
+  fontWeight: "500",
   lineHeight: "24px",
   letterSpacing: "0.1px"
 });
@@ -51,14 +51,21 @@ export const TicketDate = styled.p({
   marginBottom: "5px",
   fontSize: "12px",
   fontFamily: "Montserrat",
-  fontWeight: "Regular",
+  fontWeight: "400",
   lineHeight: "16px",
   letterSpacing: "0.4px"
 });
 
-export const Icon = styled.i({
+export const Icon = styled.h3({
   flexBasis: "5%",
-  color: "white"
+  color: "white",
+  padding: "5px",
+  height: "30px",
+  width: "30px",
+  borderRadius: "4px",
+  border: "solid 1px rgba(255, 255, 255, 0.7)",
+  marginTop: "5px",
+  marginBottom: "5px"
 });
 
 export const Body = styled.section({
@@ -71,7 +78,7 @@ export const TicketTitle = styled.header({
   fontSize: "18px",
   color: "#62d0ff",
   fontFamily: "Montserrat",
-  fontWeight: "Regular",
+  fontWeight: "400",
   lineHeight: "28px",
   letterSpacing: "0.5px"
 });
@@ -83,7 +90,7 @@ export const TicketContent = styled.p({
   opacity: "90%",
   fontSize: "14px",
   fontFamily: "Montserrat",
-  fontWeight: "Regular",
+  fontWeight: "400",
   lineHeight: "20px",
   letterSpacing: "0.25px"
 });
@@ -93,11 +100,12 @@ export const TicketLink = styled.p({
   border: "solid 0px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
   textDecoration: "none",
+  textDecorationLine: "none",
   color: "#ffffff",
   opacity: "70%",
   margin: "15px",
   fontFamily: "Montserrat",
-  fontWeight: "regular",
+  fontWeight: "400",
   fontSize: "14px",
   lineHeight: "20px",
   letterSpacing: "0.25px"
@@ -143,7 +151,23 @@ export const AddButton = styled.p({
   color: "#ffffff",
   opacity: "70%",
   fontFamily: "Montserrat",
-  fontWeight: "Regular",
+  fontWeight: "400",
+  fontSize: "14px",
+  lineHeight: "24px",
+  letterSpacing: "0.1px",
+  marginRight: "60px"
+});
+
+export const RemoveButton = styled.p({
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+  border: "solid 1px rgba(0,0,0,0)",
+  backgroundColor: "rgba(0,0,0,0)",
+  color: "#ffffff",
+  opacity: "70%",
+  fontFamily: "Montserrat",
+  fontWeight: "400",
   fontSize: "14px",
   lineHeight: "24px",
   letterSpacing: "0.1px",
@@ -151,19 +175,21 @@ export const AddButton = styled.p({
 });
 
 export const ShareButton = styled.p({
-  // borderRadius: "10px",
   border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
-  // margin: "8px",
   color: "#ffffff",
   opacity: "70%",
   fontFamily: "Montserrat",
-  fontWeight: "Regular",
+  fontWeight: "400",
   fontSize: "14px",
   lineHeight: "24px",
   letterSpacing: "0.1px"
 });
 
 export const PartipantsImg = styled.img({
-  // flex: "auto"
+  alignItems: "center",
+  width: "24px",
+  height: "24px",
+  borderRadius: "50px",
+  margin: "10px"
 });

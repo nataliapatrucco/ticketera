@@ -1,8 +1,14 @@
 import React from "react";
+<<<<<<< HEAD
+import moment from 'moment';
+import 'moment/locale/es';
+moment.locale('es');
+=======
 import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
 import { Link } from "react-router-dom";
+>>>>>>> 55a0d1b9b18a7a15ef15b98d5966d8b7ce730b2f
 
 import {
   Ticket,
@@ -18,6 +24,7 @@ import {
   TicketLink,
   Buttons,
   AddButton,
+  RemoveButton,
   AddIcon,
   ShareButton,
   TicketFooter,
@@ -25,7 +32,7 @@ import {
   Line
 } from "./style";
 
-export default function index({ ticket }) {
+export default function index({ ticket, handleAdd, user }) {
   const date = moment(ticket.createdAt);
   return (
     <Ticket>
@@ -39,7 +46,7 @@ export default function index({ ticket }) {
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        <Icon className="fas fa-hashtag"></Icon>
+        <Icon></Icon>
       </Header>
       <Body>
         <TicketTitle>
@@ -59,13 +66,20 @@ export default function index({ ticket }) {
       <Line />
       <TicketFooter>
         <Buttons>
-          <AddButton>
-            <AddIcon src="/images/add.png" alt=""></AddIcon>
-            Sumarme
-          </AddButton>
+          {/* {ticket.users.map(participant => participant.id === user.id) ? (
+            <RemoveButton></RemoveButton>
+          ) : (
+            <AddButton onClick={() => handleAdd(ticket.id)}>
+              <AddIcon src="/images/add.png" alt=""></AddIcon>
+              Sumarme
+            </AddButton>
+          )} */}
           <ShareButton>Compartir</ShareButton>
         </Buttons>
-        <PartipantsImg src="" alt="fotos participantes"></PartipantsImg>
+        <PartipantsImg
+          src="/images/perfil.jpeg"
+          alt="fotos participantes"
+        ></PartipantsImg>
       </TicketFooter>
     </Ticket>
   );
