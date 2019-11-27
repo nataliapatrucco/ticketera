@@ -6,10 +6,10 @@ const receiveUser = user => ({
   user
 });
 
-export const loginUser = function({ email, password }) {
+export const loginUser = function(state) {
   return function(dispatch, getState) {
     return axios
-      .post("/api/user/login", { email, password })
+      .post("/api/user/login", state)
       .then(res => res.data)
       .then(user => {
         dispatch(receiveUser(user));

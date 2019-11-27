@@ -1,8 +1,8 @@
 import React from "react";
-// import moment from "moment";
-// import 'moment/locale/es';
-// moment.locale('es');
-// `${date.format("dddd")} a las ${date.format("HH:mm a")}`
+import moment from "moment";
+import "moment/locale/es";
+moment.locale("es");
+import { Link } from "react-router-dom";
 
 import {
   Ticket,
@@ -15,17 +15,18 @@ import {
   Icon,
   Body,
   TicketContent,
-  TicketButton,
+  TicketLink,
+  Buttons,
   AddButton,
-  // ShareButton,
+  AddIcon,
+  ShareButton,
   TicketFooter,
   PartipantsImg,
   Line
 } from "./style";
 
 export default function index({ ticket }) {
-  // const date = moment(ticket.createdAt);
-  console.log("soy propsssssssss", ticket);
+  const date = moment(ticket.createdAt);
   return (
     <Ticket>
       <Header>
@@ -34,7 +35,9 @@ export default function index({ ticket }) {
           <AuthorName>
             {ticket.author.name} {ticket.author.lastname}
           </AuthorName>
-          <TicketDate>{ticket.updatedAt}</TicketDate>
+          <TicketDate>{`${date.format("dddd")} a las ${date.format(
+            "HH:mm a"
+          )}`}</TicketDate>
         </Author>
         <Icon className="fas fa-hashtag"></Icon>
       </Header>
@@ -45,8 +48,9 @@ export default function index({ ticket }) {
         {ticket.content && ticket.content.length > 140 ? (
           <div>
             <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
-            <br />
-            <TicketButton>Seguir leyendo</TicketButton>
+            <Link to="/">
+              <TicketLink>Seguir leyendo</TicketLink>
+            </Link>
           </div>
         ) : (
           <TicketContent> {ticket.content}</TicketContent>
@@ -54,8 +58,13 @@ export default function index({ ticket }) {
       </Body>
       <Line />
       <TicketFooter>
-        <AddButton>Sumarme</AddButton>
-        {/* <ShareButton>Compartir</ShareButton> */}
+        <Buttons>
+          <AddButton>
+            <AddIcon src="/images/add.png" alt=""></AddIcon>
+            Sumarme
+          </AddButton>
+          <ShareButton>Compartir</ShareButton>
+        </Buttons>
         <PartipantsImg src="" alt="fotos participantes"></PartipantsImg>
       </TicketFooter>
     </Ticket>

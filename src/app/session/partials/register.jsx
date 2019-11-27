@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "../../components/input";
+import {ButtonS, SessionText, SessionContainer} from "../../components/input/style.js"
 
 export default ({
   name,
@@ -12,35 +13,41 @@ export default ({
   return (
     <form onSubmit={handleSubmitRegister}>
       <Input
-        placeholder="agus"
+        placeholder="Nombre"
         name="name"
         type="text"
         input={name}
         handleChange={handleChange}
       />
       <Input
-        placeholder="perkins"
+        placeholder="Apellido"
         name="lastname"
         type="text"
         input={lastname}
         handleChange={handleChange}
       />
       <Input
-        placeholder="a@a.com"
+        placeholder="Email"
         name="email"
         type="text"
         input={email}
         handleChange={handleChange}
       />
       <Input
-        placeholder="*******"
+        placeholder="Contraseña"
         name="password"
         type="password"
         input={password}
         type={password}
         handleChange={handleChange}
       />
-      <button type="submit">hola</button>
+      <ButtonS>REGISTRARSE</ButtonS>
+      <SessionContainer>
+        <SessionText color={"white"}>Ya tenés una cuenta? </SessionText>
+        <SessionText color={"#62d0ff"}> INICIÁ SESIÓN</SessionText>
+      </SessionContainer>
+
+      {/* <button type="submit">Registrarse</button> */}
     </form>
   );
 };

@@ -107,7 +107,7 @@ const removeTag = (req, res) => {
           id: req.params.ticketId
         },
         include: fullTicket
-      }).then(updatedTicket => res.send(updatedTicket))
+      }).then(tickets => res.send(tickets))
     )
     .catch(err => res.status(404).send(err));
 };
@@ -133,17 +133,18 @@ const addTag = (req, res) => {
 const addParticipant = (req, res) => {
   Ticket.findOne({
     where: {
-      id: req.params.ticketId
+      id: req.body.ticketId
     }
   })
     .then(ticket => ticket.addUser(req.user))
     .then(() =>
-      Ticket.findOne({
+      Ticket.findAll({
         where: {
-          id: req.params.ticketId
+          statusId: 1
         },
+        order: [["id", "ASC"]],
         include: fullTicket
-      }).then(updatedTicket => res.send(updatedTicket))
+      }).then(tickets => res.send(tickets))
     )
     .catch(err => res.status(404).send(err));
 };
@@ -151,15 +152,16 @@ const addParticipant = (req, res) => {
 const removeParticipant = (req, res) => {
   Ticket.findOne({
     where: {
-      id: req.params.ticketId
+      id: req.body.ticketId
     }
   })
     .then(ticket => ticket.removeUser(req.user))
     .then(() =>
       Ticket.findOne({
         where: {
-          id: req.params.ticketId
+          statusId: 1
         },
+        order: [["id", "ASC"]],
         include: fullTicket
       }).then(updatedTicket => res.send(updatedTicket))
     )
