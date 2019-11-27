@@ -7,6 +7,35 @@ export const Container = styled.div({
 
 export const Section = styled.section({});
 
-export const Title = styled.h2({});
+export const Title = styled.h2(
+  {
+    // width: "426px",
+    height: "30px",
+    // opacity: "0.9",
+    fontFamily: "Montserrat",
+    fontSize: "18px",
+    fontWeight: "500",
+    fontStretch: "normal",
+    fontStyle: "normal",
+    lineHeight: "1.67",
+    letterSpacing: "2px"
+    // color: "#ffffff"
+  },
+  props => ({
+    color: props.color,
+    width: props.width,
+    opacity: props.opacity
+  })
+);
 
-export const ProcessTitle = styled.h2({});
+export const ProcessTitle = styled.h2({
+  // width: 266px;
+  // font-family: Montserrat;
+  // font-size: 18px;
+  // font-weight: 500;
+  // font-stretch: normal;
+  // font-style: normal;
+  // line-height: 1.67;
+  // letter-spacing: 2px;
+  // color: var(--cian);
+});

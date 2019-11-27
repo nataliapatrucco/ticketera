@@ -46,7 +46,7 @@ export default () => {
         ))}
       </Section>
       <Section>
-        <ProcessTitle>RESPONDIENDO AHORA!</ProcessTitle>
+        <Title>RESPONDIENDO AHORA!</Title>
 
         {processing.map(ticket2 => (
           <div key={ticket2.id}>
