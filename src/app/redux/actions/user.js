@@ -32,3 +32,8 @@ export const logOutUser = () => dispatch =>
   axios.get("/api/user/logout").then(() => {
     dispatch(receiveUser({}));
   });
+
+export const fetchUser = () => dispatch =>
+  axios.get("/api/user/me").then(res => {
+    dispatch(receiveUser(res.data));
+  });
