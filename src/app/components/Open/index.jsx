@@ -18,6 +18,7 @@ import {
   TicketLink,
   Buttons,
   AddButton,
+  RemoveButton,
   AddIcon,
   ShareButton,
   TicketFooter,
@@ -25,7 +26,7 @@ import {
   Line
 } from "./style";
 
-export default function index({ ticket }) {
+export default function index({ ticket, handleAdd, user }) {
   const date = moment(ticket.createdAt);
   return (
     <Ticket>
@@ -39,7 +40,7 @@ export default function index({ ticket }) {
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        <Icon className="fas fa-hashtag"></Icon>
+        <Icon></Icon>
       </Header>
       <Body>
         <TicketTitle>
@@ -59,13 +60,20 @@ export default function index({ ticket }) {
       <Line />
       <TicketFooter>
         <Buttons>
-          <AddButton>
-            <AddIcon src="/images/add.png" alt=""></AddIcon>
-            Sumarme
-          </AddButton>
+          {/* {ticket.users.map(participant => participant.id === user.id) ? (
+            <RemoveButton></RemoveButton>
+          ) : (
+            <AddButton onClick={() => handleAdd(ticket.id)}>
+              <AddIcon src="/images/add.png" alt=""></AddIcon>
+              Sumarme
+            </AddButton>
+          )} */}
           <ShareButton>Compartir</ShareButton>
         </Buttons>
-        <PartipantsImg src="" alt="fotos participantes"></PartipantsImg>
+        <PartipantsImg
+          src="/images/perfil.jpeg"
+          alt="fotos participantes"
+        ></PartipantsImg>
       </TicketFooter>
     </Ticket>
   );
