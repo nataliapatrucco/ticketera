@@ -22,3 +22,15 @@ export const fetchProcessing = () => dispatch =>
     .get("/api/ticket/status/2")
     .then(res => res.data)
     .then(tickets => dispatch(setProcessing(tickets)));
+
+export const addParticipant = ticketId => dispatch =>
+  axios
+    .post("/api/ticket/participant", ticketId)
+    .then(res => res.data)
+    .then(tickets => dispatch(setOpen(tickets)));
+
+export const removeParticipant = ticketId => dispatch =>
+  axios
+    .put("/api/ticket/participant", ticketId)
+    .then(res => res.data)
+    .then(tickets => dispatch(setOpen(tickets)));
