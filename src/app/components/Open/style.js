@@ -12,7 +12,8 @@ export const Ticket = styled.div({
 export const Header = styled.div({
   display: "flex",
   flexDirection: "row",
-  margin: "10px"
+  margin: "10px",
+  padding: "0"
 });
 
 export const Img = styled.img({
@@ -28,7 +29,6 @@ export const Author = styled.section({
   flexDirection: "column",
   color: "#8c939f",
   flexBasis: "90%",
-  // marginTop: "5px",
   marginLeft: "10px"
 });
 
@@ -63,7 +63,9 @@ export const Icon = styled.h3({
   height: "30px",
   width: "30px",
   borderRadius: "4px",
-  border: "solid 1px rgba(255, 255, 255, 0.7)"
+  border: "solid 1px rgba(255, 255, 255, 0.7)",
+  marginTop: "5px",
+  marginBottom: "5px"
 });
 
 export const Body = styled.section({
@@ -141,6 +143,22 @@ export const AddIcon = styled.img({
 });
 
 export const AddButton = styled.p({
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+  border: "solid 1px rgba(0,0,0,0)",
+  backgroundColor: "rgba(0,0,0,0)",
+  color: "#ffffff",
+  opacity: "70%",
+  fontFamily: "Montserrat",
+  fontWeight: "400",
+  fontSize: "14px",
+  lineHeight: "24px",
+  letterSpacing: "0.1px",
+  marginRight: "60px"
+});
+
+export const RemoveButton = styled.p({
   display: "flex",
   justifyContent: "space-around",
   alignItems: "center",
