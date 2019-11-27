@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { Navbar } from "../containers/Navbar/index";
 import Sidebar from "../components/sidebar";
 import Dashboard from "../containers/dashboard/index";
+import MakeQuestion from "../components/makeQuestion/index";
 
 export default () => (
   <div>
