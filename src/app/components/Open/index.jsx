@@ -1,4 +1,8 @@
 import React from "react";
+import moment from 'moment';
+import 'moment/locale/es';
+moment.locale('es');
+
 import {
   Ticket,
   Header,
@@ -21,6 +25,7 @@ import {
 
 
 export default function index({ ticket }) {
+ const date = moment(ticket.createdAt)
   console.log("soy propsssssssss", ticket);
   return (
     <Ticket>
@@ -30,7 +35,7 @@ export default function index({ ticket }) {
           <AuthorName>
             {ticket.author.name} {ticket.author.lastname}
           </AuthorName>
-          <TicketDate>{ticket.updatedAt}</TicketDate>
+          <TicketDate>{`${date.format("dddd")} a las ${date.format("HH:mm a")}`}</TicketDate>
         </Author>
         <Icon className="fas fa-hashtag"></Icon>
       </Header>
