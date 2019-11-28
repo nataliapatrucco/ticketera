@@ -8,6 +8,7 @@ import {
   Icon,
   Section
 } from "./style";
+
 import { Link } from "react-router-dom";
 
 export default props => {
@@ -30,7 +31,7 @@ export default props => {
             <Title>DEVPEDIA</Title>
           </TitleContainer>
         </Link>
-        <Link to="/userTickets">
+        <Link to="/ticket/userTickets">
           <TitleContainer>
             <Icon />
             <Title>MIS PREGUNTAS</Title>

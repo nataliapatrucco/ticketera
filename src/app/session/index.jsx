@@ -7,7 +7,7 @@ import Register from "./partials/register";
 import View from "./partials/view";
 import { Container } from "./style";
 import { RegisterContainer } from "./style";
-import { RegisterTitle } from "./style";
+import { RegisterTitle, ViewLogo } from "./style";
 
 export const Session = props => {
   const dispatch = useDispatch();
@@ -15,9 +15,33 @@ export const Session = props => {
     name: "",
     lastname: "",
     email: "",
-    password: ""
+    password: "",
+    errorMessage: ""
   });
 
+  const handleEmail = e => {
+    const valid = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (!valid.test(state.email)) {
+      setState({
+        ...state,
+        errorMessage: "Introduce un email válido"
+      });
+    } else {
+      setState({
+        ...state,
+        errorMessage: ""
+      });
+    }
+  };
+
+  const clearInput = () => {
+    setState({
+      name: "",
+      lastname: "",
+      email: "",
+      password: ""
+    });
+  };
   const handleChange = e => {
     setState({
       ...state,
@@ -44,12 +68,16 @@ export const Session = props => {
           path="/"
           render={() => (
             <RegisterContainer>
+              <ViewLogo></ViewLogo>
               <RegisterTitle>Iniciar Sesión</RegisterTitle>
               <Login
+                clearInput={clearInput}
                 email={state.email}
                 password={state.password}
                 handleChange={handleChange}
                 handleSubmitLogin={handleSubmitLogin}
+                handleBlur={handleEmail}
+                errorMessage={state.errorMessage}
               />
             </RegisterContainer>
           )}
@@ -59,14 +87,18 @@ export const Session = props => {
           path="/register"
           render={() => (
             <RegisterContainer>
+              <ViewLogo></ViewLogo>
               <RegisterTitle>Registrarse</RegisterTitle>
               <Register
+                clearInput={clearInput}
                 name={state.name}
                 lastname={state.lastname}
                 email={state.email}
                 password={state.password}
                 handleChange={handleChange}
                 handleSubmitRegister={handleSubmitRegister}
+                handleBlur={handleEmail}
+                errorMessage={state.errorMessage}
               />
             </RegisterContainer>
           )}

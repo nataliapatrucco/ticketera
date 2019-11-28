@@ -9,7 +9,10 @@ export default ({
   email,
   password,
   handleChange,
-  handleSubmitRegister
+  handleSubmitRegister,
+  clearInput,
+  handleBlur,
+  errorMessage
 }) => {
   return (
     <form onSubmit={handleSubmitRegister}>
@@ -33,24 +36,23 @@ export default ({
         type="text"
         input={email}
         handleChange={handleChange}
+        onBlur={handleBlur}
       />
+      <div>{errorMessage}</div>
       <Input
         placeholder="Contraseña"
         name="password"
         type="password"
         input={password}
-        type={password}
         handleChange={handleChange}
       />
       <ButtonS>REGISTRARSE</ButtonS>
       <SessionContainer>
         <SessionText color={"white"}>Ya tenés una cuenta? </SessionText>
-        <Link to="/">
+        <Link to="/" onClick={() => clearInput()}>
           <SessionText color={"#62d0ff"}> INICIÁ SESIÓN</SessionText>
         </Link>
       </SessionContainer>
-
-      {/* <button type="submit">Registrarse</button> */}
     </form>
   );
 };

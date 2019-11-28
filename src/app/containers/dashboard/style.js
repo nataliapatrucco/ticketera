@@ -9,7 +9,6 @@ export const Section = styled.section({});
 
 export const Title = styled.h2(
   {
-    // width: "426px",
     height: "30px",
     // opacity: "0.9",
     fontFamily: "Montserrat",
