@@ -1,15 +1,18 @@
 import React from "react";
-import { Contenedor, 
-  TicketContainer, 
-  Assistant, 
-  Alumn, 
-  Fotito, 
-  AssistantContainer, 
-  AlumnContainer, 
-  Ticket, 
+import {
+  Contenedor,
+  TicketContainer,
+  Assistant,
+  Alumn,
+  Fotito,
+  AssistantContainer,
+  AlumnContainer,
+  Ticket,
   Ubicacion,
-  UbicacionContainer, 
-  UbicacionIcon} from "./style";
+  UbicacionContainer,
+  UbicacionIcon,
+  IconContainer
+} from "./style";
 
 export default ({ ticket }) => {
   React.useEffect(() => console.log(ticket), []);
@@ -23,22 +26,25 @@ export default ({ ticket }) => {
         </Assistant>
       </AssistantContainer>
       <UbicacionContainer>
-        <UbicacionIcon src="/images/icon-maps.png"></UbicacionIcon>
+        <IconContainer>
+          <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
+        </IconContainer>
         <Ubicacion> en Sala 5 </Ubicacion>
-        
       </UbicacionContainer>
       <TicketContainer>
-      <AlumnContainer>
-    <Fotito src="/images/alumno.jpeg" size="18px" margin="10px"></Fotito>
-        <Alumn>
-          {/* {ticket.author.name} */}
-          Tati
+        <AlumnContainer>
+          <Fotito src="/images/alumno.jpeg" size="18px" margin="10px"></Fotito>
+          <Alumn>
+            {/* {ticket.author.name} */}
+            Tati
           </Alumn>
-      </AlumnContainer>
-      <Ticket>
-      Como se hace un html?????????
-      </Ticket>
-        {/*{ticket.title}*/} 
+        </AlumnContainer>
+        <Ticket>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          suscipit porta enim sed malesuada. Aenean dapibus diam ut posuere
+          viverra.
+        </Ticket>
+        {/*{ticket.title}*/}
       </TicketContainer>
     </Contenedor>
   );

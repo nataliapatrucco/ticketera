@@ -9,27 +9,33 @@ export const Contenedor = styled.div({
   height: '201px',
   display: 'inline-block',
   marginBottom: '16px',
-  fontFamily: 'Montserrat',
   color: 'white',
   borderRadius: '4px',
-  marginRight: '10px'
-
+  marginRight: '75px',
+  paddingRight: '19px'
 })
 
 export const UbicacionContainer = styled.div({
   marginLeft: '52.9px',  
   fontFamily: 'Montserrat',
+  width: '214px',
+  heigth: '16px',
+  display: 'inline-block'
   
 })
 
-export const UbicacionIcon = styled.img({
+export const IconContainer = styled.div({
+  opacity: '90%',
   width: '10px',
   height: '12px',
   float: 'left',
-  color: '#ffffff',
-  marginBottom: '2.2px',
-  marginTop: '2.2px',
-  marginRight: '4px'
+
+})
+
+export const UbicacionIcon = styled.img({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover'
 })
 
 export const Ubicacion = styled.p({
@@ -55,7 +61,7 @@ export const TicketContainer = styled.div({
   textAlign: 'left',
   overflow: 'hidden',
   marginLeft: '16px',
-  marginTop: '12px',
+  marginTop: '14.2px',
   top: '68px',
   borderRadius: '4px',
   fontFamily: 'Montserrat',
@@ -78,7 +84,7 @@ export const Ticket = styled.div({
   letterSpacing: '0.4px',
   marginTop: '8px',
   marginRight: '18px',
-  opacity: 0.9
+  opacity: '90%'
 })
 
 export const AlumnContainer = styled.div({
@@ -91,7 +97,7 @@ export const Alumn = styled.div({
    fontFamily: 'Montserrat',
    fontWeight: 600,
    fontSize: '12px',
-   opacity: 0.9,
+   opacity: '90%',
    margingLeft: '52px'
 })
 
@@ -106,7 +112,7 @@ export const Assistant = styled.div({
    fontSize: '14px',
    lineHeight: '24px',
    letterSpacing: '0.1px',
-   opacity: 0.9
+   opacity: '90%'
    
 })
 
