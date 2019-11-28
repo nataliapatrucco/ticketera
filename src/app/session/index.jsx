@@ -7,7 +7,7 @@ import Register from "./partials/register";
 import View from "./partials/view";
 import { Container } from "./style";
 import { RegisterContainer } from "./style";
-import { RegisterTitle } from "./style";
+import { RegisterTitle, ViewLogo } from "./style";
 
 export const Session = props => {
   const dispatch = useDispatch();
@@ -18,6 +18,14 @@ export const Session = props => {
     password: ""
   });
 
+  const clearInput = () =>{
+    setState({
+      name: "",
+      lastname: "",
+      email: "",
+      password: ""
+    })
+  }
   const handleChange = e => {
     setState({
       ...state,
@@ -40,12 +48,15 @@ export const Session = props => {
       <View />
       <Switch>
         <Route
+        
           exact
           path="/"
           render={() => (
             <RegisterContainer>
+              <ViewLogo></ViewLogo>
               <RegisterTitle>Iniciar Sesión</RegisterTitle>
               <Login
+                clearInput={clearInput}
                 email={state.email}
                 password={state.password}
                 handleChange={handleChange}
@@ -59,8 +70,10 @@ export const Session = props => {
           path="/register"
           render={() => (
             <RegisterContainer>
+              <ViewLogo></ViewLogo>
               <RegisterTitle>Registrarse</RegisterTitle>
               <Register
+              clearInput={clearInput}
                 name={state.name}
                 lastname={state.lastname}
                 email={state.email}
