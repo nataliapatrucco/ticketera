@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_OPEN, FETCH_PROCESSING } from "../constants";
+import { FETCH_OPEN, FETCH_PROCESSING, FETCH_MY_TICKETS } from "../constants";
 
 const setOpen = open => ({
   type: FETCH_OPEN,
@@ -9,6 +9,11 @@ const setOpen = open => ({
 const setProcessing = processing => ({
   type: FETCH_PROCESSING,
   processing
+});
+
+const setUserTickets = userTickets => ({
+  type: FETCH_MY_TICKETS,
+  userTickets
 });
 
 export const fetchOpen = () => dispatch =>
@@ -34,3 +39,9 @@ export const removeParticipant = ticketId => dispatch =>
     .put("/api/ticket/participant", ticketId)
     .then(res => res.data)
     .then(tickets => dispatch(setOpen(tickets)));
+
+export const fetchUserTickets = () => dispatch =>
+  axios
+    .get("/api/ticket/userTickets")
+    .then(res => res.data)
+    .then(tickets => dispatch(setUserTickets(tickets)));

@@ -10,7 +10,14 @@ import Open from "../../components/Open";
 import { Navbar } from '../Navbar/index'
 import Processing from "../../components/Processing";
 import Sidebar from "../../components/sidebar/index";
-import { Container, Section, Title, ProcessTitle } from "./style";
+import {
+  Container,
+  Section,
+  Title,
+  ProcessTitle,
+  SectionProcess,
+  SectionAnswer
+} from "./style";
 import MakeQuestion from "../../components/makeQuestion";
 
 export default () => {

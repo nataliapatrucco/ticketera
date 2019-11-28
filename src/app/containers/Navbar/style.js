@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
+import { relative } from "path";
 
 export const NavbarContainer = styled.div({
+  marginLeft: "295px",
   display: "flex",
-  width: "100%",
-  height: "50px",
+  width: "1175px",
+  height: "80px",
   backgroundColor: "#091e35",
   paddingTop: "20px",
   paddingBottom: "20px",
@@ -12,6 +14,8 @@ export const NavbarContainer = styled.div({
 });
 
 export const Rectangle = styled.div({
+  position: "relative",
+  bottom: "5px",
   display: "flex",
   backgroundColor: "#091e35",
   width: "410px",
