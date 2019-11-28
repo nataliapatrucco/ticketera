@@ -26,7 +26,7 @@ import {
   Line
 } from "./style";
 
-export default function index({ ticket, handleAdd, user }) {
+export default function index({ ticket, handleAdd, user, index }) {
   const date = moment(ticket.createdAt);
   return (
     <Ticket>
@@ -40,7 +40,7 @@ export default function index({ ticket, handleAdd, user }) {
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        <Icon></Icon>
+        <Icon>#{index}</Icon>
       </Header>
       <Body>
         <TicketTitle>
@@ -68,6 +68,9 @@ export default function index({ ticket, handleAdd, user }) {
               Sumarme
             </AddButton>
           )} */}
+          <AddButton>
+            <AddIcon src="/images/add.png" alt=""></AddIcon>Sumarme
+          </AddButton>
           <ShareButton>Compartir</ShareButton>
         </Buttons>
         <PartipantsImg
