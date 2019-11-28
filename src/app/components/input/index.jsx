@@ -2,12 +2,10 @@ import React from "react";
 import { Input, Label } from "./style";
 
 export default props => {
-  console.log("las props", props);
-
   return (
     <div>
-     {/*  pendiente agregar luego del input segun diseño */}
-     {/*  <Label input={props.input}></Label> */}
+      {/*  pendiente agregar luego del input segun diseño */}
+      {/*  <Label input={props.input}></Label> */}
       <Input
         name={props.name}
         onBlur={props.onBlur}
