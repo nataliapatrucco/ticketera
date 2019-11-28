@@ -7,18 +7,6 @@ export const Container = styled.div({
 
 export const Section = styled.section({});
 
-export const SectionProcess = styled.section({
-  position: "relative",
-  top: "150px",
-  right: "690px"
-});
-
-export const SectionAnswer = styled.section({
-  position: "relative",
-
-  right: "300px"
-});
-
 export const Title = styled.h2(
   {
     height: "30px",

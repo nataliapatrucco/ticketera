@@ -44,7 +44,7 @@ export default () => {
         </Title>
         <MakeQuestion />
       </Section>
-      <SectionProcess>
+      <Section>
         <Title color={"white"} width={"426px"} opacity={"0.9"}>
           PREGUNTAS PENDIENTES ({open.length})
         </Title>
@@ -57,9 +57,9 @@ export default () => {
             />
           </div>
         ))}
-      </SectionProcess>
-      <SectionAnswer>
-        <Title color={"#62d0ff"} width={"300px"}>
+      </Section>
+      <Section>
+        <Title color={"#62d0ff"} width={"266px"}>
           RESPONDIENDO AHORA!
         </Title>
 
@@ -68,7 +68,7 @@ export default () => {
             <Processing ticket={ticket2} />
           </div>
         ))}
-      </SectionAnswer>
+      </Section>
     </Container>
   );
 };
