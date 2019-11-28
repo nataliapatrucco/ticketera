@@ -15,8 +15,19 @@ export const Session = props => {
     name: "",
     lastname: "",
     email: "",
-    password: ""
+    password: "",
+    errorMesage: ""
   });
+
+  const handleEmail = e => {
+    const valid = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (!valid.test(state.email)) {
+      setState({
+        ...state,
+        errorMesage: "Introduce un email válido"
+      });
+    }
+  };
 
   const handleChange = e => {
     setState({
@@ -67,6 +78,7 @@ export const Session = props => {
                 password={state.password}
                 handleChange={handleChange}
                 handleSubmitRegister={handleSubmitRegister}
+                handleBlur={handleEmail}
               />
             </RegisterContainer>
           )}
