@@ -7,7 +7,7 @@ import Register from "./partials/register";
 import View from "./partials/view";
 import { Container } from "./style";
 import { RegisterContainer } from "./style";
-import { RegisterTitle } from "./style";
+import { RegisterTitle, ViewLogo } from "./style";
 
 export const Session = props => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export const Session = props => {
     lastname: "",
     email: "",
     password: "",
-    errorMesage: ""
+    errorMessage: ""
   });
 
   const handleEmail = e => {
@@ -24,11 +24,24 @@ export const Session = props => {
     if (!valid.test(state.email)) {
       setState({
         ...state,
-        errorMesage: "Introduce un email válido"
+        errorMessage: "Introduce un email válido"
+      });
+    } else {
+      setState({
+        ...state,
+        errorMessage: ""
       });
     }
   };
 
+  const clearInput = () => {
+    setState({
+      name: "",
+      lastname: "",
+      email: "",
+      password: ""
+    });
+  };
   const handleChange = e => {
     setState({
       ...state,
@@ -55,12 +68,16 @@ export const Session = props => {
           path="/"
           render={() => (
             <RegisterContainer>
+              <ViewLogo></ViewLogo>
               <RegisterTitle>Iniciar Sesión</RegisterTitle>
               <Login
+                clearInput={clearInput}
                 email={state.email}
                 password={state.password}
                 handleChange={handleChange}
                 handleSubmitLogin={handleSubmitLogin}
+                handleBlur={handleEmail}
+                errorMessage={state.errorMessage}
               />
             </RegisterContainer>
           )}
@@ -70,8 +87,10 @@ export const Session = props => {
           path="/register"
           render={() => (
             <RegisterContainer>
+              <ViewLogo></ViewLogo>
               <RegisterTitle>Registrarse</RegisterTitle>
               <Register
+                clearInput={clearInput}
                 name={state.name}
                 lastname={state.lastname}
                 email={state.email}
@@ -79,6 +98,7 @@ export const Session = props => {
                 handleChange={handleChange}
                 handleSubmitRegister={handleSubmitRegister}
                 handleBlur={handleEmail}
+                errorMessage={state.errorMessage}
               />
             </RegisterContainer>
           )}
