@@ -19,41 +19,34 @@ export default ({ ticket }) => {
   return (
     <Contenedor>
       <AssistantContainer>
-      <Fotito
-        size="24px"
-        src="/images/alumno.jpeg"
-        margin="0 12px 0 0 "
-      ></Fotito>
-      <Assistant>
-        {/* {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`} */}
-        Tati Vega
-      </Assistant>
+        <Fotito
+          size="24px"
+          src="/images/alumno.jpeg"
+          margin="0 12px 0 0 "
+        ></Fotito>
+        <Assistant>
+          {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`}
+        </Assistant>
       </AssistantContainer>
+      <br />
       <UbicacionContainer>
-      <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
+        <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
 
-
-      <Ubicacion> en Sala 5 </Ubicacion>
+        <Ubicacion> en Sala 5 </Ubicacion>
       </UbicacionContainer>
 
       <TicketContainer>
         <AlumnContainer>
-        <Fotito src="/images/alumno.jpeg" size="18px" margin="0 8px 0 0 "></Fotito>
-        <Alumn>
-          {/* {ticket.author.name} */}
-          Nombre del Alumno
-        </Alumn>
+          <Fotito
+            src="/images/alumno.jpeg"
+            size="18px"
+            margin="0 8px 0 0 "
+          ></Fotito>
+          <Alumn>{ticket.author.name}</Alumn>
         </AlumnContainer>
 
-        <Ticket>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-          suscipit porta enim sed malesuada. Aenean dapibus diam ut posuere
-          viverra.
-        </Ticket>
-        <Continue>
-          Seguir leyendo
-        </Continue>
-        {/*{ticket.title}*/}
+        <Ticket>{ticket.title}</Ticket>
+        <Continue>Seguir leyendo</Continue>
       </TicketContainer>
     </Contenedor>
   );

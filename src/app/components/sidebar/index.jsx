@@ -15,23 +15,26 @@ export default props => {
   return (
     <Container>
       <Header>
-        <P5 />
+        <P5 src="/images/plataforma.png" />
       </Header>
+      <br />
+      <br />
+
       <Section>
-        <Link to="/home">
+        <Link style={{ textDecoration: "none" }} to="/home">
           <TitleContainer>
             <Icon />
             <Title>DASHBOARD</Title>
           </TitleContainer>
         </Link>
-        <Link to="/devpedia">
+        <Link style={{ textDecoration: "none" }} to="/devpedia">
           <TitleContainer>
             <Icon />
 
             <Title>DEVPEDIA</Title>
           </TitleContainer>
         </Link>
-        <Link to="/ticket/userTickets">
+        <Link style={{ textDecoration: "none" }} to="ticket/userTickets">
           <TitleContainer>
             <Icon />
             <Title>MIS PREGUNTAS</Title>
