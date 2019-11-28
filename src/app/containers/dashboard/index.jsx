@@ -7,6 +7,7 @@ import {
   removeParticipant
 } from "../../redux/actions/tickets";
 import Open from "../../components/Open";
+import { Navbar } from '../Navbar/index'
 import Processing from "../../components/Processing";
 import Sidebar from "../../components/sidebar/index";
 import {
@@ -38,6 +39,7 @@ export default () => {
 
   return (
     <Container>
+      <Navbar/>
       <Section>
         <Title color={"white"} width={"426px"} opacity={"0.9"}>
           HACÉ UNA PREGUNTA
