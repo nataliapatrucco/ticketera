@@ -12,7 +12,7 @@ const {
   deleteTicket,
   addParticipant,
   removeParticipant,
-  myTickets
+  userTickets
 } = require("../resolvers/ticket-Resolvers");
 
 const { isLoggedIn, isAdmin, checkUser } = require("../routes/middlewares");
@@ -50,6 +50,6 @@ router.post("/participant", isLoggedIn, addParticipant);
 router.put("/participant", isLoggedIn, removeParticipant);
 
 //Traer mis tickets
-router.get("/myTickets", isLoggedIn, myTickets);
+router.get("/userTickets", isLoggedIn, userTickets);
 
 module.exports = router;

@@ -11,9 +11,9 @@ const setProcessing = processing => ({
   processing
 });
 
-const setMyTickets = myTickets => ({
+const setUserTickets = userTickets => ({
   type: FETCH_MY_TICKETS,
-  myTickets
+  userTickets
 });
 
 export const fetchOpen = () => dispatch =>
@@ -40,8 +40,8 @@ export const removeParticipant = ticketId => dispatch =>
     .then(res => res.data)
     .then(tickets => dispatch(setOpen(tickets)));
 
-export const fetchMyTickets = () => dispatch =>
+export const fetchUserTickets = () => dispatch =>
   axios
-    .get("/api/myTickets")
+    .get("/api/ticket/userTickets")
     .then(res => res.data)
-    .then(tickets => dispatch(setMyTickets(tickets)));
+    .then(tickets => dispatch(setUserTickets(tickets)));
