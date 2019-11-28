@@ -183,7 +183,7 @@ const editComment = (req, res) => {
     .catch(err => res.status(404).send(err));
 };
 
-const myTickets = (req, res) => {
+const userTickets = (req, res) => {
   Ticket.findAll({
     where: {
       authorId: req.user.id
@@ -206,5 +206,5 @@ module.exports = {
   fetchByTitleTag,
   addParticipant,
   removeParticipant,
-  myTickets
+  userTickets
 };
