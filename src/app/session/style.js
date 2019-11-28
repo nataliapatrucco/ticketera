@@ -85,8 +85,6 @@ export const SessionText = styled.p(
     lineHeight: "1.33",
     letterSpacing: "0.4px",
     marginRight: "15px",
-   /*  textDecoration:"none" */
-    
   },
   props => ({
     color: props.color
@@ -109,10 +107,6 @@ export const ButtonS = styled.button({
   letterSpacing: "0.75px",
   textAlign: "center",
   marginTop: "20px"
-
-
-
-  
 });
 
 
@@ -125,4 +119,11 @@ export const ViewLogo = styled.div({
   backgroundImage: 'url("/images/logo.png")',
   backgroundPosition: "center",
   backgroundSize: "cover"
+});
+
+export const Error= styled.div({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  height: "20px"
 });

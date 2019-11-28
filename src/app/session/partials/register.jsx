@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "../../components/input";
-import { ButtonS, SessionText, SessionContainer} from "../style";
+import { ButtonS, SessionText, SessionContainer, Error} from "../style";
 import { Link } from "react-router-dom";
 
 export default ({
@@ -37,12 +37,13 @@ export default ({
     input={email}
     handleChange={handleChange}
   />
+  <Error><SessionText color={"red"}> mensaje de error </SessionText></Error>
+
   <Input
     placeholder="Contraseña"
     name="password"
     type="password"
     input={password}
-    type={password}
     handleChange={handleChange}
   />
   <ButtonS>REGISTRARSE</ButtonS>
