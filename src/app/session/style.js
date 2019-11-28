@@ -71,8 +71,16 @@ export const SessionContainer = styled.div({
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
-  marginTop: "20px"
-});
+  marginTop: "25px"
+},
+props => ({
+  flexDirection:props. flexDirection,
+  alignItems: props.alignItems,
+  marginTop:props.marginTop,
+  textDecoration:props.textDecoration,
+  
+
+}));
 
 export const SessionText = styled.p(
   {

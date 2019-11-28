@@ -32,6 +32,10 @@ export default ({
         handleChange={handleChange}
       />
       <ButtonS>INICIAR SESIÓN</ButtonS>
+      <SessionContainer flexDirection={"column"} alignItems={"center"} marginTop={"10px"} textDecoration={"underline"}>
+      <SessionText color={"white"}>Olvidates tu contraseña?</SessionText>
+      </SessionContainer>
+    
       <SessionContainer>
         <SessionText color={"white"}>Todavía no tenés una cuenta? </SessionText>
         <Link to="/register" onClick={() => clearInput()}>
