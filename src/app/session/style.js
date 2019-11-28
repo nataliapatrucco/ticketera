@@ -74,7 +74,7 @@ export const SessionContainer = styled.div({
   marginTop: "25px"
 },
 props => ({
-  flexDirection:props. flexDirection,
+  flexDirection:props.flexDirection,
   alignItems: props.alignItems,
   marginTop:props.marginTop,
   textDecoration:props.textDecoration,
