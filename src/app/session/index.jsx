@@ -15,17 +15,33 @@ export const Session = props => {
     name: "",
     lastname: "",
     email: "",
-    password: ""
+    password: "",
+    errorMessage: ""
   });
 
-  const clearInput = () =>{
+  const handleEmail = e => {
+    const valid = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (!valid.test(state.email)) {
+      setState({
+        ...state,
+        errorMessage: "Introduce un email válido"
+      });
+    } else {
+      setState({
+        ...state,
+        errorMessage: ""
+      });
+    }
+  };
+
+  const clearInput = () => {
     setState({
       name: "",
       lastname: "",
       email: "",
       password: ""
-    })
-  }
+    });
+  };
   const handleChange = e => {
     setState({
       ...state,
@@ -48,7 +64,6 @@ export const Session = props => {
       <View />
       <Switch>
         <Route
-        
           exact
           path="/"
           render={() => (
@@ -61,6 +76,8 @@ export const Session = props => {
                 password={state.password}
                 handleChange={handleChange}
                 handleSubmitLogin={handleSubmitLogin}
+                handleBlur={handleEmail}
+                errorMessage={state.errorMessage}
               />
             </RegisterContainer>
           )}
@@ -73,13 +90,15 @@ export const Session = props => {
               <ViewLogo></ViewLogo>
               <RegisterTitle>Registrarse</RegisterTitle>
               <Register
-              clearInput={clearInput}
+                clearInput={clearInput}
                 name={state.name}
                 lastname={state.lastname}
                 email={state.email}
                 password={state.password}
                 handleChange={handleChange}
                 handleSubmitRegister={handleSubmitRegister}
+                handleBlur={handleEmail}
+                errorMessage={state.errorMessage}
               />
             </RegisterContainer>
           )}
