@@ -29,31 +29,25 @@ export default ({ ticket }) => {
       
       </Assistant>
       </AssistantContainer>
+      <br />
       <UbicacionContainer>
-      <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
+        <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
 
-
-      <Ubicacion> en Sala 5 </Ubicacion>
+        <Ubicacion> en Sala 5 </Ubicacion>
       </UbicacionContainer>
 
       <TicketContainer>
         <AlumnContainer>
-        <Fotito src="/images/alumno.jpeg" size="18px" margin="0 8px 0 0 "></Fotito>
-        <Alumn>
-          {ticket.author.name}
-         
-        </Alumn>
+          <Fotito
+            src="/images/alumno.jpeg"
+            size="18px"
+            margin="0 8px 0 0 "
+          ></Fotito>
+          <Alumn>{ticket.author.name}</Alumn>
         </AlumnContainer>
 
-        <Ticket>
-          {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-          suscipit porta enim sed malesuada. Aenean dapibus diam ut posuere
-          viverra. */}
-        {ticket.title}
-        </Ticket>
-        <Continue>
-          Seguir leyendo
-        </Continue>
+        <Ticket>{ticket.title}</Ticket>
+        <Continue>Seguir leyendo</Continue>
       </TicketContainer>
     </Contenedor>
   );
