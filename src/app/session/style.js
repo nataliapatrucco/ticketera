@@ -70,12 +70,12 @@ export const ViewText = styled.p({
 export const SessionContainer = styled.div({
   display: "flex",
   flexDirection: "row",
-  justifyContent: "center"
+  justifyContent: "center",
+  marginTop: "20px"
 });
 
 export const SessionText = styled.p(
   {
-    fontFamily: "Monserrat",
     opacity: "0.9",
     fontFamily: "Montserrat",
     fontSize: "12px",
@@ -84,7 +84,9 @@ export const SessionText = styled.p(
     fontStyle: "normal",
     lineHeight: "1.33",
     letterSpacing: "0.4px",
-    marginRight: "10px"
+    marginRight: "15px",
+   /*  textDecoration:"none" */
+    
   },
   props => ({
     color: props.color
@@ -107,4 +109,20 @@ export const ButtonS = styled.button({
   letterSpacing: "0.75px",
   textAlign: "center",
   marginTop: "20px"
+
+
+
+  
+});
+
+
+export const ViewLogo = styled.div({
+  position:"fixed",
+  top:"80px",  
+  width: "230px",
+  height: "50px",
+  backgroundBlendMode: "multiply",
+  backgroundImage: 'url("/images/logo.png")',
+  backgroundPosition: "center",
+  backgroundSize: "cover"
 });

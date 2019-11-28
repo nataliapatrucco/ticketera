@@ -3,7 +3,7 @@ import Input from "../../components/input";
 import { ButtonS, SessionContainer, SessionText } from "../style.js";
 import { Link } from "react-router-dom";
 
-export default ({ email, password, handleChange, handleSubmitLogin }) => {
+export default ({ email, password, handleChange, handleSubmitLogin, clearInput }) => {
   return (
     <form onSubmit={handleSubmitLogin}>
       <Input
@@ -23,8 +23,9 @@ export default ({ email, password, handleChange, handleSubmitLogin }) => {
       <ButtonS>INICIAR SESIÓN</ButtonS>
       <SessionContainer>
         <SessionText color={"white"}>Todavía no tenés una cuenta? </SessionText>
-        <Link to="/register">
+        <Link to="/register" onClick={()=>clearInput()}>
           <SessionText color={"#62d0ff"}> REGISTRATE</SessionText>
+          
         </Link>
       </SessionContainer>
     </form>

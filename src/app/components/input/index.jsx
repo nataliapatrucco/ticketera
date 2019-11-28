@@ -16,7 +16,7 @@ export default props => {
         onChange={e => props.handleChange(e)}
         placeholder={props.placeholder}
         type={props.type}
-        value={props.input}
+        value= {props.input}
       ></Input>
     </div>
   );
