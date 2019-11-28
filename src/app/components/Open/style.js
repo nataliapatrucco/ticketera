@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Ticket = styled.div({
-  borderRadius: "10px",
+  borderRadius: "4px",
   display: "flex",
   flexDirection: "column",
   border: "solid 1px #2a3d51",
@@ -12,7 +12,7 @@ export const Ticket = styled.div({
 export const Header = styled.div({
   display: "flex",
   flexDirection: "row",
-  margin: "10px",
+  margin: "5px",
   padding: "0"
 });
 
@@ -58,23 +58,31 @@ export const TicketDate = styled.p({
 
 export const Icon = styled.h3({
   flexBasis: "5%",
-  color: "white",
-  padding: "5px",
+  color: "#ffffff",
+  opacity: "70%",
+  paddingLeft: "10px",
+  paddingRight: "10px",
+  paddingTop: "5px",
   height: "30px",
   width: "30px",
   borderRadius: "4px",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   marginTop: "5px",
-  marginBottom: "5px"
+  marginBottom: "5px",
+  fontFamily: "Montserrat",
+  fontWeight: "600",
+  fontSize: "14px",
+  letterSpacing: "0.75px"
 });
 
 export const Body = styled.section({
   flexDirection: "column",
-  margin: "10px"
+  margin: "5px"
 });
 export const TicketTitle = styled.header({
   flex: "auto",
-  margin: "15px",
+  marginLeft: "15px",
+  marginBottom: "5px",
   fontSize: "18px",
   color: "#62d0ff",
   fontFamily: "Montserrat",
@@ -85,7 +93,9 @@ export const TicketTitle = styled.header({
 
 export const TicketContent = styled.p({
   flex: "auto",
-  margin: "15px",
+  marginLeft: "15px",
+  marginRight: "15px",
+  marginTop: "5px",
   color: "#ffffff",
   opacity: "90%",
   fontSize: "14px",
