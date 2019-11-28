@@ -7,6 +7,7 @@ import Dashboard from "../containers/dashboard/index";
 import MakeQuestion from "../components/makeQuestion/index";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../redux/actions/user";
+import UserTickets from "../components/UserTickets";
 
 export default props => {
   const dispatch = useDispatch();
@@ -23,8 +24,10 @@ export default props => {
         <div>
           <Navbar />
           <Sidebar />
+
           <Switch>
             <Route exact path="/home" component={Dashboard} />
+            <Route exact path="/ticket/userTickets" component={UserTickets} />
 
             <Redirect from="/" to="/home" />
           </Switch>
