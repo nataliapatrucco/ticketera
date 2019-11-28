@@ -23,6 +23,7 @@ export default props => {
         <div>
           <Navbar />
           <Sidebar />
+
           <Switch>
             <Route exact path="/home" component={Dashboard} />
 

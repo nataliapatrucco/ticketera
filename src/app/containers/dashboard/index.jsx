@@ -9,7 +9,14 @@ import {
 import Open from "../../components/Open";
 import Processing from "../../components/Processing";
 import Sidebar from "../../components/sidebar/index";
-import { Container, Section, Title, ProcessTitle } from "./style";
+import {
+  Container,
+  Section,
+  Title,
+  ProcessTitle,
+  SectionProcess,
+  SectionAnswer
+} from "./style";
 import MakeQuestion from "../../components/makeQuestion";
 
 export default () => {
@@ -37,7 +44,7 @@ export default () => {
         </Title>
         <MakeQuestion />
       </Section>
-      <Section>
+      <SectionProcess>
         <Title color={"white"} width={"426px"} opacity={"0.9"}>
           PREGUNTAS PENDIENTES ({open.length})
         </Title>
@@ -50,9 +57,9 @@ export default () => {
             />
           </div>
         ))}
-      </Section>
-      <Section>
-        <Title color={"#62d0ff"} width={"266px"}>
+      </SectionProcess>
+      <SectionAnswer>
+        <Title color={"#62d0ff"} width={"300px"}>
           RESPONDIENDO AHORA!
         </Title>
 
@@ -61,7 +68,7 @@ export default () => {
             <Processing ticket={ticket2} />
           </div>
         ))}
-      </Section>
+      </SectionAnswer>
     </Container>
   );
 };
