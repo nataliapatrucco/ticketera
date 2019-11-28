@@ -5,13 +5,13 @@ import {
   Assistant,
   Alumn,
   Fotito,
-  AssistantContainer,
-  AlumnContainer,
   Ticket,
   Ubicacion,
-  UbicacionContainer,
   UbicacionIcon,
-  IconContainer
+  UbicacionContainer,
+  AssistantContainer,
+  AlumnContainer,
+  Continue
 } from "./style";
 
 export default ({ ticket }) => {
@@ -19,31 +19,40 @@ export default ({ ticket }) => {
   return (
     <Contenedor>
       <AssistantContainer>
-        <Fotito size="24px" src="/images/alumno.jpeg" margin="12px"></Fotito>
-        <Assistant>
-          {/* {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`} */}
-          Tati Vega
-        </Assistant>
+      <Fotito
+        size="24px"
+        src="/images/alumno.jpeg"
+        margin="0 12px 0 0 "
+      ></Fotito>
+      <Assistant>
+        {/* {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`} */}
+        Tati Vega
+      </Assistant>
       </AssistantContainer>
       <UbicacionContainer>
-        <IconContainer>
-          <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
-        </IconContainer>
-        <Ubicacion> en Sala 5 </Ubicacion>
+      <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
+
+
+      <Ubicacion> en Sala 5 </Ubicacion>
       </UbicacionContainer>
+
       <TicketContainer>
         <AlumnContainer>
-          <Fotito src="/images/alumno.jpeg" size="18px" margin="10px"></Fotito>
-          <Alumn>
-            {/* {ticket.author.name} */}
-            Tati
-          </Alumn>
+        <Fotito src="/images/alumno.jpeg" size="18px" margin="0 8px 0 0 "></Fotito>
+        <Alumn>
+          {/* {ticket.author.name} */}
+          Nombre del Alumno
+        </Alumn>
         </AlumnContainer>
+
         <Ticket>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
           suscipit porta enim sed malesuada. Aenean dapibus diam ut posuere
           viverra.
         </Ticket>
+        <Continue>
+          Seguir leyendo
+        </Continue>
         {/*{ticket.title}*/}
       </TicketContainer>
     </Contenedor>

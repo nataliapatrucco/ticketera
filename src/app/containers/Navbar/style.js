@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const NavbarContainer = styled.div({
   display: "flex",
-  width: "1440px",
+  width: "100%",
   height: "50px",
   backgroundColor: "#091e35",
   paddingTop: "20px",
