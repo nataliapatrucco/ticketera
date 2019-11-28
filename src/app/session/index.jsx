@@ -16,10 +16,11 @@ export const Session = props => {
     lastname: "",
     email: "",
     password: "",
-    errorMessage: ""
+    errorMessage: "",
+    passType: "password"
   });
 
-  const handleEmail = e => {
+  const handleEmail = () => {
     const valid = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     if (!valid.test(state.email)) {
       setState({
@@ -30,6 +31,19 @@ export const Session = props => {
       setState({
         ...state,
         errorMessage: ""
+      });
+    }
+  };
+  const togglePassword = () => {
+    if (state.passType === "password") {
+      setState({
+        ...state,
+        passType: "text"
+      });
+    } else {
+      setState({
+        ...state,
+        passType: "password"
       });
     }
   };
@@ -78,6 +92,8 @@ export const Session = props => {
                 handleSubmitLogin={handleSubmitLogin}
                 handleBlur={handleEmail}
                 errorMessage={state.errorMessage}
+                passType={state.passType}
+                togglePassword={togglePassword}
               />
             </RegisterContainer>
           )}
@@ -99,6 +115,8 @@ export const Session = props => {
                 handleSubmitRegister={handleSubmitRegister}
                 handleBlur={handleEmail}
                 errorMessage={state.errorMessage}
+                passType={state.passType}
+                togglePassword={togglePassword}
               />
             </RegisterContainer>
           )}
