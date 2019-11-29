@@ -16,16 +16,7 @@ import {
   ProcessDiv
 } from "../style";
 
-import {Section} from './style'
-export default ({
-  open,
-  handleAdd,
-  handleRemove,
-  ticket,
-  individual,
-  setIndividual,
-  getTicket
-}) => {
+export default ({ open, ticket, individual, setIndividual, getTicket }) => {
   return (
     <OpenDiv>
       {!individual ? (
@@ -41,8 +32,6 @@ export default ({
                 <Open
                   ticket={ticket}
                   index={index + 1}
-                  handleAdd={handleAdd}
-                  handleRemove={handleRemove}
                   getTicket={getTicket}
                   setIndividual={setIndividual}
                   individual={individual}
@@ -61,8 +50,6 @@ export default ({
           <Section>
             <Open
               ticket={ticket}
-              handleAdd={handleAdd}
-              handleRemove={handleRemove}
               getTicket={getTicket}
               setIndividual={setIndividual}
               individual={individual}

@@ -16,7 +16,7 @@ const fullTicket = [
   { model: User, as: "author", attributes: ["name", "lastname", "img"] },
   {
     model: User,
-    attributes: ["name", "lastname", "img"],
+    attributes: ["id", "name", "lastname", "img"],
     through: "ticket_participant"
   }
 ];

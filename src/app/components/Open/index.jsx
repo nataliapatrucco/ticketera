@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import moment from "moment";
+import SuperButton from "./utils";
 import "moment/locale/es";
+
 moment.locale("es");
 import { Link } from "react-router-dom";
 // import ProcessingHeader from "../../containers/dashboard/partials/ProcessingHeader";
@@ -29,17 +32,23 @@ import {
 
 export default function index({
   ticket,
-  handleAdd,
-  user,
   index,
   getTicket,
   setIndividual,
   individual
 }) {
+  const user = useSelector(state => state.user.user);
+
+  const isHighlighted = ticket => {
+    return (
+      ticket.authorId === user.id ||
+      ticket.users.some(participant => participant.id === user.id)
+    );
+  };
+
   const date = moment(ticket.createdAt);
   return (
-    <Ticket>
-      {/* {ticket.statusId === 2 ? <ProcessingHeader ticket={ticket} /> : ""} */}
+    <Ticket isHighlighted={isHighlighted(ticket)}>
       <Header>
         <Img src="/images/perfil.jpeg" alt="foto usuario" />
         <Author>
@@ -86,10 +95,7 @@ export default function index({
       <Line />
       <TicketFooter>
         <Buttons>
-      
-          <AddButton>
-            <AddIcon src="/images/add.png" alt=""></AddIcon>ME INTERESA
-          </AddButton>
+          <SuperButton ticket={ticket} />
           <ShareButton>COMPARTIR</ShareButton>
         </Buttons>
         <PartipantsImg
