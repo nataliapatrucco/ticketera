@@ -130,15 +130,18 @@ export const ViewLogo = styled.div({
   backgroundBlendMode: "multiply",
   backgroundImage: 'url("/images/logo2.png")',
   backgroundPosition: "center",
-  backgroundSize: "cover"
+  backgroundSize: "cover",
+  
 });
 
-export const ViewIcon = styled.img({
+export const ViewIcon = styled.div({
   width: "24px",
   height: "24px",
   backgroundBlendMode: "multiply",
   backgroundImage: 'url("/images/error_24px_red.svg")',
-  
+  backgroundRepeat:"no-repeat",
+  backgroundPosition:"center",
+  marginRight:"10px"
 });
 
 

@@ -25,10 +25,7 @@ export const Label = styled.p(
 export const Input = styled.input({
   width: "322px",
   height: "24px",
-  borderRadius: "4px",
-  border: "solid 1.5px #8c939f",
-  /* marginTop: "10px", */
-  paddingLeft: "16px",
+  paddingLeft:"16px",
   backgroundColor: "transparent",
   color: "white",
   opacity: "0.9",
@@ -37,16 +34,21 @@ export const Input = styled.input({
   fontStretch: "normal",
   fontStyle: "normal",
   lineHeight: "1.5",
-  letterSpacing: "0.15px"
-
-  /*  position: "relative", */
-  /* left: "945px",
-  top: "280px", */
-  /* padding: "17px 15.1 15 12" */
+  letterSpacing: "0.15px",
+  border:"none"
 });
 
 export const InputContainer = styled.div({
-  width: "350px",
-  height: "56px",
-  marginTop: "10px"
+  //position: "relative",
+  //bottom: "5px",
+  display: "flex",
+  alignItems: "center",
+  width: "350x",
+  height: "50px",
+  borderRadius: "4px",
+  border: "solid 1.5px rgba(255, 255, 255, 0.7)",
+  borderRadius: "4px",
+  border: "solid 1.5px #8c939f",
+  marginTop: "10px" 
+
 });

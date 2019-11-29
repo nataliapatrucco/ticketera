@@ -39,9 +39,9 @@ export default ({
         input={email}
         handleChange={handleChange}
         onBlur={handleBlur}
+        errorMessage={errorMessage}
       />
       {errorMessage  ? (
-       
           <SessionText color={"red"} marginLeft={"15px"} fontStyle={"bold"}>{errorMessage}</SessionText>
         
       ):null}

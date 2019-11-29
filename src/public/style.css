@@ -9,13 +9,6 @@ body {
 
 }
 
-::placeholder {
-  padding-left: 5px;
-}
-/* input{
-  padding-left: 16px;
-} */
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -30,7 +23,7 @@ select:-webkit-autofill:focus {
 }
 
 ::placeholder {
-  padding-left: 10px;
+  padding-left: 4px;
 }
 
 a {
