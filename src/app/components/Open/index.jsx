@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import moment from "moment";
+import SuperButton from "./utils";
 import "moment/locale/es";
+
 moment.locale("es");
 import { Link } from "react-router-dom";
+// import ProcessingHeader from "../../containers/dashboard/partials/ProcessingHeader";
 
 import {
   Ticket,
@@ -28,17 +32,24 @@ import {
 
 export default function index({
   ticket,
-  handleAdd,
-  user,
   index,
   getTicket,
   setIndividual,
   individual
 }) {
+  const user = useSelector(state => state.user.user);
+
+  const isHighlighted = ticket => {
+    return (
+      ticket.authorId === user.id ||
+      ticket.users.some(participant => participant.id === user.id)
+    );
+  };
+
   const date = moment(ticket.createdAt);
 
   return (
-    <Ticket>
+    <Ticket isHighlighted={isHighlighted(ticket)}>
       <Header>
         <Img src="/images/perfil.jpeg" alt="foto usuario" />
         <Author>
@@ -49,7 +60,12 @@ export default function index({
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        {individual ? <Icon>PENDIENTE</Icon> : <Icon>#{index}</Icon>}
+
+        {ticket.statusId === 1 && individual ? (
+          <Icon>PENDIENTE</Icon>
+        ) : (
+          <Icon>#{index}</Icon>
+        )}
       </Header>
       <Body>
         <TicketTitle
@@ -80,17 +96,7 @@ export default function index({
       <Line />
       <TicketFooter>
         <Buttons>
-          {/* {ticket.users.map(participant => participant.id === user.id) ? (
-            <RemoveButton></RemoveButton>
-          ) : (
-            <AddButton onClick={() => handleAdd(ticket.id)}>
-              <AddIcon src="/images/add.png" alt=""></AddIcon>
-              Sumarme
-            </AddButton>
-          )} */}
-          <AddButton>
-            <AddIcon src="/images/add.png" alt=""></AddIcon>ME INTERESA
-          </AddButton>
+          <SuperButton ticket={ticket} />
           <ShareButton>COMPARTIR</ShareButton>
         </Buttons>
         <PartipantsImg
