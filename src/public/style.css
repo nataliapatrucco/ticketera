@@ -4,9 +4,8 @@
 
 body {
   margin: 0;
-  overflow:hidden; 
+  /* overflow:hidden;  */
   display: flex;
-  margin: 0;
 
 }
 
@@ -16,10 +15,6 @@ body {
 /* input{
   padding-left: 16px;
 } */
-
-a {
-  text-decoration: none;
-} 
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -33,7 +28,6 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: white;
   transition: background-color 5000s ease-in-out 0s;
 }
-
 
 ::placeholder {
   padding-left: 10px;

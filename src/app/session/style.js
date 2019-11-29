@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
+  /* position: "fixed", */
   background: "#00172e"
 });
 
@@ -11,7 +12,8 @@ export const RegisterContainer = styled.div({
   justifyContent: "center",
   alignItems: "center",
   width: "640px",
-  height: "780px"
+  height: "780px",
+  overflow: "hidden"
 });
 
 export const RegisterTitle = styled.h1({
@@ -90,10 +92,6 @@ export const SessionText = styled.p(
     fontStyle: "normal",
     letterSpacing: "0.4px",
     marginRight: "15px"
-   /*  borderBottom:"3px dashed red" */
-    
-  
-  
   },
   props => ({
     color: props.color,
@@ -136,7 +134,6 @@ export const ViewLogo = styled.div({
 });
 
 export const ViewIcon = styled.img({
-
   width: "24px",
   height: "24px",
   backgroundBlendMode: "multiply",
