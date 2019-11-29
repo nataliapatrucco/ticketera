@@ -71,7 +71,7 @@ export const Icon = styled.h3({
   paddingRight: "10px",
   paddingTop: "5px",
   height: "30px",
-  width: "30px",
+  width: "fit-content",
   borderRadius: "6px",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   marginTop: "5px",

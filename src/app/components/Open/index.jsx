@@ -6,6 +6,7 @@ import "moment/locale/es";
 
 moment.locale("es");
 import { Link } from "react-router-dom";
+// import ProcessingHeader from "../../containers/dashboard/partials/ProcessingHeader";
 
 import {
   Ticket,
@@ -58,7 +59,12 @@ export default function index({
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        {individual ? <Icon>PENDIENTE</Icon> : <Icon>#{index}</Icon>}
+
+        {ticket.statusId === 1 && individual ? (
+          <Icon>PENDIENTE</Icon>
+        ) : (
+          <Icon>#{index}</Icon>
+        )}
       </Header>
       <Body>
         <TicketTitle

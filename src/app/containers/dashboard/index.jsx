@@ -5,12 +5,9 @@ import Open from "./partials";
 import Processing from "../../components/Processing";
 import {
   Container,
-  Title,
-  OpenDiv,
+  OpenContainer,
   ProcessTitle,
-  OpenSection,
   ProcessTicket,
-  QuestionSection,
   ProcessDiv
 } from "./style";
 
