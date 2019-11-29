@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  /* position: "fixed", */
-  background: "#00172e"
+  background: "#00172e",
+  position: 'fixed'
 });
 
 export const RegisterContainer = styled.div({

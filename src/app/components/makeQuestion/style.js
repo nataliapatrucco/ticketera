@@ -21,7 +21,7 @@ export const Question = styled.div({
   opacity: "90%",
   fontFamily: "Montserrat",
   fontSize: "16px",
-  fontWeight: "400",
+  fontWeight: 400,
   lineHeight: "1.5px",
   letterSpacing: "0.15px",
   color: "white"
