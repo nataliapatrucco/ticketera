@@ -5,6 +5,9 @@
 body {
   margin: 0;
   overflow:hidden; 
+  display: flex;
+  margin: 0;
+
 }
 
 ::placeholder {
@@ -29,4 +32,13 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: white;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+
+::placeholder {
+  padding-left: 10px;
+}
+
+a {
+  text-decoration: none !important;
 }

@@ -7,15 +7,18 @@ import {
   removeParticipant
 } from "../../redux/actions/tickets";
 import Open from "../../components/Open";
+import { Navbar } from "../Navbar/index";
 import Processing from "../../components/Processing";
 import Sidebar from "../../components/sidebar/index";
 import {
   Container,
-  Section,
   Title,
+  OpenDiv,
   ProcessTitle,
-  SectionProcess,
-  SectionAnswer
+  OpenSection,
+  ProcessTicket,
+  QuestionSection,
+  ProcessDiv
 } from "./style";
 import MakeQuestion from "../../components/makeQuestion";
 
@@ -38,37 +41,38 @@ export default () => {
 
   return (
     <Container>
-      <Section>
-        <Title color={"white"} width={"426px"} opacity={"0.9"}>
-          HACÉ UNA PREGUNTA
-        </Title>
-        <MakeQuestion />
-      </Section>
-      <Section>
-        <Title color={"white"} width={"426px"} opacity={"0.9"}>
-          PREGUNTAS PENDIENTES ({open.length})
-        </Title>
-        {open.map(ticket => (
-          <div key={ticket.id}>
-            <Open
-              ticket={ticket}
-              handleAdd={handleAdd}
-              handleRemove={handleRemove}
-            />
-          </div>
-        ))}
-      </Section>
-      <Section>
-        <Title color={"#62d0ff"} width={"266px"}>
+      <OpenDiv>
+        <QuestionSection>
+          <Title>HACÉ UNA PREGUNTA</Title>
+          <MakeQuestion />
+        </QuestionSection>
+
+        <OpenSection>
+          <Title>PREGUNTAS PENDIENTES ({open.length})</Title>
+          {open.map((ticket, index) => (
+            <div key={ticket.id}>
+              <Open
+                ticket={ticket}
+                index={index + 1}
+                handleAdd={handleAdd}
+                handleRemove={handleRemove}
+              />
+              <br />
+            </div>
+          ))}
+        </OpenSection>
+      </OpenDiv>
+      <ProcessDiv>
+        <ProcessTitle color={"#62d0ff"} width={"266px"}>
           RESPONDIENDO AHORA!
-        </Title>
+        </ProcessTitle>
 
         {processing.map(ticket2 => (
-          <div key={ticket2.id}>
+          <ProcessTicket key={ticket2.id}>
             <Processing ticket={ticket2} />
-          </div>
+          </ProcessTicket>
         ))}
-      </Section>
+      </ProcessDiv>
     </Container>
   );
 };
