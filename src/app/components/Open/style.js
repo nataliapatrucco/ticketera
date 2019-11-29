@@ -204,43 +204,14 @@ export const PartipantsImg = styled.img({
   margin: "10px"
 });
 
-//modal
+//MODAL
 
-/* The Modal (background) */
 export const Modal = styled.div({
-  display: "none",
-  position: "fixed",
-  zIndex: "1",
-  paddingTop: "100px",
-  left: "0",
-  top: "0",
-  width: "100%",
-  height: "100%",
-  overflow: "auto",
-  backgroundColor: "rgb(0,0,0)",
-  backgroundColor: "rgba(0,0,0,0.4)"
+  backgroundColor: "#fff",
+  borderRadius: 5,
+  maxWidth: 500,
+  minHeight: 300,
+  margin: "0 auto",
+  padding: 30,
+  wordWrap: "break-word"
 });
-
-/* Modal Content */
-export const ModalContent = styled.div({
-  backgroundColor: "#fefefe",
-  margin: "auto",
-  padding: "20px",
-  border: "1px solid #888",
-  width: "80%"
-});
-
-/* The Close Button */
-export const Close = styled.span({
-  color: "#aaaaaa",
-  float: "right",
-  fontSize: "28px",
-  fontWeight: "bold"
-});
-
-// .close:hover,
-// .close:focus {
-//   color: #000;
-//   text-decoration: none;
-//   cursor: pointer;
-// }

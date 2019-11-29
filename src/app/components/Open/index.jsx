@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
@@ -23,11 +23,15 @@ import {
   ShareButton,
   TicketFooter,
   PartipantsImg,
-  Line
+  Line,
+  Modal
 } from "./style";
+
+import { ModalBackground } from "../modalBackground/style";
 
 export default function index({ ticket, handleAdd, user, index }) {
   const date = moment(ticket.createdAt);
+  const [showModal, setShowModal] = useState(false);
   return (
     <Ticket>
       <Header>
@@ -50,7 +54,21 @@ export default function index({ ticket, handleAdd, user, index }) {
           <div>
             <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
             <Link to="/">
-              <TicketLink>Seguir leyendo</TicketLink>
+              <TicketLink onClick={() => setShowModal(!showModal)}>
+                Seguir leyendo
+              </TicketLink>
+
+              {showModal && (
+                <ModalBackground onClick={() => setShowModal(!showModal)}>
+                  <Modal>
+                    {ticket.content}
+
+                    <button onClick={() => setShowModal(!showModal)}>
+                      Close
+                    </button>
+                  </Modal>
+                </ModalBackground>
+              )}
             </Link>
           </div>
         ) : (
