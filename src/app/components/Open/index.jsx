@@ -23,15 +23,20 @@ import {
   ShareButton,
   TicketFooter,
   PartipantsImg,
-  Line,
-  Modal
+  Line
 } from "./style";
 
-import { ModalBackground } from "../modalBackground/style";
-
-export default function index({ ticket, handleAdd, user, index }) {
+export default function index({
+  ticket,
+  handleAdd,
+  user,
+  index,
+  getTicket,
+  setIndividual,
+  individual
+}) {
   const date = moment(ticket.createdAt);
-  const [showModal, setShowModal] = useState(false);
+
   return (
     <Ticket>
       <Header>
@@ -44,32 +49,29 @@ export default function index({ ticket, handleAdd, user, index }) {
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        <Icon>#{index}</Icon>
+        {individual ? <Icon>PENDIENTE</Icon> : <Icon>#{index}</Icon>}
       </Header>
       <Body>
-        <TicketTitle>
+        <TicketTitle
+          onClick={() => {
+            getTicket(ticket);
+            setIndividual(true);
+          }}
+        >
           <strong>{ticket.title}</strong>
         </TicketTitle>
         {ticket.content && ticket.content.length > 140 ? (
           <div>
-            <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
-            <Link to="/">
-              <TicketLink onClick={() => setShowModal(!showModal)}>
-                Seguir leyendo
-              </TicketLink>
+            <TicketContent> {ticket.content.slice(0, 140)} ...</TicketContent>
 
-              {showModal && (
-                <ModalBackground onClick={() => setShowModal(!showModal)}>
-                  <Modal>
-                    {ticket.content}
-
-                    <button onClick={() => setShowModal(!showModal)}>
-                      Close
-                    </button>
-                  </Modal>
-                </ModalBackground>
-              )}
-            </Link>
+            <TicketLink
+              onClick={() => {
+                getTicket(ticket);
+                setIndividual(true);
+              }}
+            >
+              Seguir leyendo
+            </TicketLink>
           </div>
         ) : (
           <TicketContent> {ticket.content}</TicketContent>

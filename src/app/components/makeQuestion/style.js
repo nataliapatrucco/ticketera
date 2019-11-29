@@ -41,6 +41,9 @@ export const Img = styled.img({
 
 export const ModalContainer = styled.div({
   display: "flex",
+  flexDirection: "column",
+  zIndex: "10",
+  display: "flex",
   width: "710px",
   height: "514px",
   borderRadius: "4px",
@@ -49,17 +52,66 @@ export const ModalContainer = styled.div({
   backgroundColor: "#2e4054"
 });
 
-export const ModalQuestion = styled.div({
-  width: "338px",
-  height: "16px",
-  fontFamily: "Montserrat",
-  fontSize: "12px",
-  fontWeight: "normal",
-  fontStretch: "normal",
-  fontStyle: "normal",
-  lineHeight: "1.33",
-  letterSpacing: "0.4px",
-  color: "white",
-  marginTop: "32px",
-  marginLeft: "32px"
-});
+export const ModalQuestion = styled.div`
+  width: 338px;
+  height: 16px;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: 0.4px;
+  color: white;
+  margin-top: ${props => props.marginTop};
+  margin-left: 32px;
+`;
+
+export const ModalClose = styled.button({});
+
+export const ModalInputContainer = styled.div`
+  margin-top: 10px;
+  margin-left: 32px;
+  display: flex;
+  width: 646px;
+  height: ${props => props.height};
+  border-radius: 4px;
+  border: solid 1px rgba(255, 255, 255, 0.12);
+  background-color: transparent;
+`;
+
+export const ModalInput = styled.textarea`
+  display: flex;
+  color: rgba(255, 255, 255, 0.12);
+  font-family: Montserrat;
+  font-size: ${props => props.fontSize};
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0.25px;
+  background-color: transparent;
+  width: 630px;
+  height: 60px;
+  outline-color: transparent;
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  resize: none;
+`;
+
+export const ModalButton = styled.button`
+  width: 114px;
+  height: 36px;
+  margin-top: ${props => props.marginTop};
+  margin-left: ${props => props.marginLeft};
+  border-radius: 4px;
+  border: ${props => props.border};
+  background-color: ${props => props.color};
+`;
+
+export const ModalButtonContainer = styled.div`
+  width: 710px;
+  height: 68px;
+  border-radius: 4px;
+`;
