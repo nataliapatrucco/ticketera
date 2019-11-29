@@ -2,26 +2,26 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  width: "690px",
+  width: "710px",
   height: "80px",
-  //marginRight: "45px",
+  marginRight: "30px",
   borderRadius: "4px",
   border: "solid 1.5px #273e54",
   backgroundColor: "#192e44"
 });
 
 export const Question = styled.div({
-  display: "inline-block",
-  marginLeft: "10px",
-  marginRight: "192px",
-  marginTop: "26px",
-  marginBottom: "26px",
+  //display: "inline-block",
+  // marginLeft: "10px",
+  // marginRight: "192px",
+  margin: "26px 212px 26px 16px",
+  //marginBottom: "26px",
   width: "426px",
   height: "28px",
   opacity: "90%",
   fontFamily: "Montserrat",
   fontSize: "16px",
-  fontWeight: "400",
+  fontWeight: 400,
   lineHeight: "1.5px",
   letterSpacing: "0.15px",
   color: "white"

@@ -43,16 +43,16 @@ export default ({ ticket }) => {
             margin="0 8px 0 0 "
           ></Fotito>
           <Alumn>
-            {/* {ticket.author.name} */}
+            {ticket.author.name}
             Tati Vega
           </Alumn>
         </AlumnContainer>
 
         <Ticket>
-          {/* {ticket.title} */}
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin libero
+          {ticket.title}
+          {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin libero
           lorem, hendrerit a rhoncus nec, volutpat at turpis. Nullam vel viverra
-          magna. Donec nec faucibus quam.
+          magna. Donec nec faucibus quam. */}
         </Ticket>
         <Continue>Seguir leyendo</Continue>
       </TicketContainer>
