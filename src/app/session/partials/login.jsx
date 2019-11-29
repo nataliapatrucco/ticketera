@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "../../components/input";
-import { ButtonS, SessionContainer, SessionText } from "../style.js";
+import { ButtonS, SessionContainer, SessionText, ViewIcon } from "../style.js";
 import { Link } from "react-router-dom";
 
 export default ({
@@ -10,11 +10,13 @@ export default ({
   handleSubmitLogin,
   clearInput,
   errorMessage,
-  handleBlur
+  handleBlur,
+  passType,
+  togglePassword
 }) => {
   return (
     <form onSubmit={handleSubmitLogin}>
-      <Input
+     <Input
         placeholder="Email"
         name="email"
         type="text"
@@ -22,18 +24,43 @@ export default ({
         handleChange={handleChange}
         onBlur={handleBlur}
       />
-      <div>{errorMessage}</div>
+ {/* 
+ {errorMessage ? (
+          <ViewIcon></ViewIcon>
+         ) : null}
+ */}
+      {errorMessage ? (
+        <SessionText color={"red"} marginLeft={"15px"} fontStyle={"bold"}>
+          {errorMessage}
+        </SessionText>
+      ) : null}
 
       <Input
         placeholder="Contraseña"
         name="password"
-        type="password"
+        type={passType || "password"}
         input={password}
         handleChange={handleChange}
       />
       <ButtonS>INICIAR SESIÓN</ButtonS>
+      <SessionContainer
+        flexDirection={"column"}
+        alignItems={"center"}
+        marginTop={"10px"}
+      >
+        <SessionText
+          color={"white"}
+          borderBottom={"1px solid white"}
+          fontSize={"12px"}
+        >
+          ¿Olvidates tu contraseña?
+        </SessionText>
+      </SessionContainer>
+
       <SessionContainer>
-        <SessionText color={"white"}>Todavía no tenés una cuenta? </SessionText>
+        <SessionText color={"white"}>
+          ¿Todavía no tenés una cuenta?{" "}
+        </SessionText>
         <Link to="/register" onClick={() => clearInput()}>
           <SessionText color={"#62d0ff"}> REGISTRATE</SessionText>
         </Link>

@@ -26,7 +26,15 @@ import {
   Line
 } from "./style";
 
-export default function index({ ticket, handleAdd, user }) {
+export default function index({
+  ticket,
+  handleAdd,
+  user,
+  index,
+  getTicket,
+  setIndividual,
+  individual
+}) {
   const date = moment(ticket.createdAt);
   return (
     <Ticket>
@@ -40,18 +48,29 @@ export default function index({ ticket, handleAdd, user }) {
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        <Icon></Icon>
+        {individual ? <Icon>PENDIENTE</Icon> : <Icon>#{index}</Icon>}
       </Header>
       <Body>
-        <TicketTitle>
+        <TicketTitle
+          onClick={() => {
+            getTicket(ticket);
+            setIndividual(true);
+          }}
+        >
           <strong>{ticket.title}</strong>
         </TicketTitle>
         {ticket.content && ticket.content.length > 140 ? (
           <div>
             <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
-            <Link to="/">
-              <TicketLink>Seguir leyendo</TicketLink>
-            </Link>
+
+            <TicketLink
+              onClick={() => {
+                getTicket(ticket);
+                setIndividual(true);
+              }}
+            >
+              Seguir leyendo
+            </TicketLink>
           </div>
         ) : (
           <TicketContent> {ticket.content}</TicketContent>
@@ -68,7 +87,10 @@ export default function index({ ticket, handleAdd, user }) {
               Sumarme
             </AddButton>
           )} */}
-          <ShareButton>Compartir</ShareButton>
+          <AddButton>
+            <AddIcon src="/images/add.png" alt=""></AddIcon>ME INTERESA
+          </AddButton>
+          <ShareButton>COMPARTIR</ShareButton>
         </Buttons>
         <PartipantsImg
           src="/images/perfil.jpeg"

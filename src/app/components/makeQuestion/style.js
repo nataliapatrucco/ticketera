@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  width: "690px",
+  width: "700px",
   height: "80px",
+  marginTop: "10px",
   borderRadius: "4px",
   border: "solid 1.5px #273e54",
   backgroundColor: "#192e44"
@@ -13,17 +14,15 @@ export const Question = styled.div({
   display: "inline-block",
   marginLeft: "10px",
   marginRight: "192px",
-  marginTop: "26px",
+  marginTop: "35px",
   marginBottom: "26px",
   width: "426px",
   height: "28px",
-  opacity: "0.9",
+  opacity: "90%",
   fontFamily: "Montserrat",
   fontSize: "16px",
-  fontWeight: "normal",
-  fontStretch: "normal",
-  fontStyle: "normal",
-  lineHeight: "1.5",
+  fontWeight: 400,
+  lineHeight: "1.5px",
   letterSpacing: "0.15px",
   color: "white"
 });

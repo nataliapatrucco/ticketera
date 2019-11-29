@@ -27,12 +27,11 @@ export const Navbar = () => {
     //props.history.push("/aLaComisaria") // PARA REDIRECCIONAR
   };
 
-  console.log(input);
   return (
     <NavbarContainer>
       <form onSubmit={handleSubmit}>
         <Rectangle>
-          <SearchIcon src="images/searchicon.svg" />
+          <SearchIcon src="/images/searchicon.png" />
           <Search
             placeholder="Buscar respuestas en la Devpedia"
             onChange={e => handleChange(e)}
@@ -40,8 +39,8 @@ export const Navbar = () => {
         </Rectangle>
       </form>
       <FancyDiv>
-        <NotificationBell src="images/notificationbell.svg" />
-        <ProfileImg src=" images/devman.jpg" />
+        <NotificationBell src="/images/notificationbell.png" />
+        <ProfileImg src="/images/devman.jpg" />
         <UserName>Florencia</UserName>
       </FancyDiv>
     </NavbarContainer>
