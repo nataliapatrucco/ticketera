@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "../../components/input";
-import { ButtonS, SessionText, SessionContainer } from "../style";
+import { ButtonS, SessionText, SessionContainer, Error} from "../style";
 import { Link } from "react-router-dom";
 
 export default ({
@@ -40,7 +40,11 @@ export default ({
         handleChange={handleChange}
         onBlur={handleBlur}
       />
-      <div>{errorMessage}</div>
+      {errorMessage  ? (
+       
+          <SessionText color={"red"} marginLeft={"15px"} fontStyle={"bold"}>{errorMessage}</SessionText>
+        
+      ):null}
       <Input
         placeholder="Contraseña"
         name="password"
@@ -50,7 +54,7 @@ export default ({
       />
       <ButtonS>REGISTRARSE</ButtonS>
       <SessionContainer>
-        <SessionText color={"white"}>Ya tenés una cuenta? </SessionText>
+        <SessionText color={"white"}>¿Ya tenés una cuenta? </SessionText>
         <Link to="/" onClick={() => clearInput()}>
           <SessionText color={"#62d0ff"}> INICIÁ SESIÓN</SessionText>
         </Link>

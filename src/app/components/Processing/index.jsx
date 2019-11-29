@@ -25,10 +25,10 @@ export default ({ ticket, getTicket, setIndividual }) => {
           margin="0 12px 0 0 "
         ></Fotito>
         <Assistant>
-          {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`}
+          {/* {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`} */}
+          Tati Vega
         </Assistant>
       </AssistantContainer>
-      <br />
       <UbicacionContainer>
         <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
 
@@ -42,10 +42,15 @@ export default ({ ticket, getTicket, setIndividual }) => {
             size="18px"
             margin="0 8px 0 0 "
           ></Fotito>
-          <Alumn>{ticket.author.name}</Alumn>
+          <Alumn>
+            {ticket.author.name}
+            Tati Vega
+          </Alumn>
         </AlumnContainer>
 
-        <Ticket>{ticket.title}</Ticket>
+        <Ticket>
+          <strong>{ticket.title}</strong>
+        </Ticket>
         <Continue
           onClick={() => {
             getTicket(ticket);

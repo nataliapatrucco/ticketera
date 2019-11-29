@@ -88,9 +88,9 @@ export default function index({
             </AddButton>
           )} */}
           <AddButton>
-            <AddIcon src="/images/add.png" alt=""></AddIcon>Sumarme
+            <AddIcon src="/images/add.png" alt=""></AddIcon>ME INTERESA
           </AddButton>
-          <ShareButton>Compartir</ShareButton>
+          <ShareButton>COMPARTIR</ShareButton>
         </Buttons>
         <PartipantsImg
           src="/images/perfil.jpeg"

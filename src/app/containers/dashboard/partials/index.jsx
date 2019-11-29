@@ -29,15 +29,11 @@ export default ({
       {!individual ? (
         <>
           <QuestionSection>
-            <Title color={"white"} width={"426px"} opacity={"0.9"}>
-              HACÉ UNA PREGUNTA
-            </Title>
+            <Title>HACÉ UNA PREGUNTA</Title>
             <MakeQuestion />
           </QuestionSection>
           <OpenSection>
-            <Title color={"white"} width={"426px"} opacity={"0.9"}>
-              PREGUNTAS PENDIENTES ({open.length})
-            </Title>
+            <Title>PREGUNTAS PENDIENTES ({open.length})</Title>
             {open.map((ticket, index) => (
               <div key={ticket.id}>
                 <Open
@@ -57,14 +53,7 @@ export default ({
       ) : (
         <>
           <QuestionSection>
-            <Title
-              color={"white"}
-              width={"426px"}
-              opacity={"0.9"}
-              onClick={() => setIndividual(false)}
-            >
-              VOLVER
-            </Title>
+            <Title onClick={() => setIndividual(false)}>VOLVER</Title>
           </QuestionSection>
           <OpenSection>
             <Open

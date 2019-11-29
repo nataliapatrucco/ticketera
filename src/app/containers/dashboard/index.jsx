@@ -14,7 +14,6 @@ import {
   Container,
   Title,
   OpenDiv,
-  ProcessSection,
   ProcessTitle,
   OpenSection,
   ProcessTicket,
@@ -58,9 +57,7 @@ export default () => {
       />
 
       <ProcessDiv>
-        <ProcessTitle color={"#62d0ff"} width={"266px"}>
-          RESPONDIENDO AHORA!
-        </ProcessTitle>
+        <ProcessTitle width={"266px"}>RESPONDIENDO AHORA!</ProcessTitle>
 
         {processing.map(ticket => (
           <ProcessTicket key={ticket.id}>
