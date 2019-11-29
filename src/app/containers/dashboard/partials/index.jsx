@@ -16,6 +16,8 @@ import {
   ProcessDiv
 } from "../style";
 
+import { Section } from "./style";
+
 export default ({ open, ticket, individual, setIndividual, getTicket }) => {
   return (
     <OpenDiv>
