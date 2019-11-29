@@ -23,13 +23,13 @@ export default props => {
       ) : (
         <Container>
           <SideDiv>
-            <Sidebar />
+            <Sidebar/>
           </SideDiv>
           <Section>
             <Navbar />
             <Switch>
               <Route exact path="/" component={Dashboard} />
-              <Route exact path="/ticket/userTickets" component={UserTickets} />
+              <Route exact path="/userTickets" component={UserTickets}/>
               {/* <Redirect from="/" to="/home" /> */}
             </Switch>
           </Section>

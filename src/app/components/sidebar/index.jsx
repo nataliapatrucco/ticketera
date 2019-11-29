@@ -32,7 +32,7 @@ export default props => {
             <Title>DASHBOARD</Title>
           </TitleContainer>
         </Link>
-        <Link style={{ textDecoration: "none" }} to="/devpedia">
+        <Link style={{ textDecoration: "none" }} to="/userTickets">
           <TitleContainer>
             <IconContainer>
               <Icon src="/images/pregunta.png" />
@@ -40,7 +40,7 @@ export default props => {
               <Title>MIS PREGUNTAS</Title>
           </TitleContainer>
         </Link>
-        <Link style={{ textDecoration: "none" }} to="ticket/userTickets">
+        <Link style={{ textDecoration: "none" }} to="/devpedia" >
           <TitleContainer>
             <IconContainer>
               <Icon src="/images/codificacion.png" />

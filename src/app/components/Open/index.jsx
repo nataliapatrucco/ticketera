@@ -35,7 +35,7 @@ export default function index({
   setIndividual,
   individual
 }) {
-  const date = moment(ticket.createdAt);
+  const date = moment(ticket.createdAt).calendar();
   return (
     <Ticket>
       <Header>
@@ -44,9 +44,7 @@ export default function index({
           <AuthorName>
             {ticket.author.name} {ticket.author.lastname}
           </AuthorName>
-          <TicketDate>{`${date.format("dddd")} a las ${date.format(
-            "HH:mm a"
-          )}`}</TicketDate>
+          <TicketDate>{`Preguntó ${date}`}</TicketDate>
         </Author>
         {individual ? <Icon>PENDIENTE</Icon> : <Icon>#{index}</Icon>}
       </Header>
