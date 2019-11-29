@@ -3,10 +3,8 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 import SuperButton from "./utils";
 import "moment/locale/es";
-
 moment.locale("es");
 import { Link } from "react-router-dom";
-// import ProcessingHeader from "../../containers/dashboard/partials/ProcessingHeader";
 
 import {
   Ticket,
