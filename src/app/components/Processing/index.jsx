@@ -25,7 +25,8 @@ export default ({ ticket }) => {
           margin="0 12px 0 0 "
         ></Fotito>
         <Assistant>
-          {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`}
+          {/* {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`} */}
+          Tati Vega
         </Assistant>
       </AssistantContainer>
       <UbicacionContainer>
@@ -41,7 +42,10 @@ export default ({ ticket }) => {
             size="18px"
             margin="0 8px 0 0 "
           ></Fotito>
-          <Alumn>{ticket.author.name}</Alumn>
+          <Alumn>
+            {ticket.author.name}
+            Tati Vega
+          </Alumn>
         </AlumnContainer>
 
         <Ticket>
