@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MakeQuestion from "../../../components/makeQuestion";
+import ProcessingHeader from "./ProcessingHeader";
 
 import Open from "../../../components/Open";
 import {
@@ -15,15 +16,9 @@ import {
   ProcessDiv
 } from "../style";
 
-export default ({
-  open,
-  handleAdd,
-  handleRemove,
-  ticket,
-  individual,
-  setIndividual,
-  getTicket
-}) => {
+import { Section } from "./style";
+
+export default ({ open, ticket, individual, setIndividual, getTicket }) => {
   return (
     <OpenDiv>
       {!individual ? (
@@ -39,8 +34,6 @@ export default ({
                 <Open
                   ticket={ticket}
                   index={index + 1}
-                  handleAdd={handleAdd}
-                  handleRemove={handleRemove}
                   getTicket={getTicket}
                   setIndividual={setIndividual}
                   individual={individual}
@@ -55,17 +48,16 @@ export default ({
           <QuestionSection>
             <Title onClick={() => setIndividual(false)}>VOLVER</Title>
           </QuestionSection>
-          <OpenSection>
+          {ticket.statusId === 2 ? <ProcessingHeader ticket={ticket} /> : ""}
+          <Section>
             <Open
               ticket={ticket}
-              handleAdd={handleAdd}
-              handleRemove={handleRemove}
               getTicket={getTicket}
               setIndividual={setIndividual}
               individual={individual}
             />
             <br />
-          </OpenSection>
+          </Section>
         </>
       )}
     </OpenDiv>

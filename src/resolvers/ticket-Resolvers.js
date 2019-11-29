@@ -140,7 +140,7 @@ const addParticipant = (req, res) => {
     .then(() =>
       Ticket.findAll({
         where: {
-          statusId: 1
+          statusId: req.body.statusId
         },
         order: [["id", "ASC"]],
         include: fullTicket
@@ -150,21 +150,26 @@ const addParticipant = (req, res) => {
 };
 
 const removeParticipant = (req, res) => {
+  console.log("GO THE request");
   Ticket.findOne({
     where: {
       id: req.body.ticketId
     }
   })
-    .then(ticket => ticket.removeUser(req.user))
-    .then(() =>
-      Ticket.findOne({
+    .then(ticket => {
+      console.log("GO THE TICKET", ticket);
+      return ticket.removeUser(req.user);
+    })
+    .then(() => {
+      console.log("REMOVED TICKET");
+      Ticket.findAll({
         where: {
-          statusId: 1
+          statusId: req.body.statusId
         },
         order: [["id", "ASC"]],
         include: fullTicket
-      }).then(updatedTicket => res.send(updatedTicket))
-    )
+      }).then(tickets => res.send(tickets));
+    })
     .catch(err => res.status(404).send(err));
 };
 
