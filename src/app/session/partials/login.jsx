@@ -1,7 +1,8 @@
 import React from "react";
-import Input from "../../components/input";
+import {Input, InputContainer} from "../../components/input";
 import { ButtonS, SessionContainer, SessionText, ViewIcon } from "../style.js";
 import { Link } from "react-router-dom";
+
 
 export default ({
   email,
@@ -14,7 +15,9 @@ export default ({
 }) => {
   return (
     <form onSubmit={handleSubmitLogin}>
-     <Input
+
+<InputContainer>
+<Input
         placeholder="Email"
         name="email"
         type="text"
@@ -22,11 +25,14 @@ export default ({
         handleChange={handleChange}
         onBlur={handleBlur}
       />
- {/* 
+ 
  {errorMessage ? (
           <ViewIcon></ViewIcon>
          ) : null}
- */}
+ 
+</InputContainer>
+
+     
       {errorMessage ? (
         <SessionText color={"red"} marginLeft={"15px"} fontStyle={"bold"}>
           {errorMessage}

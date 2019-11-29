@@ -23,12 +23,12 @@ export const Label = styled.p(
 );
 
 export const Input = styled.input({
-  width: "350px",
-  height: "56px",
+  width: "322px",
+  height: "24px",
   borderRadius: "4px",
   border: "solid 1.5px #8c939f",
-  marginTop: "10px",
-  paddingLeft:"16px",
+  /* marginTop: "10px", */
+  paddingLeft: "16px",
   backgroundColor: "transparent",
   color: "white",
   opacity: "0.9",
@@ -43,4 +43,10 @@ export const Input = styled.input({
   /* left: "945px",
   top: "280px", */
   /* padding: "17px 15.1 15 12" */
+});
+
+export const InputContainer = styled.div({
+  width: "350px",
+  height: "56px",
+  marginTop: "10px"
 });
