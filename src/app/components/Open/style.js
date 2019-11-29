@@ -105,7 +105,8 @@ export const TicketContent = styled.p({
   fontFamily: "Montserrat",
   fontWeight: "400",
   lineHeight: "20px",
-  letterSpacing: "0.25px"
+  letterSpacing: "0.25px",
+  overflowWrap: "break-word"
 });
 
 export const TicketLink = styled.p({

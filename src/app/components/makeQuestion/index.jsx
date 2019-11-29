@@ -17,7 +17,9 @@ export default props => {
       {showModal && (
         <ModalBackground>
           <ModalContainer>
-            <ModalQuestion>jbkwrfbk</ModalQuestion>
+            <ModalQuestion>
+              ¿Cuál es tu duda? ¿En qué ejercicio te trabaste?
+            </ModalQuestion>
           </ModalContainer>
         </ModalBackground>
       )}

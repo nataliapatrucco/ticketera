@@ -40,6 +40,7 @@ export const Img = styled.img({
 //modal
 
 export const ModalContainer = styled.div({
+  display: "flex",
   width: "710px",
   height: "514px",
   borderRadius: "4px",
