@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  background: "#00172e"
+  background: "#00172e",
+  position: 'fixed'
 });
 
 export const RegisterContainer = styled.div({
@@ -71,8 +72,14 @@ export const SessionContainer = styled.div({
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
-  marginTop: "20px"
-});
+  marginTop: "25px"
+},
+props => ({
+  flexDirection:props.flexDirection,
+  alignItems: props.alignItems,
+  marginTop:props.marginTop,
+
+}));
 
 export const SessionText = styled.p(
   {
@@ -82,14 +89,20 @@ export const SessionText = styled.p(
     fontWeight: "normal",
     fontStretch: "normal",
     fontStyle: "normal",
-    lineHeight: "1.33",
     letterSpacing: "0.4px",
-    marginRight: "15px",
-   /*  textDecoration:"none" */
+    marginRight: "15px"
+   /*  borderBottom:"3px dashed red" */
     
+  
+  
   },
   props => ({
-    color: props.color
+    color: props.color,
+    textDecoration:props.textDecoration,
+    marginLeft:props.marginLeft,
+    fontStyle:props.fontStyle,
+    fontSize:props.fontSize,
+    borderBottom:props.borderBottom
   })
 );
 
@@ -109,10 +122,6 @@ export const ButtonS = styled.button({
   letterSpacing: "0.75px",
   textAlign: "center",
   marginTop: "20px"
-
-
-
-  
 });
 
 
@@ -122,7 +131,20 @@ export const ViewLogo = styled.div({
   width: "230px",
   height: "50px",
   backgroundBlendMode: "multiply",
-  backgroundImage: 'url("/images/logo.png")',
+  backgroundImage: 'url("/images/logo2.png")',
   backgroundPosition: "center",
   backgroundSize: "cover"
 });
+
+export const ViewIcon = styled.img({
+
+  width: "24px",
+  height: "24px",
+  backgroundBlendMode: "multiply",
+  backgroundImage: 'url("/images/error_24px_red.svg")',
+  
+});
+
+
+
+
