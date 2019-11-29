@@ -6,7 +6,9 @@ export const Ticket = styled.div({
   flexDirection: "column",
   border: "solid 1px #2a3d51",
   backgroundColor: "#192e44",
-  fontFamily: "Monstserrat"
+  fontFamily: "Monstserrat",
+  width: "700px",
+  marginTop: "10px"
 });
 
 export const Header = styled.div({
@@ -37,7 +39,7 @@ export const AuthorName = styled.h4({
   color: "#FfFfFf",
   opacity: "90%",
   marginTop: "5px",
-  marginBottom: "10px",
+  marginBottom: "3px",
   fontFamily: "Montserrat",
   fontWeight: "500",
   lineHeight: "24px",
@@ -60,14 +62,15 @@ export const Icon = styled.h3({
   flexBasis: "5%",
   color: "#ffffff",
   opacity: "70%",
-  paddingLeft: "10px",
+  paddingLeft: "8px",
   paddingRight: "10px",
   paddingTop: "5px",
   height: "30px",
   width: "30px",
-  borderRadius: "4px",
+  borderRadius: "6px",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   marginTop: "5px",
+  marginRight: "10px",
   marginBottom: "5px",
   fontFamily: "Montserrat",
   fontWeight: "600",
@@ -84,9 +87,9 @@ export const TicketTitle = styled.header({
   marginLeft: "15px",
   marginBottom: "5px",
   fontSize: "18px",
-  color: "#62d0ff",
+  color: "rgba(255, 255, 255, 0.87)",
   fontFamily: "Montserrat",
-  fontWeight: "400",
+  fontWeight: "600",
   lineHeight: "28px",
   letterSpacing: "0.5px"
 });

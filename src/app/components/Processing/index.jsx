@@ -28,7 +28,6 @@ export default ({ ticket }) => {
           {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`}
         </Assistant>
       </AssistantContainer>
-      <br />
       <UbicacionContainer>
         <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
 
@@ -45,7 +44,9 @@ export default ({ ticket }) => {
           <Alumn>{ticket.author.name}</Alumn>
         </AlumnContainer>
 
-        <Ticket>{ticket.title}</Ticket>
+        <Ticket>
+          <strong>{ticket.title}</strong>
+        </Ticket>
         <Continue>Seguir leyendo</Continue>
       </TicketContainer>
     </Contenedor>
