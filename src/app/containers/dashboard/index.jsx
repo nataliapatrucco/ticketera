@@ -44,15 +44,15 @@ export default () => {
     <Container>
       <OpenDiv>
         <QuestionSection>
-          <Title color={"white"} width={"426px"} opacity={"0.9"}>
+          <Title>
             HACÉ UNA PREGUNTA
           </Title>
           <MakeQuestion />
         </QuestionSection>
-        <br />
-        <br />
+        {/* <br /> */}
+        {/* <br /> */}
         <OpenSection>
-          <Title color={"white"} width={"426px"} opacity={"0.9"}>
+          <Title>
             PREGUNTAS PENDIENTES ({open.length})
           </Title>
           {open.map((ticket, index) => (

@@ -6,7 +6,8 @@ import {
   TitleContainer,
   Title,
   Icon,
-  Section
+  Section,
+  IconContainer,
 } from "./style";
 
 import { Link } from "react-router-dom";
@@ -15,32 +16,39 @@ export default props => {
   return (
     <Container>
       <Header>
-        <P5 src="/images/plataforma.png" />
+        {/* <LogoContainer> */}
+          <P5 src="/images/plataforma.png" />
+        {/* </LogoContainer> */}
       </Header>
-      <br />
-      <br />
+      {/* <br />
+      <br /> */}
 
-      <Section>
+    {/* <Section>   */}
         <Link style={{ textDecoration: "none" }} to="/home">
           <TitleContainer>
-            <Icon />
+            <IconContainer>
+              <Icon src="/images/salpicadero.png" />
+            </IconContainer>
             <Title>DASHBOARD</Title>
           </TitleContainer>
         </Link>
         <Link style={{ textDecoration: "none" }} to="/devpedia">
           <TitleContainer>
-            <Icon />
-
-            <Title>DEVPEDIA</Title>
+            <IconContainer>
+              <Icon src="/images/pregunta.png" />
+            </IconContainer>
+              <Title>MIS PREGUNTAS</Title>
           </TitleContainer>
         </Link>
         <Link style={{ textDecoration: "none" }} to="ticket/userTickets">
           <TitleContainer>
-            <Icon />
-            <Title>MIS PREGUNTAS</Title>
+            <IconContainer>
+              <Icon src="/images/codificacion.png" />
+            </IconContainer>
+            <Title>DEVPEDIA</Title>
           </TitleContainer>
         </Link>
-      </Section>
+      {/* </Section> */}
     </Container>
   );
 };

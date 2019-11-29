@@ -25,7 +25,6 @@ export default props => {
           <SideDiv>
             <Sidebar />
           </SideDiv>
-
           <Section>
             <Navbar />
             <Switch>

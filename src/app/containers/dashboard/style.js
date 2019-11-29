@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  backgroundColor: "#091e35"
+  backgroundColor: "#091e35",
+  width: '100%'
 });
 export const OpenDiv = styled.div({
   display: "flex",
@@ -20,23 +21,18 @@ export const OpenSection = styled.section({
   marginRight: "25px"
 });
 
-export const Title = styled.h2(
+export const Title = styled.div(
   {
     color: "#ffffff",
-    width: "256px",
+    width: "426px",
     opacity: "90%",
     fontFamily: "Montserrat",
     fontSize: "18px",
     fontWeight: "500",
     lineHeight: "30px",
-    letterSpacing: "2px"
-  },
-  props => ({
-    color: props.color,
-    width: props.width,
-    opacity: props.opacity
+    letterSpacing: "2px",
+    marginRight: '314px'
   })
-);
 
 export const ProcessDiv = styled.div({
   marginTop: "40px",

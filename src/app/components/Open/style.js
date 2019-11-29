@@ -6,7 +6,8 @@ export const Ticket = styled.div({
   flexDirection: "column",
   border: "solid 1px #2a3d51",
   backgroundColor: "#192e44",
-  fontFamily: "Monstserrat"
+  fontFamily: "Monstserrat",
+  width: '710px'
 });
 
 export const Header = styled.div({

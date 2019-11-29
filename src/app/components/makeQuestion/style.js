@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  // width: "690px",
+  width: "690px",
   height: "80px",
-  marginRight: "45px",
+  //marginRight: "45px",
   borderRadius: "4px",
   border: "solid 1.5px #273e54",
   backgroundColor: "#192e44"
