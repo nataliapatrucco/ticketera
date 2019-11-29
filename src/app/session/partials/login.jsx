@@ -11,7 +11,9 @@ export default ({
   handleSubmitLogin,
   clearInput,
   errorMessage,
-  handleBlur
+  handleBlur,
+  passType,
+  togglePassword
 }) => {
   return (
     <form onSubmit={handleSubmitLogin}>
@@ -34,8 +36,8 @@ export default ({
 
       <Input
         placeholder="Contraseña"
+        type={passType || "password"}
         name="password"
-        type="password"
         input={password}
         handleChange={handleChange}
       />
