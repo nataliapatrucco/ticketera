@@ -1,15 +1,20 @@
 import styled from "@emotion/styled";
 
-export const Ticket = styled.div({
-  borderRadius: "4px",
-  display: "flex",
-  flexDirection: "column",
-  border: "solid 1px #2a3d51",
-  backgroundColor: "#192e44",
-  fontFamily: "Monstserrat",
-  width: "700px",
-  marginTop: "10px"
-});
+export const Ticket = styled.div(
+  {
+    borderRadius: "4px",
+    display: "flex",
+    flexDirection: "column",
+    border: "solid 1px #2a3d51",
+    backgroundColor: "#192e44",
+    fontFamily: "Monstserrat",
+    width: "700px",
+    marginTop: "10px"
+  },
+  ({ isHighlighted }) => ({
+    borderColor: isHighlighted ? "#62d0ff" : "#2a3d51"
+  })
+);
 
 export const Header = styled.div({
   display: "flex",
@@ -66,7 +71,7 @@ export const Icon = styled.h3({
   paddingRight: "10px",
   paddingTop: "5px",
   height: "30px",
-  width: "30px",
+  width: "fit-content",
   borderRadius: "6px",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   marginTop: "5px",

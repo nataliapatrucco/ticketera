@@ -28,6 +28,12 @@ router.post("/", isLoggedIn, createTicket);
 // Buscar los tickets por status
 router.get("/status/:statusId", fetchStatus);
 
+//Agregar participante
+router.post("/participant", isLoggedIn, addParticipant);
+
+//Eliminar participante
+router.put("/participant", isLoggedIn, removeParticipant);
+
 // Editar un ticket
 router.put("/:ticketId", isLoggedIn, checkUser, editTicket);
 
@@ -42,12 +48,6 @@ router.put("/:ticketId/:commentId", isAdmin, editComment);
 
 // Borrar un ticket
 router.delete("/:id", isLoggedIn, checkUser, deleteTicket);
-
-//Agregar participante
-router.post("/participant", isLoggedIn, addParticipant);
-
-//Eliminar participante
-router.put("/participant", isLoggedIn, removeParticipant);
 
 //Traer mis tickets
 router.get("/userTickets", isLoggedIn, userTickets);
