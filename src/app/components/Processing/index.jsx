@@ -14,7 +14,7 @@ import {
   Continue
 } from "./style";
 
-export default ({ ticket }) => {
+export default ({ ticket, getTicket, setIndividual }) => {
   React.useEffect(() => console.log(ticket), []);
   return (
     <Contenedor>
@@ -46,7 +46,14 @@ export default ({ ticket }) => {
         </AlumnContainer>
 
         <Ticket>{ticket.title}</Ticket>
-        <Continue>Seguir leyendo</Continue>
+        <Continue
+          onClick={() => {
+            getTicket(ticket);
+            setIndividual(true);
+          }}
+        >
+          Seguir leyendo
+        </Continue>
       </TicketContainer>
     </Contenedor>
   );

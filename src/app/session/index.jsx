@@ -15,36 +15,24 @@ export const Session = props => {
     name: "",
     lastname: "",
     email: "",
-    password: "",
-    errorMessage: "",
-    passType: "password"
+    password: ""
   });
+  const [errorMessage, setError] = useState("");
+  const [passType, setPassType] = useState("password");
 
   const handleEmail = () => {
     const valid = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     if (!valid.test(state.email)) {
-      setState({
-        ...state,
-        errorMessage: "Introduce un email válido"
-      });
+      setError("Introduce un email válido");
     } else {
-      setState({
-        ...state,
-        errorMessage: ""
-      });
+      setError("");
     }
   };
   const togglePassword = () => {
-    if (state.passType === "password") {
-      setState({
-        ...state,
-        passType: "text"
-      });
+    if (passType === "password") {
+      setPassType("text");
     } else {
-      setState({
-        ...state,
-        passType: "password"
-      });
+      setPassType("text");
     }
   };
 
@@ -65,12 +53,16 @@ export const Session = props => {
 
   const handleSubmitLogin = e => {
     e.preventDefault();
-    dispatch(loginUser(state)).then(() => props.history.push("/"));
+    dispatch(loginUser(state))
+      .then(() => props.history.push("/"))
+      .catch(() => setError("Email o contraseña incorrectos"));
   };
 
   const handleSubmitRegister = e => {
     e.preventDefault();
-    dispatch(registerUser(state)).then(() => props.history.push("/"));
+    dispatch(registerUser(state))
+      .then(() => props.history.push("/"))
+      .catch(() => setError("Todos los campos son requeridos"));
   };
 
   return (
@@ -91,8 +83,8 @@ export const Session = props => {
                 handleChange={handleChange}
                 handleSubmitLogin={handleSubmitLogin}
                 handleBlur={handleEmail}
-                errorMessage={state.errorMessage}
-                passType={state.passType}
+                errorMessage={errorMessage}
+                passType={passType}
                 togglePassword={togglePassword}
               />
             </RegisterContainer>
@@ -114,8 +106,8 @@ export const Session = props => {
                 handleChange={handleChange}
                 handleSubmitRegister={handleSubmitRegister}
                 handleBlur={handleEmail}
-                errorMessage={state.errorMessage}
-                passType={state.passType}
+                errorMessage={errorMessage}
+                passType={passType}
                 togglePassword={togglePassword}
               />
             </RegisterContainer>

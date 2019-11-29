@@ -44,7 +44,7 @@ export default ({
       <Input
         placeholder="Contraseña"
         name="password"
-        type={passType ? passType : "password"}
+        type={passType || "password"}
         input={password}
         handleChange={handleChange}
       />
