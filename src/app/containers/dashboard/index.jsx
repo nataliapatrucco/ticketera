@@ -7,14 +7,13 @@ import {
   removeParticipant
 } from "../../redux/actions/tickets";
 import Open from "../../components/Open";
-import { Navbar } from '../Navbar/index'
+import { Navbar } from "../Navbar/index";
 import Processing from "../../components/Processing";
 import Sidebar from "../../components/sidebar/index";
 import {
   Container,
   Title,
   OpenDiv,
-  ProcessSection,
   ProcessTitle,
   OpenSection,
   ProcessTicket,
@@ -44,17 +43,12 @@ export default () => {
     <Container>
       <OpenDiv>
         <QuestionSection>
-          <Title>
-            HACÉ UNA PREGUNTA
-          </Title>
+          <Title>HACÉ UNA PREGUNTA</Title>
           <MakeQuestion />
         </QuestionSection>
-        {/* <br /> */}
-        {/* <br /> */}
+
         <OpenSection>
-          <Title>
-            PREGUNTAS PENDIENTES ({open.length})
-          </Title>
+          <Title>PREGUNTAS PENDIENTES ({open.length})</Title>
           {open.map((ticket, index) => (
             <div key={ticket.id}>
               <Open

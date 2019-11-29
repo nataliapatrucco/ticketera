@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 
-
 export const NavbarContainer = styled.div({
   display: "flex",
   justifyContent: "space-between",
@@ -8,9 +7,9 @@ export const NavbarContainer = styled.div({
   paddingTop: "16px",
   paddingBottom: "15px",
   paddingLeft: "30px",
-  paddingRight: "50px",
+  paddingRight: "70px",
   flexDirection: "row",
-  borderBottom: "solid 1.5px rgba(255, 255, 255, 0.3)",
+  borderBottom: "solid 1.5px rgba(255, 255, 255, 0.3)"
 });
 
 export const Rectangle = styled.div({
@@ -24,7 +23,7 @@ export const Rectangle = styled.div({
   border: "solid 1.5px rgba(255, 255, 255, 0.7)",
   //justifyContent: "flex-start",
   alignItems: "center",
-  paddingLeft: "28px",
+  paddingLeft: "28px"
 });
 
 export const Search = styled.input({
@@ -36,7 +35,7 @@ export const Search = styled.input({
   fontSize: "14px",
   fontWeight: "600",
   lineHeight: "20px",
-  fontStretch: 'normal',
+  fontStretch: "normal",
   letterSpacing: "0.25px",
   color: "#ffffff",
   backgroundColor: "#091e35",
@@ -45,15 +44,15 @@ export const Search = styled.input({
   outlineColor: "transparent",
   outlineStyle: "none",
   padding: 0,
-  textAlign: 'left'
+  textAlign: "left"
 });
 
 export const SearchIcon = styled.img({
   display: "flex",
   //marginRight: "11.5px",
   height: "17.5px",
-  heigth: '17.5px',
-  opacity: '70%'
+  heigth: "17.5px",
+  opacity: "70%"
 });
 
 export const FancyDiv = styled.div({
@@ -63,18 +62,16 @@ export const FancyDiv = styled.div({
 });
 
 export const ProfileImg = styled.img({
-  // float: "right",
   display: "flex",
-  width: "36px",
-  height: "36px",
+  width: "38px",
+  height: "38px",
   justifyContent: "center",
   borderRadius: "50%",
-  marginLeft: "4px",
+  marginLeft: "10px",
   marginRight: "4px"
 });
 
 export const NotificationBell = styled.img({
-  // display: "flex",
   height: "74%",
   width: "18%",
   color: "#ffffff",

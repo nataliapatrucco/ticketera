@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex"
+  // marginRight: "30px"
 });
 export const HomeDiv = styled.div({
   display: "flex",

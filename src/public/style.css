@@ -1,17 +1,16 @@
 * {
- 
-    box-sizing: border-box;
-   
-  }
+  box-sizing: border-box;
+}
 
-  body {
-    margin: 0;
-  }
+body {
+  display: flex;
+  margin: 0;
+}
 
-  ::placeholder {
-    padding-left: 10px;
-  }
-  
-  a{
-    text-decoration: none !important;
-  }
+::placeholder {
+  padding-left: 10px;
+}
+
+a {
+  text-decoration: none !important;
+}

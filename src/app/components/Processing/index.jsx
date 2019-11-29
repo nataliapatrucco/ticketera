@@ -49,10 +49,7 @@ export default ({ ticket }) => {
         </AlumnContainer>
 
         <Ticket>
-          {ticket.title}
-          {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin libero
-          lorem, hendrerit a rhoncus nec, volutpat at turpis. Nullam vel viverra
-          magna. Donec nec faucibus quam. */}
+          <strong>{ticket.title}</strong>
         </Ticket>
         <Continue>Seguir leyendo</Continue>
       </TicketContainer>
