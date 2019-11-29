@@ -3,6 +3,7 @@ import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
 import { Link } from "react-router-dom";
+// import ProcessingHeader from "../../containers/dashboard/partials/ProcessingHeader";
 
 import {
   Ticket,
@@ -38,6 +39,7 @@ export default function index({
   const date = moment(ticket.createdAt);
   return (
     <Ticket>
+      {/* {ticket.statusId === 2 ? <ProcessingHeader ticket={ticket} /> : ""} */}
       <Header>
         <Img src="/images/perfil.jpeg" alt="foto usuario" />
         <Author>
@@ -48,7 +50,12 @@ export default function index({
             "HH:mm a"
           )}`}</TicketDate>
         </Author>
-        {individual ? <Icon>PENDIENTE</Icon> : <Icon>#{index}</Icon>}
+
+        {ticket.statusId === 1 && individual ? (
+          <Icon>PENDIENTE</Icon>
+        ) : (
+          <Icon>#{index}</Icon>
+        )}
       </Header>
       <Body>
         <TicketTitle
@@ -79,14 +86,7 @@ export default function index({
       <Line />
       <TicketFooter>
         <Buttons>
-          {/* {ticket.users.map(participant => participant.id === user.id) ? (
-            <RemoveButton></RemoveButton>
-          ) : (
-            <AddButton onClick={() => handleAdd(ticket.id)}>
-              <AddIcon src="/images/add.png" alt=""></AddIcon>
-              Sumarme
-            </AddButton>
-          )} */}
+      
           <AddButton>
             <AddIcon src="/images/add.png" alt=""></AddIcon>ME INTERESA
           </AddButton>

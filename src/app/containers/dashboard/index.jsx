@@ -7,17 +7,12 @@ import {
   removeParticipant
 } from "../../redux/actions/tickets";
 import Open from "./partials";
-import { Navbar } from "../Navbar/index";
 import Processing from "../../components/Processing";
-import Sidebar from "../../components/sidebar/index";
 import {
   Container,
-  Title,
-  OpenDiv,
+  OpenContainer,
   ProcessTitle,
-  OpenSection,
   ProcessTicket,
-  QuestionSection,
   ProcessDiv
 } from "./style";
 
@@ -46,15 +41,17 @@ export default () => {
 
   return (
     <Container>
-      <Open
-        open={open}
-        handleAdd={handleAdd}
-        handleRemove={handleRemove}
-        ticket={ticket}
-        getTicket={getTicket}
-        individual={individual}
-        setIndividual={setIndividual}
-      />
+      <OpenContainer>
+        <Open
+          open={open}
+          handleAdd={handleAdd}
+          handleRemove={handleRemove}
+          ticket={ticket}
+          getTicket={getTicket}
+          individual={individual}
+          setIndividual={setIndividual}
+        />
+      </OpenContainer>
 
       <ProcessDiv>
         <ProcessTitle width={"266px"}>RESPONDIENDO AHORA!</ProcessTitle>
