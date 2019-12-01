@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 export const Container = styled.div({
   display: "flex",
   background: "#00172e",
-  position: 'fixed'
+  position: 'fixed',
+  width: '100vw',
+  height: '100vh'
 });
 
 export const RegisterContainer = styled.div({
@@ -11,8 +13,8 @@ export const RegisterContainer = styled.div({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  width: "640px",
-  height: "780px"
+  width: "44.4%",
+  //height: "780px"
 });
 
 export const RegisterTitle = styled.h1({
@@ -34,8 +36,8 @@ export const ViewContainer = styled.div({
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-  width: "800px",
-  height: "780px",
+  width: "55.6%",
+  //height: "780px",
   backgroundBlendMode: "multiply",
   backgroundImage: 'url("/images/view.jpg")',
   backgroundPosition: "center",

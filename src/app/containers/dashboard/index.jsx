@@ -38,8 +38,7 @@ export default () => {
       />
 
       <ProcessDiv>
-        <ProcessTitle width={"266px"}>RESPONDIENDO AHORA!</ProcessTitle>
-
+        <ProcessTitle width={"266px"}>RESPONDIENDO AHORA!</ProcessTitle>  
         {processing.map(ticket => (
           <ProcessTicket key={ticket.id}>
             <Processing

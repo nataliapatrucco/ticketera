@@ -53,7 +53,7 @@ export default ({
           borderBottom={"1px solid white"}
           fontSize={"12px"}
         >
-          ¿Olvidates tu contraseña?
+          ¿Olvidate tu contraseña?
         </SessionText>
       </SessionContainer>
 

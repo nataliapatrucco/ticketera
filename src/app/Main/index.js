@@ -27,11 +27,8 @@ export default props => {
           </SideDiv>
           <Section>
             <Navbar />
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/userTickets" component={UserTickets}/>
+              <Dashboard/>
               {/* <Redirect from="/" to="/home" /> */}
-            </Switch>
           </Section>
         </Container>
       )}

@@ -5,9 +5,8 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./partials/login";
 import Register from "./partials/register";
 import View from "./partials/view";
-import { Container } from "./style";
-import { RegisterContainer } from "./style";
-import { RegisterTitle, ViewLogo } from "./style";
+import { Container, RegisterContainer, RegisterTitle, ViewLogo } from "./style";
+
 
 export const Session = props => {
   const dispatch = useDispatch();
