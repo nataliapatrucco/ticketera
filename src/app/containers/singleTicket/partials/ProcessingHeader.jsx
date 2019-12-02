@@ -7,7 +7,7 @@ import {
   Ubicacion,
   UbicacionContainer,
   UbicacionIcon
-} from "./style";
+} from "../../dashboard/partials/style";
 
 export default function ProcessingHeader({ ticket }) {
   return (
