@@ -158,7 +158,8 @@ export const AddIcon = styled.img({
   weigth: "25.5px",
   color: "#ffffff",
   marginBottom: "2px",
-  marginRight: "6px"
+  marginRight: "6px",
+  ":hover": {}
 });
 
 export const AddButton = styled.p({
@@ -214,3 +215,46 @@ export const PartipantsImg = styled.img({
 });
 
 //MODAL
+
+export const Modal = styled.div({
+  backgroundColor: "#fff",
+  borderRadius: 5,
+  maxWidth: 500,
+  minHeight: 300,
+  margin: "0 auto",
+  padding: 30,
+  wordWrap: "break-word"
+});
+
+export const ButtonDelete = styled.div({
+  display: "flex",
+  justifyContent: "center",
+  cursor: "pointer",
+  color: "rgba(255, 255, 255, 0.6)",
+  ":hover": {
+    color: "#cf6679",
+    img: {
+      content: "url(/images/delete-hover.svg)"
+    }
+  }
+});
+
+export const ButtonParticipants = styled.div({
+  display: "flex",
+  justifyContent: "center",
+  cursor: "pointer",
+  color: "#62d0ff"
+});
+
+export const ButtonAddParticipants = styled.div({
+  display: "flex",
+  justifyContent: "center",
+  cursor: "pointer",
+  color: "rgba(255, 255, 255, 0.6)",
+  ":hover": {
+    color: "#62d0ff",
+    img: {
+      content: "url(/images/add-hover.svg)"
+    }
+  }
+});

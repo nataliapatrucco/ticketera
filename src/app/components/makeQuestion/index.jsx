@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import {
   Container,
@@ -18,7 +19,7 @@ import {
   Icon
 } from "./style";
 import { ModalBackground } from "../modalBackground/style";
-import { createNewTicket } from "../../redux/actions/tickets";
+import { createNewTicket, fetchOpen } from "../../redux/actions/tickets";
 
 export const MakeQuestion = props => {
   const [showModal, setShowModal] = useState(false);
@@ -34,8 +35,12 @@ export const MakeQuestion = props => {
     });
   };
 
+  const dispatch = useDispatch();
+
   const handleSubmit = ticket => {
-    createNewTicket(ticket); //.then(() => props.history.push("/"));
+    createNewTicket(ticket)
+      .then(() => dispatch(fetchOpen()))
+      .then(() => setShowModal(!showModal));
   };
 
   return (
@@ -50,72 +55,70 @@ export const MakeQuestion = props => {
       </Question>
       {showModal && (
         <ModalBackground>
-          <form>
-            <ModalContainer>
-              <ModalCloseButton onClick={() => setShowModal(!showModal)}>
-                X
-              </ModalCloseButton>
-              <ModalQuestion marginTop="32px">
-                ¿Cuál es tu duda? ¿En qué ejercicio te trabaste?
-              </ModalQuestion>
-              <ModalInputContainer height="90px">
-                <ModalInput
-                  name="title"
-                  onChange={handleChange}
-                  fontSize="20px"
-                  height="80px"
-                ></ModalInput>
-              </ModalInputContainer>
-              <ModalQuestion marginTop={"10px"}>
-                ¿Querés desarrollar un poco más?
-              </ModalQuestion>
-              <ModalInputContainer height="112px">
-                <ModalInput
-                  name="content"
-                  fontSize="14px"
-                  height="105px"
-                  onChange={handleChange}
-                ></ModalInput>
-              </ModalInputContainer>
-              <ModalQuestion marginTop={"10px"}>
-                <Icon src="images/icon-file-attachment-24-px.png"></Icon>
-                Adjuntar archivos
-              </ModalQuestion>
-              <ModalUploadBox>
-                <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
-              </ModalUploadBox>
-              <ModalButtonContainer>
-                <Link to="/ticket">
-                  <ModalButton
-                    color="#62d0ff"
-                    marginTop="30px"
-                    marginLeft="450px"
-                    type="submit"
-                    onClick={e => {
-                      e.preventDefault(),
-                        handleSubmit({
-                          title: state.title,
-                          content: state.content
-                        });
-                    }}
-                  >
-                    <ModalButtonLabel color="#071c34">
-                      PUBLICAR
-                    </ModalButtonLabel>
-                  </ModalButton>
-                </Link>
+          <ModalContainer>
+            <ModalCloseButton onClick={() => setShowModal(!showModal)}>
+              X
+            </ModalCloseButton>
+            <ModalQuestion marginTop="32px">
+              ¿Cuál es tu duda? ¿En qué ejercicio te trabaste?
+            </ModalQuestion>
+            <ModalInputContainer height="90px">
+              <ModalInput
+                name="title"
+                onChange={handleChange}
+                fontSize="20px"
+                height="80px"
+                placeholder='Ej: "No puedo solucionar el Error de la Consola 12345678"'
+              ></ModalInput>
+            </ModalInputContainer>
+            <ModalQuestion marginTop={"10px"}>
+              ¿Querés desarrollar un poco más?
+            </ModalQuestion>
+            <ModalInputContainer height="112px">
+              <ModalInput
+                name="content"
+                fontSize="14px"
+                height="105px"
+                onChange={handleChange}
+                placeholder="Ej: Cuando escribo el código y hago XXXXXXXXXXXXXXX me tira este error y no puedo seguir con el ejercicio"
+              ></ModalInput>
+            </ModalInputContainer>
+            <ModalQuestion marginTop={"10px"}>
+              <Icon src="images/icon-file-attachment-24-px.png"></Icon>
+              Adjuntar archivos
+            </ModalQuestion>
+            <ModalUploadBox>
+              <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
+            </ModalUploadBox>
+            <ModalButtonContainer>
+              <Link to="/ticket">
                 <ModalButton
-                  color="transparent"
-                  border="solid 1px rgba(255, 255, 255, 0.12);"
+                  color="#62d0ff"
                   marginTop="30px"
-                  marginLeft="10px"
-                  onClick={() => setShowModal(!showModal)}
+                  marginLeft="450px"
+                  type="submit"
+                  onClick={e => {
+                    e.preventDefault();
+                    handleSubmit({
+                      title: state.title,
+                      content: state.content
+                    });
+                  }}
                 >
-                  <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
+                  <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
                 </ModalButton>
-              </ModalButtonContainer>
-            </ModalContainer>
-          </form>
+              </Link>
+              <ModalButton
+                color="transparent"
+                border="solid 1px rgba(255, 255, 255, 0.12);"
+                marginTop="30px"
+                marginLeft="10px"
+                onClick={() => setShowModal(!showModal)}
+              >
+                <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
+              </ModalButton>
+            </ModalButtonContainer>
+          </ModalContainer>
         </ModalBackground>
       )}
     </Container>

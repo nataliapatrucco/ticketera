@@ -19,3 +19,9 @@ export const SideDiv = styled.div({
   display: "flex",
   width: "18.4%"
 });
+
+export const MiddleContainer = styled.div({
+  display: "flex",
+  backgroundColor: "#091e35",
+  paddingRight: "30px"
+});
