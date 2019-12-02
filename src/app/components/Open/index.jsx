@@ -35,6 +35,7 @@ export default function index({
   setIndividual,
   individual
 }) {
+  const date = moment(ticket.createdAt).calendar();
   const user = useSelector(state => state.user.user);
 
   const isHighlighted = ticket => {
@@ -44,8 +45,6 @@ export default function index({
     );
   };
 
-  const date = moment(ticket.createdAt);
-
   return (
     <Ticket isHighlighted={isHighlighted(ticket)}>
       <Header>
@@ -54,9 +53,7 @@ export default function index({
           <AuthorName>
             {ticket.author.name} {ticket.author.lastname}
           </AuthorName>
-          <TicketDate>{`${date.format("dddd")} a las ${date.format(
-            "HH:mm a"
-          )}`}</TicketDate>
+          <TicketDate>{`Preguntó ${date}`}</TicketDate>
         </Author>
 
         {ticket.statusId === 1 && individual ? (
