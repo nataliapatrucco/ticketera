@@ -34,6 +34,27 @@ export const Assistant = styled.div({
   height: "24px"
 });
 
+export const Carita = styled.img({
+  display: 'inline-block',
+  width: '40px',
+  height: '40px',
+  float: 'left',
+  margin: '0 16px 0 16px'
+})
+
+export const NoQuestion = styled.div({
+  display: 'inline-block',
+  fontFamily: 'Montserrat',
+  lineHeight: 1.43,
+  fontSize: '14px',
+  fontWeight: 600,
+  color: 'gba(255, 255, 255, 0.87)',
+  letterSpacing: '0.1px',
+  width: '252px',
+  height: '40px',
+  margin: '16px 16px 16px 0'
+})
+
 export const UbicacionContainer = styled.div({
   margin: "0 19.8px 12px 52.9px"
   // width: '224px'
