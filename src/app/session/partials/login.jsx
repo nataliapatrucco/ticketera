@@ -16,7 +16,7 @@ export default ({
 }) => {
   return (
     <form onSubmit={handleSubmitLogin}>
-     <Input
+      <Input
         placeholder="Email"
         name="email"
         type="text"
@@ -24,7 +24,7 @@ export default ({
         handleChange={handleChange}
         onBlur={handleBlur}
       />
- {/* 
+      {/* 
  {errorMessage ? (
           <ViewIcon></ViewIcon>
          ) : null}
@@ -53,7 +53,7 @@ export default ({
           borderBottom={"1px solid white"}
           fontSize={"12px"}
         >
-          ¿Olvidates tu contraseña?
+          ¿Olvidaste tu contraseña?
         </SessionText>
       </SessionContainer>
 
