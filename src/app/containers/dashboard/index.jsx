@@ -11,6 +11,12 @@ import {
   ProcessDiv
 } from "./style";
 
+import {
+  NoQuestion,
+  Carita,
+  Contenedor
+} from "../../components/Processing/style";
+
 export default () => {
   const dispatch = useDispatch();
   const open = useSelector(state => state.tickets.open);
@@ -39,17 +45,27 @@ export default () => {
 
       <ProcessDiv>
         <ProcessTitle width={"266px"}>RESPONDIENDO AHORA!</ProcessTitle>
-
-        {processing.map(ticket => (
-          <ProcessTicket key={ticket.id}>
-            <Processing
-              ticket={ticket}
-              getTicket={getTicket}
-              setIndividual={setIndividual}
-            />
-          </ProcessTicket>
-        ))}
+        {processing.length ? (
+          processing.map(
+            ticket => (
+                <Processing
+                key={ticket.id}
+                  ticket={ticket}
+                  getTicket={getTicket}
+                  setIndividual={setIndividual}
+                />
+            )
+          )
+        ) : (
+          <Contenedor>
+            <NoQuestion>
+              <Carita src="/images/nerd-emoji.png"></Carita>
+              No hay preguntas en este momento!
+            </NoQuestion>
+          </Contenedor>
+        )}
       </ProcessDiv>
     </Container>
   );
 };
+
