@@ -41,7 +41,7 @@ export default function index({
     );
   };
 
-  const date = moment(ticket.createdAt).calendar()
+  const date = moment(ticket.createdAt).calendar();
   return (
     <Ticket isHighlighted={isHighlighted(ticket)}>
       <Header>
