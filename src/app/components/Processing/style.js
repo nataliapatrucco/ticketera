@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 
+
+
 export const Contenedor = styled.div({
   backgroundColor: "#006088",
   display: "flex",
-  height: "201px",
   flexDirection: "column",
-  marginRight: "50px",
+  margin: '20px 50px 0 20px ',
   border: "1px solid #006e9e",
   color: "white",
   borderRadius: "4px"
@@ -18,6 +19,29 @@ export const Fotito = styled.img`
   border-radius: 100%;
   float: left;
 `;
+
+export const Carita = styled.img({
+  display: 'inline-block',
+  width: '40px',
+  height: '40px',
+  float: 'left',
+  margin: '0 16px 0 16px'
+})
+
+export const NoQuestion = styled.div({
+  display: 'inline-block',
+  fontFamily: 'Montserrat',
+  lineHeight: 1.43,
+  fontSize: '14px',
+  fontWeight: 600,
+  color: 'gba(255, 255, 255, 0.87)',
+  letterSpacing: '0.1px',
+  width: '252px',
+  height: '40px',
+  margin: '16px 16px 16px 0'
+})
+
+
 
 export const AssistantContainer = styled.div({
   margin: "16px 13.4px 0 16px"
