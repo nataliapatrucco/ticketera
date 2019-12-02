@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import moment from "moment";
+import SuperButton from "./utils";
 import "moment/locale/es";
 moment.locale("es");
 import { Link } from "react-router-dom";
@@ -17,9 +19,6 @@ import {
   TicketContent,
   TicketLink,
   Buttons,
-  AddButton,
-  RemoveButton,
-  AddIcon,
   ShareButton,
   TicketFooter,
   PartipantsImg,
@@ -28,27 +27,39 @@ import {
 
 export default function index({
   ticket,
-  handleAdd,
-  user,
   index,
   getTicket,
   setIndividual,
   individual
 }) {
-  const date = moment(ticket.createdAt);
+  const user = useSelector(state => state.user.user);
+
+  const isHighlighted = ticket => {
+    return (
+      ticket.authorId === user.id ||
+      ticket.users.some(participant => participant.id === user.id)
+    );
+  };
+
+  const date = moment(ticket.createdAt).calendar()
   return (
-    <Ticket>
+    <Ticket isHighlighted={isHighlighted(ticket)}>
       <Header>
         <Img src="/images/perfil.jpeg" alt="foto usuario" />
         <Author>
           <AuthorName>
             {ticket.author.name} {ticket.author.lastname}
           </AuthorName>
-          <TicketDate>{`${date.format("dddd")} a las ${date.format(
-            "HH:mm a"
-          )}`}</TicketDate>
+          <TicketDate>{`Preguntó ${date}`}</TicketDate>
         </Author>
-        {individual ? <Icon>PENDIENTE</Icon> : <Icon>#{index}</Icon>}
+
+        {individual && ticket.statusId === 2 ? (
+          ""
+        ) : individual && ticket.statusId === 1 ? (
+          <Icon>PENDIENTE</Icon>
+        ) : (
+          <Icon>#{index}</Icon>
+        )}
       </Header>
       <Body>
         <TicketTitle
@@ -61,7 +72,7 @@ export default function index({
         </TicketTitle>
         {ticket.content && ticket.content.length > 140 ? (
           <div>
-            <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
+            <TicketContent> {ticket.content.slice(0, 140)} ...</TicketContent>
 
             <TicketLink
               onClick={() => {
@@ -79,17 +90,7 @@ export default function index({
       <Line />
       <TicketFooter>
         <Buttons>
-          {/* {ticket.users.map(participant => participant.id === user.id) ? (
-            <RemoveButton></RemoveButton>
-          ) : (
-            <AddButton onClick={() => handleAdd(ticket.id)}>
-              <AddIcon src="/images/add.png" alt=""></AddIcon>
-              Sumarme
-            </AddButton>
-          )} */}
-          <AddButton>
-            <AddIcon src="/images/add.png" alt=""></AddIcon>ME INTERESA
-          </AddButton>
+          <SuperButton ticket={ticket} />
           <ShareButton>COMPARTIR</ShareButton>
         </Buttons>
         <PartipantsImg

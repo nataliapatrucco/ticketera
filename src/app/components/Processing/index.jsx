@@ -25,8 +25,8 @@ export default ({ ticket, getTicket, setIndividual }) => {
           margin="0 12px 0 0 "
         ></Fotito>
         <Assistant>
-          {/* {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`} */}
-          Tati Vega
+          {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`}
+         
         </Assistant>
       </AssistantContainer>
       <UbicacionContainer>

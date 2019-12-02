@@ -28,20 +28,37 @@ export const fetchProcessing = () => dispatch =>
     .then(res => res.data)
     .then(tickets => dispatch(setProcessing(tickets)));
 
-export const addParticipant = ticketId => dispatch =>
+export const addParticipant = (ticketId, statusId) => dispatch =>
   axios
-    .post("/api/ticket/participant", ticketId)
+    .post("/api/ticket/participant", { ticketId, statusId })
     .then(res => res.data)
-    .then(tickets => dispatch(setOpen(tickets)));
+    .then(tickets => {
+      if (tickets[0].statusId === 1) {
+        return dispatch(setOpen(tickets));
+      } else {
+        return dispatch(setProcessing(tickets));
+      }
+    });
 
-export const removeParticipant = ticketId => dispatch =>
+export const removeParticipant = (ticketId, statusId) => dispatch =>
   axios
-    .put("/api/ticket/participant", ticketId)
+    .put("/api/ticket/participant", { ticketId, statusId })
     .then(res => res.data)
-    .then(tickets => dispatch(setOpen(tickets)));
+    .then(tickets => {
+      if (tickets[0].statusId === 1) {
+        return dispatch(setOpen(tickets));
+      } else {
+        return dispatch(setProcessing(tickets));
+      }
+    });
 
 export const fetchUserTickets = () => dispatch =>
   axios
     .get("/api/ticket/userTickets")
     .then(res => res.data)
     .then(tickets => dispatch(setUserTickets(tickets)));
+
+export const deleteTicket = ticketId => dispatch =>
+  axios.delete(`/api/ticket/${ticketId}`);
+
+export const createNewTicket = ticket => axios.post("/api/ticket", ticket);

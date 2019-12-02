@@ -4,14 +4,17 @@ export const Container = styled.div({
   display: "flex",
   backgroundColor: "#091e35",
   paddingRight: "30px"
-  // width: "100%"
+});
+
+export const OpenContainer = styled.div({
+  display: "flex",
+  flexDirection: "column"
 });
 export const OpenDiv = styled.div({
   display: "flex",
   flexBasis: "50%",
   flexDirection: "column",
   paddingLeft: "30px"
-  // paddingRight: "30px"
 });
 
 export const QuestionSection = styled.section({
@@ -21,7 +24,6 @@ export const QuestionSection = styled.section({
 
 export const OpenSection = styled.section({
   marginTop: "50px"
-  // marginRight: "25px"
 });
 
 export const Title = styled.div({
@@ -40,10 +42,7 @@ export const ProcessDiv = styled.div({
   display: "flex",
   flexDirection: "column",
   marginTop: "40px",
-  // marginRight: '50px',
-  // flexBasis: "50%",
   paddingRight: "60px",
-  // width: "fit-content",
   height: "fit-content",
   borderLeft: "solid 2px rgba(255, 255, 255, 0.3)"
 });
