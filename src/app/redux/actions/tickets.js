@@ -60,3 +60,5 @@ export const fetchUserTickets = () => dispatch =>
 
 export const deleteTicket = ticketId => dispatch =>
   axios.delete(`/api/ticket/${ticketId}`);
+
+export const createNewTicket = ticket => axios.post("/api/ticket", ticket);

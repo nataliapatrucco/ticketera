@@ -19,9 +19,6 @@ import {
   TicketContent,
   TicketLink,
   Buttons,
-  AddButton,
-  RemoveButton,
-  AddIcon,
   ShareButton,
   TicketFooter,
   PartipantsImg,
@@ -35,7 +32,6 @@ export default function index({
   setIndividual,
   individual
 }) {
-  
   const user = useSelector(state => state.user.user);
 
   const isHighlighted = ticket => {
@@ -45,7 +41,7 @@ export default function index({
     );
   };
 
-  const date = moment(ticket.createdAt).calendar();
+  const date = moment(ticket.createdAt).calendar()
   return (
     <Ticket isHighlighted={isHighlighted(ticket)}>
       <Header>
@@ -57,7 +53,9 @@ export default function index({
           <TicketDate>{`Preguntó ${date}`}</TicketDate>
         </Author>
 
-        {ticket.statusId === 1 && individual ? (
+        {individual && ticket.statusId === 2 ? (
+          ""
+        ) : individual && ticket.statusId === 1 ? (
           <Icon>PENDIENTE</Icon>
         ) : (
           <Icon>#{index}</Icon>
@@ -74,7 +72,7 @@ export default function index({
         </TicketTitle>
         {ticket.content && ticket.content.length > 140 ? (
           <div>
-            <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
+            <TicketContent> {ticket.content.slice(0, 140)} ...</TicketContent>
 
             <TicketLink
               onClick={() => {
