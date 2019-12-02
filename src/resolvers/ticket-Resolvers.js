@@ -37,7 +37,8 @@ const fetchByTitleTag = (req, res) => {
 const fetchStatus = (req, res) => {
   Ticket.findAll({
     where: { statusId: req.params.statusId },
-    include: fullTicket
+    include: fullTicket,
+    order: [["id", "ASC"]]
   })
     .then(tickets => res.send(tickets))
     .catch(err => res.status(404).send(err));
@@ -150,18 +151,15 @@ const addParticipant = (req, res) => {
 };
 
 const removeParticipant = (req, res) => {
-  console.log("GO THE request");
   Ticket.findOne({
     where: {
       id: req.body.ticketId
     }
   })
     .then(ticket => {
-      console.log("GO THE TICKET", ticket);
       return ticket.removeUser(req.user);
     })
     .then(() => {
-      console.log("REMOVED TICKET");
       Ticket.findAll({
         where: {
           statusId: req.body.statusId
