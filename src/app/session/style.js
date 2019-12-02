@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const Container = styled.div({
   display: "flex",
   background: "#00172e",
-  /* position: 'fixed' */
+  /* position: 'fixed'  */
 });
 
 export const RegisterContainer = styled.div({
@@ -134,7 +134,7 @@ export const ViewLogo = styled.div({
   
 });
 
-export const ViewIcon = styled.div({
+export const ViewIconErr = styled.div({
   width: "24px",
   height: "24px",
   backgroundBlendMode: "multiply",
@@ -144,6 +144,23 @@ export const ViewIcon = styled.div({
   marginRight:"10px"
 });
 
+export const ViewIconPass= styled.div({
+  width: "24px",
+  height: "24px",
+  backgroundBlendMode: "multiply",
+  backgroundImage: 'url("/images/icon-action-visibility-24-px.png")',
+  backgroundRepeat:"no-repeat",
+  backgroundPosition:"center",
+  marginRight:"10px"
+});
 
 
-
+export const ViewIconPassOff= styled.div({
+  width: "24px",
+  height: "24px",
+  backgroundBlendMode: "multiply",
+  backgroundImage: 'url("/images/visibility-off-24-px.png")',
+  backgroundRepeat:"no-repeat",
+  backgroundPosition:"center",
+  marginRight:"10px"
+});

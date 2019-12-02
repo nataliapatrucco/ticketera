@@ -23,7 +23,7 @@ export const Label = styled.p(
 );
 
 export const Input = styled.input({
-  width: "322px",
+  width: "300px",
   height: "24px",
   paddingLeft:"16px",
   backgroundColor: "transparent",
@@ -35,12 +35,11 @@ export const Input = styled.input({
   fontStyle: "normal",
   lineHeight: "1.5",
   letterSpacing: "0.15px",
-  border:"none"
+  border:"none",
+  outline:"none"
 });
 
 export const InputContainer = styled.div({
-  //position: "relative",
-  //bottom: "5px",
   display: "flex",
   alignItems: "center",
   width: "350x",
@@ -50,5 +49,4 @@ export const InputContainer = styled.div({
   borderRadius: "4px",
   border: "solid 1.5px #8c939f",
   marginTop: "10px" 
-
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "../../components/input/index";
 import InputContainer from "../../components/input/index";
-import { ButtonS, SessionContainer, SessionText, ViewIcon } from "../style.js";
+import { ButtonS, SessionContainer, SessionText} from "../style.js";
 import { Link } from "react-router-dom";
 
 export default ({
@@ -17,8 +17,7 @@ export default ({
 }) => {
   return (
     <form onSubmit={handleSubmitLogin}>
-
-     <Input
+      <Input
         placeholder="Email"
         name="email"
         type="text"
@@ -27,20 +26,22 @@ export default ({
         onBlur={handleBlur}
         errorMessage={errorMessage}
       />
-    
       {errorMessage ? (
         <SessionText color={"red"} marginLeft={"15px"} fontStyle={"bold"}>
           {errorMessage}
         </SessionText>
       ) : null}
-
       <Input
         placeholder="Contraseña"
         type={passType || "password"}
         name="password"
         input={password}
         handleChange={handleChange}
+        togglePassword={togglePassword}
+        passType={passType}
+         
       />
+    
       <ButtonS>INICIAR SESIÓN</ButtonS>
       <SessionContainer
         flexDirection={"column"}
@@ -52,10 +53,9 @@ export default ({
           borderBottom={"1px solid white"}
           fontSize={"12px"}
         >
-          ¿Olvidates tu contraseña?
+          ¿Olvidaste tu contraseña?
         </SessionText>
       </SessionContainer>
-
       <SessionContainer>
         <SessionText color={"white"}>
           ¿Todavía no tenés una cuenta?{" "}

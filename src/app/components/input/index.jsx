@@ -1,13 +1,12 @@
 import React from "react";
 import { Input, Label, InputContainer } from "./style";
-import {ViewIcon} from "../../session/style"
+import {ViewIconErr, ViewIconPassOff} from "../../session/style"
+import {ViewIconPass} from "../../session/style"
+
 
 export default props => {
   return (
-   /*  <div style={{
-      backgroundColor: 'red'
-    }}> */
-     <InputContainer>
+    <InputContainer>
       <Input
         name={props.name}
         onBlur={props.onBlur}
@@ -18,18 +17,23 @@ export default props => {
         type={props.type}
         value={props.input}
         errorMessage={props.errorMessage}
+        passType={props.passType}
+        togglePassword={props.togglePassword}
       ></Input>
-
-       {props.placeholder === "Email" && props.errorMessage?<ViewIcon></ViewIcon>:null}
-      
-   
-      </InputContainer>
-
-
-
-
-    /* </div> */
+      {props.placeholder === "Email" && props.errorMessage ? (
+        <ViewIconErr></ViewIconErr>
+      ) : null}
+      {props.placeholder === "Contraseña" &&
+      props.input.length > 0 &&
+      props.passType === "password" ? (
+        <ViewIconPassOff onClick={props.togglePassword}></ViewIconPassOff>
+      ) : props.placeholder === "Contraseña" &&
+        props.input.length > 0 &&
+        props.passType === "text" ? (
+        <ViewIconPass onClick={props.togglePassword}></ViewIconPass>
+      ) : null}
+    </InputContainer>
   );
 };
- {/*  pendiente agregar luego del input segun diseño */}
+ {/*  pendiente agregar label */}
       {/*  <Label input={props.input}></Label> */}

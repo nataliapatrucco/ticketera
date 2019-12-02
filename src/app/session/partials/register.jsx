@@ -51,6 +51,8 @@ export default ({
         type={passType || "password"}
         input={password}
         handleChange={handleChange}
+        togglePassword={togglePassword}
+        passType={passType}
       />
       <ButtonS>REGISTRARSE</ButtonS>
       <SessionContainer>
