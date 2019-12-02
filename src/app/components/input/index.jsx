@@ -1,11 +1,13 @@
 import React from "react";
-import { Input, Label, InputContainer } from "./style";
+import { Input, Label, InputContainer, InputLabelContainer } from "./style";
 import {ViewIconErr, ViewIconPassOff} from "../../session/style"
 import {ViewIconPass} from "../../session/style"
 
-
 export default props => {
   return (
+
+<InputLabelContainer>
+  {props.input.length > 0? <Label>{props.placeholder}</Label>:null}
     <InputContainer>
       <Input
         name={props.name}
@@ -33,7 +35,8 @@ export default props => {
         <ViewIconPass onClick={props.togglePassword}></ViewIconPass>
       ) : null}
     </InputContainer>
+
+    </InputLabelContainer>
   );
 };
- {/*  pendiente agregar label */}
-      {/*  <Label input={props.input}></Label> */}
+ 
