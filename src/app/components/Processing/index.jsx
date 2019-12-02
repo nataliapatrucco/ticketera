@@ -26,7 +26,6 @@ export default ({ ticket, getTicket, setIndividual }) => {
         ></Fotito>
         <Assistant>
           {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`}
-         
         </Assistant>
       </AssistantContainer>
       <UbicacionContainer>
@@ -42,10 +41,7 @@ export default ({ ticket, getTicket, setIndividual }) => {
             size="18px"
             margin="0 8px 0 0 "
           ></Fotito>
-          <Alumn>
-            {ticket.author.name}
-            Tati Vega
-          </Alumn>
+          <Alumn>{ticket.author.name}</Alumn>
         </AlumnContainer>
 
         <Ticket>
