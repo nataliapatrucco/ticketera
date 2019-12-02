@@ -64,7 +64,10 @@ const createTicket = (req, res) => {
             }).then(newTicket => res.status(201).send(newTicket))
           )
       )
-      .catch(err => res.status(404).send(err));
+      .catch(err => {
+        console.log(err);
+        res.status(404).send(err);
+      });
   } else {
     res.sendStatus(400);
   }
@@ -197,6 +200,17 @@ const userTickets = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const fetchTicket = (req, res) => {
+  Ticket.findOne({
+    where: {
+      slug: req.params.slug
+    },
+    include: fullTicket
+  })
+    .then(ticket => res.status(200).send(ticket))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   removeTag,
   addTag,
@@ -209,5 +223,6 @@ module.exports = {
   fetchByTitleTag,
   addParticipant,
   removeParticipant,
-  userTickets
+  userTickets,
+  fetchTicket
 };

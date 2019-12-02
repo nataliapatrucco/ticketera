@@ -13,9 +13,9 @@ import {
   AlumnContainer,
   Continue
 } from "./style";
+import { Link } from "react-router-dom";
 
-export default ({ ticket, getTicket, setIndividual }) => {
-  React.useEffect(() => console.log(ticket), []);
+export default ({ ticket }) => {
   return (
     <Contenedor>
       <AssistantContainer>
@@ -47,14 +47,9 @@ export default ({ ticket, getTicket, setIndividual }) => {
         <Ticket>
           <strong>{ticket.title}</strong>
         </Ticket>
-        <Continue
-          onClick={() => {
-            getTicket(ticket);
-            setIndividual(true);
-          }}
-        >
-          Seguir leyendo
-        </Continue>
+        <Link to={`/${ticket.slug}`}>
+          <Continue>Seguir leyendo</Continue>
+        </Link>
       </TicketContainer>
     </Contenedor>
   );
