@@ -11,6 +11,7 @@ export const Container = styled.div({
 });
 
 export const Question = styled.div({
+  cursor: "pointer",
   display: "inline-block",
   marginLeft: "10px",
   marginRight: "192px",
@@ -53,6 +54,7 @@ export const ModalContainer = styled.div({
 });
 
 export const ModalQuestion = styled.div`
+  display: flex;
   width: 338px;
   height: 16px;
   font-family: Montserrat;
@@ -92,7 +94,7 @@ export const ModalInput = styled.textarea`
   letter-spacing: 0.25px;
   background-color: transparent;
   width: 630px;
-  height: 60px;
+  height: ${props => props.height};
   outline-color: transparent;
   border: none;
   margin-left: 10px;
@@ -100,7 +102,14 @@ export const ModalInput = styled.textarea`
   resize: none;
 `;
 
+export const ModalButtonContainer = styled.div`
+  width: 710px;
+  height: 68px;
+  border-radius: 4px;
+`;
+
 export const ModalButton = styled.button`
+  cursor: pointer;
   width: 114px;
   height: 36px;
   margin-top: ${props => props.marginTop};
@@ -110,8 +119,52 @@ export const ModalButton = styled.button`
   background-color: ${props => props.color};
 `;
 
-export const ModalButtonContainer = styled.div`
-  width: 710px;
-  height: 68px;
-  border-radius: 4px;
+export const ModalButtonLabel = styled.label`
+  cursor: pointer;
+  width: 83px;
+  height: 16px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: 1.25px;
+  color: ${props => props.color};
+`;
+
+export const ModalUploadBox = styled.div`
+  margin-left: 30px;
+  margin-top: 5px;
+  background-color: rgba(255, 255, 255, 0.12);
+  width: 80px;
+  height: 80px;
+  border: solid 1px rgba(255, 255, 255, 0.12);
+`;
+
+export const ModalUploadBoxPlus = styled.div`
+  margin-left: 25px;
+  margin-top: 10px;
+  width: 18.7px;
+  height: 18.7px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 50px;
+`;
+
+export const ModalCloseButton = styled.div`
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 25px;
+  margin-top: 10px;
+  width: 18.7px;
+  height: 18.7px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  margin-left: 680px;
+`;
+
+export const Icon = styled.img`
+  display: flex;
+  width: 23px;
+  height: auto;
 `;

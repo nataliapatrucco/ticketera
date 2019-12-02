@@ -1,5 +1,9 @@
 import { FETCH_OPEN, FETCH_PROCESSING, FETCH_MY_TICKETS } from "../constants";
-const initialState = { open: [], processing: [], userTickets: [] };
+const initialState = {
+  open: [],
+  processing: [],
+  userTickets: []
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
