@@ -16,10 +16,9 @@ import Modal from "../deleteTicket";
 
 export default ({ ticket }) => {
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
 
   const user = useSelector(state => state.user.user);
-
-  const dispatch = useDispatch();
 
   const handleAdd = (ticketId, statusId) => {
     dispatch(addParticipant(ticketId, statusId));
