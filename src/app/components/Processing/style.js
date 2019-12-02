@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 
+
+
 export const Contenedor = styled.div({
   backgroundColor: "#006088",
   display: "flex",
-  height: "201px",
   flexDirection: "column",
-  marginRight: "50px",
+  margin: '20px 50px 0 20px ',
   border: "1px solid #006e9e",
   color: "white",
   borderRadius: "4px"
@@ -18,21 +19,6 @@ export const Fotito = styled.img`
   border-radius: 100%;
   float: left;
 `;
-
-export const AssistantContainer = styled.div({
-  margin: "16px 13.4px 0 16px"
-});
-
-export const Assistant = styled.div({
-  fontFamily: "Montserrat",
-  fontWeight: "600",
-  fontSize: "14px",
-  lineHeight: "1.71",
-  letterSpacing: "0.1px",
-  opacity: "90%",
-  width: "234.px",
-  height: "24px"
-});
 
 export const Carita = styled.img({
   display: 'inline-block',
@@ -54,6 +40,23 @@ export const NoQuestion = styled.div({
   height: '40px',
   margin: '16px 16px 16px 0'
 })
+
+
+
+export const AssistantContainer = styled.div({
+  margin: "16px 13.4px 0 16px"
+});
+
+export const Assistant = styled.div({
+  fontFamily: "Montserrat",
+  fontWeight: "600",
+  fontSize: "14px",
+  lineHeight: "1.71",
+  letterSpacing: "0.1px",
+  opacity: "90%",
+  width: "234.px",
+  height: "24px"
+});
 
 export const UbicacionContainer = styled.div({
   margin: "0 19.8px 12px 52.9px"
