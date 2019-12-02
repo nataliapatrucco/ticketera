@@ -110,7 +110,8 @@ export const TicketContent = styled.p({
   fontFamily: "Montserrat",
   fontWeight: "400",
   lineHeight: "20px",
-  letterSpacing: "0.25px"
+  letterSpacing: "0.25px",
+  overflowWrap: "break-word"
 });
 
 export const TicketLink = styled.p({
@@ -210,4 +211,16 @@ export const PartipantsImg = styled.img({
   height: "24px",
   borderRadius: "50px",
   margin: "10px"
+});
+
+//MODAL
+
+export const Modal = styled.div({
+  backgroundColor: "#fff",
+  borderRadius: 5,
+  maxWidth: 500,
+  minHeight: 300,
+  margin: "0 auto",
+  padding: 30,
+  wordWrap: "break-word"
 });

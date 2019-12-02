@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MakeQuestion from "../../../components/makeQuestion";
+import { MakeQuestion } from "../../../components/makeQuestion";
 import ProcessingHeader from "./ProcessingHeader";
 
 import Open from "../../../components/Open";
