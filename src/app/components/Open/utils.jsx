@@ -5,12 +5,15 @@ import {
   removeParticipant,
   deleteTicket
 } from "../../redux/actions/tickets";
-import { AddButton, AddIcon } from "./style";
+import { AddButton, AddIcon, Text, Container } from "./style";
+
+import { Modal } from "./modal";
 
 export default ({ ticket }) => {
-  const user = useSelector(state => state.user.user);
-
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
+
+  const user = useSelector(state => state.user.user);
 
   const handleAdd = (ticketId, statusId) => {
     dispatch(addParticipant(ticketId, statusId));
@@ -24,31 +27,41 @@ export default ({ ticket }) => {
   };
 
   return (
-    <AddButton>
-      {user.id === ticket.authorId ? (
-        <>
-          <AddIcon src="/images/add.png" alt="" />
-          ELIMINAR PREGUNTA
-        </>
-      ) : checkParticipants(ticket.users) ? (
-        <>
-          <AddIcon
-            src="/images/add.png"
-            alt=""
-            onClick={() => handleRemove(ticket.id, ticket.statusId)}
-          ></AddIcon>
-          ME INTERESA
-        </>
-      ) : (
-        <>
-          <AddIcon
-            src="/images/add.png"
-            alt=""
-            onClick={() => handleAdd(ticket.id, ticket.statusId)}
-          ></AddIcon>
-          ME INTERESA
-        </>
-      )}
-    </AddButton>
+    <Container>
+      <AddButton>
+        {user.id === ticket.authorId ? (
+          <>
+            <AddIcon
+              src="/images/add.png"
+              alt=""
+              onClick={() => setShowModal(!showModal)}
+            />
+            <Text onClick={() => setShowModal(!showModal)}>
+              ELIMINAR PREGUNTA
+            </Text>
+          </>
+        ) : checkParticipants(ticket.users) ? (
+          <>
+            <AddIcon
+              src="/images/add.png"
+              alt=""
+              onClick={() => handleRemove(ticket.id, ticket.statusId)}
+            ></AddIcon>
+            ME INTERESA
+          </>
+        ) : (
+          <>
+            <AddIcon
+              src="/images/add.png"
+              alt=""
+              onClick={() => handleAdd(ticket.id, ticket.statusId)}
+            ></AddIcon>
+            ME INTERESA
+          </>
+        )}
+      </AddButton>
+
+      {showModal && <Modal />}
+    </Container>
   );
 };

@@ -35,7 +35,7 @@ export const MakeQuestion = props => {
   };
 
   const handleSubmit = ticket => {
-    createNewTicket(ticket).then(() => props.history.push("/"));
+    createNewTicket(ticket); //.then(() => props.history.push("/"));
   };
 
   return (

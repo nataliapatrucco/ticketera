@@ -214,13 +214,3 @@ export const PartipantsImg = styled.img({
 });
 
 //MODAL
-
-export const Modal = styled.div({
-  backgroundColor: "#fff",
-  borderRadius: 5,
-  maxWidth: 500,
-  minHeight: 300,
-  margin: "0 auto",
-  padding: 30,
-  wordWrap: "break-word"
-});
