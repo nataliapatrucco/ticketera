@@ -6,6 +6,21 @@ export const QuestionStatusContainer = styled.div ({
     float: 'left'
 })
 
+export const QuestionStatus = styled.div`
+    display: inline-block;
+    border-radius: 4px;
+    padding: 6px 16px;
+    margin-right: 16px;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: ${props => props.selected ? 'rgba(255, 255, 255, 0.87)' : 'rgba(255, 255, 255, 0.38)'};
+    background-color: ${props => props.selected ? 'rgba(255, 255, 255, 0.08)' : '#071c34' } ;
+`
+
 // export const QuestionStatus = styled.div({
 //     display: 'inline-block',
 //     borderRadius: '4px',
@@ -28,19 +43,3 @@ export const QuestionStatusContainer = styled.div ({
 //     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     
 // }
-
-
-export const QuestionStatus = styled.div`
-    display: inline-block;
-    border-radius: 4px;
-    padding: 6px 16px;
-    margin-right: 16px;
-    font-family: Montserrat;
-    font-size: 18px;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: 2px;
-    font-weight: 500;
-    color: ${props => props.selected ? 'rgba(255, 255, 255, 0.87)' : 'rgba(255, 255, 255, 0.38)'};
-    background-color: ${props => props.selected ? 'rgba(255, 255, 255, 0.08)' : '#071c34' } ;
-`

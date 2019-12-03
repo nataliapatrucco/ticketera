@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserTickets } from "../../redux/actions/tickets";
 import { QuestionStatus, QuestionStatusContainer } from './style'
+import Open from '../Open/index'
+
 
 export default ({match}) => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("pendiente")
-
+  
   useEffect(() => {
     dispatch(fetchUserTickets());
-  }, []);
-
+  }, [tickets]);
+  
   const tickets = useSelector(state => state.tickets.userTickets);
 
   return (
@@ -31,6 +33,9 @@ export default ({match}) => {
       RECHAZADAS
     </QuestionStatus>
     </Link>
+    {tickets.map(ticket => (
+    <Open ticket={ticket}/>
+    ))}
   </QuestionStatusContainer>
   ) 
 };
