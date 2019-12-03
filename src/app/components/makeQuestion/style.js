@@ -84,7 +84,7 @@ export const ModalInputContainer = styled.div`
 
 export const ModalInput = styled.textarea`
   display: flex;
-  color: rgba(255, 255, 255, 0.12);
+  color: white;
   font-family: Montserrat;
   font-size: ${props => props.fontSize};
   font-weight: 500;

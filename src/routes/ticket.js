@@ -12,7 +12,8 @@ const {
   deleteTicket,
   addParticipant,
   removeParticipant,
-  userTickets
+  userTickets,
+  fetchTicket
 } = require("../resolvers/ticket-Resolvers");
 
 const { isLoggedIn, isAdmin, checkUser } = require("../routes/middlewares");
@@ -26,7 +27,11 @@ router.get("/search", isLoggedIn, fetchByTitleTag);
 router.post("/", isLoggedIn, createTicket);
 
 // Buscar los tickets por status
-router.get("/status/:statusId", fetchStatus);
+router.get("/status/:statusId", isLoggedIn, fetchStatus);
+
+// Traer un ticket
+
+router.get("/:slug", isLoggedIn, fetchTicket);
 
 //Agregar participante
 router.post("/participant", isLoggedIn, addParticipant);

@@ -1,5 +1,6 @@
 const S = require("sequelize");
 const db = require("../index");
+const Slugify = require("sequelize-slugify");
 
 class Ticket extends S.Model {}
 
@@ -14,9 +15,18 @@ Ticket.init(
     },
     images: {
       type: S.ARRAY(S.STRING)
+    },
+    slug: {
+      type: S.STRING,
+      unique: true
     }
   },
 
   { sequelize: db, modelName: "ticket" }
 );
+
+Slugify.slugifyModel(Ticket, {
+  source: ["title"]
+});
+
 module.exports = Ticket;
