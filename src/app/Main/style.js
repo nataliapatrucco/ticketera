@@ -23,5 +23,6 @@ export const SideDiv = styled.div({
 export const MiddleContainer = styled.div({
   display: "flex",
   backgroundColor: "#091e35",
-  paddingRight: "30px"
+  paddingRight: "30px", 
+  height:'100vh'
 });
