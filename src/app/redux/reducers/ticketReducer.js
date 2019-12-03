@@ -2,7 +2,8 @@ import {
   FETCH_OPEN,
   FETCH_PROCESSING,
   FETCH_MY_TICKETS,
-  FETCH_TICKET
+  FETCH_TICKET,
+  DELETE_TICKET
 } from "../constants";
 const initialState = {
   open: [],

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import {
   ModalContainer,
   ModalQuestion,
@@ -6,12 +6,15 @@ import {
   DeleteButton,
   CancelButton
 } from "./style";
-import { deleteTicket } from "../../redux/actions/tickets";
+import { deleteTicket, fetchOpen } from "../../redux/actions/tickets";
 import { useDispatch, useSelector } from "react-redux";
+import { ModalBackground } from "../../components/modalBackground/style";
 
-export default () => {
+export default ({ ticket, setShowModal, showModal }) => {
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    dispatch(fetchOpen());
+  });
   return (
     <ModalBackground>
       <ModalContainer>
@@ -19,7 +22,8 @@ export default () => {
         <ButtonContainer>
           <DeleteButton
             onClick={() => {
-              setShowModal(!showModal), dispatch(deleteTicket(ticket.id));
+              setShowModal(!showModal),
+                dispatch(deleteTicket(ticket.id), dispatch(fetchOpen()));
             }}
           >
             ELIMINAR
