@@ -25,7 +25,8 @@ export const MakeQuestion = props => {
   const [showModal, setShowModal] = useState(false);
   const [state, setState] = useState({
     title: "",
-    content: ""
+    content: "",
+    image: ""
   });
 
   const handleChange = e => {
@@ -41,6 +42,15 @@ export const MakeQuestion = props => {
     createNewTicket(ticket)
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
+  };
+
+  const handleUpload = e => {
+    let files = e.target.files;
+    let reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = e => {
+      const formData = e.target.result;
+    };
   };
 
   return (
@@ -88,7 +98,11 @@ export const MakeQuestion = props => {
               Adjuntar archivos
             </ModalQuestion>
             <ModalUploadBox>
-              <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
+              <ModalUploadBoxPlus
+                type="file"
+                name="image"
+                onChange={handleUpload}
+              ></ModalUploadBoxPlus>
             </ModalUploadBox>
             <ModalButtonContainer>
               <Link to="/ticket">
