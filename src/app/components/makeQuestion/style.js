@@ -100,6 +100,8 @@ export const ModalInput = styled.textarea`
   margin-left: 10px;
   margin-right: 10px;
   resize: none;
+  overflow: hidden;
+  outline: none;
 `;
 
 export const ModalButtonContainer = styled.div`
