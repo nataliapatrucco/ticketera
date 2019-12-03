@@ -14,6 +14,8 @@ import {
 } from "./style";
 import Modal from "../deleteTicket";
 
+import { Container } from "../deleteTicket/style";
+
 export default ({ ticket }) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
@@ -32,28 +34,36 @@ export default ({ ticket }) => {
   };
 
   return (
-    <AddButton>
-      {user.id === ticket.authorId ? (
-        <ButtonDelete onClick={() => setShowModal(true)}>
-          <AddIcon src="/images/delete-resting.svg" alt="" />
-          ELIMINAR PREGUNTA
-        </ButtonDelete>
-      ) : checkParticipants(ticket.users) ? (
-        <ButtonParticipants
-          onClick={() => handleRemove(ticket.id, ticket.statusId)}
-        >
-          <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
-          ME INTERESA
-        </ButtonParticipants>
-      ) : (
-        <ButtonAddParticipants
-          onClick={() => handleAdd(ticket.id, ticket.statusId)}
-        >
-          <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
-          ME INTERESA
-        </ButtonAddParticipants>
-      )}
-      {showModal && <Modal ticket={ticket} />}
-    </AddButton>
+    <Container>
+      <AddButton>
+        {user.id === ticket.authorId ? (
+          <ButtonDelete onClick={() => setShowModal(!showModal)}>
+            <AddIcon src="/images/delete-resting.svg" alt="" />
+            ELIMINAR PREGUNTA
+          </ButtonDelete>
+        ) : checkParticipants(ticket.users) ? (
+          <ButtonParticipants
+            onClick={() => handleRemove(ticket.id, ticket.statusId)}
+          >
+            <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
+            ME INTERESA
+          </ButtonParticipants>
+        ) : (
+          <ButtonAddParticipants
+            onClick={() => handleAdd(ticket.id, ticket.statusId)}
+          >
+            <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
+            ME INTERESA
+          </ButtonAddParticipants>
+        )}
+      </AddButton>
+      {showModal ? (
+        <Modal
+          ticket={ticket}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      ) : null}
+    </Container>
   );
 };
