@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Session } from "../session/index";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import { Navbar } from "../containers/Navbar/index";
 import Sidebar from "../components/sidebar";
 import Processing from "../containers/dashboard/index";
@@ -13,11 +13,14 @@ import SingleContainer from "../containers/singleTicket";
 
 export default props => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const user = useSelector(state => state.user.user);
 
   useEffect(() => {
-    dispatch(fetchUser());
-  }, []);
+     dispatch(fetchUser());
+    if (!user.id ) { history.push('/')}  
+  },[]);
+  
   return (
     <HomeDiv>
       {!user.id ? (
@@ -32,7 +35,7 @@ export default props => {
             <MiddleContainer>
               <Switch>
                 <Route exact path="/" component={OpenContainer} />
-                <Route exact path="/userTickets" component={UserTickets} />
+                <Route path="/userTickets/:status" component={UserTickets} />
                 <Route exact path="/:slug" component={SingleContainer} />
               </Switch>
               <Processing />
