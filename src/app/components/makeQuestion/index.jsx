@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useSelector } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -19,7 +19,11 @@ import {
   Icon
 } from "./style";
 import { ModalBackground } from "../modalBackground/style";
-import { createNewTicket, fetchOpen } from "../../redux/actions/tickets";
+import {
+  createNewTicket,
+  fetchOpen,
+  createNewImage
+} from "../../redux/actions/tickets";
 
 export const MakeQuestion = props => {
   const [showModal, setShowModal] = useState(false);
@@ -27,6 +31,7 @@ export const MakeQuestion = props => {
     title: "",
     content: ""
   });
+  const [image, setImage] = useState(null);
 
   const handleChange = e => {
     setState({
@@ -39,8 +44,16 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
+      .then(ticket => createNewImage(ticket.data.id, image))
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
+  };
+
+  const handleImageChange = e => {
+    const files = e.target.files;
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    setImage(formData);
   };
 
   return (
@@ -88,7 +101,13 @@ export const MakeQuestion = props => {
               Adjuntar archivos
             </ModalQuestion>
             <ModalUploadBox>
-              <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
+              <ModalUploadBoxPlus
+                type="file"
+                id="file-uploader"
+                name="image"
+                accept="image/*"
+                onChange={handleImageChange}
+              ></ModalUploadBoxPlus>
             </ModalUploadBox>
             <ModalButtonContainer>
               <ModalButton
@@ -97,6 +116,7 @@ export const MakeQuestion = props => {
                 marginLeft="450px"
                 type="submit"
                 onClick={e => {
+                  //handleUpload();
                   e.preventDefault();
                   handleSubmit({
                     title: state.title,
@@ -106,12 +126,15 @@ export const MakeQuestion = props => {
               >
                 <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
               </ModalButton>
+
               <ModalButton
                 color="transparent"
                 border="solid 1px rgba(255, 255, 255, 0.12);"
                 marginTop="30px"
                 marginLeft="10px"
-                onClick={() => setShowModal(!showModal)}
+                onClick={() => {
+                  setShowModal(!showModal);
+                }}
               >
                 <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
               </ModalButton>

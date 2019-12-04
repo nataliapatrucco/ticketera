@@ -88,3 +88,11 @@ export const fetchTicket = slug => dispatch =>
 
 export const answerTicket = (id, { description, status }) => dispatch =>
   axios.put(`/api/status/${id}`, { description, status });
+
+export const createNewImage = (id, image) =>
+  axios
+    .put(`/api/ticket/images/test/${id}`, image, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
+    .then(() => console.log("all good"))
+    .catch(err => console.log("something wrong", err));
