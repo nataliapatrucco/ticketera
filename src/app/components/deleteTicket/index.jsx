@@ -12,20 +12,17 @@ import { ModalBackground } from "../../components/modalBackground/style";
 
 export default ({ ticket, setShowModal, showModal }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchOpen());
-  });
+
+  const handleClick = ticket => {
+    dispatch(deleteTicket(ticket.id)).then(() => dispatch(fetchOpen()));
+  };
+
   return (
     <ModalBackground>
       <ModalContainer>
         <ModalQuestion>¿Querés eliminar esta pregunta?</ModalQuestion>
         <ButtonContainer>
-          <DeleteButton
-            onClick={() => {
-              setShowModal(!showModal),
-                dispatch(deleteTicket(ticket.id), dispatch(fetchOpen()));
-            }}
-          >
+          <DeleteButton ticket={ticket} onClick={() => handleClick(ticket)}>
             ELIMINAR
           </DeleteButton>
           <CancelButton onClick={() => setShowModal(!showModal)}>
