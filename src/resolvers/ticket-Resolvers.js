@@ -212,7 +212,9 @@ const fetchTicket = (req, res) => {
 };
 
 const createImage = (req, res) => {
-  Ticket.update({ image: req.body, where: { id: req.params.id } });
+  Ticket.findByPk(req.params.id).then(ticket =>
+    ticket.update({ image: req.body.image })
+  );
 };
 
 module.exports = {

@@ -41,7 +41,7 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
-      .then(ticket => handleUpload(ticket.data.id, image))
+      .then(ticket => handleUpload(ticket.data.id))
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
   };

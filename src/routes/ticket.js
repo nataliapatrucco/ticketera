@@ -74,7 +74,7 @@ router.put("/:ticketId/:commentId", isAdmin, editComment);
 // Borrar un ticket
 router.delete("/:id", isLoggedIn, checkUser, deleteTicket);
 
-
+//Agregar imagen
 router.put("/images/test/:id", isLoggedIn, upload.any(), createImage);
 
 module.exports = router;
