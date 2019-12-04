@@ -95,7 +95,6 @@ export const SessionText = styled.p(
     fontStyle: "normal",
     letterSpacing: "0.4px",
     marginRight: "15px"
-    /*  borderBottom:"3px dashed red" */
   },
   props => ({
     color: props.color,
@@ -133,12 +132,37 @@ export const ViewLogo = styled.div({
   backgroundBlendMode: "multiply",
   backgroundImage: 'url("/images/logo2.png")',
   backgroundPosition: "center",
-  backgroundSize: "cover"
+  backgroundSize: "cover",
+  
 });
 
-export const ViewIcon = styled.img({
+export const ViewIconErr = styled.div({
   width: "24px",
   height: "24px",
   backgroundBlendMode: "multiply",
-  backgroundImage: 'url("/images/error_24px_red.svg")'
+  backgroundImage: 'url("/images/error_24px_red.svg")',
+  backgroundRepeat:"no-repeat",
+  backgroundPosition:"center",
+  marginRight:"10px"
+});
+
+export const ViewIconPass= styled.div({
+  width: "24px",
+  height: "24px",
+  backgroundBlendMode: "multiply",
+  backgroundImage: 'url("/images/icon-action-visibility-24-px.png")',
+  backgroundRepeat:"no-repeat",
+  backgroundPosition:"center",
+  marginRight:"10px"
+});
+
+
+export const ViewIconPassOff= styled.div({
+  width: "24px",
+  height: "24px",
+  backgroundBlendMode: "multiply",
+  backgroundImage: 'url("/images/visibility-off-24-px.png")',
+  backgroundRepeat:"no-repeat",
+  backgroundPosition:"center",
+  marginRight:"10px"
 });

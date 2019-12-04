@@ -39,9 +39,9 @@ export default ({
         input={email}
         handleChange={handleChange}
         onBlur={handleBlur}
+        errorMessage={errorMessage}
       />
       {errorMessage  ? (
-       
           <SessionText color={"red"} marginLeft={"15px"} fontStyle={"bold"}>{errorMessage}</SessionText>
         
       ):null}
@@ -51,6 +51,8 @@ export default ({
         type={passType || "password"}
         input={password}
         handleChange={handleChange}
+        togglePassword={togglePassword}
+        passType={passType}
       />
       <ButtonS>REGISTRARSE</ButtonS>
       <SessionContainer>
