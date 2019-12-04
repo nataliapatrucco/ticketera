@@ -4,20 +4,10 @@
 
 body {
   margin: 0;
+  /* overflow:hidden;  */
   display: flex;
 
 }
-
-::placeholder {
-  padding-left: 5px;
-}
-/* input{
-  padding-left: 16px;
-} */
-
-a {
-  text-decoration: none;
-} 
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -32,10 +22,9 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-
-::placeholder {
-  padding-left: 10px;
-}
+/* ::placeholder {
+  padding-left: 4px;
+} */
 
 a {
   text-decoration: none !important;
