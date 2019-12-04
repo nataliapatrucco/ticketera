@@ -162,7 +162,7 @@ export const AddIcon = styled.img({
   ":hover": {}
 });
 
-export const AddButton = styled.p({
+export const AddButton = styled.div({
   display: "flex",
   justifyContent: "space-around",
   alignItems: "center",

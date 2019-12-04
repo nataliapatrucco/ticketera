@@ -61,10 +61,19 @@ export const removeParticipant = (ticketId, statusId) => dispatch =>
       }
     });
 
+
+const groupByStatus = array =>
+  array.reduce((objectsByKeyValue, obj) => {
+    const value = obj['statusId'];
+    objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
+    return objectsByKeyValue;
+  }, {});
+
 export const fetchUserTickets = () => dispatch =>
   axios
     .get("/api/ticket/userTickets")
     .then(res => res.data)
+    .then(tickets => groupByStatus(tickets))
     .then(tickets => dispatch(setUserTickets(tickets)));
 
 export const deleteTicket = ticketId => dispatch =>

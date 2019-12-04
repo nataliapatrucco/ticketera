@@ -17,7 +17,7 @@ const isAdmin = function(req, res, next) {
 };
 
 const checkUser = function(req, res, next) {
-  Ticket.findByPk(req.params.ticketId).then(ticket => {
+  Ticket.findByPk(req.params.id).then(ticket => {
     if (
       (req.user.id === ticket.authorId && ticket.statusId === 1) ||
       req.user.isAdmin
