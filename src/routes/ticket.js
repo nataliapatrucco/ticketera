@@ -47,8 +47,10 @@ router.post("/", isLoggedIn, createTicket);
 // Buscar los tickets por status
 router.get("/status/:statusId", isLoggedIn, fetchStatus);
 
-// Traer un ticket
+//Traer mis tickets
+router.get("/userTickets", isLoggedIn, userTickets);
 
+// Traer un ticket
 router.get("/:slug", isLoggedIn, fetchTicket);
 
 //Agregar participante
@@ -72,8 +74,6 @@ router.put("/:ticketId/:commentId", isAdmin, editComment);
 // Borrar un ticket
 router.delete("/:id", isLoggedIn, checkUser, deleteTicket);
 
-//Traer mis tickets
-router.get("/userTickets", isLoggedIn, userTickets);
 
 router.put("/images/test/:id", isLoggedIn, upload.any(), createImage);
 

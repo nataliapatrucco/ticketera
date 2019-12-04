@@ -33,7 +33,7 @@ export default props => {
           <Title>DASHBOARD</Title>
         </TitleContainer>
       </Link>
-      <Link style={{ textDecoration: "none" }} to="/userTickets">
+      <Link style={{ textDecoration: "none" }} to="/userTickets/pending">
         <TitleContainer>
           <IconContainer>
             <Icon src="/images/pregunta.png" />
