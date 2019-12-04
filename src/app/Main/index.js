@@ -1,21 +1,26 @@
 import React, { useEffect } from "react";
 import { Session } from "../session/index";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import { Navbar } from "../containers/Navbar/index";
 import Sidebar from "../components/sidebar";
-import Dashboard from "../containers/dashboard/index";
+import Processing from "../containers/dashboard/index";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../redux/actions/user";
 import UserTickets from "../components/UserTickets";
-import { HomeDiv, Container, SideDiv, Section } from "./style";
+import { HomeDiv, Container, SideDiv, Section, MiddleContainer } from "./style";
+import OpenContainer from "../containers/dashboard/partials";
+import SingleContainer from "../containers/singleTicket";
 
 export default props => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const user = useSelector(state => state.user.user);
 
   useEffect(() => {
-    dispatch(fetchUser());
-  }, []);
+     dispatch(fetchUser());
+    if (!user.id ) { history.push('/')}  
+  },[]);
+  
   return (
     <HomeDiv>
       {!user.id ? (
@@ -27,11 +32,14 @@ export default props => {
           </SideDiv>
           <Section>
             <Navbar />
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/ticket/userTickets" component={UserTickets} />
-              {/* <Redirect from="/" to="/home" /> */}
-            </Switch>
+            <MiddleContainer>
+              <Switch>
+                <Route exact path="/" component={OpenContainer} />
+                <Route path="/userTickets/:status" component={UserTickets} />
+                <Route exact path="/:slug" component={SingleContainer} />
+              </Switch>
+              <Processing />
+            </MiddleContainer>
           </Section>
         </Container>
       )}

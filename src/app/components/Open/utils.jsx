@@ -5,12 +5,22 @@ import {
   removeParticipant,
   deleteTicket
 } from "../../redux/actions/tickets";
-import { AddButton, AddIcon } from "./style";
+import {
+  AddButton,
+  AddIcon,
+  ButtonParticipants,
+  ButtonDelete,
+  ButtonAddParticipants
+} from "./style";
+import Modal from "../deleteTicket";
+
+import { Container } from "../deleteTicket/style";
 
 export default ({ ticket }) => {
-  const user = useSelector(state => state.user.user);
-
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
+
+  const user = useSelector(state => state.user.user);
 
   const handleAdd = (ticketId, statusId) => {
     dispatch(addParticipant(ticketId, statusId));
@@ -24,31 +34,36 @@ export default ({ ticket }) => {
   };
 
   return (
-    <AddButton>
-      {user.id === ticket.authorId ? (
-        <>
-          <AddIcon src="/images/add.png" alt="" />
-          ELIMINAR PREGUNTA
-        </>
-      ) : checkParticipants(ticket.users) ? (
-        <>
-          <AddIcon
-            src="/images/add.png"
-            alt=""
+    <Container>
+      <AddButton>
+        {user.id === ticket.authorId ? (
+          <ButtonDelete onClick={() => setShowModal(!showModal)}>
+            <AddIcon src="/images/delete-resting.svg" alt="" />
+            ELIMINAR PREGUNTA
+          </ButtonDelete>
+        ) : checkParticipants(ticket.users) ? (
+          <ButtonParticipants
             onClick={() => handleRemove(ticket.id, ticket.statusId)}
-          ></AddIcon>
-          ME INTERESA
-        </>
-      ) : (
-        <>
-          <AddIcon
-            src="/images/add.png"
-            alt=""
+          >
+            <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
+            ME INTERESA
+          </ButtonParticipants>
+        ) : (
+          <ButtonAddParticipants
             onClick={() => handleAdd(ticket.id, ticket.statusId)}
-          ></AddIcon>
-          ME INTERESA
-        </>
-      )}
-    </AddButton>
+          >
+            <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
+            ME INTERESA
+          </ButtonAddParticipants>
+        )}
+      </AddButton>
+      {showModal ? (
+        <Modal
+          ticket={ticket}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      ) : null}
+    </Container>
   );
 };

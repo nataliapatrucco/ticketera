@@ -37,7 +37,8 @@ const fetchByTitleTag = (req, res) => {
 const fetchStatus = (req, res) => {
   Ticket.findAll({
     where: { statusId: req.params.statusId },
-    include: fullTicket
+    include: fullTicket,
+    order: [["id", "ASC"]]
   })
     .then(tickets => res.send(tickets))
     .catch(err => res.status(404).send(err));
@@ -63,7 +64,10 @@ const createTicket = (req, res) => {
             }).then(newTicket => res.status(201).send(newTicket))
           )
       )
-      .catch(err => res.status(404).send(err));
+      .catch(err => {
+        console.log(err);
+        res.status(404).send(err);
+      });
   } else {
     res.sendStatus(400);
   }
@@ -150,18 +154,15 @@ const addParticipant = (req, res) => {
 };
 
 const removeParticipant = (req, res) => {
-  console.log("GO THE request");
   Ticket.findOne({
     where: {
       id: req.body.ticketId
     }
   })
     .then(ticket => {
-      console.log("GO THE TICKET", ticket);
       return ticket.removeUser(req.user);
     })
     .then(() => {
-      console.log("REMOVED TICKET");
       Ticket.findAll({
         where: {
           statusId: req.body.statusId
@@ -199,6 +200,17 @@ const userTickets = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const fetchTicket = (req, res) => {
+  Ticket.findOne({
+    where: {
+      slug: req.params.slug
+    },
+    include: fullTicket
+  })
+    .then(ticket => res.status(200).send(ticket))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   removeTag,
   addTag,
@@ -211,5 +223,6 @@ module.exports = {
   fetchByTitleTag,
   addParticipant,
   removeParticipant,
-  userTickets
+  userTickets,
+  fetchTicket
 };

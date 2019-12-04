@@ -6,6 +6,7 @@ export const Section = styled.section({
 
 export const Header = styled.div({
   display: "flex",
+  justifyContent: "space-between",
   width: "700px",
   backgroundColor: "#006088",
   borderRadius: "4px",
@@ -22,6 +23,7 @@ export const Img = styled.img`
 
 export const AssistantContainer = styled.div({
   display: "flex",
+  flexDirection: "column",
   margin: "16px 13.4px 0 16px"
 });
 
@@ -29,6 +31,8 @@ export const Assistant = styled.div({
   fontFamily: "Montserrat",
   color: "rgba(255, 255, 255, 0.87)",
   fontWeight: "600",
+  display: "flex",
+  flexDirection: "row",
   fontSize: "14px",
   lineHeight: "24px",
   letterSpacing: "0.1px",
@@ -53,12 +57,31 @@ export const UbicacionIcon = styled.img({
 export const Ubicacion = styled.div({
   fontFamily: "Montserrat",
   fontSize: "12px",
+  color: "rgba(255, 255, 255, 0.87)",
   width: "214.2px",
   height: "16px",
-  margin: "0",
+  marginTop: "6px",
   letterSpacing: "0.4px",
-  lineHeight: "1.33",
-  fontWeight: "normal",
-  fontStretch: "normal",
-  fontStyle: "normal"
+  lineHeight: "1.33PX",
+  fontWeight: "400"
+});
+
+export const Icon = styled.h3({
+  // flexBasis: "5%",
+  color: "#ffffff",
+  opacity: "70%",
+  paddingLeft: "8px",
+  paddingRight: "10px",
+  paddingTop: "5px",
+  height: "30px",
+  width: "fit-content",
+  borderRadius: "6px",
+  border: "solid 1px rgba(255, 255, 255, 0.7)",
+  marginTop: "15px",
+  marginRight: "15px",
+  marginBottom: "5px",
+  fontFamily: "Montserrat",
+  fontWeight: "600",
+  fontSize: "14px",
+  letterSpacing: "0.75px"
 });

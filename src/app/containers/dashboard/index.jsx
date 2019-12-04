@@ -11,45 +11,33 @@ import {
   ProcessDiv
 } from "./style";
 
+import {
+  NoQuestion,
+  Carita,
+  Contenedor
+} from "../../components/Processing/style";
+
 export default () => {
   const dispatch = useDispatch();
-  const open = useSelector(state => state.tickets.open);
   const processing = useSelector(state => state.tickets.processing);
-  const [ticket, setTicket] = useState({});
-  const [individual, setIndividual] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchOpen());
     dispatch(fetchProcessing());
   }, []);
 
-  const getTicket = ticket => {
-    setTicket(ticket);
-  };
-
   return (
-    <Container>
-      <Open
-        open={open}
-        ticket={ticket}
-        getTicket={getTicket}
-        individual={individual}
-        setIndividual={setIndividual}
-      />
-
-      <ProcessDiv>
-        <ProcessTitle width={"266px"}>RESPONDIENDO AHORA!</ProcessTitle>
-
-        {processing.map(ticket => (
-          <ProcessTicket key={ticket.id}>
-            <Processing
-              ticket={ticket}
-              getTicket={getTicket}
-              setIndividual={setIndividual}
-            />
-          </ProcessTicket>
-        ))}
-      </ProcessDiv>
-    </Container>
+    <ProcessDiv>
+      <ProcessTitle width={"266px"}>RESPONDIENDO AHORA!</ProcessTitle>
+      {processing.length ? (
+        processing.map(ticket => <Processing key={ticket.id} ticket={ticket} />)
+      ) : (
+        <Contenedor>
+          <NoQuestion>
+            <Carita src="/images/nerd-emoji.png"></Carita>
+            No hay preguntas en este momento!
+          </NoQuestion>
+        </Contenedor>
+      )}
+    </ProcessDiv>
   );
 };

@@ -19,88 +19,78 @@ import {
   TicketContent,
   TicketLink,
   Buttons,
-  AddButton,
-  RemoveButton,
-  AddIcon,
   ShareButton,
   TicketFooter,
   PartipantsImg,
   Line
 } from "./style";
 
-export default function index({
-  ticket,
-  index,
-  getTicket,
-  setIndividual,
-  individual
-}) {
+export default function index({ ticket, index }) {
   const user = useSelector(state => state.user.user);
 
   const isHighlighted = ticket => {
     return (
       ticket.authorId === user.id ||
-      ticket.users.some(participant => participant.id === user.id)
+      (ticket.users &&
+        ticket.users.some(participant => participant.id === user.id))
     );
   };
 
-  const date = moment(ticket.createdAt);
+  const date = moment(ticket.createdAt).calendar();
   return (
     <Ticket isHighlighted={isHighlighted(ticket)}>
-      <Header>
-        <Img src="/images/perfil.jpeg" alt="foto usuario" />
-        <Author>
-          <AuthorName>
-            {ticket.author.name} {ticket.author.lastname}
-          </AuthorName>
-          <TicketDate>{`${date.format("dddd")} a las ${date.format(
-            "HH:mm a"
-          )}`}</TicketDate>
-        </Author>
+      {ticket.author && (
+        <>
+          <Header>
+            <Img src="/images/perfil.jpeg" alt="foto usuario" />
+            <Author>
+              <AuthorName>
+                {ticket.author.name} {ticket.author.lastname}
+              </AuthorName>
+              <TicketDate>{`Preguntó ${date}`}</TicketDate>
+            </Author>
 
-        {ticket.statusId === 1 && individual ? (
-          <Icon>PENDIENTE</Icon>
-        ) : (
-          <Icon>#{index}</Icon>
-        )}
-      </Header>
-      <Body>
-        <TicketTitle
-          onClick={() => {
-            getTicket(ticket);
-            setIndividual(true);
-          }}
-        >
-          <strong>{ticket.title}</strong>
-        </TicketTitle>
-        {ticket.content && ticket.content.length > 140 ? (
-          <div>
-            <TicketContent>{ticket.content.slice(0, 140)} ...</TicketContent>
-
-            <TicketLink
-              onClick={() => {
-                getTicket(ticket);
-                setIndividual(true);
-              }}
-            >
-              Seguir leyendo
-            </TicketLink>
-          </div>
-        ) : (
-          <TicketContent> {ticket.content}</TicketContent>
-        )}
-      </Body>
-      <Line />
-      <TicketFooter>
-        <Buttons>
-          <SuperButton ticket={ticket} />
-          <ShareButton>COMPARTIR</ShareButton>
-        </Buttons>
-        <PartipantsImg
-          src="/images/perfil.jpeg"
-          alt="fotos participantes"
-        ></PartipantsImg>
-      </TicketFooter>
+            {!index && ticket.statusId === 2 ? (
+              ""
+            ) : !index && ticket.statusId === 1 ? (
+              <Icon>PENDIENTE</Icon>
+            ) : (
+              <Icon>#{index}</Icon>
+            )}
+          </Header>
+          <Body>
+            <Link to={`/${ticket.slug}`}>
+              <TicketTitle>
+                <strong>{ticket.title}</strong>
+              </TicketTitle>
+            </Link>
+            {ticket.content && ticket.content.length > 140 ? (
+              <div>
+                <TicketContent>
+                  {" "}
+                  {ticket.content.slice(0, 140)} ...
+                </TicketContent>
+                <Link to={`/${ticket.slug}`}>
+                  <TicketLink>Seguir leyendo</TicketLink>
+                </Link>
+              </div>
+            ) : (
+              <TicketContent> {ticket.content}</TicketContent>
+            )}
+          </Body>
+          <Line />
+          <TicketFooter>
+            <Buttons>
+              <SuperButton ticket={ticket} />
+              <ShareButton>COMPARTIR</ShareButton>
+            </Buttons>
+            <PartipantsImg
+              src="/images/perfil.jpeg"
+              alt="fotos participantes"
+            ></PartipantsImg>
+          </TicketFooter>
+        </>
+      )}
     </Ticket>
   );
 }

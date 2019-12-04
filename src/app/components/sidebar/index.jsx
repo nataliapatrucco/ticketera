@@ -7,7 +7,7 @@ import {
   Title,
   Icon,
   Section,
-  IconContainer,
+  IconContainer
 } from "./style";
 
 import { Link } from "react-router-dom";
@@ -16,38 +16,39 @@ export default props => {
   return (
     <Container>
       <Header>
-        {/* <LogoContainer> */}
-          <P5 src="/images/plataforma.png" />
+        <Link to="/">
+          <P5 src="/images/logo2.png" />
+        </Link>
         {/* </LogoContainer> */}
       </Header>
       {/* <br />
       <br /> */}
 
-    {/* <Section>   */}
-        <Link style={{ textDecoration: "none" }} to="/home">
-          <TitleContainer>
-            <IconContainer>
-              <Icon src="/images/salpicadero.png" />
-            </IconContainer>
-            <Title>DASHBOARD</Title>
-          </TitleContainer>
-        </Link>
-        <Link style={{ textDecoration: "none" }} to="/devpedia">
-          <TitleContainer>
-            <IconContainer>
-              <Icon src="/images/pregunta.png" />
-            </IconContainer>
-              <Title>MIS PREGUNTAS</Title>
-          </TitleContainer>
-        </Link>
-        <Link style={{ textDecoration: "none" }} to="ticket/userTickets">
-          <TitleContainer>
-            <IconContainer>
-              <Icon src="/images/codificacion.png" />
-            </IconContainer>
-            <Title>DEVPEDIA</Title>
-          </TitleContainer>
-        </Link>
+      {/* <Section>   */}
+      <Link style={{ textDecoration: "none" }} to="/">
+        <TitleContainer>
+          <IconContainer>
+            <Icon src="/images/salpicadero.png" />
+          </IconContainer>
+          <Title>DASHBOARD</Title>
+        </TitleContainer>
+      </Link>
+      <Link style={{ textDecoration: "none" }} to="/userTickets/pending">
+        <TitleContainer>
+          <IconContainer>
+            <Icon src="/images/pregunta.png" />
+          </IconContainer>
+          <Title>MIS PREGUNTAS</Title>
+        </TitleContainer>
+      </Link>
+      <Link style={{ textDecoration: "none" }} to="/devpedia">
+        <TitleContainer>
+          <IconContainer>
+            <Icon src="/images/codificacion.png" />
+          </IconContainer>
+          <Title>DEVPEDIA</Title>
+        </TitleContainer>
+      </Link>
       {/* </Section> */}
     </Container>
   );

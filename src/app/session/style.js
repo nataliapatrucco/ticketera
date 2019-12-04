@@ -2,8 +2,10 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
+  width: "100vw",
+  height: "100vh",
   background: "#00172e",
-  /* position: 'fixed'  */
+  position: "fixed"
 });
 
 export const RegisterContainer = styled.div({
@@ -11,9 +13,9 @@ export const RegisterContainer = styled.div({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  width: "640px",
-  height: "780px",
-  overflow: "hidden"
+  width: "44,4%",
+  marginLeft: "10.7%"
+  // height: "780px"
 });
 
 export const RegisterTitle = styled.h1({
@@ -35,8 +37,8 @@ export const ViewContainer = styled.div({
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-  width: "800px",
-  height: "780px",
+  width: "55.6%",
+  // height: "780px",
   backgroundBlendMode: "multiply",
   backgroundImage: 'url("/images/view.jpg")',
   backgroundPosition: "center",
@@ -69,18 +71,19 @@ export const ViewText = styled.p({
   color: "#ffffff"
 });
 
-export const SessionContainer = styled.div({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  marginTop: "25px"
-},
-props => ({
-  flexDirection:props.flexDirection,
-  alignItems: props.alignItems,
-  marginTop:props.marginTop,
-
-}));
+export const SessionContainer = styled.div(
+  {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: "25px"
+  },
+  props => ({
+    flexDirection: props.flexDirection,
+    alignItems: props.alignItems,
+    marginTop: props.marginTop
+  })
+);
 
 export const SessionText = styled.p(
   {
@@ -95,11 +98,11 @@ export const SessionText = styled.p(
   },
   props => ({
     color: props.color,
-    textDecoration:props.textDecoration,
-    marginLeft:props.marginLeft,
-    fontStyle:props.fontStyle,
-    fontSize:props.fontSize,
-    borderBottom:props.borderBottom
+    textDecoration: props.textDecoration,
+    marginLeft: props.marginLeft,
+    fontStyle: props.fontStyle,
+    fontSize: props.fontSize,
+    borderBottom: props.borderBottom
   })
 );
 
@@ -121,10 +124,9 @@ export const ButtonS = styled.button({
   marginTop: "20px"
 });
 
-
 export const ViewLogo = styled.div({
-  position:"fixed",
-  top:"80px",  
+  position: "fixed",
+  top: "80px",
   width: "230px",
   height: "50px",
   backgroundBlendMode: "multiply",

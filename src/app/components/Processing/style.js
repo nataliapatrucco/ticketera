@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 
+
+
 export const Contenedor = styled.div({
   backgroundColor: "#006088",
   display: "flex",
-  height: "201px",
   flexDirection: "column",
-  marginRight: "50px",
+  margin: '20px 50px 0 20px ',
   border: "1px solid #006e9e",
   color: "white",
   borderRadius: "4px"
@@ -18,6 +19,29 @@ export const Fotito = styled.img`
   border-radius: 100%;
   float: left;
 `;
+
+export const Carita = styled.img({
+  display: 'inline-block',
+  width: '40px',
+  height: '40px',
+  float: 'left',
+  margin: '0 16px 0 16px'
+})
+
+export const NoQuestion = styled.div({
+  display: 'inline-block',
+  fontFamily: 'Montserrat',
+  lineHeight: 1.43,
+  fontSize: '14px',
+  fontWeight: 600,
+  color: 'gba(255, 255, 255, 0.87)',
+  letterSpacing: '0.1px',
+  width: '252px',
+  height: '40px',
+  margin: '16px 16px 16px 0'
+})
+
+
 
 export const AssistantContainer = styled.div({
   margin: "16px 13.4px 0 16px"
@@ -112,61 +136,3 @@ export const Continue = styled.div({
   letterSpacing: "0.4px",
   margin: "0 160px 10px 8px"
 });
-
-// export const Ubicacion = styled.p({
-//   fontFamily: "Montserrat",
-//   fontWeight: "400",
-//   fontSize: "12px",
-//   margin: "0",
-//   letterSpacing: "0.4px"
-//   // width: "222.4px",
-//   // height: "16px",
-// });
-
-// export const TicketContainer = styled.div({
-//   backgroundColor: "#006e9e",
-//   width: "265px",
-//   // height: "116px",
-//   overfloWrap: "break-word",
-//   wordWrap: "break-word",
-//   hyphens: "auto",
-//   textAlign: "left",
-//   overflow: "hidden",
-//   marginLeft: "16px",
-//   marginTop: "12px",
-//   borderRadius: "4px",
-//   fontFamily: "Montserrat",
-//   fontWeight: "600",
-//   display: "inline-block",
-//   paddingLeft: "8px"
-// });
-
-// export const Ticket = styled.div({
-//   fontFamily: "Montserrat",
-//   fontWeight: "600",
-//   width: "239px",
-//   height: "48px",
-//   fontSize: "12px",
-//   fontWeight: "normal",
-//   fontStretch: "normal",
-//   fontStyle: "normal",
-//   lineHeight: "16px",
-//   letterSpacing: "0.4px",
-//   marginTop: "8px",
-//   marginRight: "18px",
-//   opacity: "90%"
-// });
-
-// export const AlumnContainer = styled.div({
-//   marginTop: "8px",
-//   marginLeft: "8px",
-//   width: "79.2%"
-// });
-
-// export const Alumn = styled.div({
-//   fontFamily: "Montserrat",
-//   fontWeight: "600",
-//   fontSize: "12px",
-//   opacity: "90%",
-//   margingLeft: "52px"
-// });

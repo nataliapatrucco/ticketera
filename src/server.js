@@ -19,7 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 
-db.sync({ force: false }).then(() =>
+db.sync({ force: false }).then(() => 
   app.listen(3000, function() {
     console.log("Example app listening on port 3000!");
   })
@@ -29,4 +29,3 @@ app.use("/api", require("./routes"));
 app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
-

@@ -1,9 +1,18 @@
 import axios from "axios";
-import { FETCH_OPEN, FETCH_PROCESSING, FETCH_MY_TICKETS } from "../constants";
+import {
+  FETCH_OPEN,
+  FETCH_PROCESSING,
+  FETCH_MY_TICKETS,
+  FETCH_TICKET
+} from "../constants";
 
 const setOpen = open => ({
   type: FETCH_OPEN,
   open
+});
+const setTicket = single => ({
+  type: FETCH_TICKET,
+  single
 });
 
 const setProcessing = processing => ({
@@ -52,11 +61,28 @@ export const removeParticipant = (ticketId, statusId) => dispatch =>
       }
     });
 
+
+const groupByStatus = array =>
+  array.reduce((objectsByKeyValue, obj) => {
+    const value = obj['statusId'];
+    objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
+    return objectsByKeyValue;
+  }, {});
+
 export const fetchUserTickets = () => dispatch =>
   axios
     .get("/api/ticket/userTickets")
     .then(res => res.data)
+    .then(tickets => groupByStatus(tickets))
     .then(tickets => dispatch(setUserTickets(tickets)));
 
 export const deleteTicket = ticketId => dispatch =>
   axios.delete(`/api/ticket/${ticketId}`);
+
+export const createNewTicket = ticket => axios.post("/api/ticket", ticket);
+
+export const fetchTicket = slug => dispatch =>
+  axios
+    .get(`/api/ticket/${slug}`)
+    .then(res => res.data)
+    .then(ticket => dispatch(setTicket(ticket)));
