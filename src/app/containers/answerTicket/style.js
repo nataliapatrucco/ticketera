@@ -88,8 +88,8 @@ export const ModalInput = styled.textarea`
 export const ButtonContainer = styled.div({
   display: "flex",
   flexDirection: "row",
-  justifyContent: "flex-end",
-  width: "400px",
+  justifyContent: "space-around",
+  width: "100%",
   height: "140px",
   backgroundColor: "#2e4054",
   paddingRight: "20px"
@@ -136,4 +136,15 @@ export const ModalButtonLabel = styled.label`
   line-height: 1.14;
   letter-spacing: 1.25px;
   color: ${props => props.color};
+`;
+
+export const ModalInputContainer = styled.div`
+  margin-top: 10px;
+  margin-left: 32px;
+  display: flex;
+  width: 646px;
+  height: ${props => props.height};
+  border-radius: 4px;
+  border: solid 1px rgba(255, 255, 255, 0.12);
+  background-color: transparent;
 `;

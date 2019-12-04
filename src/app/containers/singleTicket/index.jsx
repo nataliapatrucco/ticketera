@@ -10,10 +10,11 @@ export default props => {
   const ticket = useSelector(state => state.tickets.single);
   const dispatch = useDispatch();
   const open = useSelector(state => state.tickets.open);
+  const processing = useSelector(state => state.tickets.processing);
 
   useEffect(() => {
     dispatch(fetchTicket(props.match.params.slug));
-  }, [open]);
+  }, [open, processing, props.match.params.slug]);
 
   return (
     <Container>

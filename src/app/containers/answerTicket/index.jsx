@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { answerTicket } from "../../redux/actions/tickets";
+import {
+  answerTicket,
+  fetchOpen,
+  fetchProcessing
+} from "../../redux/actions/tickets";
 import {
   ModalBackground,
   ModalContainer,
@@ -11,7 +15,8 @@ import {
   ButtonContainer,
   StatusButton,
   ModalButton,
-  ModalButtonLabel
+  ModalButtonLabel,
+  ModalInputContainer
 } from "./style";
 
 export default ({ ticket, setShowAnswerModal }) => {
@@ -20,9 +25,9 @@ export default ({ ticket, setShowAnswerModal }) => {
   const [description, setDescription] = useState("");
 
   const handleSubmit = id => {
-    dispatch(answerTicket(id, { status, description })).then(() =>
-      setShowAnswerModal(false)
-    );
+    dispatch(answerTicket(id, { status, description }))
+      .then(() => dispatch(fetchOpen()))
+      .then(() => setShowAnswerModal(false));
   };
   const statuses = ["OPEN", "IN PROCESS", "ACCEPT", "REJECT"];
 
@@ -40,11 +45,12 @@ export default ({ ticket, setShowAnswerModal }) => {
             </StatusButton>
           ))}
         </ButtonContainer>
-
-        <ModalInput
-          name="description"
-          onChange={e => setDescription(e.target.value)}
-        ></ModalInput>
+        <ModalInputContainer>
+          <ModalInput
+            name="description"
+            onChange={e => setDescription(e.target.value)}
+          ></ModalInput>
+        </ModalInputContainer>
         <ButtonContainer>
           <ModalButton
             color="#62d0ff"
