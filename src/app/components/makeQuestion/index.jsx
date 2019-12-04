@@ -19,8 +19,11 @@ import {
   Icon
 } from "./style";
 import { ModalBackground } from "../modalBackground/style";
-import { createNewTicket, fetchOpen } from "../../redux/actions/tickets";
-import Axios from "axios";
+import {
+  createNewTicket,
+  fetchOpen,
+  createNewImage
+} from "../../redux/actions/tickets";
 
 export const MakeQuestion = props => {
   const [showModal, setShowModal] = useState(false);
@@ -41,31 +44,16 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
-      .then(ticket => handleUpload(ticket.data.id))
+      .then(ticket => createNewImage(ticket.data.id, image))
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
   };
 
   const handleImageChange = e => {
     const files = e.target.files;
-    // const reader = new FileReader();
-    // reader.readAsDataURL(files[0]);
-    // reader.onload = e => {
-    //   setImage(e.target.result);
-    // };
     const formData = new FormData();
-    const image = formData.append("file", files[0]);
-    console.log("---------------------------", image);
+    formData.append("file", files[0]);
     setImage(formData);
-  };
-
-  const handleUpload = id => {
-    console.log(image);
-    Axios.put(`/api/ticket/images/test/${id}`, image, {
-      headers: { "Content-Type": "multipart/form-data" }
-    })
-      .then(() => console.log("all good"))
-      .catch(err => console.log("something wrong", err));
   };
 
   return (

@@ -212,9 +212,9 @@ const fetchTicket = (req, res) => {
 };
 
 const createImage = (req, res) => {
-  Ticket.findByPk(req.params.id).then(ticket =>
-    ticket.update({ image: req.body.image })
-  );
+  Ticket.findByPk(req.params.id)
+    .then(ticket => ticket.update({ images: [req.files[0].filename] }))
+    .then(() => res.sendStatus(201));
 };
 
 module.exports = {
