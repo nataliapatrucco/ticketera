@@ -91,23 +91,21 @@ export const MakeQuestion = props => {
               <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
             </ModalUploadBox>
             <ModalButtonContainer>
-              <Link to="/ticket">
-                <ModalButton
-                  color="#62d0ff"
-                  marginTop="30px"
-                  marginLeft="450px"
-                  type="submit"
-                  onClick={e => {
-                    e.preventDefault();
-                    handleSubmit({
-                      title: state.title,
-                      content: state.content
-                    });
-                  }}
-                >
-                  <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
-                </ModalButton>
-              </Link>
+              <ModalButton
+                color="#62d0ff"
+                marginTop="30px"
+                marginLeft="450px"
+                type="submit"
+                onClick={e => {
+                  e.preventDefault();
+                  handleSubmit({
+                    title: state.title,
+                    content: state.content
+                  });
+                }}
+              >
+                <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
+              </ModalButton>
               <ModalButton
                 color="transparent"
                 border="solid 1px rgba(255, 255, 255, 0.12);"

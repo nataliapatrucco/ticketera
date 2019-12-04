@@ -61,10 +61,9 @@ export const removeParticipant = (ticketId, statusId) => dispatch =>
       }
     });
 
-
 const groupByStatus = array =>
   array.reduce((objectsByKeyValue, obj) => {
-    const value = obj['statusId'];
+    const value = obj["statusId"];
     objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
     return objectsByKeyValue;
   }, {});
@@ -86,3 +85,6 @@ export const fetchTicket = slug => dispatch =>
     .get(`/api/ticket/${slug}`)
     .then(res => res.data)
     .then(ticket => dispatch(setTicket(ticket)));
+
+export const answerTicket = (id, { description, status }) => dispatch =>
+  axios.put(`/api/status/${id}`, { description, status });
