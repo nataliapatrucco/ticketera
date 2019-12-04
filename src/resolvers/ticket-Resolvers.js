@@ -211,6 +211,10 @@ const fetchTicket = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const createImage = (req, res) => {
+  Ticket.update({ image: req.body, where: { id: req.params.id } });
+};
+
 module.exports = {
   removeTag,
   addTag,
@@ -224,5 +228,6 @@ module.exports = {
   addParticipant,
   removeParticipant,
   userTickets,
-  fetchTicket
+  fetchTicket,
+  createImage
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useSelector } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -20,14 +20,15 @@ import {
 } from "./style";
 import { ModalBackground } from "../modalBackground/style";
 import { createNewTicket, fetchOpen } from "../../redux/actions/tickets";
+import Axios from "axios";
 
 export const MakeQuestion = props => {
   const [showModal, setShowModal] = useState(false);
   const [state, setState] = useState({
     title: "",
-    content: "",
-    image: ""
+    content: ""
   });
+  const [image, setImage] = useState(null);
 
   const handleChange = e => {
     setState({
@@ -44,13 +45,24 @@ export const MakeQuestion = props => {
       .then(() => setShowModal(!showModal));
   };
 
-  const handleUpload = e => {
-    let files = e.target.files;
-    let reader = new FileReader();
-    reader.readAsDataURL(files[0]);
-    reader.onload = e => {
-      const formData = e.target.result;
-    };
+  const handleImageChange = e => {
+    const files = e.target.files;
+    // const reader = new FileReader();
+    // reader.readAsDataURL(files[0]);
+    // reader.onload = e => {
+    //   setImage(e.target.result);
+    // };
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    setImage(formData);
+  };
+
+  const handleUpload = id => {
+    Axios.post(`/api/images/test/${id}`, image, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
+      .then(() => console.log("all good"))
+      .catch(err => console.log("something wrong", err));
   };
 
   return (
@@ -100,8 +112,10 @@ export const MakeQuestion = props => {
             <ModalUploadBox>
               <ModalUploadBoxPlus
                 type="file"
+                id="file-uploader"
                 name="image"
-                onChange={handleUpload}
+                accept="image/*"
+                onChange={handleImageChange}
               ></ModalUploadBoxPlus>
             </ModalUploadBox>
             <ModalButtonContainer>
@@ -112,11 +126,12 @@ export const MakeQuestion = props => {
                   marginLeft="450px"
                   type="submit"
                   onClick={e => {
-                    e.preventDefault();
-                    handleSubmit({
-                      title: state.title,
-                      content: state.content
-                    });
+                    handleUpload();
+                    // e.preventDefault();
+                    // handleSubmit({
+                    //   title: state.title,
+                    //   content: state.content
+                    // });
                   }}
                 >
                   <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
@@ -127,7 +142,9 @@ export const MakeQuestion = props => {
                 border="solid 1px rgba(255, 255, 255, 0.12);"
                 marginTop="30px"
                 marginLeft="10px"
-                onClick={() => setShowModal(!showModal)}
+                onClick={() => {
+                  setShowModal(!showModal);
+                }}
               >
                 <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
               </ModalButton>
