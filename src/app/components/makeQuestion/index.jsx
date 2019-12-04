@@ -41,6 +41,7 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
+      .then(ticket => handleUpload(ticket.data.id, image))
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
   };
@@ -53,12 +54,14 @@ export const MakeQuestion = props => {
     //   setImage(e.target.result);
     // };
     const formData = new FormData();
-    formData.append("file", files[0]);
+    const image = formData.append("file", files[0]);
+    console.log("---------------------------", image);
     setImage(formData);
   };
 
   const handleUpload = id => {
-    Axios.post(`/api/images/test/${id}`, image, {
+    console.log(image);
+    Axios.put(`/api/ticket/images/test/${id}`, image, {
       headers: { "Content-Type": "multipart/form-data" }
     })
       .then(() => console.log("all good"))
@@ -126,12 +129,12 @@ export const MakeQuestion = props => {
                   marginLeft="450px"
                   type="submit"
                   onClick={e => {
-                    handleUpload();
-                    // e.preventDefault();
-                    // handleSubmit({
-                    //   title: state.title,
-                    //   content: state.content
-                    // });
+                    //handleUpload();
+                    e.preventDefault();
+                    handleSubmit({
+                      title: state.title,
+                      content: state.content
+                    });
                   }}
                 >
                   <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>

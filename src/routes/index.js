@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
   }
 });
 
-var upload = multer({ storage: storage });
+const upload = multer({ storage: storage });
 // END IMAGES
 
 router.use("/user", user);
@@ -27,10 +27,10 @@ router.use("/tags", tagsRouter);
 router.use("/status", statusRouter);
 
 // IMAGES
-router.post("/images/test/:id", upload.any(), (req, res) => {
-  console.log("FILES", req.files);
-  res.send("image loaded");
-});
+// router.post("/images/test/:id", upload.any(), (req, res) => {
+//   console.log("FILES", req.files);
+//   res.send("image loaded");
+// });
 // END IMAGES
 
 module.exports = router;
