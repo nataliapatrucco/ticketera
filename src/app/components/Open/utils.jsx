@@ -10,14 +10,17 @@ import {
   AddIcon,
   ButtonParticipants,
   ButtonDelete,
-  ButtonAddParticipants
+  ButtonAddParticipants,
+  ButtonAnswer
 } from "./style";
 import Modal from "../deleteTicket";
+import AnswerModal from "../../containers/answerTicket";
 
 import { Container } from "../deleteTicket/style";
 
 export default ({ ticket }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showAnswerModal, setShowAnswerModal] = useState(false);
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.user.user);
@@ -36,25 +39,40 @@ export default ({ ticket }) => {
   return (
     <Container>
       <AddButton>
-        {user.id === ticket.authorId ? (
-          <ButtonDelete onClick={() => setShowModal(!showModal)}>
-            <AddIcon src="/images/delete-resting.svg" alt="" />
-            ELIMINAR PREGUNTA
-          </ButtonDelete>
-        ) : checkParticipants(ticket.users) ? (
-          <ButtonParticipants
-            onClick={() => handleRemove(ticket.id, ticket.statusId)}
-          >
-            <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
-            ME INTERESA
-          </ButtonParticipants>
+        {!user.isAdmin ? (
+          <>
+            {user.id === ticket.authorId ? (
+              <ButtonDelete onClick={() => setShowModal(!showModal)}>
+                <AddIcon src="/images/delete-resting.svg" alt="" />
+                ELIMINAR PREGUNTA
+              </ButtonDelete>
+            ) : checkParticipants(ticket.users) ? (
+              <ButtonParticipants
+                onClick={() => handleRemove(ticket.id, ticket.statusId)}
+              >
+                <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
+                ME INTERESA
+              </ButtonParticipants>
+            ) : (
+              <ButtonAddParticipants
+                onClick={() => handleAdd(ticket.id, ticket.statusId)}
+              >
+                <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
+                ME INTERESA
+              </ButtonAddParticipants>
+            )}
+          </>
         ) : (
-          <ButtonAddParticipants
-            onClick={() => handleAdd(ticket.id, ticket.statusId)}
-          >
-            <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
-            ME INTERESA
-          </ButtonAddParticipants>
+          <>
+            <ButtonAnswer onClick={() => setShowAnswerModal(!showAnswerModal)}>
+              <AddIcon src="/images/answerIcon.svg" alt="" />
+              RESPONDER
+            </ButtonAnswer>
+            <ButtonDelete onClick={() => setShowModal(!showModal)}>
+              <AddIcon src="/images/delete-resting.svg" alt="" />
+              BORRAR PREGUNTA
+            </ButtonDelete>
+          </>
         )}
       </AddButton>
       {showModal ? (
@@ -63,6 +81,9 @@ export default ({ ticket }) => {
           showModal={showModal}
           setShowModal={setShowModal}
         />
+      ) : null}
+      {showAnswerModal ? (
+        <AnswerModal ticket={ticket} setShowAnswerModal={setShowAnswerModal} />
       ) : null}
     </Container>
   );
