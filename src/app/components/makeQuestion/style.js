@@ -144,13 +144,13 @@ export const ModalUploadBox = styled.div`
   border: solid 1px rgba(255, 255, 255, 0.12);
 `;
 
-export const ModalUploadBoxPlus = styled.div`
+export const ModalUploadBoxPlus = styled.input`
   margin-left: 25px;
   margin-top: 10px;
   width: 18.7px;
   height: 18.7px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 50px;
+  font-size: 20px;
 `;
 
 export const ModalCloseButton = styled.div`
