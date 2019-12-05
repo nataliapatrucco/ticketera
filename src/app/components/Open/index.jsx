@@ -2,9 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import SuperButton from "./utils";
+import { Link } from "react-router-dom";
 import "moment/locale/es";
 moment.locale("es");
-import { Link } from "react-router-dom";
+
+import Answer from '../Answer/index'
 
 import {
   Ticket,
@@ -25,7 +27,7 @@ import {
   Line
 } from "./style";
 
-export default function index({ ticket, index }) {
+export default function index({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
 
   const isHighlighted = ticket => {
@@ -77,6 +79,7 @@ export default function index({ ticket, index }) {
             ) : (
               <TicketContent> {ticket.content}</TicketContent>
             )}
+           {params===ticket.slug && <Answer ticket={ticket}/>}
           </Body>
           <Line />
           <TicketFooter>

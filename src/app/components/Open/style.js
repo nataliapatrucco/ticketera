@@ -8,8 +8,9 @@ export const Ticket = styled.div(
     border: "solid 1px #2a3d51",
     backgroundColor: "#192e44",
     fontFamily: "Monstserrat",
-    width: "700px",
-    marginTop: "10px"
+    width: "710px",
+    marginTop: "10px",
+    padding: '16px'
   },
   ({ isHighlighted }) => ({
     borderColor: isHighlighted ? "#62d0ff" : "#2a3d51"
@@ -29,7 +30,7 @@ export const Img = styled.img({
   height: "40px",
   borderRadius: "50px",
   flexBasis: "5%",
-  margin: "10px"
+  margin: "0 10px 10px 0"
 });
 
 export const Author = styled.section({
@@ -75,7 +76,7 @@ export const Icon = styled.h3({
   borderRadius: "6px",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   marginTop: "5px",
-  marginRight: "10px",
+  //marginRight: "10px",
   marginBottom: "5px",
   fontFamily: "Montserrat",
   fontWeight: "600",
@@ -83,9 +84,10 @@ export const Icon = styled.h3({
   letterSpacing: "0.75px"
 });
 
+
 export const Body = styled.section({
   flexDirection: "column",
-  margin: "5px"
+  margin: "5px 0 5px 0"
 });
 export const TicketTitle = styled.header({
   flex: "auto",
@@ -142,9 +144,9 @@ export const TicketFooter = styled.section({
   display: "flex",
   flexFlow: "row",
   justifyContent: "space-between",
-  paddingLeft: "32px",
-  paddingRight: "20px",
-  margin: "10px",
+  // paddingLeft: "32px",
+  // paddingRight: "20px",
+  marginTop: "10px",
   alignContent: "flex-end"
 });
 
