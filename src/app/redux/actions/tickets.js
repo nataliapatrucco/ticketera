@@ -86,6 +86,9 @@ export const fetchTicket = slug => dispatch =>
     .then(res => res.data)
     .then(ticket => dispatch(setTicket(ticket)));
 
+export const answerTicket = (id, { description, status }) => dispatch =>
+  axios.put(`/api/status/${id}`, { description, status });
+
 export const createNewImage = (id, image) =>
   axios
     .put(`/api/ticket/images/test/${id}`, image, {

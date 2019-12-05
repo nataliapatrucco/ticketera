@@ -8,6 +8,7 @@ import { fetchOpen } from "../../../redux/actions/tickets";
 export default () => {
   const open = useSelector(state => state.tickets.open);
   const dispatch = useDispatch();
+  const processing = useSelector(state => state.tickets.processing);
 
   useEffect(() => {
     dispatch(fetchOpen());
