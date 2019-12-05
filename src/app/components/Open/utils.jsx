@@ -10,11 +10,13 @@ import {
   AddIcon,
   ButtonParticipants,
   ButtonDelete,
-  ButtonAddParticipants
+  ButtonAddParticipants,
+  ShareButton,
+  Texto
 } from "./style";
 import Modal from "../deleteTicket";
 
-import { Container } from "../deleteTicket/style";
+// import { Container } from "../deleteTicket/style";
 
 export default ({ ticket }) => {
   const [showModal, setShowModal] = useState(false);
@@ -34,26 +36,31 @@ export default ({ ticket }) => {
   };
 
   return (
-    <Container>
+    <>
       <AddButton>
         {user.id === ticket.authorId ? (
-          <ButtonDelete onClick={() => setShowModal(!showModal)}>
+          <ButtonDelete
+            color={"#cf6679"}
+            onClick={() => setShowModal(!showModal)}
+          >
             <AddIcon src="/images/delete-resting.svg" alt="" />
-            ELIMINAR PREGUNTA
+            <Texto color={"#cf6679"}>ELIMINAR PREGUNTA</Texto>
           </ButtonDelete>
         ) : checkParticipants(ticket.users) ? (
           <ButtonParticipants
+            color={"#62d0ff"}
             onClick={() => handleRemove(ticket.id, ticket.statusId)}
           >
             <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
-            ME INTERESA
+            <Texto color={"#62d0ff"}>ME INTERESA</Texto>
           </ButtonParticipants>
         ) : (
           <ButtonAddParticipants
+            color={"#62d0ff"}
             onClick={() => handleAdd(ticket.id, ticket.statusId)}
           >
             <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
-            ME INTERESA
+            <Texto color={"#62d0ff"}>ME INTERESA</Texto>
           </ButtonAddParticipants>
         )}
       </AddButton>
@@ -64,6 +71,10 @@ export default ({ ticket }) => {
           setShowModal={setShowModal}
         />
       ) : null}
-    </Container>
+      <ShareButton>
+        <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
+        <Texto>COMPARTIR</Texto>
+      </ShareButton>
+    </>
   );
 };

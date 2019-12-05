@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const AnswerContainer = styled.div({
-  backgroundColor: "#001b36",
+  backgroundColor: "#1b3953",
   opacity: "87%",
   borderRadius: "4px",
   width: "678px",

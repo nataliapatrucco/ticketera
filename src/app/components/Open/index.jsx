@@ -24,7 +24,8 @@ import {
   ShareButton,
   TicketFooter,
   PartipantsImg,
-  Line
+  Line,
+  ParticipantsImgContainer
 } from "./style";
 
 export default function index({ ticket, index, params }) {
@@ -44,7 +45,7 @@ export default function index({ ticket, index, params }) {
       {ticket.author && (
         <>
           {/* tambien cambia en status 4(rechazada) */}
-          {ticket.statusId === 3? <Header>
+          {ticket.statusId === 3 ? (<Header>
             <Img src="/images/devman.jpg" alt="foto usuario" />
             <Author>
               <AuthorName>
@@ -52,7 +53,7 @@ export default function index({ ticket, index, params }) {
               </AuthorName>
               <TicketDate color={"#cf6679"}>Rechazo esta pregunta</TicketDate>
             </Author>
-            </Header>:null}
+          </Header>): (null)}
 
 
           <Header>
@@ -75,7 +76,7 @@ export default function index({ ticket, index, params }) {
           <Body>
             <Link to={`/${ticket.slug}`}>
               <TicketTitle>
-                <strong>{ticket.title}</strong>
+                {ticket.title}
               </TicketTitle>
             </Link>
             {ticket.content && ticket.content.length > 140 ? (
@@ -95,14 +96,16 @@ export default function index({ ticket, index, params }) {
           </Body>
           <Line />
           <TicketFooter>
-            <Buttons>
+            {/* <Buttons> */}
               <SuperButton ticket={ticket} />
-              <ShareButton>COMPARTIR</ShareButton>
-            </Buttons>
+            {/* </Buttons> */}
+            <ParticipantsImgContainer>
             <PartipantsImg
               src="/images/perfil.jpeg"
               alt="fotos participantes"
             ></PartipantsImg>
+            </ParticipantsImgContainer>
+            
           </TicketFooter>
         </>
       )}
