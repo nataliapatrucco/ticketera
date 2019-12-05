@@ -14,11 +14,13 @@ import {
   ButtonAnswer
 } from "./style";
 import Modal from "../deleteTicket";
+import AnswerModal from "../../containers/answerTicket";
 
 import { Container } from "../deleteTicket/style";
 
 export default ({ ticket }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showAnswerModal, setShowAnswerModal] = useState(false);
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.user.user);
@@ -62,8 +64,8 @@ export default ({ ticket }) => {
           </>
         ) : (
           <>
-            <ButtonAnswer>
-              <AddIcon src="/images/responderIcon.png" alt="" />
+            <ButtonAnswer onClick={() => setShowAnswerModal(!showAnswerModal)}>
+              <AddIcon src="/images/answerIcon.svg" alt="" />
               RESPONDER
             </ButtonAnswer>
             <ButtonDelete onClick={() => setShowModal(!showModal)}>
@@ -79,6 +81,9 @@ export default ({ ticket }) => {
           showModal={showModal}
           setShowModal={setShowModal}
         />
+      ) : null}
+      {showAnswerModal ? (
+        <AnswerModal ticket={ticket} setShowAnswerModal={setShowAnswerModal} />
       ) : null}
     </Container>
   );
