@@ -10,7 +10,8 @@ import {
   AddIcon,
   ButtonParticipants,
   ButtonDelete,
-  ButtonAddParticipants
+  ButtonAddParticipants,
+  ButtonAnswer
 } from "./style";
 import Modal from "../deleteTicket";
 
@@ -36,25 +37,40 @@ export default ({ ticket }) => {
   return (
     <Container>
       <AddButton>
-        {user.id === ticket.authorId ? (
-          <ButtonDelete onClick={() => setShowModal(!showModal)}>
-            <AddIcon src="/images/delete-resting.svg" alt="" />
-            ELIMINAR PREGUNTA
-          </ButtonDelete>
-        ) : checkParticipants(ticket.users) ? (
-          <ButtonParticipants
-            onClick={() => handleRemove(ticket.id, ticket.statusId)}
-          >
-            <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
-            ME INTERESA
-          </ButtonParticipants>
+        {!user.isAdmin ? (
+          <>
+            {user.id === ticket.authorId ? (
+              <ButtonDelete onClick={() => setShowModal(!showModal)}>
+                <AddIcon src="/images/delete-resting.svg" alt="" />
+                ELIMINAR PREGUNTA
+              </ButtonDelete>
+            ) : checkParticipants(ticket.users) ? (
+              <ButtonParticipants
+                onClick={() => handleRemove(ticket.id, ticket.statusId)}
+              >
+                <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
+                ME INTERESA
+              </ButtonParticipants>
+            ) : (
+              <ButtonAddParticipants
+                onClick={() => handleAdd(ticket.id, ticket.statusId)}
+              >
+                <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
+                ME INTERESA
+              </ButtonAddParticipants>
+            )}
+          </>
         ) : (
-          <ButtonAddParticipants
-            onClick={() => handleAdd(ticket.id, ticket.statusId)}
-          >
-            <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
-            ME INTERESA
-          </ButtonAddParticipants>
+          <>
+            <ButtonAnswer>
+              <AddIcon src="/images/responderIcon.png" alt="" />
+              RESPONDER
+            </ButtonAnswer>
+            <ButtonDelete onClick={() => setShowModal(!showModal)}>
+              <AddIcon src="/images/delete-resting.svg" alt="" />
+              BORRAR PREGUNTA
+            </ButtonDelete>
+          </>
         )}
       </AddButton>
       {showModal ? (

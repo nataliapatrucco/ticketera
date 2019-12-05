@@ -258,3 +258,19 @@ export const ButtonAddParticipants = styled.div({
     }
   }
 });
+
+// ADMIN
+
+export const ButtonAnswer = styled.div({
+  display: "flex",
+  marginRight: "20px",
+  justifyContent: "center",
+  cursor: "pointer",
+  color: "rgba(255, 255, 255, 0.6)",
+  ":hover": {
+    color: "green"
+    // img: {
+    //   content: "url(/images/delete-hover.svg)"
+    // }
+  }
+});
