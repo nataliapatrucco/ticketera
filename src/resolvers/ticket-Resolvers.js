@@ -211,6 +211,12 @@ const fetchTicket = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const createImage = (req, res) => {
+  Ticket.findByPk(req.params.id)
+    .then(ticket => ticket.update({ images: [req.files[0].filename] }))
+    .then(() => res.sendStatus(201));
+};
+
 module.exports = {
   removeTag,
   addTag,
@@ -224,5 +230,6 @@ module.exports = {
   addParticipant,
   removeParticipant,
   userTickets,
-  fetchTicket
+  fetchTicket,
+  createImage
 };
