@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div({
-  display: "flex"
+  display: "flex",
+  height: "100%"
   // marginRight: "30px"
 });
 export const HomeDiv = styled.div({
@@ -23,6 +24,6 @@ export const SideDiv = styled.div({
 export const MiddleContainer = styled.div({
   display: "flex",
   backgroundColor: "#091e35",
-  paddingRight: "30px", 
-  height:'100vh'
+  paddingRight: "30px",
+  height: "100vh"
 });

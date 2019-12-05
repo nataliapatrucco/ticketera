@@ -1,4 +1,6 @@
 const { User } = require("../db/models");
+const S = require("sequelize");
+const Op = S.Op;
 
 const register = (req, res) => {
   console.log(req.body);
@@ -65,6 +67,60 @@ const me = (req, res) => {
   res.send(req.user);
 };
 
+const getUsers = (req, res) => {
+  if (req.query.name) {
+    User.findAll({
+      order: [["id", "ASC"]],
+      attributes: ["id", "name", "lastname", "email", "isAdmin"],
+      where: {
+        id: { [Op.ne]: req.user.id },
+        [Op.or]: [{ name: { [Op.iLike]: `%${req.query.name}%` } }]
+      }
+    })
+      .then(users => {
+        res.send(users);
+      })
+      .catch(err => res.status(404).send(err));
+  } else {
+    User.findAll({
+      order: [["id", "ASC"]],
+      where: {
+        id: { [Op.ne]: req.user.id }
+      }
+    })
+      .then(users => res.send(users))
+      .catch(err => res.status(404).send(err));
+  }
+};
+
+const changeAdminUser = (req, res) => {
+  User.findByPk(req.params.id).then(user => {
+    if (user.isAdmin) {
+      user
+        .update({
+          isAdmin: 0
+        })
+        .then(() =>
+          User.findAll({
+            where: {
+              id: { [Op.ne]: req.user.id }
+            },
+            order: [["id", "ASC"]]
+          }).then(users => res.send(users))
+        );
+    } else {
+      user.update({ isAdmin: 1 }).then(() =>
+        User.findAll({
+          order: [["id", "ASC"]],
+          where: {
+            id: { [Op.ne]: req.user.id }
+          }
+        }).then(users => res.send(users))
+      );
+    }
+  });
+};
+
 // const resetPassword = (req, res) => {
 //   User.findOne({
 //     where: { email: req.body.email }
@@ -82,5 +138,7 @@ module.exports = {
   update,
   userDelete,
   changePassword,
-  me
+  me,
+  changeAdminUser,
+  getUsers
 };
