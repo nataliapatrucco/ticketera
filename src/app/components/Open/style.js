@@ -62,7 +62,7 @@ export const TicketDate = styled.p({
   fontWeight: "400",
   lineHeight: "16px",
   letterSpacing: "0.4px"
-});
+}, props => ({color: props.color}));
 
 export const Icon = styled.h3({
   flexBasis: "5%",

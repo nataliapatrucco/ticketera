@@ -43,6 +43,18 @@ export default function index({ ticket, index, params }) {
     <Ticket isHighlighted={isHighlighted(ticket)}>
       {ticket.author && (
         <>
+          {/* tambien cambia en status 4(rechazada) */}
+          {ticket.statusId === 3? <Header>
+            <Img src="/images/devman.jpg" alt="foto usuario" />
+            <Author>
+              <AuthorName>
+                {ticket.comment.replier.name}
+              </AuthorName>
+              <TicketDate color={"#cf6679"}>Rechazo esta pregunta</TicketDate>
+            </Author>
+            </Header>:null}
+
+
           <Header>
             <Img src="/images/perfil.jpeg" alt="foto usuario" />
             <Author>

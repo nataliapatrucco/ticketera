@@ -9,12 +9,12 @@ import { fetchTicket } from "../../redux/actions/tickets";
 export default props => {
   const ticket = useSelector(state => state.tickets.single);
   const dispatch = useDispatch();
-
-  console.log("las props", props);
+  const open = useSelector(state => state.tickets.open);
+  const processing = useSelector(state => state.tickets.processing);
 
   useEffect(() => {
     dispatch(fetchTicket(props.match.params.slug));
-  }, []);
+  }, [open, processing, props.match.params.slug]);
 
   return (
     <Container>

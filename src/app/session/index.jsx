@@ -17,6 +17,7 @@ export const Session = props => {
     email: "",
     password: ""
   });
+ 
   const [errorMessage, setError] = useState("");
   const [passType, setPassType] = useState("password");
 
@@ -32,7 +33,7 @@ export const Session = props => {
     if (passType === "password") {
       setPassType("text");
     } else {
-      setPassType("text");
+      setPassType("password");
     }
   };
 
@@ -41,8 +42,10 @@ export const Session = props => {
       name: "",
       lastname: "",
       email: "",
-      password: ""
+      password: "",
+      
     });
+    setError("")
   };
   const handleChange = e => {
     setState({
