@@ -10,11 +10,7 @@ import {
   CheckBox
 } from "./style";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
-import {
-  setUserAsAdmin,
-  removeAdmin,
-  fetchUsers
-} from "../../redux/actions/user";
+import { setUserAsAdmin, removeAdmin } from "../../redux/actions/user";
 
 export default function ListUser({ user }) {
   const dispatch = useDispatch();

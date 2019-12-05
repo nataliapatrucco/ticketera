@@ -42,14 +42,14 @@ export default function Users() {
           <>
             <Title>USUARIOS ({filteredUsers.length})</Title>
             {filteredUsers.map(user => (
-              <ListUser user={user} />
+              <ListUser key={user.name} user={user} />
             ))}
           </>
         ) : (
           <>
             <Title>USUARIOS ({users.length})</Title>
             {users.map(user => (
-              <ListUser user={user} />
+              <ListUser key={user.id} user={user} />
             ))}
           </>
         )}

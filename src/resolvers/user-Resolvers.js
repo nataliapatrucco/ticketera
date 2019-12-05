@@ -71,7 +71,7 @@ const getUsers = (req, res) => {
   if (req.query.name) {
     User.findAll({
       order: [["id", "ASC"]],
-      attributes: ["name", "lastname", "email", "isAdmin"],
+      attributes: ["id", "name", "lastname", "email", "isAdmin"],
       where: {
         id: { [Op.ne]: req.user.id },
         [Op.or]: [{ name: { [Op.iLike]: `%${req.query.name}%` } }]
