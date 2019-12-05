@@ -20,10 +20,11 @@ import {
 export default () => {
   const dispatch = useDispatch();
   const processing = useSelector(state => state.tickets.processing);
+  const open = useSelector(state => state.tickets.open);
 
   useEffect(() => {
     dispatch(fetchProcessing());
-  }, []);
+  }, [open]);
 
   return (
     <ProcessDiv>

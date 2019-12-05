@@ -51,17 +51,20 @@ export const AuthorName = styled.h4({
   letterSpacing: "0.1px"
 });
 
-export const TicketDate = styled.p({
-  color: "#FfFfFf",
-  opacity: "70%",
-  marginTop: "5px",
-  marginBottom: "5px",
-  fontSize: "12px",
-  fontFamily: "Montserrat",
-  fontWeight: "400",
-  lineHeight: "16px",
-  letterSpacing: "0.4px"
-});
+export const TicketDate = styled.p(
+  {
+    color: "#FfFfFf",
+    opacity: "70%",
+    marginTop: "5px",
+    marginBottom: "5px",
+    fontSize: "12px",
+    fontFamily: "Montserrat",
+    fontWeight: "400",
+    lineHeight: "16px",
+    letterSpacing: "0.4px"
+  },
+  props => ({ color: props.color })
+);
 
 export const Icon = styled.h3({
   flexBasis: "5%",
@@ -257,4 +260,30 @@ export const ButtonAddParticipants = styled.div({
       content: "url(/images/add-hover.svg)"
     }
   }
+});
+
+// ADMIN
+
+export const ButtonAnswer = styled.div({
+  display: "flex",
+  width: "102px",
+  height: "16px",
+  marginRight: "60px",
+  justifyContent: "center",
+  cursor: "pointer",
+  color: "rgba(255, 255, 255, 0.6)",
+  ":hover": {
+    color: "#62d0ff",
+    img: {
+      content: "url(/images/answerIcon.svg)"
+    }
+  },
+
+  fontFamily: "Montserrat",
+  fontSize: "14px",
+  fontWeight: "500",
+  fontStretch: "normal",
+  fontStyle: "normal",
+  lineHeight: "1.14",
+  letterSpacing: "1.25px"
 });
