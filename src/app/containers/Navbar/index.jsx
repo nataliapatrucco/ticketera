@@ -44,5 +44,6 @@ export const Navbar = () => {
         <UserName>Florencia</UserName>
       </FancyDiv>
     </NavbarContainer>
+    
   );
 };
