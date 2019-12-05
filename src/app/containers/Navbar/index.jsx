@@ -15,6 +15,7 @@ import { search } from "../../redux/actions/search";
 export const Navbar = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
+  const user = useSelector(state => state.user.user)
   //   const profilePic = useSelector(state => state.user // SRC DE ProfilePic
 
   const handleChange = event => {
@@ -41,7 +42,7 @@ export const Navbar = () => {
       <FancyDiv>
         <NotificationBell src="/images/notificationbell.png" />
         <ProfileImg src="/images/devman.jpg" />
-        <UserName>Florencia</UserName>
+        <UserName>{user.name}</UserName>
       </FancyDiv>
     </NavbarContainer>
   );
