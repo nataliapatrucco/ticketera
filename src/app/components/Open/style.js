@@ -275,7 +275,7 @@ export const ButtonAnswer = styled.div({
   ":hover": {
     color: "#62d0ff",
     img: {
-      content: "url(/images/answerIcon.svg)"
+      content: "url(/images/answerHoverIcon.svg)"
     }
   },
 
