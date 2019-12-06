@@ -17,6 +17,7 @@
     "bluebird": "^3.7.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "emotion": "^10.0.23",
     "express": "^4.17.1",
@@ -42,6 +43,7 @@
     "redux-thunk": "^2.3.0",
     "sequelize": "^5.21.2",
     "sequelize-slugify": "^0.7.0",
+    "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
