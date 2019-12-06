@@ -44,3 +44,17 @@ export const Tags = styled.div({
   lineHeight: "16px",
   letterSpacing: "3px"
 })
+
+export const RemoveIcon = styled.div({
+  backgroundImage: "url(/images/remove.svg)",
+  backgroundSize: "cover",
+  width: "13.3px",
+  height: "13.3px",
+  display: "inline-block",
+  float: "right",
+  marginLeft: "8px",
+  padding: "0px",
+  borderRadius: "100%"
+})
+
+

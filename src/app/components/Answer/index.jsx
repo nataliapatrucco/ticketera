@@ -1,7 +1,14 @@
 import React from "react";
-import { AnswerContainer, AnswerBody, Divider, Tags } from "./style";
+import {
+  AnswerContainer,
+  AnswerBody,
+  Divider,
+  Tags,
+  RemoveIcon,
+  Text
+} from "./style";
 import { Author, AuthorName, TicketDate, Header, Img } from "../Open/style";
- const tags = ["REACT", "NODE.JS", "JAVA", "BOOTCAMP"]
+const tags = ["REACT", "NODE.JS", "JAVA", "BOOTCAMP"];
 export default ({ ticket }) => {
   return (
     <AnswerContainer>
@@ -22,12 +29,12 @@ export default ({ ticket }) => {
         start making sense.
       </AnswerBody>
       <Divider></Divider>
-      {tags.map((tag)=> (
+      {tags.map(tag => (
         <Tags>
           {tag}
+          <RemoveIcon></RemoveIcon>   
         </Tags>
       ))}
-      
     </AnswerContainer>
   );
 };
