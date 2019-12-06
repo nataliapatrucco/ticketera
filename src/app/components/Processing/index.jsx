@@ -11,7 +11,8 @@ import {
   UbicacionContainer,
   AssistantContainer,
   AlumnContainer,
-  Continue
+  Continue,
+  
 } from "./style";
 import { Link } from "react-router-dom";
 
@@ -30,10 +31,8 @@ export default ({ ticket }) => {
       </AssistantContainer>
       <UbicacionContainer>
         <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
-
         <Ubicacion> en Sala 5 </Ubicacion>
       </UbicacionContainer>
-
       <TicketContainer>
         <AlumnContainer>
           <Fotito
@@ -43,7 +42,6 @@ export default ({ ticket }) => {
           ></Fotito>
           <Alumn>{ticket.author.name}</Alumn>
         </AlumnContainer>
-
         <Ticket>
           <strong>{ticket.title}</strong>
         </Ticket>

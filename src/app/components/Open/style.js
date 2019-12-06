@@ -16,12 +16,16 @@ export const Ticket = styled.div(
   })
 );
 
-export const Header = styled.div({
-  display: "flex",
-  flexDirection: "row",
-  margin: "5px",
-  padding: "0"
-});
+export const Header = styled.div(
+  {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    margin: "5px",
+    padding: "0"
+  },
+  props => ({ backgroundColor: props.backgroundColor })
+);
 
 export const Img = styled.img({
   alignItems: "center",
@@ -51,17 +55,20 @@ export const AuthorName = styled.h4({
   letterSpacing: "0.1px"
 });
 
-export const TicketDate = styled.p({
-  color: "#FfFfFf",
-  opacity: "70%",
-  marginTop: "5px",
-  marginBottom: "5px",
-  fontSize: "12px",
-  fontFamily: "Montserrat",
-  fontWeight: "400",
-  lineHeight: "16px",
-  letterSpacing: "0.4px"
-}, props => ({color: props.color}));
+export const TicketDate = styled.p(
+  {
+    color: "#FfFfFf",
+    opacity: "70%",
+    marginTop: "5px",
+    marginBottom: "5px",
+    fontSize: "12px",
+    fontFamily: "Montserrat",
+    fontWeight: "400",
+    lineHeight: "16px",
+    letterSpacing: "0.4px"
+  },
+  props => ({ color: props.color })
+);
 
 export const Icon = styled.h3({
   flexBasis: "5%",
@@ -257,4 +264,28 @@ export const ButtonAddParticipants = styled.div({
       content: "url(/images/add-hover.svg)"
     }
   }
+});
+export const BtnVerRespuesta = styled.button(
+  {
+    width: "162px",
+    height: "36px",
+    borderRadius: "4px",
+    backgroundColor: "#cf6679",
+    border: "none",
+    color: "black",
+    padding: "0px",
+    marginRight: "10px"
+  },
+  props => ({ backgroundColor: props.backgroundColor })
+);
+
+export const LabelButton = styled.label({
+  width: "133px",
+  height: "16px",
+  fontFamily: "Montserrat",
+  fontSize: "14px",
+  letterSpacing:"1.25px",
+  fontWeight: "600",
+  lineHeight: "1.14",
+  color: "#001b36"
 });
