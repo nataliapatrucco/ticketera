@@ -24,6 +24,7 @@ import {
   fetchOpen,
   createNewImage
 } from "../../redux/actions/tickets";
+import MyDropzone from "react-dropzone";
 
 export const MakeQuestion = props => {
   const [showModal, setShowModal] = useState(false);
@@ -54,6 +55,10 @@ export const MakeQuestion = props => {
     const formData = new FormData();
     formData.append("file", files[0]);
     setImage(formData);
+  };
+
+  const handleOnDrop = files => {
+    console.log(files);
   };
 
   return (
@@ -109,6 +114,17 @@ export const MakeQuestion = props => {
                 onChange={handleImageChange}
               ></ModalUploadBoxPlus>
             </ModalUploadBox>
+            <MyDropzone onDrop={handleOnDrop}>
+              {dropzoneProps => {
+                return (
+                  <div>
+                    <p>Drop some files here</p>
+                    <ModalUploadBox></ModalUploadBox>
+                  </div>
+                );
+              }}
+            </MyDropzone>
+            ;
             <ModalButtonContainer>
               <ModalButton
                 color="#62d0ff"
