@@ -7,20 +7,23 @@ import Processing from "../containers/dashboard/index";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../redux/actions/user";
 import UserTickets from "../components/UserTickets";
+import AdminContainer from "../containers/AdminContainer";
 import { HomeDiv, Container, SideDiv, Section, MiddleContainer } from "./style";
 import OpenContainer from "../containers/dashboard/partials";
 import SingleContainer from "../containers/singleTicket";
 
 export default props => {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const user = useSelector(state => state.user.user);
 
   useEffect(() => {
-     dispatch(fetchUser());
-    if (!user.id ) { history.push('/')}  
-  },[]);
-  
+    dispatch(fetchUser());
+    if (!user.id) {
+      history.push("/");
+    }
+  }, []);
+
   return (
     <HomeDiv>
       {!user.id ? (
@@ -34,6 +37,12 @@ export default props => {
             <Navbar />
             <MiddleContainer>
               <Switch>
+                {user.isAdmin ? (
+                  <Route exact path="/admin/users" component={AdminContainer} />
+                ) : (
+                  ""
+                )}
+
                 <Route exact path="/" component={OpenContainer} />
                 <Route path="/userTickets/:status" component={UserTickets} />
                 <Route exact path="/:slug" component={SingleContainer} />

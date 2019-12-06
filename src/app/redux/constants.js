@@ -1,4 +1,6 @@
 export const RECEIVE_USER = "RECEIVE_USER";
+export const FILTERED_USERS = "FILTERED_USERS";
+export const RECEIVE_USERS = "RECEIVE_USERS";
 export const SEARCH = "SEARCH";
 export const FETCH_OPEN = "FETCH_OPEN";
 export const FETCH_PROCESSING = "FETCH_PROCESSING";

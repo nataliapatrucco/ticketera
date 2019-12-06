@@ -47,5 +47,6 @@ export const Navbar = () => {
         <button onClick={() => dispatch(logOutUser())}>Log Out</button>
       </FancyDiv>
     </NavbarContainer>
+    
   );
 };
