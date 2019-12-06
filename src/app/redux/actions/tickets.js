@@ -6,6 +6,8 @@ import {
   FETCH_TICKET
 } from "../constants";
 
+import Socket from "../../socket";
+
 const setOpen = open => ({
   type: FETCH_OPEN,
   open
@@ -75,8 +77,10 @@ export const fetchUserTickets = () => dispatch =>
     .then(tickets => groupByStatus(tickets))
     .then(tickets => dispatch(setUserTickets(tickets)));
 
-export const deleteTicket = ticketId => dispatch =>
-  axios.delete(`/api/ticket/${ticketId}`);
+export const deleteTicket = ticket => dispatch => {
+  Socket.emit("delete-ticket", ticket);
+  return axios.delete(`/api/ticket/${ticket.id}`);
+};
 
 export const createNewTicket = ticket => axios.post("/api/ticket", ticket);
 
@@ -86,8 +90,10 @@ export const fetchTicket = slug => dispatch =>
     .then(res => res.data)
     .then(ticket => dispatch(setTicket(ticket)));
 
-export const answerTicket = (id, { description, status }) => dispatch =>
-  axios.put(`/api/status/${id}`, { description, status });
+export const answerTicket = (id, { description, status }) => dispatch => {
+  Socket.emit("change-status", id);
+  return axios.put(`/api/status/${id}`, { description, status });
+};
 
 export const createNewImage = (id, image) =>
   axios
