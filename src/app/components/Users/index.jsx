@@ -20,7 +20,7 @@ export default function Users() {
   };
 
   useEffect(() => {
-    filteredUsers
+    filteredUsers.length
       ? dispatch(fetchFilteredUsers(input))
       : dispatch(fetchUsers());
   }, []);
@@ -38,11 +38,11 @@ export default function Users() {
         </form>
       </SearchContainer>
       <Container>
-        {filteredUsers ? (
+        {filteredUsers.length ? (
           <>
             <Title>USUARIOS ({filteredUsers.length})</Title>
             {filteredUsers.map(user => (
-              <ListUser key={user.name} user={user} />
+              <ListUser key={user.id} user={user} />
             ))}
           </>
         ) : (
