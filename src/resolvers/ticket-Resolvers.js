@@ -51,21 +51,9 @@ const createTicket = (req, res) => {
         ticket
           .setStatus(1)
           .then(() => ticket.setAuthor(req.user.id))
-          .then(() =>
-            Ticket.findOne({
-              where: { id: ticket.id },
-              include: [
-                {
-                  model: User,
-                  as: "author",
-                  attributes: ["name", "lastname", "img"]
-                }
-              ]
-            }).then(newTicket => res.status(201).send(newTicket))
-          )
+          .then(() => res.status(201).send())
       )
       .catch(err => {
-        console.log(err);
         res.status(404).send(err);
       });
   } else {

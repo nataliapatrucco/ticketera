@@ -25,7 +25,9 @@ import {
   TicketFooter,
   PartipantsImg,
   Line,
-  ParticipantsImgContainer
+  ParticipantsImgContainer,
+  BtnVerRespuesta,
+  LabelButton
 } from "./style";
 
 export default function index({ ticket, index, params }) {
@@ -44,17 +46,34 @@ export default function index({ ticket, index, params }) {
     <Ticket isHighlighted={isHighlighted(ticket)}>
       {ticket.author && (
         <>
-          {/* tambien cambia en status 4(rechazada) */}
-          {ticket.statusId === 3 ? (<Header>
-            <Img src="/images/devman.jpg" alt="foto usuario" />
-            <Author>
-              <AuthorName>
-                {ticket.comment.replier.name}
-              </AuthorName>
-              <TicketDate color={"#cf6679"}>Rechazo esta pregunta</TicketDate>
-            </Author>
-          </Header>): (null)}
+          {ticket.statusId === 4 ? (
+            <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
+              <Img src="/images/devman.jpg" alt="foto usuario" />
+              <Author>
+                <AuthorName>{ticket.comment.replier.name}</AuthorName>
+                <TicketDate color={"#cf6679"}>Rechazo esta pregunta</TicketDate>
+              </Author>
+              <Link to={`/${ticket.slug}`}>
+                <BtnVerRespuesta>
+                  <LabelButton>VER RESPUESTA</LabelButton>
+                </BtnVerRespuesta>
+              </Link>
+            </Header>
+          ) : ticket.statusId === 3 ? (
+            <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
+              <Img src="/images/devman.jpg" alt="foto usuario" />
+              <Author>
+                <AuthorName>{ticket.comment.replier.name}</AuthorName>
+                <TicketDate color={"white"}>Respondió esta pregunta</TicketDate>
+              </Author>
 
+              <Link to={`/${ticket.slug}`}>
+                <BtnVerRespuesta backgroundColor={"#62d0ff"}>
+                  <LabelButton>VER RESPUESTA</LabelButton>
+                </BtnVerRespuesta>
+              </Link>
+            </Header>
+          ) : null}
 
           <Header>
             <Img src="/images/perfil.jpeg" alt="foto usuario" />
