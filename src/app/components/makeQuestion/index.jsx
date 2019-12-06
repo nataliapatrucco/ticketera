@@ -116,7 +116,6 @@ export const MakeQuestion = props => {
                 marginLeft="450px"
                 type="submit"
                 onClick={e => {
-                  //handleUpload();
                   e.preventDefault();
                   handleSubmit({
                     title: state.title,
