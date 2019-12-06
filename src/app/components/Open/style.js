@@ -16,12 +16,16 @@ export const Ticket = styled.div(
   })
 );
 
-export const Header = styled.div({
-  display: "flex",
-  flexDirection: "row",
-  margin: "5px",
-  padding: "0"
-});
+export const Header = styled.div(
+  {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    margin: "5px",
+    padding: "0"
+  },
+  props => ({ backgroundColor: props.backgroundColor })
+);
 
 export const Img = styled.img({
   alignItems: "center",
@@ -261,6 +265,30 @@ export const ButtonAddParticipants = styled.div({
     }
   }
 });
+export const BtnVerRespuesta = styled.button(
+  {
+    width: "162px",
+    height: "36px",
+    borderRadius: "4px",
+    backgroundColor: "#cf6679",
+    border: "none",
+    color: "black",
+    padding: "0px",
+    marginRight: "10px"
+  },
+  props => ({ backgroundColor: props.backgroundColor })
+);
+
+export const LabelButton = styled.label({
+  width: "133px",
+  height: "16px",
+  fontFamily: "Montserrat",
+  fontSize: "14px",
+  letterSpacing:"1.25px",
+  fontWeight: "600",
+  lineHeight: "1.14",
+  color: "#001b36"
+})
 
 // ADMIN
 
