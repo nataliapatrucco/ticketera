@@ -1,7 +1,7 @@
 import React from "react";
-import { AnswerContainer, AnswerBody } from "./style";
+import { AnswerContainer, AnswerBody, Divider, Tags } from "./style";
 import { Author, AuthorName, TicketDate, Header, Img } from "../Open/style";
-
+ const tags = ["REACT", "NODE.JS", "JAVA", "BOOTCAMP"]
 export default ({ ticket }) => {
   return (
     <AnswerContainer>
@@ -21,6 +21,13 @@ export default ({ ticket }) => {
         there, the more likely you are to have a “eureka” moment and it will all
         start making sense.
       </AnswerBody>
+      <Divider></Divider>
+      {tags.map((tag)=> (
+        <Tags>
+          {tag}
+        </Tags>
+      ))}
+      
     </AnswerContainer>
   );
 };

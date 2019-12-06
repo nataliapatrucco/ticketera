@@ -21,3 +21,26 @@ export const AnswerBody = styled.div({
   color: "#ffffff",
   fontSize: "13px"
 });
+
+export const Divider = styled.div({
+  marginTop: "33px",
+  width: "95.3%",
+  padding: "1px",
+  backgroundColor: "#314e66"
+})
+
+export const Tags = styled.div({
+  marginTop: "16px",
+  marginLeft: "8px",
+  padding: "8px 14px",
+  backgroundColor: "#2c4860",
+  float: "left",
+  display: "inline-block",
+  borderRadius: "60px",
+  fontFamily: "Montserrat",
+  fontWeight: "600",
+  fontSize: "10px",
+  color: "#ffffff",
+  lineHeight: "16px",
+  letterSpacing: "3px"
+})
