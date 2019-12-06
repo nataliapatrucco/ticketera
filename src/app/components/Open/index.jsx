@@ -2,9 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import SuperButton from "./utils";
+import { Link } from "react-router-dom";
 import "moment/locale/es";
 moment.locale("es");
-import { Link } from "react-router-dom";
+
+import Answer from '../Answer/index'
 
 import {
   Ticket,
@@ -23,11 +25,12 @@ import {
   TicketFooter,
   PartipantsImg,
   Line,
+  ParticipantsImgContainer,
   BtnVerRespuesta,
   LabelButton
 } from "./style";
 
-export default function index({ ticket, index }) {
+export default function index({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
 
   const isHighlighted = ticket => {
@@ -92,7 +95,7 @@ export default function index({ ticket, index }) {
           <Body>
             <Link to={`/${ticket.slug}`}>
               <TicketTitle>
-                <strong>{ticket.title}</strong>
+                {ticket.title}
               </TicketTitle>
             </Link>
             {ticket.content && ticket.content.length > 140 ? (
@@ -108,17 +111,20 @@ export default function index({ ticket, index }) {
             ) : (
               <TicketContent> {ticket.content}</TicketContent>
             )}
+           {params===ticket.slug && <Answer ticket={ticket}/>}
           </Body>
           <Line />
           <TicketFooter>
-            <Buttons>
+            {/* <Buttons> */}
               <SuperButton ticket={ticket} />
-              <ShareButton>COMPARTIR</ShareButton>
-            </Buttons>
+            {/* </Buttons> */}
+            <ParticipantsImgContainer>
             <PartipantsImg
               src="/images/perfil.jpeg"
               alt="fotos participantes"
             ></PartipantsImg>
+            </ParticipantsImgContainer>
+            
           </TicketFooter>
         </>
       )}
