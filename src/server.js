@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const socketIO = require("socket.io");
 const socket = require("./socket/index");
 var cors = require("cors");
 
@@ -32,13 +31,6 @@ db.sync({ force: false }).then(() => {
     console.log("Example app listening on port 3000!");
   });
   socket.connect(http);
-  // const io = socketIO(http);
-  // io.on("connection", function(socket) {
-  //   console.log("CONNECTION: user id", socket.handshake.query.token);
-  //   socket.on("delete-ticket", function(ticketId) {
-  //     console.log("Se borro el ticket de id", ticketId);
-  //   });
-  // });
 });
 app.use("/api", require("./routes"));
 
