@@ -45,6 +45,8 @@ export const NoQuestion = styled.div({
 
 export const AssistantContainer = styled.div({
   margin: "16px 13.4px 0 16px"
+  
+
 });
 
 export const Assistant = styled.div({
@@ -74,7 +76,7 @@ export const UbicacionIcon = styled.img({
 export const Ubicacion = styled.div({
   fontFamily: "Montserrat",
   fontSize: "12px",
-  width: "214.2px",
+  width: "214px",
   height: "16px",
   margin: "0",
   letterSpacing: "0.4px",
@@ -89,7 +91,7 @@ export const AlumnContainer = styled.div({
 });
 
 export const Alumn = styled.div({
-  width: "209.8px",
+  width: "209px",
   height: "16px",
   fontFamily: "Montserrat",
   fontWeight: "600",
@@ -136,3 +138,5 @@ export const Continue = styled.div({
   letterSpacing: "0.4px",
   margin: "0 160px 10px 8px"
 });
+
+
