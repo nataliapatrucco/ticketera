@@ -2,6 +2,8 @@ const express = require("express");
 const User = require("../db/models");
 const router = express.Router();
 const passport = require("../config/passport");
+const { isAdmin } = require("../routes/middlewares");
+
 const {
   register,
   logIn,
@@ -9,7 +11,9 @@ const {
   update,
   userDelete,
   changePassword,
-  me
+  me,
+  changeAdminUser,
+  getUsers
 } = require("../resolvers/user-Resolvers");
 
 //register user
@@ -30,6 +34,11 @@ router.put("/changePassword/:id", changePassword);
 //delete
 router.get("/delete/:id", userDelete);
 
+//Traer todos los users por search
+router.get("/search", isAdmin, getUsers);
+
+// Cambiar status isAdmin
+router.put("/users/:id", isAdmin, changeAdminUser);
 
 //me
 router.get("/me", me);

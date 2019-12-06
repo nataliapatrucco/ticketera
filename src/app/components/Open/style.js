@@ -288,4 +288,30 @@ export const LabelButton = styled.label({
   fontWeight: "600",
   lineHeight: "1.14",
   color: "#001b36"
+})
+
+// ADMIN
+
+export const ButtonAnswer = styled.div({
+  display: "flex",
+  width: "102px",
+  height: "16px",
+  marginRight: "60px",
+  justifyContent: "center",
+  cursor: "pointer",
+  color: "rgba(255, 255, 255, 0.6)",
+  ":hover": {
+    color: "#62d0ff",
+    img: {
+      content: "url(/images/answerHoverIcon.svg)"
+    }
+  },
+
+  fontFamily: "Montserrat",
+  fontSize: "14px",
+  fontWeight: "500",
+  fontStretch: "normal",
+  fontStyle: "normal",
+  lineHeight: "1.14",
+  letterSpacing: "1.25px"
 });

@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import {
   Container,
   Header,
@@ -10,9 +13,8 @@ import {
   IconContainer
 } from "./style";
 
-import { Link } from "react-router-dom";
-
-export default props => {
+export default () => {
+  const user = useSelector(state => state.user.user);
   return (
     <Container>
       <Header>
@@ -49,6 +51,18 @@ export default props => {
           <Title>DEVPEDIA</Title>
         </TitleContainer>
       </Link>
+      {user.isAdmin ? (
+        <Link style={{ textDecoration: "none" }} to="/admin/users">
+          <TitleContainer>
+            <IconContainer>
+              <Icon src="/images/codificacion.png" />
+            </IconContainer>
+            <Title>USUARIOS</Title>
+          </TitleContainer>
+        </Link>
+      ) : (
+        ""
+      )}
       {/* </Section> */}
     </Container>
   );

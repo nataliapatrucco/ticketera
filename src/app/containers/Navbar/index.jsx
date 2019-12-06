@@ -11,11 +11,12 @@ import {
   UserName
 } from "./style";
 import { search } from "../../redux/actions/search";
+import { logOutUser } from "../../redux/actions/user";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-  const user = useSelector(state => state.user.user)
+  const user = useSelector(state => state.user.user);
   //   const profilePic = useSelector(state => state.user // SRC DE ProfilePic
 
   const handleChange = event => {
@@ -43,7 +44,9 @@ export const Navbar = () => {
         <NotificationBell src="/images/notificationbell.png" />
         <ProfileImg src="/images/devman.jpg" />
         <UserName>{user.name}</UserName>
+        <button onClick={() => dispatch(logOutUser())}>Log Out</button>
       </FancyDiv>
     </NavbarContainer>
+    
   );
 };
