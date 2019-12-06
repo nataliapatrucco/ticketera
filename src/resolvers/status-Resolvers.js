@@ -15,7 +15,7 @@ const setStatus = function(req, res, next) {
     }
   })
     .then(ticket => {
-      switch (req.body.status) {
+      switch (req.body.statusId) {
         case STATUS.PROCESS:
           ticket
             .createComment({})
