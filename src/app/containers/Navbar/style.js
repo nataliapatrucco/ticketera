@@ -13,21 +13,18 @@ export const NavbarContainer = styled.div({
 });
 
 export const Rectangle = styled.div({
-  //position: "relative",
-  //bottom: "5px",
+  
   display: "flex",
   backgroundColor: "#091e35",
   width: "410px",
   height: "48px",
   borderRadius: "4px",
   border: "solid 1.5px rgba(255, 255, 255, 0.7)",
-  //justifyContent: "flex-start",
   alignItems: "center",
   paddingLeft: "28px"
 });
 
 export const Search = styled.input({
-  //display: "flex",
   width: "260px",
   height: "20px",
   opacity: "70%",
@@ -40,7 +37,6 @@ export const Search = styled.input({
   color: "#ffffff",
   backgroundColor: "#091e35",
   border: "hidden",
-  // color: "rgba(255, 255, 255, 0.7)",
   outlineColor: "transparent",
   outlineStyle: "none",
   padding: 0,
@@ -49,7 +45,6 @@ export const Search = styled.input({
 
 export const SearchIcon = styled.img({
   display: "flex",
-  //marginRight: "11.5px",
   height: "17.5px",
   heigth: "17.5px",
   opacity: "70%"
@@ -76,6 +71,7 @@ export const NotificationBell = styled.img({
   width: "18%",
   color: "#ffffff",
   opacity: "70%",
+  objectFit: "contain",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   borderRadius: "20px",
   padding: "6px",
