@@ -43,7 +43,7 @@ export default function index({ ticket, index }) {
     <Ticket isHighlighted={isHighlighted(ticket)}>
       {ticket.author && (
         <>
-          {ticket.statusId === 3 ? (
+          {ticket.statusId === 4 ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
               <Img src="/images/devman.jpg" alt="foto usuario" />
               <Author>
@@ -56,7 +56,7 @@ export default function index({ ticket, index }) {
                 </BtnVerRespuesta>
               </Link>
             </Header>
-          ) : ticket.statusId === 4 ? (
+          ) : ticket.statusId === 3 ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
               <Img src="/images/devman.jpg" alt="foto usuario" />
               <Author>
