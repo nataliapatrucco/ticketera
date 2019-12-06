@@ -1,12 +1,6 @@
 import React from "react";
 import { AnswerContainer, AnswerBody } from "./style";
-import {
-  Author,
-  AuthorName,
-  TicketDate,
-  Header,
-  Img
-} from "../Open/style";
+import { Author, AuthorName, TicketDate, Header, Img } from "../Open/style";
 
 export default ({ ticket }) => {
   return (
@@ -21,17 +15,11 @@ export default ({ ticket }) => {
         </Author>
       </Header>
       <AnswerBody>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis
-        gravida mi. Integer sit amet mollis orci. Quisque consectetur leo et
-        magna lobortis, in tristique dolor mollis. Praesent dapibus maximus
-        felis, eget scelerisque orci sodales eu. In ut consectetur sapien.
-        Vestibulum gravida lorem quis est bibendum, vitae iaculis augue
-        vehicula. Pellentesque consequat turpis ac tempus commodo. Nunc iaculis,
-        leo in pulvinar sodales, lorem ex volutpat eros, eu sagittis dolor velit
-        porttitor urna. Vestibulum accumsan magna ac mi vehicula euismod. Nullam
-        bibendum tellus a cursus eleifend. Suspendisse mattis, quam vitae
-        convallis ultrices, diam magna venenatis lorem, sed tempor libero ligula
-        et libero.
+        There is no easy way how to start programming for beginners. If you’re
+        completely new to this sort of stuff, it will be nothing like anything
+        you have done previously. Stick with it though. The longer you hang in
+        there, the more likely you are to have a “eureka” moment and it will all
+        start making sense.
       </AnswerBody>
     </AnswerContainer>
   );

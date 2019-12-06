@@ -7,6 +7,8 @@ export const AnswerContainer = styled.div({
   width: "678px",
   padding: "16px",
   marginrigth: "0",
+  lineHeight: "20px",
+  letterSpacing: "0.25px",
   display: "inline-block"
 });
 
@@ -17,4 +19,5 @@ export const AnswerBody = styled.div({
   lineHeight: "20px",
   letterSpacing: "0.25px",
   color: "#ffffff",
+  fontSize: "13px"
 });
