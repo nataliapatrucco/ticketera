@@ -45,6 +45,7 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
+      //.then(console.log)
       .then(ticket => createNewImage(ticket.data.id, image))
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
