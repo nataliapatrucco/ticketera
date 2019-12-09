@@ -10,7 +10,7 @@ export const Ticket = styled.div(
     fontFamily: "Monstserrat",
     width: "710px",
     marginTop: "10px",
-    padding: '16px'
+    padding: "16px"
   },
   ({ isHighlighted }) => ({
     borderColor: isHighlighted ? "#62d0ff" : "#2a3d51"
@@ -18,8 +18,8 @@ export const Ticket = styled.div(
 );
 
 export const Container = styled.div({
-  float: "left"
-})
+  float: "right"
+});
 
 export const Header = styled.div({
   display: "flex",
@@ -90,11 +90,9 @@ export const Icon = styled.h3({
   letterSpacing: "0.75px"
 });
 
-
 export const Body = styled.section({
   flexDirection: "column",
-  margin: "5px 0 5px 0",
-
+  margin: "5px 0 5px 0"
 });
 export const TicketTitle = styled.header({
   flex: "auto",
@@ -149,13 +147,11 @@ export const Line = styled.hr({
 
 export const TicketFooter = styled.section({
   //  height: "51px",
-   padding:"12px 0 2px 0",
+  padding: "12px 0 2px 0",
   // marginTop: "10px",
-  float: 'left',
-  display: 'inline-block'
-
+  float: "left",
+  display: "inline-block"
 });
-
 
 export const AddIcon = styled.img({
   height: "20px",
@@ -198,7 +194,7 @@ export const RemoveButton = styled.div({
   fontWeight: "600",
   fontSize: "14px",
   lineHeight: "16px",
-  letterSpacing: "1.25px",
+  letterSpacing: "1.25px"
   // marginRight: "60px"
 });
 
@@ -221,21 +217,20 @@ export const ShareButton = styled.div({
 export const Texto = styled.div`
   display: inline-block;
   position: relative;
-  bottom : 5px;
+  bottom: 5px;
   color: #ffffff;
   opacity: 60%;
   &:hover {
-    color:  ${props => props.color};
+    color: ${props => props.color};
   }
-`
+`;
 
 export const ParticipantsImgContainer = styled.div({
   width: "112px",
   display: "inline-block",
   // marginLeft: "36.6%",
   float: "right"
-
-})
+});
 
 export const PartipantsImg = styled.img({
   alignItems: "center",
@@ -306,11 +301,11 @@ export const LabelButton = styled.label({
   height: "16px",
   fontFamily: "Montserrat",
   fontSize: "14px",
-  letterSpacing:"1.25px",
+  letterSpacing: "1.25px",
   fontWeight: "600",
   lineHeight: "1.14",
   color: "#001b36"
-})
+});
 
 // ADMIN
 
