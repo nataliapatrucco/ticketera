@@ -25,5 +25,5 @@ export const MiddleContainer = styled.div({
   display: "flex",
   backgroundColor: "#091e35",
   paddingRight: "30px",
-  height: "100vh"
+
 });
