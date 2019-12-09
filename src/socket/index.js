@@ -18,14 +18,14 @@ class Socket {
       });
     });
   }
-  // deleteTicket = () => ticket => {
-  //   console.log(ticket.authorId);
-  //   this.sockets[ticket.authorId] &&
-  //     this.sockets[ticket.authorId].emit(
-  //       "deleted",
-  //       `Eliminamos tu ticket ${ticket.title}`
-  //     );
-  // };
+  deleteTicket = () => ticket => {
+    console.log(ticket.authorId);
+    this.sockets[ticket.authorId] &&
+      this.sockets[ticket.authorId].emit(
+        "deleted",
+        `Eliminamos tu ticket ${ticket.title}`
+      );
+  };
 
   // emitToParticipants = id => {
   //   this.sockets[id].emit();
