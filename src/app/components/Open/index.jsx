@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "moment/locale/es";
 moment.locale("es");
 
-import Answer from '../Answer/index'
+import Answer from "../Answer/index";
 
 import {
   Ticket,
@@ -28,7 +28,7 @@ import {
   ParticipantsImgContainer,
   BtnVerRespuesta,
   LabelButton
-} from "./style";
+} from "./style"
 
 export default function index({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
@@ -46,7 +46,7 @@ export default function index({ ticket, index, params }) {
     <Ticket isHighlighted={isHighlighted(ticket)}>
       {ticket.author && (
         <>
-          {ticket.statusId === 4 ? (
+          {ticket.statusId === 4 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
               <Img src="/images/devman.jpg" alt="foto usuario" />
               <Author>
@@ -59,7 +59,7 @@ export default function index({ ticket, index, params }) {
                 </BtnVerRespuesta>
               </Link>
             </Header>
-          ) : ticket.statusId === 3 ? (
+          ) : ticket.statusId === 3 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
               <Img src="/images/devman.jpg" alt="foto usuario" />
               <Author>
@@ -94,9 +94,7 @@ export default function index({ ticket, index, params }) {
           </Header>
           <Body>
             <Link to={`/${ticket.slug}`}>
-              <TicketTitle>
-                {ticket.title}
-              </TicketTitle>
+              <TicketTitle>{ticket.title}</TicketTitle>
             </Link>
             {ticket.content && ticket.content.length > 140 ? (
               <div>
@@ -111,20 +109,22 @@ export default function index({ ticket, index, params }) {
             ) : (
               <TicketContent> {ticket.content}</TicketContent>
             )}
-           {params===ticket.slug && <Answer ticket={ticket}/>}
+            {params === ticket.slug &&
+              (ticket.statusId === 3 || ticket.statusId === 4) && (
+                <Answer ticket={ticket} />
+              )}
           </Body>
           <Line />
           <TicketFooter>
             {/* <Buttons> */}
-              <SuperButton ticket={ticket} />
+            <SuperButton ticket={ticket} />
             {/* </Buttons> */}
             <ParticipantsImgContainer>
-            <PartipantsImg
-              src="/images/perfil.jpeg"
-              alt="fotos participantes"
-            ></PartipantsImg>
+              <PartipantsImg
+                src="/images/perfil.jpeg"
+                alt="fotos participantes"
+              ></PartipantsImg>
             </ParticipantsImgContainer>
-            
           </TicketFooter>
         </>
       )}

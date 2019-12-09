@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../redux/actions/user";
 import UserTickets from "../components/UserTickets";
 import AdminContainer from "../containers/AdminContainer";
+import Devpedia from "../containers/devpedia";
+
 import {
   HomeDiv,
   Container,
@@ -50,7 +52,7 @@ export default props => {
             <Sidebar />
           </SideDiv>
           <Section>
-            <Navbar />
+            <Navbar history={props.history} />
             <MiddleContainer>
               <CenterDiv>
                 <Switch>
@@ -66,6 +68,7 @@ export default props => {
 
                   <Route exact path="/" component={OpenContainer} />
                   <Route path="/userTickets/:status" component={UserTickets} />
+                  <Route exact path="/devpedia" component={Devpedia} />
                   <Route exact path="/:slug" component={SingleContainer} />
                 </Switch>
               </CenterDiv>
