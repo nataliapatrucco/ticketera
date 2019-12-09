@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 
 export const MainContainer = styled.div({
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
+  height: "100%"
 });
 
 export const Container = styled.div({

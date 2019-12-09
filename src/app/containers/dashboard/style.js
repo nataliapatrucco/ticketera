@@ -3,12 +3,14 @@ import styled from "@emotion/styled";
 export const Container = styled.div({
   display: "flex",
   backgroundColor: "#091e35",
-  paddingRight: "30px"
+  paddingRight: "30px",
+  height: "100%"
 });
 
 export const OpenContainer = styled.div({
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
+  height: "100%"
 });
 export const OpenDiv = styled.div({
   display: "flex",

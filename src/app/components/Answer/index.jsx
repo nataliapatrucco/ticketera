@@ -32,7 +32,6 @@ export default ({ ticket }) => {
       {tags.map(tag => (
         <Tags>
           {tag}
-          <RemoveIcon></RemoveIcon>   
         </Tags>
       ))}
     </AnswerContainer>
