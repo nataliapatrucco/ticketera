@@ -1,14 +1,13 @@
 import styled from "@emotion/styled";
 
 export const ModalBackground = styled.div({
- 
   position: "fixed",
   top: 0,
   bottom: 0,
   left: 0,
   right: 0,
   backgroundColor: "rgba(0,0,0,0.3)",
-  padding:"50px" ,
+  padding: "50px",
   zIndex: "10"
 });
 
@@ -37,10 +36,10 @@ export const Container = styled.div({
 
 export const TicketTitle = styled.h3({
   display: "inline-block",
-  height:"20px",
-  marginTop:"32px",
+  height: "20px",
+  marginTop: "32px",
   marginLeft: "32px",
-  marginBottom: "5px", 
+  marginBottom: "5px",
   fontSize: "20px",
   color: "rgba(255, 255, 255, 0.87)",
   fontFamily: "Montserrat",
@@ -52,7 +51,7 @@ export const TicketTitle = styled.h3({
 export const TicketContent = styled.div({
   marginLeft: "32px",
   marginRight: "25px",
-  height:"100px",
+  height: "100px",
   marginTop: "10px",
   color: "#ffffff",
   opacity: "90%",
@@ -60,7 +59,7 @@ export const TicketContent = styled.div({
   fontFamily: "Montserrat",
   fontWeight: "normal",
   lineHeight: "1.43",
-  fontStretch:"normal",
+  fontStretch: "normal",
   letterSpacing: "0.25px",
   overflowWrap: "break-word"
 });
@@ -74,7 +73,7 @@ export const ModalInput = styled.textarea`
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 30px; 
+  line-height: 30px;
   letter-spacing: 0.25px;
   background-color: transparent;
   width: 630px;
@@ -88,41 +87,54 @@ export const ModalInput = styled.textarea`
   outline: none;
 `;
 
-export const ButtonContainer = styled.div({
-  display: "flex",
-  flexDirection: "row",
-  marginBottom: "16px",
-  alignItems:"flex-end",
-  width: "100%",
-  height: "36px",
-  backgroundColor: "#2e4054",
-  paddingRight: "20px"
-}, props=>({justifyContent:props.justifyContent, marginTop:props.marginTop}));
-
-export const StatusButton = styled.button({
-  //display: "inline-block",
-  //width: "113px",
-  height: "36px",
-  marginTop: "13px",
-  color: "rgba(255, 255, 255, 0.6)",
-  border:"solid 1px rgba(255, 255, 255, 0.12)",
-  backgroundColor: "transparent",
-  borderRadius: "4px",
-  outline: "none",
-  justifyContent: "center",
-  fontFamily: "Montserrat",
-  fontSize: "14px",
-  fontWeight: "500",
-  fontStretch: "normal",
-  fontStyle: "normal",
-  ":hover":{
-    backgroundColor:"rgba(255, 255, 255, 0.12)",
+export const ButtonContainer = styled.div(
+  {
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: "16px",
+    alignItems: "flex-end",
+    width: "100%",
+    height: "36px",
+    backgroundColor: "#2e4054",
+    paddingRight: "20px"
   },
-   ":focus":{
-    color:"white",
-    border:"solid 1px white",
-  } 
-}, props=>({backgroundColor:props.backgroundColor, color:props.color, border:props.border }));
+  props => ({
+    justifyContent: props.justifyContent,
+    marginTop: props.marginTop
+  })
+);
+
+export const StatusButton = styled.button(
+  {
+    //display: "inline-block",
+    //width: "113px",
+    height: "36px",
+    marginTop: "13px",
+    color: "rgba(255, 255, 255, 0.6)",
+    border: "solid 1px rgba(255, 255, 255, 0.12)",
+    backgroundColor: "transparent",
+    borderRadius: "4px",
+    outline: "none",
+    justifyContent: "center",
+    fontFamily: "Montserrat",
+    fontSize: "14px",
+    fontWeight: "500",
+    fontStretch: "normal",
+    fontStyle: "normal",
+    ":hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.12)"
+    },
+    ":focus": {
+      color: "white",
+      border: "solid 1px white"
+    }
+  },
+  props => ({
+    backgroundColor: props.backgroundColor,
+    color: props.color,
+    border: props.border
+  })
+);
 
 export const ModalButton = styled.button`
   cursor: pointer;
@@ -146,7 +158,7 @@ export const ModalButtonLabel = styled.label`
   font-style: normal;
   line-height: 1.14;
   letter-spacing: 1.25px;
-  
+
   color: ${props => props.color};
 `;
 
@@ -164,13 +176,13 @@ export const Line = styled.hr({
   marginLeft: "25px",
   marginRight: "25px",
   border: "solid 1px rgba(255, 255, 255, 0.12)",
-  marginTop:"32px"
+  marginTop: "32px"
   //opacity: "30%",
   //borderRadius: "1px"
 });
 
-export const UploadContainer=styled.div({
-  display:"flex",
-  flexDirection:"column",
+export const UploadContainer = styled.div({
+  display: "flex",
+  flexDirection: "column",
   height: "160px"
-})
+});

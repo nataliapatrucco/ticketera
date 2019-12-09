@@ -8,8 +8,6 @@ import {
 
 } from "../../redux/actions/tickets";
 
-import setStatus from "../../../resolvers/status-Resolvers"
-
 import {
   ModalBackground,
   ModalContainer,
@@ -31,7 +29,7 @@ import {ModalQuestion, Icon, ModalUploadBox, ModalUploadBoxPlus} from "../../com
 
 export default ({ ticket, setShowAnswerModal }) => {
   const dispatch = useDispatch();
-  //const [status, setStatus] = useState(1);
+  const [status, setStatus] = useState(1);
   const [description, setDescription] = useState("");
   const [inputComp, setInputComp] = useState(false);
   const [inputResp, setInputResp] = useState(false);
@@ -40,7 +38,6 @@ export default ({ ticket, setShowAnswerModal }) => {
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowAnswerModal(false));
   };
-
   return (
     <ModalBackground>
       <ModalContainer>
@@ -74,26 +71,28 @@ export default ({ ticket, setShowAnswerModal }) => {
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setInputResp(!inputResp), setInputComp(false);
+              setStatus(2),setInputResp(!inputResp), setInputComp(false)
             }}
           >
             RESPONDIENDO
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setInputComp(!inputComp), setInputResp(false);
+              setStatus(3),setInputComp(!inputComp), setInputResp(false)
             }}
           >
             COMPLETADA
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setInputResp(false), setInputComp(false);
+              setStatus(4),setInputResp(false), setInputComp(false)
             }}
           >
             RECHAZADA
           </StatusButton>
         </ButtonContainer>
+
+        {/* //muestra input */}
         {inputResp && (
           <ModalInputContainer>
             <ModalInput
@@ -116,6 +115,8 @@ export default ({ ticket, setShowAnswerModal }) => {
           </ModalInputContainer>
         )}
 
+
+
         <ButtonContainer justifyContent={"flex-end"} marginTop={"65px"}>
           <ModalButton
             color="transparent"
@@ -125,9 +126,9 @@ export default ({ ticket, setShowAnswerModal }) => {
           >
             <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
           </ModalButton>
+
           <ModalButton
             color="#62d0ff"
-            // marginLeft="450px"
             type="submit"
             border="none"
             onClick={e => {
@@ -135,6 +136,9 @@ export default ({ ticket, setShowAnswerModal }) => {
               handleSubmit(ticket.id);
             }}
           >
+
+
+
             <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
           </ModalButton>
         </ButtonContainer>
