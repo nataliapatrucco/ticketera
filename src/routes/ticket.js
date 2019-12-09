@@ -6,7 +6,6 @@ const {
   editComment,
   fetchTickets,
   fetchStatus,
-  fetchByTitleTag,
   editTicket,
   createTicket,
   deleteTicket,
@@ -14,7 +13,8 @@ const {
   removeParticipant,
   userTickets,
   fetchTicket,
-  createImage
+  createImage,
+  getDevpedia
 } = require("../resolvers/ticket-Resolvers");
 
 const { isLoggedIn, isAdmin, checkUser } = require("../routes/middlewares");
@@ -22,7 +22,7 @@ const { isLoggedIn, isAdmin, checkUser } = require("../routes/middlewares");
 // Traer todos los tickets
 router.get("/", isLoggedIn, fetchTickets);
 
-router.get("/search", isLoggedIn, fetchByTitleTag);
+router.get("/search", isLoggedIn, getDevpedia);
 
 // Crear un ticket
 router.post("/", isLoggedIn, createTicket);

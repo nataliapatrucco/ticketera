@@ -11,11 +11,11 @@ import {
   SearchIcon,
   UserName
 } from "./style";
-import { search } from "../../redux/actions/search";
+import { fetchSearchedTickets } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
 // import { Notification } from "../../components/Notifications/style";
 
-export const Navbar = () => {
+export const Navbar = props => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const [notification, setNotification] = useState(false);
@@ -28,8 +28,10 @@ export const Navbar = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(search(input));
-    //props.history.push("/aLaComisaria") // PARA REDIRECCIONAR
+    dispatch(fetchSearchedTickets(input)).then(() =>
+      props.history.push("/devpedia")
+    );
+    setInput("");
   };
 
   return (
@@ -38,6 +40,7 @@ export const Navbar = () => {
         <Rectangle>
           <SearchIcon src="/images/searchicon.png" />
           <Search
+            value={input}
             placeholder="Buscar respuestas en la Devpedia"
             onChange={e => handleChange(e)}
           />
