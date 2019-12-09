@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 export const Contenedor = styled.div({
   backgroundColor: "#006088",
   display: "flex",
+  flexGrow:1,
   flexDirection: "column",
   margin: '20px 50px 0 20px ',
   border: "1px solid #006e9e",

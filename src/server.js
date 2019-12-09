@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const socket = require("./socket/index");
 var cors = require("cors");
+const { Ticket } = require("./db/models");
 
 app.use(
   cors({
@@ -37,3 +38,5 @@ app.use("/api", require("./routes"));
 app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
+
+module.exports = app;
