@@ -114,17 +114,6 @@ export const MakeQuestion = props => {
                 onChange={handleImageChange}
               ></ModalUploadBoxPlus>
             </ModalUploadBox>
-            <MyDropzone onDrop={handleOnDrop}>
-              {dropzoneProps => {
-                return (
-                  <div>
-                    <p>Drop some files here</p>
-                    <ModalUploadBox></ModalUploadBox>
-                  </div>
-                );
-              }}
-            </MyDropzone>
-            ;
             <ModalButtonContainer>
               <ModalButton
                 color="#62d0ff"
