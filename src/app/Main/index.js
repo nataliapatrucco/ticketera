@@ -11,12 +11,20 @@ import AdminContainer from "../containers/AdminContainer";
 import { HomeDiv, Container, SideDiv, Section, MiddleContainer } from "./style";
 import OpenContainer from "../containers/dashboard/partials";
 import SingleContainer from "../containers/singleTicket";
+import Socket from "../socket";
 
 export default props => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.user.user);
 
+  // inicializa socket solo cuando tenga el usuario
+  Socket.init(user.id);
+
+  // Socket on ticketdelete
+  Socket.on("deleted", message => {
+    console.log("SKLEREREERERE", message);
+  });
   useEffect(() => {
     dispatch(fetchUser());
     if (!user.id) {

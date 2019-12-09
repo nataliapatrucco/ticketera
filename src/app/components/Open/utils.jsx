@@ -18,7 +18,7 @@ import {
 import Modal from "../deleteTicket";
 import AnswerModal from "../../containers/answerTicket";
 
-// import { Container } from "../deleteTicket/style";
+import { Container } from "../deleteTicket/style";
 
 export default ({ ticket }) => {
   const [showModal, setShowModal] = useState(false);
@@ -44,58 +44,80 @@ export default ({ ticket }) => {
         {!user.isAdmin ? (
           <>
             {user.id === ticket.authorId ? (
-              <ButtonDelete
-            color={"#cf6679"}
-            onClick={() => setShowModal(!showModal)}
-          >
-            <AddIcon src="/images/delete-resting.svg" alt="" />
-            <Texto color={"#cf6679"}>ELIMINAR PREGUNTA</Texto>
-          </ButtonDelete>
+              <>
+                <ButtonDelete
+                  color={"#cf6679"}
+                  onClick={() => setShowModal(!showModal)}
+                >
+                  <AddIcon src="/images/delete-resting.svg" alt="" />
+                  <Texto color={"#cf6679"}>ELIMINAR PREGUNTA</Texto>
+                </ButtonDelete>
+                <ShareButton>
+                  <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
+                  <Texto>COMPARTIR</Texto>
+                </ShareButton>
+              </>
             ) : checkParticipants(ticket.users) ? (
-              <ButtonParticipants
-            color={"#62d0ff"}
-            onClick={() => handleRemove(ticket.id, ticket.statusId)}
-          >
-            <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
-            <Texto color={"#62d0ff"}>ME INTERESA</Texto>
-          </ButtonParticipants>
+              <>
+                <ButtonParticipants
+                  color={"#62d0ff"}
+                  onClick={() => handleRemove(ticket.id, ticket.statusId)}
+                >
+                  <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
+                  <Texto color={"#62d0ff"}>ME INTERESA</Texto>
+                </ButtonParticipants>
+                <ShareButton>
+                  <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
+                  <Texto>COMPARTIR</Texto>
+                </ShareButton>
+              </>
             ) : (
-              <ButtonAddParticipants
-            color={"#62d0ff"}
-            onClick={() => handleAdd(ticket.id, ticket.statusId)}
-          >
-            <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
-            <Texto color={"#62d0ff"}>ME INTERESA</Texto>
-          </ButtonAddParticipants>
+              <>
+                <ButtonAddParticipants
+                  color={"#62d0ff"}
+                  onClick={() => handleAdd(ticket.id, ticket.statusId)}
+                >
+                  <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
+                  <Texto color={"#62d0ff"}>ME INTERESA</Texto>
+                </ButtonAddParticipants>
+                <ShareButton>
+                  <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
+                  <Texto>COMPARTIR</Texto>
+                </ShareButton>
+              </>
             )}
           </>
         ) : (
           <>
-            <ButtonAnswer onClick={() => setShowAnswerModal(!showAnswerModal)}>
-              <AddIcon src="/images/answerIcon.svg" alt="" />
-              RESPONDER
-            </ButtonAnswer>
-            <ButtonDelete onClick={() => setShowModal(!showModal)}>
-              <AddIcon src="/images/delete-resting.svg" alt="" />
-              BORRAR PREGUNTA
-            </ButtonDelete>
+            <Container>
+              <ButtonAnswer
+                onClick={() => setShowAnswerModal(!showAnswerModal)}
+              >
+                <AddIcon src="/images/answerIcon.svg" alt="" />
+                RESPONDER
+              </ButtonAnswer>
+              <ButtonDelete onClick={() => setShowModal(!showModal)}>
+                <AddIcon src="/images/delete-resting.svg" alt="" />
+                BORRAR PREGUNTA
+              </ButtonDelete>
+              <ShareButton>
+                <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
+                <Texto>COMPARTIR</Texto>
+              </ShareButton>
+            </Container>
           </>
         )}
+        {showModal ? (
+          <Modal
+            ticket={ticket}
+            showModal={showModal}
+            setShowModal={setShowModal}
+          />
+        ) : null}
       </AddButton>
-      {showModal ? (
-        <Modal
-          ticket={ticket}
-          showModal={showModal}
-          setShowModal={setShowModal}
-        />
-      ) : null}
       {showAnswerModal ? (
         <AnswerModal ticket={ticket} setShowAnswerModal={setShowAnswerModal} />
       ) : null}
-      <ShareButton>
-        <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
-        <Texto>COMPARTIR</Texto>
-      </ShareButton>
     </>
   );
 };
