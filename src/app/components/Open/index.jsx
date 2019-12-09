@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "moment/locale/es";
 moment.locale("es");
 
-import Answer from '../Answer/index'
+import Answer from "../Answer/index";
 
 import {
   Ticket,
@@ -94,9 +94,7 @@ export default function index({ ticket, index, params }) {
           </Header>
           <Body>
             <Link to={`/${ticket.slug}`}>
-              <TicketTitle>
-                {ticket.title}
-              </TicketTitle>
+              <TicketTitle>{ticket.title}</TicketTitle>
             </Link>
             {ticket.content && ticket.content.length > 140 ? (
               <div>
@@ -111,20 +109,19 @@ export default function index({ ticket, index, params }) {
             ) : (
               <TicketContent> {ticket.content}</TicketContent>
             )}
-           {params===ticket.slug && <Answer ticket={ticket}/>}
+            {params === ticket.slug && <Answer ticket={ticket} />}
           </Body>
           <Line />
           <TicketFooter>
             {/* <Buttons> */}
-              <SuperButton ticket={ticket} />
+            <SuperButton ticket={ticket} />
             {/* </Buttons> */}
             <ParticipantsImgContainer>
-            <PartipantsImg
-              src="/images/perfil.jpeg"
-              alt="fotos participantes"
-            ></PartipantsImg>
+              <PartipantsImg
+                src="/images/perfil.jpeg"
+                alt="fotos participantes"
+              ></PartipantsImg>
             </ParticipantsImgContainer>
-            
           </TicketFooter>
         </>
       )}

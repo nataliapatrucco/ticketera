@@ -91,8 +91,10 @@ export const fetchTicket = slug => dispatch =>
     .then(ticket => dispatch(setTicket(ticket)));
 
 export const answerTicket = (id, { description, status }) => dispatch => {
-  Socket.emit("change-status", id);
-  return axios.put(`/api/status/${id}`, { description, status });
+  return axios
+    .put(`/api/status/${id}`, { description, status })
+    .then(res => res.data)
+    .then(ticket => Socket.emit("change-status", ticket));
 };
 
 export const createNewImage = (id, image) =>

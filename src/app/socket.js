@@ -7,7 +7,7 @@ class Socket {
 
   init(userId) {
     if (!this.socket && userId) {
-      this.socket = io(`http://localhost:3000?token=${userId}`, {
+      this.socket = io(`http://10.100.0.118.:3000?token=${userId}`, {
         transport: ["websocket"]
       });
     }

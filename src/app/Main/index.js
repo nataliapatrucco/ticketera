@@ -30,9 +30,15 @@ export default props => {
   Socket.init(user.id);
 
   // Socket on ticketdelete
-  Socket.on("deleted", message => {
-    console.log("SKLEREREERERE", message);
+  Socket.on("statusChanged", message => {
+    console.log(message);
   });
+
+  // Socket on Ticket Status Update
+  Socket.on("status", message => {
+    console.log(message);
+  });
+
   useEffect(() => {
     dispatch(fetchUser());
     if (!user.id) {

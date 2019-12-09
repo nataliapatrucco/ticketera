@@ -28,13 +28,25 @@ const setStatus = function(req, res, next) {
                   description: null
                 })
                 .then(() => ticket.setStatus(STATUS.PROCESS))
-                .then(() => res.send());
+                .then(() =>
+                  Ticket.findOne({
+                    where: { id: req.params.id },
+                    include: fullTicket
+                  })
+                )
+                .then(ticketUpdated => res.send(ticketUpdated));
             } else {
               ticket
                 .createComment({})
                 .then(comment => comment.setReplier(req.user.id))
                 .then(() => ticket.setStatus(STATUS.PROCESS))
-                .then(() => res.send());
+                .then(() =>
+                  Ticket.findOne({
+                    where: { id: req.params.id },
+                    include: fullTicket
+                  })
+                )
+                .then(ticketUpdated => res.send(ticketUpdated));
             }
           });
 
@@ -51,7 +63,13 @@ const setStatus = function(req, res, next) {
                 })
                 .then(() => comment.setReplier(req.user.id))
                 .then(() => ticket.setStatus(STATUS.CLOSED))
-                .then(() => res.send());
+                .then(() =>
+                  Ticket.findOne({
+                    where: { id: req.params.id },
+                    include: fullTicket
+                  })
+                )
+                .then(ticketUpdated => res.send(ticketUpdated));
             } else {
               return ticket
 
@@ -60,7 +78,13 @@ const setStatus = function(req, res, next) {
                 })
                 .then(comment => comment.setReplier(req.user.id))
                 .then(() => ticket.setStatus(STATUS.CLOSED))
-                .then(() => res.send());
+                .then(() =>
+                  Ticket.findOne({
+                    where: { id: req.params.id },
+                    include: fullTicket
+                  })
+                )
+                .then(ticketUpdated => res.send(ticketUpdated));
             }
           });
 
@@ -79,7 +103,13 @@ const setStatus = function(req, res, next) {
                   .then(() => comment.setReplier(req.user.id))
 
                   .then(() => ticket.setStatus(STATUS.REJECTED))
-                  .then(() => res.send());
+                  .then(() =>
+                    Ticket.findOne({
+                      where: { id: req.params.id },
+                      include: fullTicket
+                    })
+                  )
+                  .then(ticketUpdated => res.send(ticketUpdated));
               } else {
                 return ticket
                   .createComment({
@@ -87,7 +117,13 @@ const setStatus = function(req, res, next) {
                   })
                   .then(comment => comment.setReplier(req.user.id))
                   .then(() => ticket.setStatus(STATUS.REJECTED))
-                  .then(() => res.send());
+                  .then(() =>
+                    Ticket.findOne({
+                      where: { id: req.params.id },
+                      include: fullTicket
+                    })
+                  )
+                  .then(ticketUpdated => res.send(ticketUpdated));
               }
             } else {
               res.status(403).send("Ingresar motivo");
@@ -106,7 +142,13 @@ const setStatus = function(req, res, next) {
               }
             })
             .then(() => ticket.setStatus(STATUS.OPEN))
-            .then(() => res.send());
+            .then(() =>
+              Ticket.findOne({
+                where: { id: req.params.id },
+                include: fullTicket
+              })
+            )
+            .then(ticketUpdated => res.send(ticketUpdated));
       }
     })
     .catch(err => console.log(err));

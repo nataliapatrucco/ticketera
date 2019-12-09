@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  answerTicket,
-  fetchOpen,
-  fetchProcessing
-} from "../../redux/actions/tickets";
+import { answerTicket, fetchOpen } from "../../redux/actions/tickets";
 import {
   ModalBackground,
   ModalContainer,
