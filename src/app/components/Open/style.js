@@ -8,24 +8,25 @@ export const Ticket = styled.div(
     border: "solid 1px #2a3d51",
     backgroundColor: "#192e44",
     fontFamily: "Monstserrat",
-    width: "700px",
-    marginTop: "10px"
+    width: "710px",
+    marginTop: "10px",
+    padding: "16px"
   },
   ({ isHighlighted }) => ({
     borderColor: isHighlighted ? "#62d0ff" : "#2a3d51"
   })
 );
 
-export const Header = styled.div(
-  {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    margin: "5px",
-    padding: "0"
-  },
-  props => ({ backgroundColor: props.backgroundColor })
-);
+export const Container = styled.div({
+  float: "right"
+});
+
+export const Header = styled.div({
+  display: "flex",
+  flexDirection: "row",
+  marginBottom: "5px ",
+  padding: "0"
+});
 
 export const Img = styled.img({
   alignItems: "center",
@@ -33,7 +34,7 @@ export const Img = styled.img({
   height: "40px",
   borderRadius: "50px",
   flexBasis: "5%",
-  margin: "10px"
+  margin: "0 10px 10px 0"
 });
 
 export const Author = styled.section({
@@ -43,14 +44,14 @@ export const Author = styled.section({
   marginLeft: "10px"
 });
 
-export const AuthorName = styled.h4({
+export const AuthorName = styled.div({
   fontSize: "14px",
   color: "#FfFfFf",
   opacity: "90%",
   marginTop: "5px",
   marginBottom: "3px",
   fontFamily: "Montserrat",
-  fontWeight: "500",
+  fontWeight: "600",
   lineHeight: "24px",
   letterSpacing: "0.1px"
 });
@@ -82,7 +83,6 @@ export const Icon = styled.h3({
   borderRadius: "6px",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   marginTop: "5px",
-  marginRight: "10px",
   marginBottom: "5px",
   fontFamily: "Montserrat",
   fontWeight: "600",
@@ -92,18 +92,18 @@ export const Icon = styled.h3({
 
 export const Body = styled.section({
   flexDirection: "column",
-  margin: "5px"
+  margin: "5px 0 5px 0"
 });
 export const TicketTitle = styled.header({
   flex: "auto",
   marginLeft: "15px",
   marginBottom: "5px",
-  fontSize: "18px",
+  fontSize: "20px",
   color: "rgba(255, 255, 255, 0.87)",
   fontFamily: "Montserrat",
-  fontWeight: "600",
+  fontWeight: "bold",
   lineHeight: "28px",
-  letterSpacing: "0.5px"
+  letterSpacing: "0.25px"
 });
 
 export const TicketContent = styled.p({
@@ -115,7 +115,7 @@ export const TicketContent = styled.p({
   opacity: "90%",
   fontSize: "14px",
   fontFamily: "Montserrat",
-  fontWeight: "400",
+  fontWeight: "600",
   lineHeight: "20px",
   letterSpacing: "0.25px",
   overflowWrap: "break-word"
@@ -146,71 +146,90 @@ export const Line = styled.hr({
 });
 
 export const TicketFooter = styled.section({
-  display: "flex",
-  flexFlow: "row",
-  justifyContent: "space-between",
-  paddingLeft: "32px",
-  paddingRight: "20px",
-  margin: "10px",
-  alignContent: "flex-end"
-});
-
-export const Buttons = styled.div({
-  display: "flex"
-  // justifyContent: "space-between"
+  //  height: "51px",
+  padding: "12px 0 2px 0",
+  // marginTop: "10px",
+  float: "left",
+  display: "inline-block"
 });
 
 export const AddIcon = styled.img({
   height: "20px",
+  width: "20px",
   weigth: "25.5px",
-  color: "#ffffff",
-  marginBottom: "2px",
-  marginRight: "6px",
-  ":hover": {}
+  color: "red",
+  opacity: "60%",
+  // marginBottom: "2px",
+  marginTop: "5px",
+  marginRight: "5px",
+  ":hover": {
+    color: "red"
+  }
 });
 
 export const AddButton = styled.div({
-  display: "flex",
-  justifyContent: "space-around",
-  alignItems: "center",
-  border: "solid 1px rgba(0,0,0,0)",
+  display: "inline-block",
+  // border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
   color: "#ffffff",
-  opacity: "70%",
+  opacity: "60%",
   fontFamily: "Montserrat",
-  fontWeight: "400",
+  fontWeight: "600",
   fontSize: "14px",
-  lineHeight: "24px",
-  letterSpacing: "0.1px",
-  marginRight: "60px"
+  lineHeight: "16px",
+  letterSpacing: "1.25px",
+  ":hover": {
+    color: `${props => props.color}`
+  }
+  // marginRight: "60px"
 });
 
-export const RemoveButton = styled.p({
-  display: "flex",
-  justifyContent: "space-around",
-  alignItems: "center",
-  border: "solid 1px rgba(0,0,0,0)",
+export const RemoveButton = styled.div({
+  display: "inline-block",
+  // border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
   color: "#ffffff",
-  opacity: "70%",
+  opacity: "60%",
   fontFamily: "Montserrat",
-  fontWeight: "400",
+  fontWeight: "600",
   fontSize: "14px",
-  lineHeight: "24px",
-  letterSpacing: "0.1px",
-  marginRight: "60px"
+  lineHeight: "16px",
+  letterSpacing: "1.25px"
+  // marginRight: "60px"
 });
 
-export const ShareButton = styled.p({
-  border: "solid 1px rgba(0,0,0,0)",
+export const ShareButton = styled.div({
+  // border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
-  color: "#ffffff",
-  opacity: "70%",
+  opacity: "60%",
   fontFamily: "Montserrat",
-  fontWeight: "400",
+  fontWeight: "600",
   fontSize: "14px",
-  lineHeight: "24px",
-  letterSpacing: "0.1px"
+  lineHeight: "16px",
+  letterSpacing: "1.25px",
+  display: "inline-block",
+  marginLeft: "37px",
+  ":hover": {
+    color: `${props => props.color}`
+  }
+});
+
+export const Texto = styled.div`
+  display: inline-block;
+  position: relative;
+  bottom: 5px;
+  color: #ffffff;
+  opacity: 60%;
+  &:hover {
+    color: ${props => props.color};
+  }
+`;
+
+export const ParticipantsImgContainer = styled.div({
+  width: "112px",
+  display: "inline-block",
+  // marginLeft: "36.6%",
+  float: "right"
 });
 
 export const PartipantsImg = styled.img({
@@ -218,7 +237,8 @@ export const PartipantsImg = styled.img({
   width: "24px",
   height: "24px",
   borderRadius: "50px",
-  margin: "10px"
+  marginRight: "8px",
+  float: "right"
 });
 
 //MODAL
@@ -234,8 +254,7 @@ export const Modal = styled.div({
 });
 
 export const ButtonDelete = styled.div({
-  display: "flex",
-  justifyContent: "center",
+  display: "inline-block",
   cursor: "pointer",
   color: "rgba(255, 255, 255, 0.6)",
   ":hover": {
@@ -247,15 +266,13 @@ export const ButtonDelete = styled.div({
 });
 
 export const ButtonParticipants = styled.div({
-  display: "flex",
-  justifyContent: "center",
+  display: "inline-block",
   cursor: "pointer",
   color: "#62d0ff"
 });
 
 export const ButtonAddParticipants = styled.div({
-  display: "flex",
-  justifyContent: "center",
+  display: "inline-block",
   cursor: "pointer",
   color: "rgba(255, 255, 255, 0.6)",
   ":hover": {
@@ -284,11 +301,11 @@ export const LabelButton = styled.label({
   height: "16px",
   fontFamily: "Montserrat",
   fontSize: "14px",
-  letterSpacing:"1.25px",
+  letterSpacing: "1.25px",
   fontWeight: "600",
   lineHeight: "1.14",
   color: "#001b36"
-})
+});
 
 // ADMIN
 
