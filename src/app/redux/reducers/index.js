@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import userReducer from "../reducers/userReducer";
-import searchReducer from "../reducers/searchReducer";
-import ticketsReducer from "../reducers/ticketReducer";
+import userReducer from "./userReducer";
+import searchReducer from "./searchReducer";
+import ticketsReducer from "./ticketReducer";
 
 export default combineReducers({
   user: userReducer,

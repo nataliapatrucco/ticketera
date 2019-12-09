@@ -8,7 +8,7 @@ import {
 } from "./style";
 import { deleteTicket, fetchOpen } from "../../redux/actions/tickets";
 import { useDispatch, useSelector } from "react-redux";
-import { ModalBackground } from "../../components/modalBackground/style";
+import { ModalBackground } from "../modalBackground/style";
 
 export default ({ ticket, setShowModal, showModal }) => {
   const dispatch = useDispatch();
