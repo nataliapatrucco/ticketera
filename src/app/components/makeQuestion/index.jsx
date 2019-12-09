@@ -1,6 +1,7 @@
 import React, { useState, useSelector } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import Dropzone from "react-dropzone";
 
 import {
   Container,
@@ -45,7 +46,6 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
-      //.then(console.log)
       .then(ticket => createNewImage(ticket.data.id, image))
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
@@ -58,8 +58,11 @@ export const MakeQuestion = props => {
     setImage(formData);
   };
 
-  const handleOnDrop = files => {
-    console.log(files);
+  const handleImageDrop = files => {
+    const droppedFiles = files;
+    const formData = new FormData();
+    formData.append("file", droppedFiles[0]);
+    setImage(formData);
   };
 
   return (
@@ -107,13 +110,24 @@ export const MakeQuestion = props => {
               Adjuntar archivos
             </ModalQuestion>
             <ModalUploadBox>
-              <ModalUploadBoxPlus
-                type="file"
-                id="file-uploader"
-                name="image"
-                accept="image/*"
-                onChange={handleImageChange}
-              ></ModalUploadBoxPlus>
+              <Dropzone
+                onDrop={acceptedFiles => handleImageDrop(acceptedFiles)}
+                className="dropzone"
+                activeClassName="active-dropzone"
+                multiple={false}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div {...getRootProps()}>
+                      <input
+                        {...getInputProps()}
+                        onChange={handleImageChange}
+                      />
+                      <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
             </ModalUploadBox>
             <ModalButtonContainer>
               <ModalButton
