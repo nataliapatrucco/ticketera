@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 export const QuestionStatusContainer = styled.div ({
     margin: '42px 182px 32px 30px',
     height: '36px',
-    float: 'left'
+    float: 'left',
+    height: '100%'
 })
 
 export const QuestionStatus = styled.div`
