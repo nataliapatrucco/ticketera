@@ -11,7 +11,7 @@ class Socket {
       this.sockets[id] = socket;
 
       console.log("CONNECTION: user id", id);
-      socket.on("delete-ticket", this.deleteTicket());
+      // socket.on("delete-ticket", this.deleteTicket());
       socket.on("disconnect", () => {
         this.sockets[id] = null;
         console.log("DISCONNECTION: user id", id);
