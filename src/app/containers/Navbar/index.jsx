@@ -45,15 +45,16 @@ export const Navbar = () => {
       </form>
       <FancyDiv>
         <NotificationBell
-          onClick={() => notification ? setNotification(false) : setNotification(true)}
+          onClick={() =>
+            notification ? setNotification(false) : setNotification(true)
+          }
           src="/images/notificationbell.png"
         />
         <ProfileImg src="/images/devman.jpg" />
         <UserName>{user.name}</UserName>
         <button onClick={() => dispatch(logOutUser())}>Log Out</button>
       </FancyDiv>
-      {notification ? (<NotificationModal />) : null}
-      
+      {notification ? <NotificationModal /> : null}
     </NavbarContainer>
   );
 };

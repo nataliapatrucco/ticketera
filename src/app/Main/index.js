@@ -8,7 +8,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../redux/actions/user";
 import UserTickets from "../components/UserTickets";
 import AdminContainer from "../containers/AdminContainer";
-import { HomeDiv, Container, SideDiv, Section, MiddleContainer } from "./style";
+import {
+  HomeDiv,
+  Container,
+  SideDiv,
+  Section,
+  MiddleContainer,
+  CenterDiv,
+  ProcessDiv
+} from "./style";
 import OpenContainer from "../containers/dashboard/partials";
 import SingleContainer from "../containers/singleTicket";
 import Socket from "../socket";
@@ -44,18 +52,26 @@ export default props => {
           <Section>
             <Navbar />
             <MiddleContainer>
-              <Switch>
-                {user.isAdmin ? (
-                  <Route exact path="/admin/users" component={AdminContainer} />
-                ) : (
-                  ""
-                )}
+              <CenterDiv>
+                <Switch>
+                  {user.isAdmin ? (
+                    <Route
+                      exact
+                      path="/admin/users"
+                      component={AdminContainer}
+                    />
+                  ) : (
+                    ""
+                  )}
 
-                <Route exact path="/" component={OpenContainer} />
-                <Route path="/userTickets/:status" component={UserTickets} />
-                <Route exact path="/:slug" component={SingleContainer} />
-              </Switch>
-              <Processing />
+                  <Route exact path="/" component={OpenContainer} />
+                  <Route path="/userTickets/:status" component={UserTickets} />
+                  <Route exact path="/:slug" component={SingleContainer} />
+                </Switch>
+              </CenterDiv>
+              <ProcessDiv>
+                <Processing />
+              </ProcessDiv>
             </MiddleContainer>
           </Section>
         </Container>
