@@ -1,16 +1,22 @@
 import axios from "axios";
-import { SEARCH } from "../constants";
+import { SEARCH_TICKETS, FETCH_CLOSED } from "../constants";
 
-const searchIt = search => {
-  return {
-    type: SEARCH,
-    search
-  };
-};
+const setSearched = searchedTickets => ({
+  type: SEARCH_TICKETS,
+  searchedTickets
+});
 
-export const search = searchResult => dispatch =>
-  axios
-    .get("/api/ticket/search", searchResult)
-    .then(searchResult => dispatch(searchIt(searchResult.data)));
+const setClosed = tickets => ({
+  type: FETCH_CLOSED,
+  tickets
+});
 
+export const fetchClosed = () => dispatch =>
+  axios.get("/api/ticket/search").then(res => {
+    dispatch(setClosed(res.data));
+  });
 
+export const fetchSearchedTickets = title => dispatch =>
+  axios.get(`/api/ticket/search?title=${title}`).then(res => {
+    dispatch(setSearched(res.data));
+  });

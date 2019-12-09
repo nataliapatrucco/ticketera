@@ -45,6 +45,9 @@ describe("Responder Tickets", function() {
   before(function() {
     return Ticket.sync({ force: true });
   });
+  before(function() {
+    return Comment.sync({ force: true });
+  });
 
   before(function() {
     return Ticket.create({ title: "ticket 1", statusId: 1 });
@@ -156,7 +159,7 @@ describe("Responder Tickets", function() {
         )
       );
   });
-  xit("Joaco se arrepiente de la respuesta y el ticket vuelve a open", function() {
+  it("Joaco se da cuenta que contestó cualquier cosa y el ticket vuelve a open", function() {
     return agent
       .put(`${host}/api/status/1`)
       .send({ description: null, status: 1 })
@@ -169,7 +172,7 @@ describe("Responder Tickets", function() {
         )
       );
   });
-  xit("a Hanoi le da fiaca ir a responder y el ticket queda open", function() {
+  it("a Hanoi le da fiaca ir a responder y el ticket queda open", function() {
     return agent
       .put(`${host}/api/status/1`)
       .send({ description: null, status: 1 })
