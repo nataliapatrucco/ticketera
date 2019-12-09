@@ -158,7 +158,7 @@ export const AddIcon = styled.img({
   width: "20px",
   weigth: "25.5px",
   color: "red",
-  opacity: "60%",
+  opacity: "0.6",
   // marginBottom: "2px",
   marginTop: "5px",
   marginRight: "5px",
@@ -218,8 +218,7 @@ export const Texto = styled.div`
   display: inline-block;
   position: relative;
   bottom: 5px;
-  color: #ffffff;
-  opacity: 60%;
+  color: rgba(255, 255, 255, 0.6);
   &:hover {
     color: ${props => props.color};
   }

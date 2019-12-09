@@ -156,7 +156,7 @@ describe("Responder Tickets", function() {
         )
       );
   });
-  it("Joaco se arrepiente de la respuesta y el ticket vuelve a open", function() {
+  xit("Joaco se arrepiente de la respuesta y el ticket vuelve a open", function() {
     return agent
       .put(`${host}/api/status/1`)
       .send({ description: null, status: 1 })
@@ -169,7 +169,7 @@ describe("Responder Tickets", function() {
         )
       );
   });
-  it("a Hanoi le da fiaca ir a responder y el ticket queda open", function() {
+  xit("a Hanoi le da fiaca ir a responder y el ticket queda open", function() {
     return agent
       .put(`${host}/api/status/1`)
       .send({ description: null, status: 1 })

@@ -11,25 +11,27 @@ class Socket {
       this.sockets[id] = socket;
 
       console.log("CONNECTION: user id", id);
-      // socket.on("delete-ticket", this.deleteTicket());
+      socket.on("delete-ticket", this.deleteTicket());
       socket.on("disconnect", () => {
         this.sockets[id] = null;
         console.log("DISCONNECTION: user id", id);
       });
     });
   }
-  // deleteTicket = () => ticket => {
-  //   console.log(ticket.authorId);
-  //   this.sockets[ticket.authorId] &&
-  //     this.sockets[ticket.authorId].emit(
-  //       "deleted",
-  //       `Eliminamos tu ticket ${ticket.title}`
-  //     );
-  // };
+  deleteTicket() {
+    return ticket => {
+      console.log(ticket.authorId);
+      this.sockets[ticket.authorId] &&
+        this.sockets[ticket.authorId].emit(
+          "deleted",
+          `Eliminamos tu ticket ${ticket.title}`
+        );
+    };
+  }
 
-  // emitToParticipants = id => {
-  //   this.sockets[id].emit();
-  // };
+  emitToParticipants(id) {
+    this.sockets[id].emit();
+  }
 }
 
 module.exports = new Socket();

@@ -29,6 +29,7 @@ app.use(cookieParser());
 
 db.sync({ force: false }).then(() => {
   const http = app.listen(3000, function() {
+    // Ticket.sync({ force: true });
     console.log("Example app listening on port 3000!");
   });
   socket.connect(http);
