@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import NotificationModal from "../../components/Notifications/index";
 import {
   FancyDiv,
   Rectangle,
@@ -12,10 +13,12 @@ import {
 } from "./style";
 import { search } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
+// import { Notification } from "../../components/Notifications/style";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
+  const [notification, setNotification] = useState(false);
   const user = useSelector(state => state.user.user);
   //   const profilePic = useSelector(state => state.user // SRC DE ProfilePic
 
@@ -41,12 +44,16 @@ export const Navbar = () => {
         </Rectangle>
       </form>
       <FancyDiv>
-        <NotificationBell src="/images/notificationbell.png" />
+        <NotificationBell
+          onClick={() => notification ? setNotification(false) : setNotification(true)}
+          src="/images/notificationbell.png"
+        />
         <ProfileImg src="/images/devman.jpg" />
         <UserName>{user.name}</UserName>
         <button onClick={() => dispatch(logOutUser())}>Log Out</button>
       </FancyDiv>
+      {notification ? (<NotificationModal />) : null}
+      
     </NavbarContainer>
-    
   );
 };
