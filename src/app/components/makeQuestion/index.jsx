@@ -1,6 +1,7 @@
 import React, { useState, useSelector } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import Dropzone from "react-dropzone";
 
 import {
   Container,
@@ -25,6 +26,7 @@ import {
   fetchOpen,
   createNewImage
 } from "../../redux/actions/tickets";
+import MyDropzone from "react-dropzone";
 
 export const MakeQuestion = props => {
   const [showModal, setShowModal] = useState(false);
@@ -54,6 +56,13 @@ export const MakeQuestion = props => {
     const files = e.target.files;
     const formData = new FormData();
     formData.append("file", files[0]);
+    setImage(formData);
+  };
+
+  const handleImageDrop = files => {
+    const droppedFiles = files;
+    const formData = new FormData();
+    formData.append("file", droppedFiles[0]);
     setImage(formData);
   };
 
@@ -103,13 +112,24 @@ export const MakeQuestion = props => {
               Adjuntar archivos
             </ModalQuestion>
             <ModalUploadBox>
-              <ModalUploadBoxPlus
-                type="file"
-                id="file-uploader"
-                name="image"
-                accept="image/*"
-                onChange={handleImageChange}
-              ></ModalUploadBoxPlus>
+              <Dropzone
+                onDrop={acceptedFiles => handleImageDrop(acceptedFiles)}
+                className="dropzone"
+                activeClassName="active-dropzone"
+                multiple={false}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div {...getRootProps()}>
+                      <input
+                        {...getInputProps()}
+                        onChange={handleImageChange}
+                      />
+                      <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
             </ModalUploadBox>
             <ModalButtonContainer>
               <ModalButton
@@ -118,7 +138,6 @@ export const MakeQuestion = props => {
                 marginLeft="450px"
                 type="submit"
                 onClick={e => {
-                  //handleUpload();
                   e.preventDefault();
                   handleSubmit({
                     title: state.title,

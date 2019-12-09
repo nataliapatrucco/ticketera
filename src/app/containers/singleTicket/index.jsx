@@ -19,11 +19,11 @@ export default props => {
   return (
     <Container>
       <QuestionSection>
-        <Title onClick={() => props.history.goBack()}>VOLVER</Title>
+        <Title onClick={() => props.history.push("/")}>VOLVER</Title>
       </QuestionSection>
       {ticket.statusId === 2 ? <ProcessingHeader ticket={ticket} /> : ""}
       <Section>
-        <Open ticket={ticket} />
+        <Open ticket={ticket} params={props.match.params.slug} />
         <br />
       </Section>
     </Container>

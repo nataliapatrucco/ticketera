@@ -2,11 +2,14 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  height: "100%"
+  height: "100%",
+  width: "100%"
   // marginRight: "30px"
 });
 export const HomeDiv = styled.div({
   display: "flex",
+  height: "100%",
+  width: "100%",
   background: "#00172e"
 });
 
@@ -23,7 +26,18 @@ export const SideDiv = styled.div({
 
 export const MiddleContainer = styled.div({
   display: "flex",
+  height: "100%",
+  width: "100%",
   backgroundColor: "#091e35",
-  paddingRight: "30px",
-  height: "100vh"
+  paddingRight: "30px"
+});
+
+export const ProcessDiv = styled.div({
+  display: "flex",
+  flexGrow: 1
+});
+
+export const CenterDiv = styled.div({
+  display: "flex",
+  flexGrow: 3
 });

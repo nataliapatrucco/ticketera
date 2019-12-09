@@ -12,28 +12,6 @@ const fetchTickets = (req, res) => {
     .catch(err => res.status(404).send(err));
 };
 
-const fetchByTitleTag = (req, res) => {
-  Ticket.findAll({
-    where: {
-      [Op.or]: [
-        {
-          title: {
-            [Op.iLike]: `%${req.query.title}%`
-          }
-        },
-        {
-          "$tags.name$": {
-            [Op.iLike]: `%${req.query.name}%`
-          }
-        }
-      ]
-    },
-    include: fullTicket
-  })
-    .then(tickets => res.send(tickets))
-    .catch(err => res.status(404).send(err));
-};
-
 const fetchStatus = (req, res) => {
   Ticket.findAll({
     where: { statusId: req.params.statusId },
@@ -51,21 +29,9 @@ const createTicket = (req, res) => {
         ticket
           .setStatus(1)
           .then(() => ticket.setAuthor(req.user.id))
-          .then(() =>
-            Ticket.findOne({
-              where: { id: ticket.id },
-              include: [
-                {
-                  model: User,
-                  as: "author",
-                  attributes: ["name", "lastname", "img"]
-                }
-              ]
-            }).then(newTicket => res.status(201).send(newTicket))
-          )
+          .then(() => res.status(201).send(ticket))
       )
       .catch(err => {
-        console.log(err);
         res.status(404).send(err);
       });
   } else {
@@ -131,7 +97,9 @@ const addTag = (req, res) => {
         include: [{ all: true }] */
       }).then(updatedTicket => res.send(updatedTicket))
     )
-    .catch(err => res.status(404).send(err));
+    .catch(err => {
+      res.status(404).send(err);
+    });
 };
 
 const addParticipant = (req, res) => {
@@ -217,6 +185,33 @@ const createImage = (req, res) => {
     .then(() => res.sendStatus(201));
 };
 
+const getDevpedia = (req, res) => {
+  if (req.query.title) {
+    Ticket.findAll({
+      order: [["updatedAt", "DESC"]],
+      where: {
+        statusId: 3,
+        [Op.or]: [{ title: { [Op.iLike]: `%${req.query.title}%` } }]
+      },
+      include: fullTicket
+    })
+      .then(tickets => {
+        res.send(tickets);
+      })
+      .catch(err => res.status(404).send(err));
+  } else {
+    Ticket.findAll({
+      order: [["updatedAt", "DESC"]],
+      where: {
+        statusId: 3
+      },
+      include: fullTicket
+    })
+      .then(tickets => res.send(tickets))
+      .catch(err => res.status(404).send(err));
+  }
+};
+
 module.exports = {
   removeTag,
   addTag,
@@ -226,10 +221,10 @@ module.exports = {
   editTicket,
   editComment,
   deleteTicket,
-  fetchByTitleTag,
   addParticipant,
   removeParticipant,
   userTickets,
   fetchTicket,
-  createImage
+  createImage,
+  getDevpedia
 };

@@ -14,7 +14,7 @@ export default ({ ticket, setShowModal, showModal }) => {
   const dispatch = useDispatch();
 
   const handleClick = ticket => {
-    dispatch(deleteTicket(ticket.id)).then(() => dispatch(fetchOpen()));
+    dispatch(deleteTicket(ticket)).then(() => dispatch(fetchOpen()));
   };
 
   return (
