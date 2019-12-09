@@ -11,8 +11,7 @@ import {
   UbicacionContainer,
   AssistantContainer,
   AlumnContainer,
-  Continue,
-  
+  Continue
 } from "./style";
 import { Link } from "react-router-dom";
 

@@ -63,7 +63,7 @@ export const ProfileImg = styled.img({
   justifyContent: "center",
   borderRadius: "50%",
   marginLeft: "10px",
-  marginRight: "4px"
+  marginRight: "12px"
 });
 
 export const NotificationBell = styled.img({
@@ -75,11 +75,12 @@ export const NotificationBell = styled.img({
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   borderRadius: "25px",
   padding: "6px",
-  marginRight: "38px"
+  marginRight: "10px"
 });
 
 export const UserName = styled.div({
   display: "flex",
+  marginRight:'10px',
   opacity: "70%",
   color: "#ffffff",
   fontFamily: "Montserrat",
