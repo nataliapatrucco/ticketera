@@ -72,6 +72,7 @@ var storage = multer.diskStorage({
   }
 });
 
+//const upload = multer({ storage: storage }).array("image", 2);
 const upload = multer({ storage: storage });
 
 router.put("/images/test/:id", isLoggedIn, upload.any(), createImage);
