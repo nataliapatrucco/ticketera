@@ -1,6 +1,7 @@
 import React, { useState, useSelector } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import Dropzone from "react-dropzone";
 
 import {
   Container,
@@ -45,7 +46,6 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
-      //.then(console.log)
       .then(ticket => createNewImage(ticket.data.id, image))
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
@@ -106,7 +106,8 @@ export const MakeQuestion = props => {
               <Icon src="images/icon-file-attachment-24-px.png"></Icon>
               Adjuntar archivos
             </ModalQuestion>
-            <ModalUploadBox>
+
+            {/* <ModalUploadBox>
               <ModalUploadBoxPlus
                 type="file"
                 id="file-uploader"
@@ -114,7 +115,21 @@ export const MakeQuestion = props => {
                 accept="image/*"
                 onChange={handleImageChange}
               ></ModalUploadBoxPlus>
-            </ModalUploadBox>
+            </ModalUploadBox> */}
+
+            <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+              {({ getRootProps, getInputProps }) => (
+                <section>
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} onChange={handleImageChange} />
+                    <p>
+                      Drag 'n' drop some files here, or click to select files
+                    </p>
+                  </div>
+                </section>
+              )}
+            </Dropzone>
+
             <ModalButtonContainer>
               <ModalButton
                 color="#62d0ff"
