@@ -58,8 +58,11 @@ export const MakeQuestion = props => {
     setImage(formData);
   };
 
-  const handleOnDrop = files => {
-    console.log(files);
+  const handleImageDrop = files => {
+    const droppedFiles = files;
+    const formData = new FormData();
+    formData.append("file", droppedFiles[0]);
+    setImage(formData);
   };
 
   return (
@@ -106,30 +109,26 @@ export const MakeQuestion = props => {
               <Icon src="images/icon-file-attachment-24-px.png"></Icon>
               Adjuntar archivos
             </ModalQuestion>
-
-            {/* <ModalUploadBox>
-              <ModalUploadBoxPlus
-                type="file"
-                id="file-uploader"
-                name="image"
-                accept="image/*"
-                onChange={handleImageChange}
-              ></ModalUploadBoxPlus>
-            </ModalUploadBox> */}
-
-            <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
-              {({ getRootProps, getInputProps }) => (
-                <section>
-                  <div {...getRootProps()}>
-                    <input {...getInputProps()} onChange={handleImageChange} />
-                    <p>
-                      Drag 'n' drop some files here, or click to select files
-                    </p>
-                  </div>
-                </section>
-              )}
-            </Dropzone>
-
+            <ModalUploadBox>
+              <Dropzone
+                onDrop={acceptedFiles => handleImageDrop(acceptedFiles)}
+                className="dropzone"
+                activeClassName="active-dropzone"
+                multiple={false}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div {...getRootProps()}>
+                      <input
+                        {...getInputProps()}
+                        onChange={handleImageChange}
+                      />
+                      <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
+            </ModalUploadBox>
             <ModalButtonContainer>
               <ModalButton
                 color="#62d0ff"
