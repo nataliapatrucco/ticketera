@@ -6,22 +6,24 @@ import {
   AssistantContainer,
   Ubicacion,
   UbicacionContainer,
-  UbicacionIcon
-} from "../../dashboard/partials/style";
+  UbicacionIcon,
+  Icon
+} from "../style";
 
 export default function ProcessingHeader({ ticket }) {
   return (
     <Header>
       <AssistantContainer>
-        <Img size="24px" src="/images/alumno.jpeg" margin="0 12px 0 0 "></Img>
         <Assistant>
+          <Img size="40px" src="/images/alumno.jpeg" margin="0 12px 0 0 "></Img>
           {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`}
         </Assistant>
+        <UbicacionContainer>
+          <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
+          <Ubicacion> en Sala 5 </Ubicacion>
+        </UbicacionContainer>
       </AssistantContainer>
-      <UbicacionContainer>
-        <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
-        <Ubicacion> en Sala 5 </Ubicacion>
-      </UbicacionContainer>
+      <Icon>RESPONDIENDO AHORA</Icon>
     </Header>
   );
 }
