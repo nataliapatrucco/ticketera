@@ -67,15 +67,15 @@ export const ProfileImg = styled.img({
 });
 
 export const NotificationBell = styled.img({
-  height: "74%",
-  width: "18%",
+  height: "36px",
+  width: "36px",
   color: "#ffffff",
   opacity: "70%",
   objectFit: "contain",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
-  borderRadius: "20px",
+  borderRadius: "25px",
   padding: "6px",
-  marginRight: "5px"
+  marginRight: "38px"
 });
 
 export const UserName = styled.div({
