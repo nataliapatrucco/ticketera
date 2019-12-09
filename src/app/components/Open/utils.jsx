@@ -44,13 +44,19 @@ export default ({ ticket }) => {
         {!user.isAdmin ? (
           <>
             {user.id === ticket.authorId ? (
-              <ButtonDelete
-                color={"#cf6679"}
-                onClick={() => setShowModal(!showModal)}
-              >
-                <AddIcon src="/images/delete-resting.svg" alt="" />
-                <Texto color={"#cf6679"}>ELIMINAR PREGUNTA</Texto>
-              </ButtonDelete>
+              <>
+                <ButtonDelete
+                  color={"#cf6679"}
+                  onClick={() => setShowModal(!showModal)}
+                >
+                  <AddIcon src="/images/delete-resting.svg" alt="" />
+                  <Texto color={"#cf6679"}>ELIMINAR PREGUNTA</Texto>
+                </ButtonDelete>
+                <ShareButton>
+                  <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
+                  <Texto>COMPARTIR</Texto>
+                </ShareButton>
+              </>
             ) : checkParticipants(ticket.users) ? (
               <>
                 <ButtonParticipants
