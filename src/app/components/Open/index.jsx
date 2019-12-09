@@ -28,7 +28,7 @@ import {
   ParticipantsImgContainer,
   BtnVerRespuesta,
   LabelButton
-} from "./style"
+} from "./style";
 
 export default function index({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
@@ -84,7 +84,7 @@ export default function index({ ticket, index, params }) {
               <TicketDate>{`Preguntó ${date}`}</TicketDate>
             </Author>
 
-            {!index && ticket.statusId === 2 ? (
+            {!index && ticket.statusId != 1 ? (
               ""
             ) : !index && ticket.statusId === 1 ? (
               <Icon>PENDIENTE</Icon>
