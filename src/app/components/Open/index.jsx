@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import SuperButton from "./utils";
+import { Link } from "react-router-dom";
 import "moment/locale/es";
 moment.locale("es");
-import { Link } from "react-router-dom";
 
 import Answer from "../Answer/index";
 
@@ -26,7 +26,7 @@ import {
   PartipantsImg,
   Line,
   BtnVerRespuesta,
-  LabelButton,
+  LabelButton
 } from "./style";
 
 export default function index({ ticket, index, params }) {
@@ -108,14 +108,18 @@ export default function index({ ticket, index, params }) {
             ) : (
               <TicketContent> {ticket.content}</TicketContent>
             )}
+            {params === ticket.slug &&
+              (ticket.statusId === 3 || ticket.statusId === 4) && (
+                <Answer ticket={ticket} />
+              )}
           </Body>
           <Line />
           <TicketFooter>
-              <SuperButton ticket={ticket} />         
-            <PartipantsImg
-              src="/images/perfil.jpeg"
-              alt="fotos participantes"
-            ></PartipantsImg>
+            <SuperButton ticket={ticket}/>
+              <PartipantsImg
+                src="/images/perfil.jpeg"
+                alt="fotos participantes"
+              ></PartipantsImg>
           </TicketFooter>
         </>
       )}
