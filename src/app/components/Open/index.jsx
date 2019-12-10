@@ -31,7 +31,7 @@ import {
   LabelButton
 } from "./style";
 
-export default function index({ ticket, index, params }) {
+export default function Open({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
 
   const isHighlighted = ticket => {

@@ -11,7 +11,7 @@ const STATUS_INDEX = {
   rejected: 4
 };
 
-export default () => {
+export default function UserTicketsComponent() {
   const dispatch = useDispatch();
   const { status } = useParams();
   const [index, setIndex] = useState(1);
@@ -28,15 +28,21 @@ export default () => {
   return (
     <QuestionStatusContainer>
       <Link to={`/userTickets/pending`}>
-        <QuestionStatus selected={status === 'pending'}>PENDIENTES</QuestionStatus>
+        <QuestionStatus selected={status === "pending"}>
+          PENDIENTES
+        </QuestionStatus>
       </Link>
       <Link to={`/userTickets/answered`}>
-        <QuestionStatus selected={status === 'answered'}>RESPONDIDAS</QuestionStatus>
+        <QuestionStatus selected={status === "answered"}>
+          RESPONDIDAS
+        </QuestionStatus>
       </Link>
       <Link to={`/userTickets/rejected`}>
-        <QuestionStatus selected={status === 'rejected'}>RECHAZADAS</QuestionStatus>
+        <QuestionStatus selected={status === "rejected"}>
+          RECHAZADAS
+        </QuestionStatus>
       </Link>
       {tickets[index] && tickets[index].map(ticket => <Open ticket={ticket} />)}
     </QuestionStatusContainer>
   );
-};
+}

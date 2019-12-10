@@ -15,7 +15,7 @@ import {
 } from "./style";
 import { Link } from "react-router-dom";
 
-export default ({ ticket }) => {
+export default function ProcessingComponent({ ticket }) {
   return (
     <Link to={`/${ticket.slug}`}>
       <Contenedor>
@@ -50,4 +50,4 @@ export default ({ ticket }) => {
       </Contenedor>
     </Link>
   );
-};
+}

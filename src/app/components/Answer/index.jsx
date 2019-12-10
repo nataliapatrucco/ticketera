@@ -10,7 +10,7 @@ import {
 
 import { Author, AuthorName, TicketDate, Header, Img } from "../Open/style";
 const tags = ["REACT", "NODE.JS", "JAVA", "BOOTCAMP"];
-export default ({ ticket }) => {
+export default function AnswerComponent({ ticket }) {
   return (
     <AnswerContainer>
       <Header>
@@ -31,4 +31,4 @@ export default ({ ticket }) => {
       ))} */}
     </AnswerContainer>
   );
-};
+}
