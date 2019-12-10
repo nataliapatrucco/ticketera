@@ -24,6 +24,7 @@ import {
   ShareButton,
   TicketFooter,
   PartipantsImg,
+  ParticipantIcon,
   Line,
   BtnVerRespuesta,
   LabelButton
@@ -95,7 +96,9 @@ export default function index({ ticket, index, params }) {
             <Link to={`/${ticket.slug}`}>
               <TicketTitle>{ticket.title}</TicketTitle>
             </Link>
-            {ticket.content && ticket.content.length > 140 && ticket.statusId != 3 ? (
+            {ticket.content &&
+            ticket.content.length > 140 &&
+            ticket.statusId != 3 ? (
               <div>
                 <TicketContent>
                   {" "}
@@ -115,11 +118,18 @@ export default function index({ ticket, index, params }) {
           </Body>
           <Line />
           <TicketFooter>
-            <SuperButton ticket={ticket}/>
-              <PartipantsImg
-                src="/images/perfil.jpeg"
-                alt="fotos participantes"
-              ></PartipantsImg>
+            <SuperButton ticket={ticket} />
+            <PartipantsImg>
+              {ticket.users.length ? (
+                ticket.users.length > 9 ? (
+                  <ParticipantIcon>+9</ParticipantIcon>
+                ) : (
+                  <ParticipantIcon>{ticket.users.length}</ParticipantIcon>
+                )
+              ) : (
+                ""
+              )}
+            </PartipantsImg>
           </TicketFooter>
         </>
       )}
