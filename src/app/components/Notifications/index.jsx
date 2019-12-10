@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Socket from "../socket";
-
+import { Link } from "react-router-dom";
 import {
   Container,
   ModalContainer,
@@ -11,24 +10,12 @@ import {
   AvatarContainer
 } from "./style";
 
-export default ({ ticket }) => {
-  const [notifications, setNotifications] = useState([]);
-
-  // Socket on ticket status update
-  Socket.on("statusChanged", message => {
-    setNotifications([...notifications, message]);
-  });
-
-  // Socket on Ticket Deleted
-  Socket.on("deleted", message => {
-    setNotifications([...notifications, message]);
-  });
-
+export default ({ handleClick, notifications }) => {
   return (
     <>
       {!notifications.length ? (
         <>
-          <Container>
+          <Container onClick={handleClick}>
             <ModalContainer>
               <TriangleContainer>
                 <Triangle></Triangle>
@@ -51,7 +38,9 @@ export default ({ ticket }) => {
             <NotificationContainer>
               <AvatarContainer src="images/github.png"></AvatarContainer>
               {notifications.map(notification => (
-                <Notification> {notification}</Notification>
+                <Link to={`/${notification.slug}`}>
+                  <Notification> {notification.message}</Notification>
+                </Link>
               ))}
             </NotificationContainer>
           </ModalContainer>

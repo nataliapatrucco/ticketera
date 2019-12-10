@@ -25,7 +25,6 @@ import {
   TicketFooter,
   PartipantsImg,
   Line,
-  ParticipantsImgContainer,
   BtnVerRespuesta,
   LabelButton
 } from "./style";
@@ -116,15 +115,11 @@ export default function index({ ticket, index, params }) {
           </Body>
           <Line />
           <TicketFooter>
-            {/* <Buttons> */}
-            <SuperButton ticket={ticket} />
-            {/* </Buttons> */}
-            <ParticipantsImgContainer>
+            <SuperButton ticket={ticket}/>
               <PartipantsImg
                 src="/images/perfil.jpeg"
                 alt="fotos participantes"
               ></PartipantsImg>
-            </ParticipantsImgContainer>
           </TicketFooter>
         </>
       )}

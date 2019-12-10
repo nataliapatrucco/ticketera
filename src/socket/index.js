@@ -60,13 +60,13 @@ class Socket {
       ticket.users
         ? ticket.users.map(user =>
             this.sockets[user.id]
-              ? this.sockets[user.id].emit(
-                  "statusChanged",
-                  `${ticket.comment.replier.name} ${
+              ? this.sockets[user.id].emit("statusChanged", {
+                  message: `${ticket.comment.replier.name} ${
                     ticket.comment.replier.lastname
                   } cambió el estado del ticket: ${ticket.title} a
-                  ${estados[ticket.statusId]}`
-                )
+                    ${estados[ticket.statusId]}`,
+                  slug: ticket.slug
+                })
               : ""
           )
         : "";

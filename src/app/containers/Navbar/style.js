@@ -7,13 +7,12 @@ export const NavbarContainer = styled.div({
   paddingTop: "16px",
   paddingBottom: "15px",
   paddingLeft: "30px",
-  paddingRight: "70px",
+  paddingRight: "0",
   flexDirection: "row",
   borderBottom: "solid 1.5px rgba(255, 255, 255, 0.3)"
 });
 
 export const Rectangle = styled.div({
-  
   display: "flex",
   backgroundColor: "#091e35",
   width: "410px",
@@ -66,13 +65,30 @@ export const ProfileImg = styled.img({
   marginRight: "12px"
 });
 
+export const NotificationIcon = styled.div({
+  display: "inline-block",
+  position: "relative",
+  bottom: "23px",
+  right: "23px",
+  borderRadius: "50%",
+  width: "18px",
+  marginBottom: "10px",
+  backgroundColor: "#fc0f03",
+  color: "#ffffff"
+});
+
+export const NotificacionDiv = styled.div({
+  display: "inline-block",
+  position: "relative",
+  textAlign: "center",
+  top: "4px"
+});
+
 export const NotificationBell = styled.img({
-  height: "36px",
-  width: "36px",
+  height: "37px",
+  width: "37px",
   color: "#ffffff",
-  opacity: "70%",
-  objectFit: "contain",
-  border: "solid 1px rgba(255, 255, 255, 0.7)",
+  border: "solid 1.5px rgba(255, 255, 255, 0.7)",
   borderRadius: "25px",
   padding: "6px",
   marginRight: "10px"
@@ -80,12 +96,23 @@ export const NotificationBell = styled.img({
 
 export const UserName = styled.div({
   display: "flex",
-  marginRight:'10px',
+  marginRight: "10px",
   opacity: "70%",
   color: "#ffffff",
+  marginRight: "36px",
   fontFamily: "Montserrat",
   fontWeight: "400",
   fontSize: "16px",
   lineHeight: "24px",
   letterSpacing: "0.15px"
 });
+
+export const ButtonLogOut = styled.img`
+  height: 40px;
+  width: 40px;
+  color: #ffffff;
+  opacity: 70%;
+  object-fit: contain;
+  padding: 6px;
+  margin-right: 38px;
+`;
