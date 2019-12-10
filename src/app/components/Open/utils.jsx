@@ -22,7 +22,6 @@ import AnswerModal from "../../containers/answerTicket";
 import { Container } from "../deleteTicket/style";
 
 export default ({ ticket }) => {
-  {console.log("-----------------------"+ticket.statusId)}
   const [showModal, setShowModal] = useState(false);
   const [showAnswerModal, setShowAnswerModal] = useState(false);
   const dispatch = useDispatch();
