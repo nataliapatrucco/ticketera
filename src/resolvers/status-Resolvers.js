@@ -15,92 +15,98 @@ const setStatus = function(req, res, next) {
     }
   })
     .then(ticket => {
-      switch (req.body.statusId) {
+      switch (req.body.status) {
         case STATUS.PROCESS:
-          ticket
-            .createComment({})
-            .then(comment => comment.setReplier(req.user.id))
-            .then(() => {
-              ticket.setStatus(STATUS.PROCESS);
-              res.send();
-            });
-
-          break;
-
-        case STATUS.CLOSED:
-          Comment.findOne({
+          return Comment.findOne({
             where: {
               ticketId: req.params.id
             }
           }).then(comment => {
             if (comment) {
-              comment
+              return comment
+                .update({
+                  description: null
+                })
+                .then(() => ticket.setStatus(STATUS.PROCESS))
+                .then(() => res.send());
+            } else {
+              ticket
+                .createComment({})
+                .then(comment => comment.setReplier(req.user.id))
+                .then(() => ticket.setStatus(STATUS.PROCESS))
+                .then(() => res.send());
+            }
+          });
+
+        case STATUS.CLOSED:
+          return Comment.findOne({
+            where: {
+              ticketId: req.params.id
+            }
+          }).then(comment => {
+            if (comment) {
+              return comment
                 .update({
                   description: req.body.description
                 })
-                .then(() => {
-                  ticket.setStatus(STATUS.CLOSED);
-                  res.send();
-                });
+                .then(() => comment.setReplier(req.user.id))
+                .then(() => ticket.setStatus(STATUS.CLOSED))
+                .then(() => res.send());
             } else {
-              ticket
+              return ticket
+
                 .createComment({
                   description: req.body.description
                 })
                 .then(comment => comment.setReplier(req.user.id))
-                .then(() => {
-                  ticket.setStatus(STATUS.CLOSED);
-                  res.send();
-                });
+                .then(() => ticket.setStatus(STATUS.CLOSED))
+                .then(() => res.send());
             }
           });
 
-          break;
-
         case STATUS.REJECTED:
-          Comment.findOne({
+          return Comment.findOne({
             where: {
               ticketId: req.params.id
             }
           }).then(comment => {
-            if (comment) {
-              comment
-                .update({
-                  description: req.body.description
-                })
-                .then(() => {
-                  ticket.setStatus(STATUS.REJECTED);
-                  res.send();
-                });
+            if (req.body.description) {
+              if (comment) {
+                return comment
+                  .update({
+                    description: req.body.description
+                  })
+                  .then(() => comment.setReplier(req.user.id))
+
+                  .then(() => ticket.setStatus(STATUS.REJECTED))
+                  .then(() => res.send());
+              } else {
+                return ticket
+                  .createComment({
+                    description: req.body.description
+                  })
+                  .then(comment => comment.setReplier(req.user.id))
+                  .then(() => ticket.setStatus(STATUS.REJECTED))
+                  .then(() => res.send());
+              }
             } else {
-              req.body.description
-                ? ticket
-                    .createComment({
-                      description: req.body.description
-                    })
-                    .then(comment => comment.setReplier(req.user.id))
-                    .then(() => {
-                      ticket.setStatus(STATUS.REJECTED);
-                      res.send();
-                    })
-                : res.status(403).send("Ingresar motivo");
+              res.status(403).send("Ingresar motivo");
             }
           });
 
-          break;
-
         case STATUS.OPEN:
-          Comment.findOne({
+          return Comment.findOne({
             where: {
               ticketId: req.params.id
             }
           })
             .then(comment => {
-              comment.destroy();
+              if (comment) {
+                return comment.destroy();
+              }
             })
-            .then(() => ticket.setStatus(STATUS.OPEN));
-
-          break;
+            .then(() => ticket.setStatus(STATUS.OPEN))
+            .then(() => res.send());
       }
     })
     .catch(err => console.log(err));

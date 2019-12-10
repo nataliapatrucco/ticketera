@@ -16,7 +16,7 @@ export const ModalContainer = styled.div`
   
   background-color: ##091e35;
   position: fixed;
-  left: 63.4%;
+  left: 64.7%;
   top: 9.1%;
   display: block;
   z-index: 100;
@@ -25,8 +25,7 @@ export const ModalContainer = styled.div`
 `
 
 export const TriangleContainer = styled.div`
-  background-color: #091e35; 
-  opacity: 80%;
+  background-color: #091e35
 `;
 
 export const Triangle = styled.div`
@@ -42,7 +41,6 @@ export const NotificationContainer = styled.div`
   background-color: #132d46;
   width: 360px;
   padding-top: 16px;
-  display: inline-block;
   min-height: 88px; 
   
 `;
@@ -70,7 +68,6 @@ export const AvatarContainer = styled.img`
   width: 40px;
   height: 40px;
   color: #ffffff;
-  display: inline-block;
   float: left;
   margin-left: 16px;
   margin-right: 16px;

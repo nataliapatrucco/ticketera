@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const socket = require("./socket/index");
 var cors = require("cors");
+const { Ticket } = require("./db/models");
 
 app.use(
   cors({
@@ -25,7 +26,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
-
 db.sync({ force: false }).then(() => {
   const http = app.listen(3000, function() {
     console.log("Example app listening on port 3000!");
@@ -37,3 +37,5 @@ app.use("/api", require("./routes"));
 app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
+
+module.exports = app;

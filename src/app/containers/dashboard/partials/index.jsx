@@ -7,6 +7,8 @@ import { fetchOpen } from "../../../redux/actions/tickets";
 
 export default () => {
   const open = useSelector(state => state.tickets.open);
+  const user = useSelector(state => state.user.user);
+
   const dispatch = useDispatch();
   const processing = useSelector(state => state.tickets.processing);
 
@@ -16,10 +18,12 @@ export default () => {
 
   return (
     <OpenDiv>
-      <QuestionSection>
-        <Title>HACÉ UNA PREGUNTA</Title>
-        <MakeQuestion />
-      </QuestionSection>
+      {!user.isAdmin && (
+        <QuestionSection>
+          <Title>HACÉ UNA PREGUNTA</Title>
+          <MakeQuestion />
+        </QuestionSection>
+      )}
       <OpenSection>
         <Title>PREGUNTAS PENDIENTES ({open.length})</Title>
         {open.map((ticket, index) => (

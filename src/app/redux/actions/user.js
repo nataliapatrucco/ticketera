@@ -49,7 +49,7 @@ export const fetchUser = () => dispatch =>
   });
 
 export const fetchUsers = () => dispatch =>
-  axios.get("/api/user/search").then(res => {
+  axios.get("/api/user/search").then(res => {
     dispatch(receiveUsers(res.data));
   });
 
