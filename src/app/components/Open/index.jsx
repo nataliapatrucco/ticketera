@@ -46,7 +46,7 @@ export default function index({ ticket, index, params }) {
     <Ticket isHighlighted={isHighlighted(ticket)}>
       {ticket.author && (
         <>
-          {ticket.statusId === 4 ? (
+          {ticket.statusId === 4 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
               <Img src="/images/devman.jpg" alt="foto usuario" />
               <Author>
@@ -59,7 +59,7 @@ export default function index({ ticket, index, params }) {
                 </BtnVerRespuesta>
               </Link>
             </Header>
-          ) : ticket.statusId === 3 ? (
+          ) : ticket.statusId === 3 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
               <Img src="/images/devman.jpg" alt="foto usuario" />
               <Author>
@@ -84,7 +84,7 @@ export default function index({ ticket, index, params }) {
               <TicketDate>{`Preguntó ${date}`}</TicketDate>
             </Author>
 
-            {!index && ticket.statusId === 2 ? (
+            {!index && ticket.statusId != 1 ? (
               ""
             ) : !index && ticket.statusId === 1 ? (
               <Icon>PENDIENTE</Icon>
@@ -109,7 +109,10 @@ export default function index({ ticket, index, params }) {
             ) : (
               <TicketContent> {ticket.content}</TicketContent>
             )}
-            {params === ticket.slug && <Answer ticket={ticket} />}
+            {params === ticket.slug &&
+              (ticket.statusId === 3 || ticket.statusId === 4) && (
+                <Answer ticket={ticket} />
+              )}
           </Body>
           <Line />
           <TicketFooter>

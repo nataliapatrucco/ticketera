@@ -3,7 +3,6 @@ const S = require("sequelize");
 const Op = S.Op;
 
 const register = (req, res) => {
-  console.log(req.body);
   if (req.body.email && req.body.password) {
     User.create(req.body)
       .then(user =>
