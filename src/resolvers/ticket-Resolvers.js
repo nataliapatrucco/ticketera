@@ -160,11 +160,31 @@ const editComment = (req, res) => {
 const userTickets = (req, res) => {
   Ticket.findAll({
     where: {
+      // [Op.or]: [
+      // {
       authorId: req.user.id
+      //   },
+      //   {
+      //     ticket_participant: {
+      //       userId: req.user.id
+      //     }
+      //   }
+      // ]
     },
+    // include: [
+    //   {
+    //     model: User,
+    //     through: {
+    //       model: "ticket_participant"
+    //     },
+    //     where: {
+    //       id: req.user.id
+    //     }
+    //   }
+    // ],
     include: fullTicket
   })
-    .then(tickets => res.status(200).send(tickets))
+    .then(tickets => res.status(201).send(tickets))
     .catch(err => console.log(err));
 };
 
