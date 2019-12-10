@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Socket from "../socket";
 
 import {
   Container,
@@ -10,7 +11,19 @@ import {
   AvatarContainer
 } from "./style";
 
-export default ({ ticket, notifications }) => {
+export default ({ ticket }) => {
+  const [notifications, setNotifications] = useState([]);
+
+  // Socket on ticket status update
+  Socket.on("statusChanged", message => {
+    setNotifications([...notifications, message]);
+  });
+
+  // Socket on Ticket Deleted
+  Socket.on("deleted", message => {
+    setNotifications([...notifications, message]);
+  });
+
   return (
     <>
       {!notifications.length ? (

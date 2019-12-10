@@ -48,14 +48,14 @@ class Socket {
   changeTicketStatus() {
     return ticket => {
       this.sockets[ticket.authorId] &&
-        this.sockets[ticket.authorId].emit(
-          "statusChanged",
-          `${ticket.comment.replier.name} ${
+        this.sockets[ticket.authorId].emit("statusChanged", {
+          message: `${ticket.comment.replier.name} ${
             ticket.comment.replier.lastname
           } Cambió el estado de tu ticket: ${ticket.title} a 
-            ${estados[ticket.statusId]}
-          `
-        );
+              ${estados[ticket.statusId]}
+            `,
+          slug: ticket.slug
+        });
 
       ticket.users
         ? ticket.users.map(user =>

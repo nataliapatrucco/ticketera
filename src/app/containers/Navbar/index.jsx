@@ -15,7 +15,7 @@ import { fetchSearchedTickets } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
 // import { Notification } from "../../components/Notifications/style";
 
-export const Navbar = props => {
+export const Navbar = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const [notification, setNotification] = useState(false);
@@ -58,9 +58,7 @@ export const Navbar = props => {
         <UserName>{user.name}</UserName>
         <button onClick={() => dispatch(logOutUser())}>Log Out</button>
       </FancyDiv>
-      {notification ? (
-        <NotificationModal notifications={props.notifications} />
-      ) : null}
+      {notification ? <NotificationModal /> : null}
     </NavbarContainer>
   );
 };
