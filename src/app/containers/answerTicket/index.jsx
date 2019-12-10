@@ -23,20 +23,29 @@ import {
   UploadContainer
   
 } from "./style";
+import {SessionText} from "../../session/style"
 
 
 import {ModalQuestion, Icon, ModalUploadBox, ModalUploadBoxPlus} from "../../components/makeQuestion/style"
 
 export default ({ ticket, setShowAnswerModal }) => {
   const dispatch = useDispatch();
-  const [status, setStatus] = useState(1);
+  const [status, setStatus] = useState(null);
   const [description, setDescription] = useState("");
   const [inputComp, setInputComp] = useState(false);
   const [inputResp, setInputResp] = useState(false);
+  const [inputRechazado, setInputRechazado] = useState(false);
+  const [errorMsg, setErrorMsg]= useState("")
+
   const handleSubmit = id => {
-    dispatch(answerTicket(id, { status, description }))
-      .then(() => dispatch(fetchOpen()))
-      .then(() => setShowAnswerModal(false));
+      if (!description.length > 0 && status===3) {
+        setErrorMsg("complete el campo")
+      }else{
+        dispatch(answerTicket(id, { status, description }))
+        .then(() => dispatch(fetchOpen()))
+        .then(() => setShowAnswerModal(false))
+        .catch(err => setErrorMsg("Ingrese una respuesta"))
+      }
   };
   return (
     <ModalBackground>
@@ -64,28 +73,47 @@ export default ({ ticket, setShowAnswerModal }) => {
         <ButtonContainer justifyContent={"space-around"} marginTop={"8px"}>
           <StatusButton
             onClick={() => {
-              setInputResp(false), setInputComp(false);
+              setStatus(1),
+                setInputResp(false),
+                setInputComp(false),
+                setInputRechazado(false);
+              setErrorMsg("");
             }}
           >
             PENDIENTE
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setStatus(2),setInputResp(!inputResp), setInputComp(false)
+              setStatus(2),
+                setInputResp(!inputResp),
+                setInputComp(false),
+                setInputRechazado(false);
+              setErrorMsg("");
+              setDescription("");
             }}
           >
             RESPONDIENDO
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setStatus(3),setInputComp(!inputComp), setInputResp(false)
+              setStatus(3),
+                setInputComp(!inputComp),
+                setInputResp(false),
+                setInputRechazado(false);
+              setErrorMsg("");
+              setDescription("");
             }}
           >
             COMPLETADA
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setStatus(4),setInputResp(false), setInputComp(false)
+              setStatus(4),
+                setInputResp(false),
+                setInputComp(false),
+                setInputRechazado(!inputRechazado);
+              setErrorMsg("");
+              setDescription("");
             }}
           >
             RECHAZADA
@@ -113,9 +141,25 @@ export default ({ ticket, setShowAnswerModal }) => {
               onChange={e => setDescription(e.target.value)}
             ></ModalInput>
           </ModalInputContainer>
+          //validar
         )}
 
+        {inputRechazado && (
+          <ModalInputContainer>
+            <ModalInput
+              placeholder="Escriba motivo de rechazo"
+              name="description"
+              height={"112px"}
+              onChange={e => setDescription(e.target.value)}
+            ></ModalInput>
+          </ModalInputContainer>
+        )}
 
+        {errorMsg && description.length <= 0 ? (
+          <SessionText color={"red"} marginLeft={"35px"} fontStyle={"bold"}>
+            {errorMsg}
+          </SessionText>
+        ) : null}
 
         <ButtonContainer justifyContent={"flex-end"} marginTop={"65px"}>
           <ModalButton
@@ -136,9 +180,6 @@ export default ({ ticket, setShowAnswerModal }) => {
               handleSubmit(ticket.id);
             }}
           >
-
-
-
             <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
           </ModalButton>
         </ButtonContainer>

@@ -16,7 +16,7 @@ export default ({ ticket }) => {
         <Img src="/images/perfil.jpeg" alt="foto asistente" />
         <Author>
           <AuthorName>
-            {ticket.author.name} {ticket.author.lastname}
+            {ticket.comment.replier.name} {ticket.comment.replier.lastname}
           </AuthorName>
           <TicketDate>Respondió esta pregunta</TicketDate>
         </Author>
