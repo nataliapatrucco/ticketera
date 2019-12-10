@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";   
 
 export const QuestionStatusContainer = styled.div ({
-    margin: '42px 182px 32px 30px',
+    paddingTop: "42px",
+    paddingLeft: "28px",
     float: 'left',
-    display: "inline-block"
+    display: "inline-block",
+    minWidth: "770px"
 })
 
 export const QuestionStatus = styled.div`
