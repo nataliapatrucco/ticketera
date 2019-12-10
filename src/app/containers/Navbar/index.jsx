@@ -9,7 +9,8 @@ import {
   ProfileImg,
   NotificationBell,
   SearchIcon,
-  UserName
+  UserName,
+  ButtonLogOut
 } from "./style";
 import { search } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
@@ -50,7 +51,7 @@ export const Navbar = () => {
         />
         <ProfileImg src="/images/devman.jpg" />
         <UserName>{user.name}</UserName>
-        <button onClick={() => dispatch(logOutUser())}>Log Out</button>
+        <ButtonLogOut src="/images/logout.svg" onClick={() => dispatch(logOutUser())}></ButtonLogOut>
       </FancyDiv>
       {notification ? (<NotificationModal />) : null}
       

@@ -7,7 +7,7 @@ export const NavbarContainer = styled.div({
   paddingTop: "16px",
   paddingBottom: "15px",
   paddingLeft: "30px",
-  paddingRight: "70px",
+  paddingRight: "0",
   flexDirection: "row",
   borderBottom: "solid 1.5px rgba(255, 255, 255, 0.3)"
 });
@@ -67,12 +67,10 @@ export const ProfileImg = styled.img({
 });
 
 export const NotificationBell = styled.img({
-  height: "36px",
-  width: "36px",
+  height: "37px",
+  width: "37px",
   color: "#ffffff",
-  opacity: "70%",
-  objectFit: "contain",
-  border: "solid 1px rgba(255, 255, 255, 0.7)",
+  border: "solid 1.5px rgba(255, 255, 255, 0.7)",
   borderRadius: "25px",
   padding: "6px",
   marginRight: "38px"
@@ -82,9 +80,20 @@ export const UserName = styled.div({
   display: "flex",
   opacity: "70%",
   color: "#ffffff",
+  marginRight:"36px",
   fontFamily: "Montserrat",
   fontWeight: "400",
   fontSize: "16px",
   lineHeight: "24px",
   letterSpacing: "0.15px"
 });
+
+export const ButtonLogOut= styled.img`
+height: 40px;
+width: 40px;
+color: #ffffff;
+opacity: 70%;
+object-fit: contain;
+padding: 6px;
+margin-right: 38px;
+`

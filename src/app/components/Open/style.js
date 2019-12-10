@@ -333,6 +333,7 @@
 // });
 
 import styled from "@emotion/styled";
+import { relative } from "path";
 
 export const Ticket = styled.div(
   {
@@ -468,36 +469,52 @@ export const TicketLink = styled.p({
 });
 
 export const Line = styled.hr({
-  marginLeft: "25px",
-  marginRight: "25px",
-  border: "solid 0.5px #ffffff",
-  opacity: "30%",
-  borderRadius: "5px"
+  all: "unset",
+  width: "95.5%",
+  border: "solid 0.5px #ffffff40",
+  margin: "0 auto",
+  // borderRadius: "5px"
 });
 
 export const TicketFooter = styled.section({
   display: "flex",
   flexFlow: "row",
   justifyContent: "space-between",
-  paddingLeft: "32px",
+  paddingLeft: "9px",
   paddingRight: "20px",
-  margin: "10px",
+  margin: "4px 2px",
   alignContent: "flex-end"
+
 });
 
-export const Buttons = styled.div({
-  display: "flex"
-  // justifyContent: "space-between"
-});
 
 export const AddIcon = styled.img({
   height: "20px",
-  weigth: "25.5px",
-  color: "#ffffff",
-  marginBottom: "2px",
+  color: "rgba(255,255,255)",
+  opacity: "90%",
+  position: "relative",
+  top: "1px",
   marginRight: "6px",
   ":hover": {}
 });
+
+export const ShareIcon = styled.img`
+ position: relative;
+ top: 3px;
+ color: rgba(255,255,255);
+ opacity: 70%;
+ margin-right: 6px;
+`
+
+export const AnswerIcon = styled.img`
+color: rgba(255,255,255),
+opacity: 70%;
+margin-right: 8px;
+width: 20px;
+height: 20px;
+position: relative;
+top: 3px;
+`
 
 export const AddButton = styled.div({
   display: "flex",
@@ -506,13 +523,13 @@ export const AddButton = styled.div({
   border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
   color: "#ffffff",
-  opacity: "70%",
+  // opacity: "80%",
   fontFamily: "Montserrat",
-  fontWeight: "400",
+  fontWeight: "500",
   fontSize: "14px",
   lineHeight: "24px",
-  letterSpacing: "0.1px",
-  marginRight: "60px"
+  letterSpacing: "1.25px",
+  marginRight: "16px" 
 });
 
 export const RemoveButton = styled.p({
@@ -524,23 +541,23 @@ export const RemoveButton = styled.p({
   color: "#ffffff",
   opacity: "70%",
   fontFamily: "Montserrat",
-  fontWeight: "400",
+  fontWeight: "500",
   fontSize: "14px",
   lineHeight: "24px",
-  letterSpacing: "0.1px",
+  letterSpacing: "1.25px",
   marginRight: "60px"
 });
 
-export const ShareButton = styled.p({
-  border: "solid 1px rgba(0,0,0,0)",
+export const ShareButton = styled.div({
+  // border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
-  color: "#ffffff",
-  opacity: "70%",
+  color: "rgba(255,255,255)", 
+  opacity: "80%",
   fontFamily: "Montserrat",
-  fontWeight: "400",
+  fontWeight: "500",
   fontSize: "14px",
   lineHeight: "24px",
-  letterSpacing: "0.1px"
+  letterSpacing: "1.25px"
 });
 
 export const PartipantsImg = styled.img({
@@ -565,9 +582,10 @@ export const Modal = styled.div({
 
 export const ButtonDelete = styled.div({
   display: "flex",
+  marginRight: "16px",
   justifyContent: "center",
   cursor: "pointer",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "rgba(255, 255, 255, 0.8)",
   ":hover": {
     color: "#cf6679",
     img: {
@@ -576,18 +594,22 @@ export const ButtonDelete = styled.div({
   }
 });
 
+
 export const ButtonParticipants = styled.div({
   display: "flex",
   justifyContent: "center",
   cursor: "pointer",
-  color: "#62d0ff"
+  color: "#62d0ff",
+  marginRight: "16px"
 });
 
 export const ButtonAddParticipants = styled.div({
   display: "flex",
+  marginRight: "16px",
   justifyContent: "center",
   cursor: "pointer",
-  color: "rgba(255, 255, 255, 0.6)",
+  opacity: "80%",
+  color: "rgba(255, 255, 255)",
   ":hover": {
     color: "#62d0ff",
     img: {
@@ -600,12 +622,10 @@ export const ButtonAddParticipants = styled.div({
 
 export const ButtonAnswer = styled.div({
   display: "flex",
-  width: "102px",
-  height: "16px",
-  marginRight: "60px",
+  marginRight: "16px",
   justifyContent: "center",
   cursor: "pointer",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "rgba(255, 255, 255, 0.8)",
   ":hover": {
     color: "#62d0ff",
     img: {
@@ -613,11 +633,11 @@ export const ButtonAnswer = styled.div({
     }
   },
 
-  fontFamily: "Montserrat",
-  fontSize: "14px",
-  fontWeight: "500",
-  fontStretch: "normal",
-  fontStyle: "normal",
-  lineHeight: "1.14",
-  letterSpacing: "1.25px"
+  // fontFamily: "Montserrat",
+  // fontSize: "14px",
+  // fontWeight: "500",
+  // fontStretch: "normal",
+  // fontStyle: "normal",
+  // lineHeight: "1.14",
+  // letterSpacing: "1.25px"
 });

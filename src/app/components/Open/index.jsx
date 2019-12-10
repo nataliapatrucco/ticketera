@@ -226,10 +226,7 @@ export default function index({ ticket, index }) {
           </Body>
           <Line />
           <TicketFooter>
-            <Buttons>
-              <SuperButton ticket={ticket} />
-              <ShareButton>COMPARTIR</ShareButton>
-            </Buttons>
+              <SuperButton ticket={ticket} />         
             <PartipantsImg
               src="/images/perfil.jpeg"
               alt="fotos participantes"

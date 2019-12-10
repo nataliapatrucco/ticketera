@@ -110,10 +110,13 @@ import {
 import {
   AddButton,
   AddIcon,
+  AnswerIcon,
   ButtonParticipants,
   ButtonDelete,
   ButtonAddParticipants,
-  ButtonAnswer
+  ButtonAnswer,
+  ShareButton,
+  ShareIcon
 } from "./style";
 import Modal from "../deleteTicket";
 import AnswerModal from "../../containers/answerTicket";
@@ -139,7 +142,7 @@ export default ({ ticket }) => {
   };
 
   return (
-    <Container>
+    <>
       <AddButton>
         {!user.isAdmin ? (
           <>
@@ -167,15 +170,20 @@ export default ({ ticket }) => {
         ) : (
           <>
             <ButtonAnswer onClick={() => setShowAnswerModal(!showAnswerModal)}>
-              <AddIcon src="/images/answerIcon.svg" alt="" />
+              <AnswerIcon src="/images/answerIcon.svg" alt="" />
               RESPONDER
             </ButtonAnswer>
             <ButtonDelete onClick={() => setShowModal(!showModal)}>
               <AddIcon src="/images/delete-resting.svg" alt="" />
               BORRAR PREGUNTA
             </ButtonDelete>
+           
           </>
         )}
+         <ShareButton>
+           <ShareIcon className="share" src="/images/flecha-hacia-atras.svg"/>
+           COMPARTIR
+           </ShareButton>
       </AddButton>
       {showModal ? (
         <Modal
@@ -187,6 +195,6 @@ export default ({ ticket }) => {
       {showAnswerModal ? (
         <AnswerModal ticket={ticket} setShowAnswerModal={setShowAnswerModal} />
       ) : null}
-    </Container>
+    </>
   );
 };
