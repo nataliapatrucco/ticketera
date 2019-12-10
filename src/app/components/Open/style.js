@@ -60,7 +60,7 @@ export const TicketDate = styled.p(
     marginBottom: "5px",
     fontSize: "12px",
     fontFamily: "Montserrat",
-    fontWeight: "400",
+    fontWeight: "500",
     lineHeight: "16px",
     letterSpacing: "0.4px"
   },

@@ -82,10 +82,9 @@ export const Navbar = () => {
         <ProfileImg src="/images/devman.jpg" />
 
         <UserName>{user.name}</UserName>
-        <ButtonLogOut
-          src="/images/logout.svg"
-          onClick={() => dispatch(logOutUser())}
-        ></ButtonLogOut>
+        <ButtonLogOut src="/images/logout.svg"  onClick={() =>
+            dispatch(logOutUser()).then(() => props.history.push("/"))
+          }></ButtonLogOut>
       </FancyDiv>
       {notification ? (
         <NotificationModal
