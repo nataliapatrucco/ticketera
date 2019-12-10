@@ -47,7 +47,7 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
-      .then(ticket => createNewImage(ticket.data.id, image))
+      .then(ticket => image && createNewImage(ticket.data.id, image))
       .then(() => dispatch(fetchOpen()))
       .then(() => setShowModal(!showModal));
   };
@@ -106,7 +106,7 @@ export const MakeQuestion = props => {
                 placeholder="Ej: Cuando escribo el código y hago XXXXXXXXXXXXXXX me tira este error y no puedo seguir con el ejercicio"
               ></ModalInput>
             </ModalInputContainer>
-            
+
             <ModalQuestion marginTop={"10px"}>
               <Icon src="images/icon-file-attachment-24-px.png"></Icon>
               Adjuntar archivos

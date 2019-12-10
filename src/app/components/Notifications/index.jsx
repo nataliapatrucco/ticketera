@@ -14,23 +14,21 @@ export default ({ handleClick, notifications }) => {
   return (
     <>
       {!notifications.length ? (
-        <>
-          <Container onClick={handleClick}>
-            <ModalContainer>
-              <TriangleContainer>
-                <Triangle></Triangle>
-              </TriangleContainer>
-              <NotificationContainer>
-                <AvatarContainer src="images/github.png"></AvatarContainer>
-                <Notification>
-                  No tenes notificaciones en este momento
-                </Notification>
-              </NotificationContainer>
-            </ModalContainer>
-          </Container>
-        </>
+        <Container onClick={handleClick}>
+          <ModalContainer>
+            <TriangleContainer>
+              <Triangle></Triangle>
+            </TriangleContainer>
+            <NotificationContainer>
+              <AvatarContainer src="images/github.png"></AvatarContainer>
+              <Notification>
+                No tenes notificaciones en este momento
+              </Notification>
+            </NotificationContainer>
+          </ModalContainer>
+        </Container>
       ) : (
-        <Container>
+        <Container onClick={handleClick}>
           <ModalContainer>
             <TriangleContainer>
               <Triangle></Triangle>

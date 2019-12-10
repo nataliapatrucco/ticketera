@@ -15,6 +15,7 @@ import {
   Author,
   TicketTitle,
   AuthorName,
+  EmptyParticipant,
   TicketDate,
   Icon,
   Body,
@@ -119,17 +120,17 @@ export default function index({ ticket, index, params }) {
           <Line />
           <TicketFooter>
             <SuperButton ticket={ticket} />
-            <PartipantsImg>
-              {ticket.users.length ? (
-                ticket.users.length > 9 ? (
+            {ticket.users.length ? (
+              <PartipantsImg>
+                {ticket.users.length > 9 ? (
                   <ParticipantIcon>+9</ParticipantIcon>
                 ) : (
                   <ParticipantIcon>{ticket.users.length}</ParticipantIcon>
-                )
-              ) : (
-                ""
-              )}
-            </PartipantsImg>
+                )}
+              </PartipantsImg>
+            ) : (
+              <EmptyParticipant></EmptyParticipant>
+            )}
           </TicketFooter>
         </>
       )}
