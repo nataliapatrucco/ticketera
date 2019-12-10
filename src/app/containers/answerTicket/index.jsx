@@ -37,6 +37,8 @@ export default ({ ticket, setShowAnswerModal }) => {
   const [inputRechazado, setInputRechazado] = useState(false);
   const [errorMsg, setErrorMsg]= useState("")
 
+
+  
   const handleSubmit = id => {
       if (!description.length > 0 && status===3) {
         setErrorMsg("complete el campo")
