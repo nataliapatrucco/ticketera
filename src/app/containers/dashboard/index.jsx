@@ -17,7 +17,7 @@ import {
   Contenedor
 } from "../../components/Processing/style";
 
-export default () => {
+export default function DashboardContainer() {
   const dispatch = useDispatch();
   const processing = useSelector(state => state.tickets.processing);
   const open = useSelector(state => state.tickets.open);
@@ -41,4 +41,4 @@ export default () => {
       )}
     </ProcessDiv>
   );
-};
+}

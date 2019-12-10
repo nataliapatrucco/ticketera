@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  answerTicket,//no es lo mismo que setStatus??
-  fetchOpen,//busca los tickets por status
+  answerTicket, //no es lo mismo que setStatus??
+  fetchOpen, //busca los tickets por status
   fetchProcessing //lista los que estan en proceso
-
 } from "../../redux/actions/tickets";
 
 import {
@@ -21,33 +20,34 @@ import {
   ModalInputContainer,
   Line,
   UploadContainer
-  
 } from "./style";
-import {SessionText} from "../../session/style"
+import { SessionText } from "../../session/style";
 
+import {
+  ModalQuestion,
+  Icon,
+  ModalUploadBox,
+  ModalUploadBoxPlus
+} from "../../components/makeQuestion/style";
 
-import {ModalQuestion, Icon, ModalUploadBox, ModalUploadBoxPlus} from "../../components/makeQuestion/style"
-
-export default ({ ticket, setShowAnswerModal }) => {
+export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [description, setDescription] = useState("");
   const [inputComp, setInputComp] = useState(false);
   const [inputResp, setInputResp] = useState(false);
   const [inputRechazado, setInputRechazado] = useState(false);
-  const [errorMsg, setErrorMsg]= useState("")
+  const [errorMsg, setErrorMsg] = useState("");
 
-
-  
   const handleSubmit = id => {
-      if (!description.length > 0 && status===3) {
-        setErrorMsg("complete el campo")
-      }else{
-        dispatch(answerTicket(id, { status, description }))
+    if (!description.length > 0 && status === 3) {
+      setErrorMsg("complete el campo");
+    } else {
+      dispatch(answerTicket(id, { status, description }))
         .then(() => dispatch(fetchOpen()))
         .then(() => setShowAnswerModal(false))
-        .catch(err => setErrorMsg("Ingrese una respuesta"))
-      }
+        .catch(err => setErrorMsg("Ingrese una respuesta"));
+    }
   };
   return (
     <ModalBackground>
@@ -188,4 +188,4 @@ export default ({ ticket, setShowAnswerModal }) => {
       </ModalContainer>
     </ModalBackground>
   );
-};
+}

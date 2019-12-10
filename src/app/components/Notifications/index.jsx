@@ -10,7 +10,7 @@ import {
   AvatarContainer
 } from "./style";
 
-export default ({ handleClick, notifications }) => {
+export default function NotificationsComponent({ handleClick, notifications }) {
   return (
     <>
       {!notifications.length ? (
@@ -46,4 +46,4 @@ export default ({ handleClick, notifications }) => {
       )}
     </>
   );
-};
+}

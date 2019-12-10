@@ -14,7 +14,7 @@ import {
   IconContainer
 } from "./style";
 
-export default () => {
+export default function SidebarComponent() {
   const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
   return (
@@ -62,4 +62,4 @@ export default () => {
       )}
     </Container>
   );
-};
+}

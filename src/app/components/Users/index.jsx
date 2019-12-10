@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SearchContainer, Rectangle, Search } from "../SearchUsers/style";
 import ListUser from "../ListUser";
 
-export default function Users() {
+export default function UsersComponent() {
   const [input, setInput] = useState("");
   const users = useSelector(state => state.user.users);
   const filteredUsers = useSelector(state => state.user.filteredUsers);
