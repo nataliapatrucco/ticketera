@@ -70,8 +70,6 @@ class Socket {
               : ""
           )
         : "";
-
-      console.log(ticket);
     };
   }
 

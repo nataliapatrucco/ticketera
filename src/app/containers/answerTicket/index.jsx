@@ -20,6 +20,8 @@ export default ({ ticket, setShowAnswerModal }) => {
   const [status, setStatus] = useState(1);
   const [description, setDescription] = useState("");
 
+
+  
   const handleSubmit = id => {
     dispatch(answerTicket(id, { status, description }))
       .then(() => dispatch(fetchOpen()))
