@@ -11,9 +11,9 @@ import {
     AvatarContainer
 } from './style'
 
-export default ({ticket}) => {
+export default ({ticket, handleClick}) => {
     return (
-        <Container>
+        <Container onClick={handleClick}>
      <ModalContainer>
        <TriangleContainer>
          <Triangle></Triangle>

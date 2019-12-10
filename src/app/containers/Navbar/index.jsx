@@ -27,6 +27,10 @@ export const Navbar = () => {
     setInput(event.target.value);
   };
 
+  const handleClick = () => {
+    setNotification(false)
+  }
+
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(search(input));
@@ -46,14 +50,14 @@ export const Navbar = () => {
       </form>
       <FancyDiv>
         <NotificationBell
-          onClick={() => notification ? setNotification(false) : setNotification(true)}
+          onClick={() => setNotification(true)}
           src="/images/notificationbell.png"
         />
         <ProfileImg src="/images/devman.jpg" />
         <UserName>{user.name}</UserName>
         <ButtonLogOut src="/images/logout.svg" onClick={() => dispatch(logOutUser())}></ButtonLogOut>
       </FancyDiv>
-      {notification ? (<NotificationModal />) : null}
+      {notification ? (<NotificationModal handleClick={handleClick} />) : null}
       
     </NavbarContainer>
   );
