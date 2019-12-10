@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   ModalContainer,
@@ -10,27 +10,25 @@ import {
   AvatarContainer
 } from "./style";
 
-export default ({ ticket, notifications }) => {
+export default function NotificationsComponent({ handleClick, notifications }) {
   return (
     <>
       {!notifications.length ? (
-        <>
-          <Container>
-            <ModalContainer>
-              <TriangleContainer>
-                <Triangle></Triangle>
-              </TriangleContainer>
-              <NotificationContainer>
-                <AvatarContainer src="images/github.png"></AvatarContainer>
-                <Notification>
-                  No tenes notificaciones en este momento
-                </Notification>
-              </NotificationContainer>
-            </ModalContainer>
-          </Container>
-        </>
+        <Container onClick={handleClick}>
+          <ModalContainer>
+            <TriangleContainer>
+              <Triangle></Triangle>
+            </TriangleContainer>
+            <NotificationContainer>
+              <AvatarContainer src="images/github.png"></AvatarContainer>
+              <Notification>
+                No tenes notificaciones en este momento
+              </Notification>
+            </NotificationContainer>
+          </ModalContainer>
+        </Container>
       ) : (
-        <Container>
+        <Container onClick={handleClick}>
           <ModalContainer>
             <TriangleContainer>
               <Triangle></Triangle>
@@ -38,7 +36,9 @@ export default ({ ticket, notifications }) => {
             <NotificationContainer>
               <AvatarContainer src="images/github.png"></AvatarContainer>
               {notifications.map(notification => (
-                <Notification> {notification}</Notification>
+                <Link to={`/${notification.slug}`}>
+                  <Notification> {notification.message}</Notification>
+                </Link>
               ))}
             </NotificationContainer>
           </ModalContainer>
@@ -46,4 +46,4 @@ export default ({ ticket, notifications }) => {
       )}
     </>
   );
-};
+}

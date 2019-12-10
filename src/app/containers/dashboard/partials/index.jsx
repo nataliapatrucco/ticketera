@@ -5,7 +5,7 @@ import Open from "../../../components/Open";
 import { Title, OpenDiv, OpenSection, QuestionSection } from "../style";
 import { fetchOpen } from "../../../redux/actions/tickets";
 
-export default () => {
+export default function DashboardContainer() {
   const open = useSelector(state => state.tickets.open);
   const user = useSelector(state => state.user.user);
 
@@ -35,4 +35,4 @@ export default () => {
       </OpenSection>
     </OpenDiv>
   );
-};
+}

@@ -6,7 +6,7 @@ import Open from "../../components/Open";
 import ProcessingHeader from "./partials/ProcessingHeader";
 import { fetchTicket } from "../../redux/actions/tickets";
 
-export default props => {
+export default function SingleTicketContainer (props) {
   const ticket = useSelector(state => state.tickets.single);
   const dispatch = useDispatch();
   const open = useSelector(state => state.tickets.open);

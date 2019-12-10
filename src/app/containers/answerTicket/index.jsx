@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  answerTicket,//no es lo mismo que setStatus??
-  fetchOpen,//busca los tickets por status
+  answerTicket, //no es lo mismo que setStatus??
+  fetchOpen, //busca los tickets por status
   fetchProcessing //lista los que estan en proceso
-
 } from "../../redux/actions/tickets";
 
 import {
@@ -21,14 +20,17 @@ import {
   ModalInputContainer,
   Line,
   UploadContainer
-  
 } from "./style";
-import {SessionText} from "../../session/style"
+import { SessionText } from "../../session/style";
 
+import {
+  ModalQuestion,
+  Icon,
+  ModalUploadBox,
+  ModalUploadBoxPlus
+} from "../../components/makeQuestion/style";
 
-import {ModalQuestion, Icon, ModalUploadBox, ModalUploadBoxPlus} from "../../components/makeQuestion/style"
-
-export default ({ ticket, setShowAnswerModal }) => {
+export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(ticketStatus);
   const [description, setDescription] = useState("");
@@ -38,7 +40,6 @@ export default ({ ticket, setShowAnswerModal }) => {
   const [errorMsg, setErrorMsg]= useState("")
 
   const ticketStatus = useSelector(state => state.tickets.single.statusId)
-  
   
 
   const handleSubmit = id => {
@@ -199,4 +200,4 @@ export default ({ ticket, setShowAnswerModal }) => {
       </ModalContainer>
     </ModalBackground>
   );
-};
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Session } from "../session/index";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { Navbar } from "../containers/Navbar/index";
@@ -23,24 +23,13 @@ import OpenContainer from "../containers/dashboard/partials";
 import SingleContainer from "../containers/singleTicket";
 import Socket from "../socket";
 
-export default props => {
+export default function MainContainer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.user.user);
-  const [notifications, setNotifications] = useState([]);
 
   // inicializa socket solo cuando tenga el usuario
   Socket.init(user.id);
-
-  // Socket on ticket status update
-  Socket.on("statusChanged", message => {
-    setNotifications([...notifications, message]);
-  });
-
-  // Socket on Ticket Deleted
-  Socket.on("deleted", message => {
-    setNotifications([...notifications, message]);
-  });
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -59,7 +48,7 @@ export default props => {
             <Sidebar />
           </SideDiv>
           <Section>
-            <Navbar notifications={notifications} history={props.history} />
+            <Navbar history={props.history} />
             <MiddleContainer>
               <CenterDiv>
                 <Switch>
@@ -88,4 +77,4 @@ export default props => {
       )}
     </HomeDiv>
   );
-};
+}

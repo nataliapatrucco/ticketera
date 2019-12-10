@@ -8,23 +8,18 @@ export const Ticket = styled.div(
     border: "solid 1px #2a3d51",
     backgroundColor: "#192e44",
     fontFamily: "Monstserrat",
-    width: "710px",
-    marginTop: "10px",
-    padding: "16px"
+    width: "700px",
+    marginTop: "10px"
   },
   ({ isHighlighted }) => ({
     borderColor: isHighlighted ? "#62d0ff" : "#2a3d51"
   })
 );
 
-export const Container = styled.div({
-  float: "right"
-});
-
 export const Header = styled.div({
   display: "flex",
   flexDirection: "row",
-  marginBottom: "5px ",
+  margin: "5px",
   padding: "0"
 });
 
@@ -34,7 +29,7 @@ export const Img = styled.img({
   height: "40px",
   borderRadius: "50px",
   flexBasis: "5%",
-  margin: "0 10px 10px 0"
+  margin: "10px"
 });
 
 export const Author = styled.section({
@@ -44,14 +39,14 @@ export const Author = styled.section({
   marginLeft: "10px"
 });
 
-export const AuthorName = styled.div({
+export const AuthorName = styled.h4({
   fontSize: "14px",
   color: "#FfFfFf",
   opacity: "90%",
   marginTop: "5px",
   marginBottom: "3px",
   fontFamily: "Montserrat",
-  fontWeight: "600",
+  fontWeight: "500",
   lineHeight: "24px",
   letterSpacing: "0.1px"
 });
@@ -64,7 +59,7 @@ export const TicketDate = styled.p(
     marginBottom: "5px",
     fontSize: "12px",
     fontFamily: "Montserrat",
-    fontWeight: "400",
+    fontWeight: "500",
     lineHeight: "16px",
     letterSpacing: "0.4px"
   },
@@ -83,6 +78,7 @@ export const Icon = styled.h3({
   borderRadius: "6px",
   border: "solid 1px rgba(255, 255, 255, 0.7)",
   marginTop: "5px",
+  marginRight: "10px",
   marginBottom: "5px",
   fontFamily: "Montserrat",
   fontWeight: "600",
@@ -92,18 +88,18 @@ export const Icon = styled.h3({
 
 export const Body = styled.section({
   flexDirection: "column",
-  margin: "5px 0 5px 0"
+  margin: "5px"
 });
 export const TicketTitle = styled.header({
   flex: "auto",
   marginLeft: "15px",
   marginBottom: "5px",
-  fontSize: "20px",
+  fontSize: "18px",
   color: "rgba(255, 255, 255, 0.87)",
   fontFamily: "Montserrat",
-  fontWeight: "bold",
+  fontWeight: "600",
   lineHeight: "28px",
-  letterSpacing: "0.25px"
+  letterSpacing: "0.5px"
 });
 
 export const TicketContent = styled.p({
@@ -115,7 +111,7 @@ export const TicketContent = styled.p({
   opacity: "90%",
   fontSize: "14px",
   fontFamily: "Montserrat",
-  fontWeight: "600",
+  fontWeight: "400",
   lineHeight: "20px",
   letterSpacing: "0.25px",
   overflowWrap: "break-word"
@@ -138,106 +134,124 @@ export const TicketLink = styled.p({
 });
 
 export const Line = styled.hr({
-  marginLeft: "25px",
-  marginRight: "25px",
-  border: "solid 0.5px #ffffff",
-  opacity: "30%",
-  borderRadius: "5px"
+  all: "unset",
+  width: "95.5%",
+  border: "solid 0.5px #ffffff40",
+  margin: "0 auto"
+  // borderRadius: "5px"
 });
 
 export const TicketFooter = styled.section({
-  //  height: "51px",
-  padding: "12px 0 2px 0",
-  // marginTop: "10px",
-  float: "left",
-  display: "inline-block"
+  display: "flex",
+  flexFlow: "row",
+  justifyContent: "space-between",
+  paddingLeft: "9px",
+  paddingRight: "20px",
+  margin: "4px 2px",
+  alignContent: "flex-end"
 });
 
 export const AddIcon = styled.img({
   height: "20px",
-  width: "20px",
-  weigth: "25.5px",
-  color: "red",
-  opacity: "0.6",
-  // marginBottom: "2px",
-  marginTop: "5px",
-  marginRight: "5px",
-  ":hover": {
-    color: "red"
-  }
+  color: "rgba(255,255,255)",
+  opacity: "90%",
+  position: "relative",
+  top: "1px",
+  marginRight: "6px",
+  ":hover": {}
 });
+
+export const ShareIcon = styled.img`
+  position: relative;
+  top: 3px;
+  color: rgba(255, 255, 255);
+  opacity: 70%;
+  margin-right: 6px;
+`;
+
+export const AnswerIcon = styled.img`
+color: rgba(255,255,255),
+opacity: 70%;
+margin-right: 8px;
+width: 20px;
+height: 20px;
+position: relative;
+top: 3px;
+`;
 
 export const AddButton = styled.div({
-  display: "inline-block",
-  // border: "solid 1px rgba(0,0,0,0)",
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+  border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
   color: "#ffffff",
-  opacity: "60%",
+  // opacity: "80%",
   fontFamily: "Montserrat",
-  fontWeight: "600",
+  fontWeight: "500",
   fontSize: "14px",
-  lineHeight: "16px",
+  lineHeight: "24px",
   letterSpacing: "1.25px",
-  ":hover": {
-    color: `${props => props.color}`
-  }
-  // marginRight: "60px"
+  marginRight: "16px"
 });
 
-export const RemoveButton = styled.div({
-  display: "inline-block",
-  // border: "solid 1px rgba(0,0,0,0)",
+export const RemoveButton = styled.p({
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+  border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
   color: "#ffffff",
-  opacity: "60%",
+  opacity: "70%",
   fontFamily: "Montserrat",
-  fontWeight: "600",
+  fontWeight: "500",
   fontSize: "14px",
-  lineHeight: "16px",
-  letterSpacing: "1.25px"
-  // marginRight: "60px"
+  lineHeight: "24px",
+  letterSpacing: "1.25px",
+  marginRight: "60px"
 });
 
 export const ShareButton = styled.div({
   // border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
-  opacity: "60%",
+  color: "rgba(255,255,255)",
+  opacity: "80%",
   fontFamily: "Montserrat",
-  fontWeight: "600",
+  fontWeight: "500",
   fontSize: "14px",
-  lineHeight: "16px",
-  letterSpacing: "1.25px",
-  display: "inline-block",
-  marginLeft: "37px",
-  ":hover": {
-    color: `${props => props.color}`
-  }
+  lineHeight: "24px",
+  letterSpacing: "1.25px"
 });
 
-export const Texto = styled.div`
-  display: inline-block;
-  position: relative;
-  bottom: 5px;
-  color: rgba(255, 255, 255, 0.6);
-  &:hover {
-    color: ${props => props.color};
-  }
-`;
-
-export const ParticipantsImgContainer = styled.div({
-  width: "112px",
+export const PartipantsImg = styled.div({
   display: "inline-block",
-  // marginLeft: "36.6%",
-  float: "right"
-});
-
-export const PartipantsImg = styled.img({
-  alignItems: "center",
+  backgroundColor: "#b8b9ba",
+  opacity: "90%",
+  textAlign: "center",
   width: "24px",
   height: "24px",
   borderRadius: "50px",
-  marginRight: "8px",
-  float: "right"
+  margin: "10px"
+});
+
+export const EmptyParticipant = styled.div({
+  display: "inline-block",
+  width: "24px",
+  height: "24px",
+  borderRadius: "50px",
+  margin: "10px"
+});
+
+export const ParticipantIcon = styled.p({
+  display: "inline-block",
+  marginTop: "4px",
+  fontFamily: "Montserrat",
+  fontWeight: "600",
+  fontSize: "12px",
+  letterSpacing: "0.4px",
+  lineHeight: "16px",
+  textAlign: "center",
+  color: "#001b36"
 });
 
 //MODAL
@@ -253,9 +267,11 @@ export const Modal = styled.div({
 });
 
 export const ButtonDelete = styled.div({
-  display: "inline-block",
+  display: "flex",
+  marginRight: "16px",
+  justifyContent: "center",
   cursor: "pointer",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "rgba(255, 255, 255, 0.8)",
   ":hover": {
     color: "#cf6679",
     img: {
@@ -265,15 +281,20 @@ export const ButtonDelete = styled.div({
 });
 
 export const ButtonParticipants = styled.div({
-  display: "inline-block",
+  display: "flex",
+  justifyContent: "center",
   cursor: "pointer",
-  color: "#62d0ff"
+  color: "#62d0ff",
+  marginRight: "16px"
 });
 
 export const ButtonAddParticipants = styled.div({
-  display: "inline-block",
+  display: "flex",
+  marginRight: "16px",
+  justifyContent: "center",
   cursor: "pointer",
-  color: "rgba(255, 255, 255, 0.6)",
+  opacity: "80%",
+  color: "rgba(255, 255, 255)",
   ":hover": {
     color: "#62d0ff",
     img: {
@@ -281,19 +302,6 @@ export const ButtonAddParticipants = styled.div({
     }
   }
 });
-export const BtnVerRespuesta = styled.button(
-  {
-    width: "162px",
-    height: "36px",
-    borderRadius: "4px",
-    backgroundColor: "#cf6679",
-    border: "none",
-    color: "black",
-    padding: "0px",
-    marginRight: "10px"
-  },
-  props => ({ backgroundColor: props.backgroundColor })
-);
 
 export const LabelButton = styled.label({
   width: "133px",
@@ -306,29 +314,32 @@ export const LabelButton = styled.label({
   color: "#001b36"
 });
 
+export const BtnVerRespuesta = styled.button(
+  {
+    width: "162px",
+    height: "36px",
+    borderRadius: "4px",
+    backgroundColor: "#cf6679",
+    border: "none",
+    color: "black",
+    marginRight: "10px",
+    marginTop: "9px"
+  },
+  props => ({ backgroundColor: props.backgroundColor })
+);
+
 // ADMIN
 
 export const ButtonAnswer = styled.div({
   display: "flex",
-  width: "102px",
-  height: "16px",
-  marginRight: "60px",
+  marginRight: "16px",
   justifyContent: "center",
   cursor: "pointer",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "rgba(255, 255, 255, 0.8)",
   ":hover": {
     color: "#62d0ff",
     img: {
       content: "url(/images/answerHoverIcon.svg)"
     }
-  },
-
-  fontFamily: "Montserrat",
-  fontSize: "14px",
-  fontWeight: "500",
-  fontStretch: "normal",
-  fontStyle: "normal",
-  lineHeight: "1.14",
-  letterSpacing: "1.25px"
+  }
 });
-
