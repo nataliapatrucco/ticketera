@@ -56,7 +56,13 @@ export const Navbar = props => {
         />
         <ProfileImg src="/images/devman.jpg" />
         <UserName>{user.name}</UserName>
-        <button onClick={() => dispatch(logOutUser())}>Log Out</button>
+        <button
+          onClick={() =>
+            dispatch(logOutUser()).then(() => props.history.push("/"))
+          }
+        >
+          Log Out
+        </button>
       </FancyDiv>
       {notification ? (
         <NotificationModal notifications={props.notifications} />
