@@ -22,6 +22,7 @@ import AnswerModal from "../../containers/answerTicket";
 import { Container } from "../deleteTicket/style";
 
 export default ({ ticket }) => {
+  {console.log("-----------------------"+ticket.statusId)}
   const [showModal, setShowModal] = useState(false);
   const [showAnswerModal, setShowAnswerModal] = useState(false);
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ export default ({ ticket }) => {
       <AddButton>
         {!user.isAdmin ? (
           <>
-            {user.id === ticket.authorId ? (
+            {user.id === ticket.authorId && ticket.statusId == 1 || ticket.statusId == 2 ? (
               <ButtonDelete onClick={() => setShowModal(!showModal)}>
                 <AddIcon src="/images/delete-resting.svg" alt="" />
                 ELIMINAR PREGUNTA
