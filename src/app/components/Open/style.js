@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 
-
 export const Ticket = styled.div(
   {
     borderRadius: "4px",
@@ -138,7 +137,7 @@ export const Line = styled.hr({
   all: "unset",
   width: "95.5%",
   border: "solid 0.5px #ffffff40",
-  margin: "0 auto",
+  margin: "0 auto"
   // borderRadius: "5px"
 });
 
@@ -150,9 +149,7 @@ export const TicketFooter = styled.section({
   paddingRight: "20px",
   margin: "4px 2px",
   alignContent: "flex-end"
-
 });
-
 
 export const AddIcon = styled.img({
   height: "20px",
@@ -165,12 +162,12 @@ export const AddIcon = styled.img({
 });
 
 export const ShareIcon = styled.img`
- position: relative;
- top: 3px;
- color: rgba(255,255,255);
- opacity: 70%;
- margin-right: 6px;
-`
+  position: relative;
+  top: 3px;
+  color: rgba(255, 255, 255);
+  opacity: 70%;
+  margin-right: 6px;
+`;
 
 export const AnswerIcon = styled.img`
 color: rgba(255,255,255),
@@ -180,7 +177,7 @@ width: 20px;
 height: 20px;
 position: relative;
 top: 3px;
-`
+`;
 
 export const AddButton = styled.div({
   display: "flex",
@@ -195,7 +192,7 @@ export const AddButton = styled.div({
   fontSize: "14px",
   lineHeight: "24px",
   letterSpacing: "1.25px",
-  marginRight: "16px" 
+  marginRight: "16px"
 });
 
 export const RemoveButton = styled.p({
@@ -217,7 +214,7 @@ export const RemoveButton = styled.p({
 export const ShareButton = styled.div({
   // border: "solid 1px rgba(0,0,0,0)",
   backgroundColor: "rgba(0,0,0,0)",
-  color: "rgba(255,255,255)", 
+  color: "rgba(255,255,255)",
   opacity: "80%",
   fontFamily: "Montserrat",
   fontWeight: "500",
@@ -226,12 +223,27 @@ export const ShareButton = styled.div({
   letterSpacing: "1.25px"
 });
 
-export const PartipantsImg = styled.img({
-  alignItems: "center",
+export const PartipantsImg = styled.div({
+  display: "inline-block",
+  backgroundColor: "#b8b9ba",
+  opacity: "90%",
+  textAlign: "center",
   width: "24px",
   height: "24px",
   borderRadius: "50px",
   margin: "10px"
+});
+
+export const ParticipantIcon = styled.p({
+  display: "inline-block",
+  marginTop: "4px",
+  fontFamily: "Montserrat",
+  fontWeight: "600",
+  fontSize: "12px",
+  letterSpacing: "0.4px",
+  lineHeight: "16px",
+  textAlign: "center",
+  color: "#001b36"
 });
 
 //MODAL
@@ -259,7 +271,6 @@ export const ButtonDelete = styled.div({
     }
   }
 });
-
 
 export const ButtonParticipants = styled.div({
   display: "flex",
@@ -304,7 +315,7 @@ export const BtnVerRespuesta = styled.button(
     border: "none",
     color: "black",
     marginRight: "10px",
-    marginTop: "9px",
+    marginTop: "9px"
   },
   props => ({ backgroundColor: props.backgroundColor })
 );

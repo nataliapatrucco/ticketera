@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Socket from "../../socket";
 import { useDispatch, useSelector } from "react-redux";
 import NotificationModal from "../../components/Notifications/index";
 import {
@@ -6,7 +7,9 @@ import {
   Rectangle,
   NavbarContainer,
   Search,
+  NotificationIcon,
   ProfileImg,
+  NotificacionDiv,
   NotificationBell,
   SearchIcon,
   UserName,
@@ -16,10 +19,21 @@ import { fetchSearchedTickets } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
 // import { Notification } from "../../components/Notifications/style";
 
-export const Navbar = props => {
+export const Navbar = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const [notification, setNotification] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+
+  // Socket on ticket status update
+  Socket.on("statusChanged", data => {
+    setNotifications([...notifications, data]);
+  });
+
+  // Socket on Ticket Deleted
+  Socket.on("deleted", message => {
+    setNotifications([...notifications, message]);
+  });
 
   const user = useSelector(state => state.user.user);
   //   const profilePic = useSelector(state => state.user // SRC DE ProfilePic
@@ -29,8 +43,8 @@ export const Navbar = props => {
   };
 
   const handleClick = () => {
-    setNotification(false)
-  }
+    setNotification(false);
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -53,18 +67,30 @@ export const Navbar = props => {
         </Rectangle>
       </form>
       <FancyDiv>
-        <NotificationBell
-          onClick={() => setNotification(true)}
-          src="/images/notificationbell.png"
-        />
+        <NotificacionDiv>
+          <NotificationBell
+            onClick={() => setNotification(true)}
+            src="/images/notificationbell.png"
+          />
+          {notifications.length ? (
+            <NotificationIcon> {notifications.length} </NotificationIcon>
+          ) : (
+            ""
+          )}
+        </NotificacionDiv>
+
         <ProfileImg src="/images/devman.jpg" />
+
         <UserName>{user.name}</UserName>
         <ButtonLogOut src="/images/logout.svg"  onClick={() =>
             dispatch(logOutUser()).then(() => props.history.push("/"))
           }></ButtonLogOut>
       </FancyDiv>
       {notification ? (
-        <NotificationModal notifications={props.notifications} handleClick={handleClick}/>
+        <NotificationModal
+          notifications={notifications}
+          handleClick={handleClick}
+        />
       ) : null}
     </NavbarContainer>
   );
