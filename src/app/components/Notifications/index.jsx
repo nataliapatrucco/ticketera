@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   ModalContainer,
@@ -10,7 +10,7 @@ import {
   AvatarContainer
 } from "./style";
 
-export default ({ notifications, handleClick }) => {
+export default ({ handleClick, notifications }) => {
   return (
     <>
       {!notifications.length ? (
@@ -38,7 +38,9 @@ export default ({ notifications, handleClick }) => {
             <NotificationContainer>
               <AvatarContainer src="images/github.png"></AvatarContainer>
               {notifications.map(notification => (
-                <Notification> {notification}</Notification>
+                <Link to={`/${notification.slug}`}>
+                  <Notification> {notification.message}</Notification>
+                </Link>
               ))}
             </NotificationContainer>
           </ModalContainer>
