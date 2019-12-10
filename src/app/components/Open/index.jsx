@@ -24,10 +24,12 @@ import {
   ShareButton,
   TicketFooter,
   PartipantsImg,
-  Line
+  Line,
+  BtnVerRespuesta,
+  LabelButton,
 } from "./style";
 
-export default function index({ ticket, index }) {
+export default function index({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
 
   const isHighlighted = ticket => {
