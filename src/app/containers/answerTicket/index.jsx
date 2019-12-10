@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  answerTicket,
-  fetchOpen,
-  fetchProcessing
-} from "../../redux/actions/tickets";
+import { answerTicket, fetchOpen } from "../../redux/actions/tickets";
 import {
   ModalBackground,
   ModalContainer,
@@ -24,6 +20,8 @@ export default ({ ticket, setShowAnswerModal }) => {
   const [status, setStatus] = useState(1);
   const [description, setDescription] = useState("");
 
+
+  
   const handleSubmit = id => {
     dispatch(answerTicket(id, { status, description }))
       .then(() => dispatch(fetchOpen()))

@@ -20,6 +20,7 @@ export const Navbar = props => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const [notification, setNotification] = useState(false);
+
   const user = useSelector(state => state.user.user);
   //   const profilePic = useSelector(state => state.user // SRC DE ProfilePic
 
@@ -60,8 +61,9 @@ export const Navbar = props => {
         <UserName>{user.name}</UserName>
         <ButtonLogOut src="/images/logout.svg" onClick={() => dispatch(logOutUser())}></ButtonLogOut>
       </FancyDiv>
-      {notification ? (<NotificationModal handleClick={handleClick} />) : null}
-      
+      {notification ? (
+        <NotificationModal notifications={props.notifications} handleClick={handleClick}/>
+      ) : null}
     </NavbarContainer>
   );
 };
