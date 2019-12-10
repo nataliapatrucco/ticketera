@@ -234,6 +234,14 @@ export const PartipantsImg = styled.div({
   margin: "10px"
 });
 
+export const EmptyParticipant = styled.div({
+  display: "inline-block",
+  width: "24px",
+  height: "24px",
+  borderRadius: "50px",
+  margin: "10px"
+});
+
 export const ParticipantIcon = styled.p({
   display: "inline-block",
   marginTop: "4px",

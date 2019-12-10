@@ -31,8 +31,8 @@ export const Navbar = () => {
   });
 
   // Socket on Ticket Deleted
-  Socket.on("deleted", message => {
-    setNotifications([...notifications, message]);
+  Socket.on("deleted", data => {
+    setNotifications([...notifications, data]);
   });
 
   const user = useSelector(state => state.user.user);
@@ -82,9 +82,12 @@ export const Navbar = () => {
         <ProfileImg src="/images/devman.jpg" />
 
         <UserName>{user.name}</UserName>
-        <ButtonLogOut src="/images/logout.svg"  onClick={() =>
+        <ButtonLogOut
+          src="/images/logout.svg"
+          onClick={() =>
             dispatch(logOutUser()).then(() => props.history.push("/"))
-          }></ButtonLogOut>
+          }
+        ></ButtonLogOut>
       </FancyDiv>
       {notification ? (
         <NotificationModal
