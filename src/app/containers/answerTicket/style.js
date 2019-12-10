@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const ModalBackground = styled.div({
+  margin: "0px",
   position: "fixed",
   top: 0,
   bottom: 0,
@@ -12,7 +13,7 @@ export const ModalBackground = styled.div({
 });
 
 export const ModalContainer = styled.div({
-  display: "flex",
+  //display: "flex",
   flexDirection: "column",
   zIndex: "10",
   display: "flex",
@@ -104,7 +105,7 @@ export const ButtonContainer = styled.div(
   })
 );
 
-export const StatusButton = styled.button(
+/* export const StatusButton = styled.button(
   {
     //display: "inline-block",
     //width: "113px",
@@ -134,7 +135,34 @@ export const StatusButton = styled.button(
     color: props.color,
     border: props.border
   })
-);
+); */
+
+export const StatusButton = styled.button`
+height: 36px;
+border-radius: 4px;
+border: solid 1px rgba(255, 255, 255, 0.12);
+background-color: transparent;
+outline: none;
+font-family: Montserrat;
+font-size: 14px;
+font-weight: 500;
+font-stretch: normal;
+font-style: normal;
+line-height: 1.14;
+letter-spacing: 1.25px;
+color: rgba(255, 255, 255, 0.6);
+:hover{
+  background-color: rgba(255, 255, 255, 0.12)
+}
+:focus{
+  color: white;
+  border: solid 1px white
+}
+color: ${props =>
+  props.primary ? 'white' : null};
+`;
+
+
 
 export const ModalButton = styled.button`
   cursor: pointer;
@@ -158,7 +186,6 @@ export const ModalButtonLabel = styled.label`
   font-style: normal;
   line-height: 1.14;
   letter-spacing: 1.25px;
-
   color: ${props => props.color};
 `;
 

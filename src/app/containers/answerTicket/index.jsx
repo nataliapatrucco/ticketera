@@ -30,25 +30,29 @@ import {ModalQuestion, Icon, ModalUploadBox, ModalUploadBoxPlus} from "../../com
 
 export default ({ ticket, setShowAnswerModal }) => {
   const dispatch = useDispatch();
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState(ticketStatus);
   const [description, setDescription] = useState("");
   const [inputComp, setInputComp] = useState(false);
   const [inputResp, setInputResp] = useState(false);
   const [inputRechazado, setInputRechazado] = useState(false);
   const [errorMsg, setErrorMsg]= useState("")
 
-
+  const ticketStatus = useSelector(state => state.tickets.single.statusId)
   
+  
+
   const handleSubmit = id => {
-      if (!description.length > 0 && status===3) {
-        setErrorMsg("complete el campo")
-      }else{
-        dispatch(answerTicket(id, { status, description }))
+    if (!description.length > 0 && status === 3) {
+      setErrorMsg("complete el campo");
+    } else {
+      dispatch(answerTicket(id, { status, description }))
         .then(() => dispatch(fetchOpen()))
         .then(() => setShowAnswerModal(false))
-        .catch(err => setErrorMsg("Ingrese una respuesta"))
-      }
+        .catch(err => setErrorMsg("Ingrese una respuesta"));
+    }
   };
+
+  console.log(ticketStatus)
   return (
     <ModalBackground>
       <ModalContainer>
@@ -72,36 +76,43 @@ export default ({ ticket, setShowAnswerModal }) => {
           </ModalUploadBox>
           <Line></Line>
         </UploadContainer>
+     {/*    {ticketStatus? } */}
+
         <ButtonContainer justifyContent={"space-around"} marginTop={"8px"}>
-          <StatusButton
+          <StatusButton 
             onClick={() => {
               setStatus(1),
-                setInputResp(false),
-                setInputComp(false),
-                setInputRechazado(false);
+              setInputResp(false),
+              setInputComp(false),
+              setInputRechazado(false);
               setErrorMsg("");
-            }}
+              
+            }} 
+
           >
             PENDIENTE
           </StatusButton>
           <StatusButton
             onClick={() => {
               setStatus(2),
-                setInputResp(!inputResp),
-                setInputComp(false),
-                setInputRechazado(false);
+              setInputResp(!inputResp),
+              setInputComp(false),
+              setInputRechazado(false);
               setErrorMsg("");
               setDescription("");
             }}
+          
+         /*    color: "white",
+      border: "solid 1px white" */
           >
             RESPONDIENDO
           </StatusButton>
           <StatusButton
             onClick={() => {
               setStatus(3),
-                setInputComp(!inputComp),
-                setInputResp(false),
-                setInputRechazado(false);
+              setInputComp(!inputComp),
+              setInputResp(false),
+              setInputRechazado(false);
               setErrorMsg("");
               setDescription("");
             }}
@@ -111,9 +122,9 @@ export default ({ ticket, setShowAnswerModal }) => {
           <StatusButton
             onClick={() => {
               setStatus(4),
-                setInputResp(false),
-                setInputComp(false),
-                setInputRechazado(!inputRechazado);
+              setInputResp(false),
+              setInputComp(false),
+              setInputRechazado(!inputRechazado);
               setErrorMsg("");
               setDescription("");
             }}
@@ -121,6 +132,8 @@ export default ({ ticket, setShowAnswerModal }) => {
             RECHAZADA
           </StatusButton>
         </ButtonContainer>
+
+
 
         {/* //muestra input */}
         {inputResp && (
@@ -133,7 +146,6 @@ export default ({ ticket, setShowAnswerModal }) => {
             ></ModalInput>
           </ModalInputContainer>
         )}
-
         {inputComp && (
           <ModalInputContainer>
             <ModalInput
@@ -143,7 +155,6 @@ export default ({ ticket, setShowAnswerModal }) => {
               onChange={e => setDescription(e.target.value)}
             ></ModalInput>
           </ModalInputContainer>
-          //validar
         )}
 
         {inputRechazado && (
