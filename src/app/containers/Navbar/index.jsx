@@ -9,7 +9,8 @@ import {
   ProfileImg,
   NotificationBell,
   SearchIcon,
-  UserName
+  UserName,
+  ButtonLogOut
 } from "./style";
 import { fetchSearchedTickets } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
@@ -26,6 +27,10 @@ export const Navbar = props => {
   const handleChange = event => {
     setInput(event.target.value);
   };
+
+  const handleClick = () => {
+    setNotification(false)
+  }
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -49,23 +54,17 @@ export const Navbar = props => {
       </form>
       <FancyDiv>
         <NotificationBell
-          onClick={() =>
-            notification ? setNotification(false) : setNotification(true)
-          }
+          onClick={() => setNotification(true)}
           src="/images/notificationbell.png"
         />
         <ProfileImg src="/images/devman.jpg" />
         <UserName>{user.name}</UserName>
-        <button
-          onClick={() =>
+        <ButtonLogOut src="/images/logout.svg"  onClick={() =>
             dispatch(logOutUser()).then(() => props.history.push("/"))
-          }
-        >
-          Log Out
-        </button>
+          }></ButtonLogOut>
       </FancyDiv>
       {notification ? (
-        <NotificationModal notifications={props.notifications} />
+        <NotificationModal notifications={props.notifications} handleClick={handleClick}/>
       ) : null}
     </NavbarContainer>
   );

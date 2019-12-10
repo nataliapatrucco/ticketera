@@ -25,7 +25,6 @@ import {
   TicketFooter,
   PartipantsImg,
   Line,
-  ParticipantsImgContainer,
   BtnVerRespuesta,
   LabelButton
 } from "./style";
@@ -96,7 +95,7 @@ export default function index({ ticket, index, params }) {
             <Link to={`/${ticket.slug}`}>
               <TicketTitle>{ticket.title}</TicketTitle>
             </Link>
-            {ticket.content && ticket.content.length > 140 ? (
+            {ticket.content && ticket.content.length > 140 && ticket.statusId != 3 ? (
               <div>
                 <TicketContent>
                   {" "}
@@ -116,15 +115,11 @@ export default function index({ ticket, index, params }) {
           </Body>
           <Line />
           <TicketFooter>
-            {/* <Buttons> */}
-            <SuperButton ticket={ticket} />
-            {/* </Buttons> */}
-            <ParticipantsImgContainer>
+            <SuperButton ticket={ticket}/>
               <PartipantsImg
                 src="/images/perfil.jpeg"
                 alt="fotos participantes"
               ></PartipantsImg>
-            </ParticipantsImgContainer>
           </TicketFooter>
         </>
       )}

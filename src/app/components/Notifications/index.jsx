@@ -10,12 +10,12 @@ import {
   AvatarContainer
 } from "./style";
 
-export default ({ ticket, notifications }) => {
+export default ({ notifications, handleClick }) => {
   return (
     <>
       {!notifications.length ? (
         <>
-          <Container>
+          <Container onClick={handleClick}>
             <ModalContainer>
               <TriangleContainer>
                 <Triangle></Triangle>
