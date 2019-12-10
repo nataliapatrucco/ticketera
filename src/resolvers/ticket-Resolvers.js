@@ -158,34 +158,27 @@ const editComment = (req, res) => {
 };
 
 const userTickets = (req, res) => {
-  Ticket.findAll({
-    where: {
-      // [Op.or]: [
-      // {
-      authorId: req.user.id
-      //   },
-      //   {
-      //     ticket_participant: {
-      //       userId: req.user.id
-      //     }
-      //   }
-      // ]
-    },
-    // include: [
-    //   {
-    //     model: User,
-    //     through: {
-    //       model: "ticket_participant"
-    //     },
-    //     where: {
-    //       id: req.user.id
-    //     }
-    //   }
-    // ],
-    include: fullTicket
-  })
-    .then(tickets => res.status(201).send(tickets))
-    .catch(err => console.log(err));
+  if (req.user.isAdmin) {
+    Ticket.findAll({
+      include: fullTicket
+    }).then(tickets => {
+      const filteredTickets = tickets.filter(
+        ticket => ticket.comment.replierId === req.user.id
+      );
+      res.send(filteredTickets);
+    });
+  } else {
+    Ticket.findAll({ include: fullTicket })
+      .then(tickets => {
+        const filtertedUserTickets = tickets.filter(
+          ticket =>
+            ticket.authorId === req.user.id ||
+            ticket.users.some(user => user.id === req.user.id)
+        );
+        res.send(filtertedUserTickets);
+      })
+      .catch(err => console.log(err));
+  }
 };
 
 const fetchTicket = (req, res) => {
