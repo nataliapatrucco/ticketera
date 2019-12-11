@@ -15,6 +15,8 @@ const STATUS_INDEX = {
 export default function UserTicketsComponent() {
   const user = useSelector(state => state.user.user);
   const tickets = useSelector(state => state.tickets.userTickets);
+  const open = useSelector(state => state.tickets.open);
+  const processing = useSelector(state => state.tickets.processing);
 
   const dispatch = useDispatch();
   const { status } = useParams();
@@ -28,7 +30,7 @@ export default function UserTicketsComponent() {
 
   useEffect(() => {
     setIndex(STATUS_INDEX[status]);
-  }, [status]);
+  }, [status, open, processing]);
 
   return (
     <QuestionStatusContainer>
