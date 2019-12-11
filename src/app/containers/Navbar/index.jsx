@@ -83,7 +83,7 @@ export const Navbar = props => {
           )}
         </NotificacionDiv>
 
-        <ProfileImg src="/images/devman.jpg" />
+        <ProfileImg src={user.img} />
 
         <UserName>{user.name}</UserName>
         <ButtonLogOut

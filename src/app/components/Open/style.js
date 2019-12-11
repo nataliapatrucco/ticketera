@@ -19,7 +19,7 @@ export const Ticket = styled.div(
 export const Header = styled.div({
   display: "flex",
   flexDirection: "row",
-  margin: "5px",
+  //margin: "5px",
   padding: "0",
 }, props => ({ backgroundColor: props.backgroundColor }) );
 

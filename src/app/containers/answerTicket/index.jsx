@@ -85,11 +85,6 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
           <Line></Line>
         </UploadContainer>
    
-
-
-
-
-
         <ButtonContainer justifyContent={"space-around"} marginTop={"8px"}>
           <StatusButton primary={status==1}
             onClick={() => {
@@ -98,9 +93,7 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
               setInputComp(false),
               setInputRechazado(false);
               setErrorMsg("");
-              
             }} 
-
           >
             PENDIENTE
           </StatusButton>
@@ -114,7 +107,6 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
               setErrorMsg("");
               setDescription("");
             }}
-         
           >
             RESPONDIENDO
           </StatusButton>
@@ -145,8 +137,6 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
             RECHAZADA
           </StatusButton>
         </ButtonContainer>
-
-
 
         {/* //muestra input */}
         {inputResp && (
