@@ -27,7 +27,9 @@ import {
   ModalQuestion,
   Icon,
   ModalUploadBox,
-  ModalUploadBoxPlus
+  ModalUploadBoxPlus,
+  ModalCloseButton
+
 } from "../../components/makeQuestion/style";
 
 export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
@@ -38,6 +40,8 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
   const [inputResp, setInputResp] = useState(false);
   const [inputRechazado, setInputRechazado] = useState(false);
   const [errorMsg, setErrorMsg]= useState("")
+  
+
 
   const ticketStatus = useSelector(state => state.tickets.single.statusId)
   
@@ -56,10 +60,17 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
   console.log(ticketStatus)
   return (
     <ModalBackground>
+       
       <ModalContainer>
+      <ModalCloseButton  onClick={() => {
+          setShowAnswerModal(false);
+        }}>
+              X
+            </ModalCloseButton>
         <TicketTitle>
           <strong>{ticket.title}</strong>
         </TicketTitle>
+       
         <TicketContent>{ticket.content}</TicketContent>
         <UploadContainer>
           <ModalQuestion marginTop={"10px"}>
@@ -175,7 +186,7 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
           </SessionText>
         ) : null}
 
-        <ButtonContainer justifyContent={"flex-end"} marginTop={"65px"}>
+        <ButtonContainer justifyContent={"flex-end"} marginTop={"30px"}>
           <ModalButton
             color="transparent"
             border="solid 1px rgba(255, 255, 255, 0.12);"

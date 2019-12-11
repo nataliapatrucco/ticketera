@@ -19,6 +19,9 @@ Ticket.init(
     slug: {
       type: S.STRING,
       unique: true
+    },
+    location:{
+      type: S.STRING
     }
   },
 

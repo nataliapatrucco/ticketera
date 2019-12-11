@@ -20,8 +20,8 @@ export const Header = styled.div({
   display: "flex",
   flexDirection: "row",
   margin: "5px",
-  padding: "0"
-});
+  padding: "0",
+}, props => ({ backgroundColor: props.backgroundColor }) );
 
 export const Img = styled.img({
   alignItems: "center",
