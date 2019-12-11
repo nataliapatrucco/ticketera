@@ -23,7 +23,7 @@ import OpenContainer from "../containers/dashboard/partials";
 import SingleContainer from "../containers/singleTicket";
 import Socket from "../socket";
 
-export default props => {
+export default function MainContainer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.user.user);
@@ -77,4 +77,4 @@ export default props => {
       )}
     </HomeDiv>
   );
-};
+}

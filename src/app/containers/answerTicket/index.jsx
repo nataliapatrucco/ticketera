@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  answerTicket,//no es lo mismo que setStatus??
-  fetchOpen,//busca los tickets por status
+  answerTicket, //no es lo mismo que setStatus??
+  fetchOpen, //busca los tickets por status
   fetchProcessing //lista los que estan en proceso
-
 } from "../../redux/actions/tickets";
 
 import {
@@ -21,40 +20,57 @@ import {
   ModalInputContainer,
   Line,
   UploadContainer
-  
 } from "./style";
-import {SessionText} from "../../session/style"
+import { SessionText } from "../../session/style";
 
+import {
+  ModalQuestion,
+  Icon,
+  ModalUploadBox,
+  ModalUploadBoxPlus,
+  ModalCloseButton
 
-import {ModalQuestion, Icon, ModalUploadBox, ModalUploadBoxPlus} from "../../components/makeQuestion/style"
+} from "../../components/makeQuestion/style";
 
-export default ({ ticket, setShowAnswerModal }) => {
+export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
   const dispatch = useDispatch();
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState(ticketStatus);
   const [description, setDescription] = useState("");
   const [inputComp, setInputComp] = useState(false);
   const [inputResp, setInputResp] = useState(false);
   const [inputRechazado, setInputRechazado] = useState(false);
   const [errorMsg, setErrorMsg]= useState("")
-
-
   
+
+
+  const ticketStatus = useSelector(state => state.tickets.single.statusId)
+  
+
   const handleSubmit = id => {
-      if (!description.length > 0 && status===3) {
-        setErrorMsg("complete el campo")
-      }else{
-        dispatch(answerTicket(id, { status, description }))
+    if (!description.length > 0 && status === 3) {
+      setErrorMsg("complete el campo");
+    } else {
+      dispatch(answerTicket(id, { status, description }))
         .then(() => dispatch(fetchOpen()))
         .then(() => setShowAnswerModal(false))
-        .catch(err => setErrorMsg("Ingrese una respuesta"))
-      }
+        .catch(err => setErrorMsg("Ingrese una respuesta"));
+    }
   };
+
+  console.log(ticketStatus)
   return (
     <ModalBackground>
+       
       <ModalContainer>
+      <ModalCloseButton  onClick={() => {
+          setShowAnswerModal(false);
+        }}>
+              X
+            </ModalCloseButton>
         <TicketTitle>
           <strong>{ticket.title}</strong>
         </TicketTitle>
+       
         <TicketContent>{ticket.content}</TicketContent>
         <UploadContainer>
           <ModalQuestion marginTop={"10px"}>
@@ -72,36 +88,43 @@ export default ({ ticket, setShowAnswerModal }) => {
           </ModalUploadBox>
           <Line></Line>
         </UploadContainer>
+     {/*    {ticketStatus? } */}
+
         <ButtonContainer justifyContent={"space-around"} marginTop={"8px"}>
-          <StatusButton
+          <StatusButton 
             onClick={() => {
               setStatus(1),
-                setInputResp(false),
-                setInputComp(false),
-                setInputRechazado(false);
+              setInputResp(false),
+              setInputComp(false),
+              setInputRechazado(false);
               setErrorMsg("");
-            }}
+              
+            }} 
+
           >
             PENDIENTE
           </StatusButton>
           <StatusButton
             onClick={() => {
               setStatus(2),
-                setInputResp(!inputResp),
-                setInputComp(false),
-                setInputRechazado(false);
+              setInputResp(!inputResp),
+              setInputComp(false),
+              setInputRechazado(false);
               setErrorMsg("");
               setDescription("");
             }}
+          
+         /*    color: "white",
+      border: "solid 1px white" */
           >
             RESPONDIENDO
           </StatusButton>
           <StatusButton
             onClick={() => {
               setStatus(3),
-                setInputComp(!inputComp),
-                setInputResp(false),
-                setInputRechazado(false);
+              setInputComp(!inputComp),
+              setInputResp(false),
+              setInputRechazado(false);
               setErrorMsg("");
               setDescription("");
             }}
@@ -111,9 +134,9 @@ export default ({ ticket, setShowAnswerModal }) => {
           <StatusButton
             onClick={() => {
               setStatus(4),
-                setInputResp(false),
-                setInputComp(false),
-                setInputRechazado(!inputRechazado);
+              setInputResp(false),
+              setInputComp(false),
+              setInputRechazado(!inputRechazado);
               setErrorMsg("");
               setDescription("");
             }}
@@ -121,6 +144,8 @@ export default ({ ticket, setShowAnswerModal }) => {
             RECHAZADA
           </StatusButton>
         </ButtonContainer>
+
+
 
         {/* //muestra input */}
         {inputResp && (
@@ -133,7 +158,6 @@ export default ({ ticket, setShowAnswerModal }) => {
             ></ModalInput>
           </ModalInputContainer>
         )}
-
         {inputComp && (
           <ModalInputContainer>
             <ModalInput
@@ -143,7 +167,6 @@ export default ({ ticket, setShowAnswerModal }) => {
               onChange={e => setDescription(e.target.value)}
             ></ModalInput>
           </ModalInputContainer>
-          //validar
         )}
 
         {inputRechazado && (
@@ -163,7 +186,7 @@ export default ({ ticket, setShowAnswerModal }) => {
           </SessionText>
         ) : null}
 
-        <ButtonContainer justifyContent={"flex-end"} marginTop={"65px"}>
+        <ButtonContainer justifyContent={"flex-end"} marginTop={"30px"}>
           <ModalButton
             color="transparent"
             border="solid 1px rgba(255, 255, 255, 0.12);"
@@ -188,4 +211,4 @@ export default ({ ticket, setShowAnswerModal }) => {
       </ModalContainer>
     </ModalBackground>
   );
-};
+}

@@ -20,7 +20,7 @@ import { fetchSearchedTickets } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
 // import { Notification } from "../../components/Notifications/style";
 
-export const Navbar = () => {
+export const Navbar = props => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const [notification, setNotification] = useState(false);
@@ -33,8 +33,8 @@ export const Navbar = () => {
   });
 
   // Socket on Ticket Deleted
-  Socket.on("deleted", message => {
-    setNotifications([...notifications, message]);
+  Socket.on("deleted", data => {
+    setNotifications([...notifications, data]);
   });
 
   const user = useSelector(state => state.user.user);
@@ -44,6 +44,10 @@ export const Navbar = () => {
     setInput(event.target.value);
   };
 
+
+  const handleLogOut = () => {
+    dispatch(logOutUser()), props.history.push("/");
+  };
 
   const handleSubmit = event => {
     event.preventDefault();

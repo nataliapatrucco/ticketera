@@ -29,12 +29,10 @@ class Socket {
   }
   deleteTicket() {
     return ticket => {
-      console.log(ticket.authorId);
       this.sockets[ticket.authorId] &&
-        this.sockets[ticket.authorId].emit(
-          "deleted",
-          `Eliminamos tu ticket ${ticket.title}`
-        );
+        this.sockets[ticket.authorId].emit("deleted", {
+          message: `Eliminamos tu ticket ${ticket.title}`
+        });
     };
   }
 

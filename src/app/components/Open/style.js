@@ -20,8 +20,8 @@ export const Header = styled.div({
   display: "flex",
   flexDirection: "row",
   margin: "5px",
-  padding: "0"
-});
+  padding: "0",
+}, props => ({ backgroundColor: props.backgroundColor }) );
 
 export const Img = styled.img({
   alignItems: "center",
@@ -228,6 +228,14 @@ export const PartipantsImg = styled.div({
   backgroundColor: "#b8b9ba",
   opacity: "90%",
   textAlign: "center",
+  width: "24px",
+  height: "24px",
+  borderRadius: "50px",
+  margin: "10px"
+});
+
+export const EmptyParticipant = styled.div({
+  display: "inline-block",
   width: "24px",
   height: "24px",
   borderRadius: "50px",

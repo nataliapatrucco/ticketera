@@ -15,7 +15,7 @@ import {
 } from "./style";
 import { Link } from "react-router-dom";
 
-export default ({ ticket }) => {
+export default function ProcessingComponent({ ticket }) {
   return (
     <Link to={`/${ticket.slug}`}>
       <Contenedor>
@@ -31,7 +31,7 @@ export default ({ ticket }) => {
         </AssistantContainer>
         <UbicacionContainer>
           <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
-          <Ubicacion> en Sala 5 </Ubicacion>
+          <Ubicacion> {ticket.location} </Ubicacion>
         </UbicacionContainer>
         <TicketContainer>
           <AlumnContainer>
@@ -50,4 +50,4 @@ export default ({ ticket }) => {
       </Contenedor>
     </Link>
   );
-};
+}

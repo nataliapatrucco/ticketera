@@ -17,7 +17,8 @@ import {
   ModalUploadBox,
   ModalUploadBoxPlus,
   ModalCloseButton,
-  Icon
+  Icon,
+  PreviewImg
 } from "./style";
 
 import { ModalBackground } from "../modalBackground/style";
@@ -26,7 +27,6 @@ import {
   fetchOpen,
   createNewImage
 } from "../../redux/actions/tickets";
-import MyDropzone from "react-dropzone";
 
 export const MakeQuestion = props => {
   const [showModal, setShowModal] = useState(false);
@@ -34,7 +34,8 @@ export const MakeQuestion = props => {
     title: "",
     content: ""
   });
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState([]);
+  const [file, setFile] = useState([]);
 
   const handleChange = e => {
     setState({
@@ -47,23 +48,39 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
-      .then(ticket => createNewImage(ticket.data.id, image))
+      .then(
+        ticket =>
+          image &&
+          image.map(element => {
+            createNewImage(ticket.data.id, element);
+            console.log("handleSubmittttttttttttttt", element);
+          })
+      )
       .then(() => dispatch(fetchOpen()))
+      .then(() => setFile([]))
       .then(() => setShowModal(!showModal));
   };
 
   const handleImageChange = e => {
     const files = e.target.files;
+    for (let i of files) {
+      const preview = URL.createObjectURL(i);
+      setFile([...file, preview]);
+    }
     const formData = new FormData();
-    formData.append("file", files[0]);
-    setImage(formData);
+    formData.append("file", files);
+    setImage([...image, formData]);
   };
 
   const handleImageDrop = files => {
     const droppedFiles = files;
+    for (const i of droppedFiles) {
+      const preview = URL.createObjectURL(i);
+      setFile([...file, preview]);
+    }
     const formData = new FormData();
-    formData.append("file", droppedFiles[0]);
-    setImage(formData);
+    formData.append("file", droppedFiles);
+    setImage([...image, formData]);
   };
 
   return (
@@ -79,7 +96,12 @@ export const MakeQuestion = props => {
       {showModal && (
         <ModalBackground>
           <ModalContainer>
-            <ModalCloseButton onClick={() => setShowModal(!showModal)}>
+            <ModalCloseButton
+              onClick={() => {
+                setShowModal(!showModal);
+                setFile([]);
+              }}
+            >
               X
             </ModalCloseButton>
             <ModalQuestion marginTop="32px">
@@ -106,36 +128,55 @@ export const MakeQuestion = props => {
                 placeholder="Ej: Cuando escribo el código y hago XXXXXXXXXXXXXXX me tira este error y no puedo seguir con el ejercicio"
               ></ModalInput>
             </ModalInputContainer>
-            
+
             <ModalQuestion marginTop={"10px"}>
               <Icon src="images/icon-file-attachment-24-px.png"></Icon>
               Adjuntar archivos
             </ModalQuestion>
-            <ModalUploadBox>
-              <Dropzone
-                onDrop={acceptedFiles => handleImageDrop(acceptedFiles)}
-                className="dropzone"
-                activeClassName="active-dropzone"
-                multiple={false}
-              >
-                {({ getRootProps, getInputProps }) => (
-                  <section>
-                    <div {...getRootProps()}>
-                      <input
-                        {...getInputProps()}
-                        onChange={handleImageChange}
-                      />
-                      <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
-                    </div>
-                  </section>
-                )}
-              </Dropzone>
-            </ModalUploadBox>
+            <ModalButtonContainer>
+              {file
+                ? file.map(element => <PreviewImg src={element}></PreviewImg>)
+                : null}
+              <ModalUploadBox>
+                <Dropzone
+                  onDrop={acceptedFiles => handleImageDrop(acceptedFiles)}
+                  className="dropzone"
+                  activeClassName="active-dropzone"
+                  multiple
+                >
+                  {({ getRootProps, getInputProps }) => (
+                    <section>
+                      <div {...getRootProps()}>
+                        <input
+                          {...getInputProps()}
+                          onChange={e => handleImageChange(e)}
+                        />
+
+                        <ModalUploadBoxPlus>+</ModalUploadBoxPlus>
+                      </div>
+                    </section>
+                  )}
+                </Dropzone>
+              </ModalUploadBox>
+            </ModalButtonContainer>
             <ModalButtonContainer>
               <ModalButton
-                color="#62d0ff"
+                color="transparent"
+                border="solid 1px rgba(255, 255, 255, 0.12);"
                 marginTop="30px"
-                marginLeft="450px"
+                /*  marginLeft="10px" */
+                onClick={() => {
+                  setShowModal(!showModal);
+                }}
+              >
+                <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
+              </ModalButton>
+              <ModalButton
+                color="#62d0ff"
+                /*   marginTop="30px" */
+                marginRight="12px"
+                border="none"
+                marginLeft="12px"
                 type="submit"
                 onClick={e => {
                   e.preventDefault();
@@ -143,6 +184,7 @@ export const MakeQuestion = props => {
                     title: state.title,
                     content: state.content
                   });
+                  console.log("staaaaaateeeeeee", image);
                 }}
               >
                 <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
@@ -155,6 +197,7 @@ export const MakeQuestion = props => {
                 marginLeft="10px"
                 onClick={() => {
                   setShowModal(!showModal);
+                  setFile([]);
                 }}
               >
                 <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
