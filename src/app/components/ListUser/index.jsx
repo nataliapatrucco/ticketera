@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
   UserData,
@@ -10,15 +9,8 @@ import {
   CheckBox
 } from "./style";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
-import { setUserAsAdmin, removeAdmin } from "../../redux/actions/user";
 
-export default function ListUser({ user }) {
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    user.isAdmin ? dispatch(removeAdmin(user)) : dispatch(setUserAsAdmin(user));
-  };
-
+export default function ListUser({ user, handleClick }) {
   return (
     <Container>
       <Question>
@@ -28,7 +20,7 @@ export default function ListUser({ user }) {
       </Question>
       <UserAdmin>
         <Check>Admin</Check>
-        <CheckBox onClick={() => handleClick()}>
+        <CheckBox onClick={() => handleClick(user)}>
           {!user.isAdmin ? <MdCheckBoxOutlineBlank /> : <MdCheckBox />}
         </CheckBox>
       </UserAdmin>
