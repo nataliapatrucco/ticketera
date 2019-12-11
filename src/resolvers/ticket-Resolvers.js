@@ -160,10 +160,15 @@ const editComment = (req, res) => {
 const userTickets = (req, res) => {
   if (req.user.isAdmin) {
     Ticket.findAll({
+      where: {
+        statusId: {
+          [Op.ne]: 1
+        }
+      },
       include: fullTicket
     }).then(tickets => {
       const filteredTickets = tickets.filter(
-        ticket => ticket.comment.replierId === req.user.id
+        ticket => ticket.comment.replier.id === req.user.id
       );
       res.send(filteredTickets);
     });
