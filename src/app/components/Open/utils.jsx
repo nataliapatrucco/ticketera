@@ -44,19 +44,19 @@ export default ({ ticket }) => {
       <AddButton>
         {!user.isAdmin ? (
           <>
-            {user.id === ticket.authorId && ticket.statusId == 1 || ticket.statusId == 2 ? (
+            {user.id === ticket.authorId && ticket.statusId == 1 ? (
               <ButtonDelete onClick={() => setShowModal(!showModal)}>
                 <AddIcon src="/images/delete-resting.svg" alt="" />
                 ELIMINAR PREGUNTA
               </ButtonDelete>
-            ) : checkParticipants(ticket.users) ? (
+            ) : checkParticipants(ticket.users)  ? (
               <ButtonParticipants
                 onClick={() => handleRemove(ticket.id, ticket.statusId)}
               >
                 <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
                 ME INTERESA
               </ButtonParticipants>
-            ) : (
+            ) : ticket.authorId !== user.id &&(
               <ButtonAddParticipants
                 onClick={() => handleAdd(ticket.id, ticket.statusId)}
               >
