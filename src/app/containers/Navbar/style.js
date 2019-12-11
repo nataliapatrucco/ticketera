@@ -99,7 +99,8 @@ export const NotificationBell = styled.img({
   border: "solid 1.5px rgba(255, 255, 255, 0.7)",
   borderRadius: "25px",
   padding: "6px",
-  marginRight: "10px"
+  marginRight: "10px",
+  cursor: "pointer",
 });
 
 export const UserName = styled.div({
