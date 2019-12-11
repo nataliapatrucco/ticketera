@@ -27,7 +27,6 @@ export default function MainContainer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.user.user);
-
   // inicializa socket solo cuando tenga el usuario
   Socket.init(user.id);
 
