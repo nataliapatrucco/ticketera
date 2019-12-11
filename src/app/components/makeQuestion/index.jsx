@@ -48,14 +48,13 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
-      .then(
-        ticket =>
-          image &&
+      .then(ticket => {
+        image &&
           image.map(element => {
             createNewImage(ticket.data.id, element);
             console.log("handleSubmittttttttttttttt", element);
-          })
-      )
+          });
+      })
       .then(() => dispatch(fetchOpen()))
       .then(() => setFile([]))
       .then(() => setShowModal(!showModal));
@@ -68,7 +67,9 @@ export const MakeQuestion = props => {
       setFile([...file, preview]);
     }
     const formData = new FormData();
-    formData.append("file", files);
+    for (const el of files) {
+      formData.append("file", el);
+    }
     setImage([...image, formData]);
   };
 
@@ -79,7 +80,10 @@ export const MakeQuestion = props => {
       setFile([...file, preview]);
     }
     const formData = new FormData();
-    formData.append("file", droppedFiles);
+    for (let el of droppedFiles) {
+      formData.append("file", el);
+    }
+
     setImage([...image, formData]);
   };
 
