@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { fetchFilteredUsers, fetchUsers } from "../../redux/actions/user";
-import { Title, Container, MainContainer } from "./style";
+import {
+  Title,
+  Container,
+  MainContainer,
+  SearchContainer,
+  Rectangle,
+  Search
+} from "./style";
 import { useDispatch, useSelector } from "react-redux";
-import { SearchContainer, Rectangle, Search } from "../SearchUsers/style";
 import ListUser from "../ListUser";
+import { setUserAsAdmin, removeAdmin } from "../../redux/actions/user";
 
 export default function UsersComponent() {
   const [input, setInput] = useState("");
@@ -17,6 +24,12 @@ export default function UsersComponent() {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(fetchFilteredUsers(input));
+  };
+
+  const handleClick = user => {
+    user.isAdmin
+      ? dispatch(removeAdmin(user, input))
+      : dispatch(setUserAsAdmin(user, input));
   };
 
   useEffect(() => {
@@ -42,14 +55,14 @@ export default function UsersComponent() {
           <>
             <Title>USUARIOS ({filteredUsers.length})</Title>
             {filteredUsers.map(user => (
-              <ListUser key={user.id} user={user} />
+              <ListUser key={user.id} user={user} handleClick={handleClick} />
             ))}
           </>
         ) : (
           <>
             <Title>USUARIOS ({users.length})</Title>
             {users.map(user => (
-              <ListUser key={user.id} user={user} />
+              <ListUser key={user.id} user={user} handleClick={handleClick} />
             ))}
           </>
         )}
