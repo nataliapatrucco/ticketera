@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSearchedTickets } from "../../redux/actions/search";
 
 import {
   Container,
@@ -13,20 +14,16 @@ import {
   IconContainer
 } from "./style";
 
-export default () => {
+export default function SidebarComponent() {
   const user = useSelector(state => state.user.user);
+  const dispatch = useDispatch();
   return (
     <Container>
       <Header>
         <Link to="/">
           <P5 src="/images/logo2.png" />
         </Link>
-        {/* </LogoContainer> */}
       </Header>
-      {/* <br />
-      <br /> */}
-
-      {/* <Section>   */}
       <Link style={{ textDecoration: "none" }} to="/">
         <TitleContainer>
           <IconContainer>
@@ -44,7 +41,7 @@ export default () => {
         </TitleContainer>
       </Link>
       <Link style={{ textDecoration: "none" }} to="/devpedia">
-        <TitleContainer>
+        <TitleContainer onClick={() => dispatch(fetchSearchedTickets())}>
           <IconContainer>
             <Icon src="/images/codificacion.png" />
           </IconContainer>
@@ -63,7 +60,6 @@ export default () => {
       ) : (
         ""
       )}
-      {/* </Section> */}
     </Container>
   );
-};
+}

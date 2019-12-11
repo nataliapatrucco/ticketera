@@ -8,12 +8,13 @@ import {
 import {
   AddButton,
   AddIcon,
+  AnswerIcon,
   ButtonParticipants,
   ButtonDelete,
   ButtonAddParticipants,
+  ButtonAnswer,
   ShareButton,
-  Texto,
-  ButtonAnswer
+  ShareIcon
 } from "./style";
 import Modal from "../deleteTicket";
 import AnswerModal from "../../containers/answerTicket";
@@ -43,81 +44,56 @@ export default ({ ticket }) => {
       <AddButton>
         {!user.isAdmin ? (
           <>
-            {user.id === ticket.authorId ? (
-              <>
-                <ButtonDelete
-                  color={"#cf6679"}
-                  onClick={() => setShowModal(!showModal)}
-                >
-                  <AddIcon src="/images/delete-resting.svg" alt="" />
-                  <Texto color={"#cf6679"}>ELIMINAR PREGUNTA</Texto>
-                </ButtonDelete>
-                <ShareButton>
-                  <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
-                  <Texto>COMPARTIR</Texto>
-                </ShareButton>
-              </>
+            {user.id === ticket.authorId && ticket.statusId == 1 || ticket.statusId == 2 ? (
+              <ButtonDelete onClick={() => setShowModal(!showModal)}>
+                <AddIcon src="/images/delete-resting.svg" alt="" />
+                ELIMINAR PREGUNTA
+              </ButtonDelete>
             ) : checkParticipants(ticket.users) ? (
-              <>
-                <ButtonParticipants
-                  color={"#62d0ff"}
-                  onClick={() => handleRemove(ticket.id, ticket.statusId)}
-                >
-                  <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
-                  <Texto color={"#62d0ff"}>ME INTERESA</Texto>
-                </ButtonParticipants>
-                <ShareButton>
-                  <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
-                  <Texto>COMPARTIR</Texto>
-                </ShareButton>
-              </>
+              <ButtonParticipants
+                onClick={() => handleRemove(ticket.id, ticket.statusId)}
+              >
+                <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
+                ME INTERESA
+              </ButtonParticipants>
             ) : (
-              <>
-                <ButtonAddParticipants
-                  color={"#62d0ff"}
-                  onClick={() => handleAdd(ticket.id, ticket.statusId)}
-                >
-                  <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
-                  <Texto color={"#62d0ff"}>ME INTERESA</Texto>
-                </ButtonAddParticipants>
-                <ShareButton>
-                  <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
-                  <Texto>COMPARTIR</Texto>
-                </ShareButton>
-              </>
+              <ButtonAddParticipants
+                onClick={() => handleAdd(ticket.id, ticket.statusId)}
+              >
+                <AddIcon src="/images/add-resting.svg" alt=""></AddIcon>
+                ME INTERESA
+              </ButtonAddParticipants>
             )}
           </>
         ) : (
           <>
-            <Container>
-              <ButtonAnswer
-                onClick={() => setShowAnswerModal(!showAnswerModal)}
-              >
-                <AddIcon src="/images/answerIcon.svg" alt="" />
-                RESPONDER
-              </ButtonAnswer>
-              <ButtonDelete onClick={() => setShowModal(!showModal)}>
-                <AddIcon src="/images/delete-resting.svg" alt="" />
-                BORRAR PREGUNTA
-              </ButtonDelete>
-              <ShareButton>
-                <AddIcon src="/images/flecha-hacia-atras.svg"></AddIcon>
-                <Texto>COMPARTIR</Texto>
-              </ShareButton>
-            </Container>
+            <ButtonAnswer onClick={() => setShowAnswerModal(!showAnswerModal)}>
+              <AnswerIcon src="/images/answerIcon.svg" alt="" />
+              RESPONDER
+            </ButtonAnswer>
+            <ButtonDelete onClick={() => setShowModal(!showModal)}>
+              <AddIcon src="/images/delete-resting.svg" alt="" />
+              BORRAR PREGUNTA
+            </ButtonDelete>
+           
           </>
         )}
-        {showModal ? (
-          <Modal
-            ticket={ticket}
-            showModal={showModal}
-            setShowModal={setShowModal}
-          />
-        ) : null}
+         <ShareButton>
+           <ShareIcon className="share" src="/images/flecha-hacia-atras.svg"/>
+           COMPARTIR
+           </ShareButton>
       </AddButton>
+      {showModal ? (
+        <Modal
+          ticket={ticket}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      ) : null}
       {showAnswerModal ? (
         <AnswerModal ticket={ticket} setShowAnswerModal={setShowAnswerModal} />
       ) : null}
     </>
   );
 };
+

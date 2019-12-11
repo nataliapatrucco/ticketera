@@ -7,16 +7,17 @@ import {
   RemoveIcon,
   Text
 } from "./style";
+
 import { Author, AuthorName, TicketDate, Header, Img } from "../Open/style";
 const tags = ["REACT", "NODE.JS", "JAVA", "BOOTCAMP"];
-export default ({ ticket }) => {
+export default function AnswerComponent({ ticket }) {
   return (
     <AnswerContainer>
       <Header>
         <Img src="/images/perfil.jpeg" alt="foto asistente" />
         <Author>
           <AuthorName>
-            {ticket.author.name} {ticket.author.lastname}
+            {ticket.comment.replier.name} {ticket.comment.replier.lastname}
           </AuthorName>
           <TicketDate>Respondió esta pregunta</TicketDate>
         </Author>
@@ -30,4 +31,4 @@ export default ({ ticket }) => {
       ))} */}
     </AnswerContainer>
   );
-};
+}

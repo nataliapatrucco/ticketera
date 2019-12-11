@@ -5,7 +5,7 @@ import { Container } from "./style";
 // import SearchUsers from "../../components/SearchUsers";
 import Users from "../../components/Users";
 
-export default () => {
+export default function AdminContainer() {
   const [input, setInput] = useState("");
   const users = useSelector(state => state.user.users);
   const dispatch = useDispatch();
@@ -24,4 +24,4 @@ export default () => {
       {users.length ? <Users /> : ""}
     </Container>
   );
-};
+}

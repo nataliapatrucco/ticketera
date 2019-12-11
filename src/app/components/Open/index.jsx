@@ -15,6 +15,7 @@ import {
   Author,
   TicketTitle,
   AuthorName,
+  EmptyParticipant,
   TicketDate,
   Icon,
   Body,
@@ -24,13 +25,13 @@ import {
   ShareButton,
   TicketFooter,
   PartipantsImg,
+  ParticipantIcon,
   Line,
-  ParticipantsImgContainer,
   BtnVerRespuesta,
   LabelButton
-} from "./style"
+} from "./style";
 
-export default function index({ ticket, index, params }) {
+export default function Open({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
 
   const isHighlighted = ticket => {
@@ -84,7 +85,7 @@ export default function index({ ticket, index, params }) {
               <TicketDate>{`Preguntó ${date}`}</TicketDate>
             </Author>
 
-            {!index && ticket.statusId === 2 ? (
+            {!index && ticket.statusId != 1 ? (
               ""
             ) : !index && ticket.statusId === 1 ? (
               <Icon>PENDIENTE</Icon>
@@ -96,7 +97,9 @@ export default function index({ ticket, index, params }) {
             <Link to={`/${ticket.slug}`}>
               <TicketTitle>{ticket.title}</TicketTitle>
             </Link>
-            {ticket.content && ticket.content.length > 140 ? (
+            {ticket.content &&
+            ticket.content.length > 140 &&
+            ticket.statusId != 3 ? (
               <div>
                 <TicketContent>
                   {" "}
@@ -116,15 +119,18 @@ export default function index({ ticket, index, params }) {
           </Body>
           <Line />
           <TicketFooter>
-            {/* <Buttons> */}
             <SuperButton ticket={ticket} />
-            {/* </Buttons> */}
-            <ParticipantsImgContainer>
-              <PartipantsImg
-                src="/images/perfil.jpeg"
-                alt="fotos participantes"
-              ></PartipantsImg>
-            </ParticipantsImgContainer>
+            {ticket.users.length ? (
+              <PartipantsImg>
+                {ticket.users.length > 9 ? (
+                  <ParticipantIcon>+9</ParticipantIcon>
+                ) : (
+                  <ParticipantIcon>{ticket.users.length}</ParticipantIcon>
+                )}
+              </PartipantsImg>
+            ) : (
+              <EmptyParticipant></EmptyParticipant>
+            )}
           </TicketFooter>
         </>
       )}

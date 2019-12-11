@@ -4,22 +4,21 @@ export const AnswerContainer = styled.div({
   backgroundColor: "#1b3953",
   opacity: "87%",
   borderRadius: "4px",
-  width: "678px",
-  padding: "16px",
-  marginrigth: "0",
+  width: "95.5%",
+  margin: "0 auto",
   lineHeight: "20px",
-  letterSpacing: "0.25px",
-  display: "inline-block"
+  letterSpacing: "0.25px"
 });
 
 export const AnswerBody = styled.div({
-  width: "646px",
   fontFamily: "Montserrat",
-  fontWeight: 600,
+  fontWeight: 400,
   lineHeight: "20px",
   letterSpacing: "0.25px",
   color: "#ffffff",
-  fontSize: "13px"
+  fontSize: "14px",
+  paddingBottom: "16px",
+  paddingLeft: "16px",
 });
 
 export const Divider = styled.div({

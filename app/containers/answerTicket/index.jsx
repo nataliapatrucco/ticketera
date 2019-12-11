@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  answerTicket, //no es lo mismo que setStatus??
-  fetchOpen, //busca los tickets por status
+  answerTicket,//no es lo mismo que setStatus??
+  fetchOpen,//busca los tickets por status
   fetchProcessing //lista los que estan en proceso
+
 } from "../../redux/actions/tickets";
+
+import setStatus from "../../../resolvers/status-Resolvers"
 
 import {
   ModalBackground,
@@ -20,35 +23,24 @@ import {
   ModalInputContainer,
   Line,
   UploadContainer
+  
 } from "./style";
-import { SessionText } from "../../session/style";
 
-import {
-  ModalQuestion,
-  Icon,
-  ModalUploadBox,
-  ModalUploadBoxPlus
-} from "../../components/makeQuestion/style";
 
-export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
+import {ModalQuestion, Icon, ModalUploadBox, ModalUploadBoxPlus} from "../../components/makeQuestion/style"
+
+export default ({ ticket, setShowAnswerModal }) => {
   const dispatch = useDispatch();
-  const [status, setStatus] = useState(null);
+  //const [status, setStatus] = useState(1);
   const [description, setDescription] = useState("");
   const [inputComp, setInputComp] = useState(false);
   const [inputResp, setInputResp] = useState(false);
-  const [inputRechazado, setInputRechazado] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
-
   const handleSubmit = id => {
-    if (!description.length > 0 && status === 3) {
-      setErrorMsg("complete el campo");
-    } else {
-      dispatch(answerTicket(id, { status, description }))
-        .then(() => dispatch(fetchOpen()))
-        .then(() => setShowAnswerModal(false))
-        .catch(err => setErrorMsg("Ingrese una respuesta"));
-    }
+    dispatch(answerTicket(id, { status, description }))
+      .then(() => dispatch(fetchOpen()))
+      .then(() => setShowAnswerModal(false));
   };
+
   return (
     <ModalBackground>
       <ModalContainer>
@@ -75,54 +67,33 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
         <ButtonContainer justifyContent={"space-around"} marginTop={"8px"}>
           <StatusButton
             onClick={() => {
-              setStatus(1),
-                setInputResp(false),
-                setInputComp(false),
-                setInputRechazado(false);
-              setErrorMsg("");
+              setInputResp(false), setInputComp(false);
             }}
           >
             PENDIENTE
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setStatus(2),
-                setInputResp(!inputResp),
-                setInputComp(false),
-                setInputRechazado(false);
-              setErrorMsg("");
-              setDescription("");
+              setInputResp(!inputResp), setInputComp(false);
             }}
           >
             RESPONDIENDO
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setStatus(3),
-                setInputComp(!inputComp),
-                setInputResp(false),
-                setInputRechazado(false);
-              setErrorMsg("");
-              setDescription("");
+              setInputComp(!inputComp), setInputResp(false);
             }}
           >
             COMPLETADA
           </StatusButton>
           <StatusButton
             onClick={() => {
-              setStatus(4),
-                setInputResp(false),
-                setInputComp(false),
-                setInputRechazado(!inputRechazado);
-              setErrorMsg("");
-              setDescription("");
+              setInputResp(false), setInputComp(false);
             }}
           >
             RECHAZADA
           </StatusButton>
         </ButtonContainer>
-
-        {/* //muestra input */}
         {inputResp && (
           <ModalInputContainer>
             <ModalInput
@@ -143,25 +114,7 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
               onChange={e => setDescription(e.target.value)}
             ></ModalInput>
           </ModalInputContainer>
-          //validar
         )}
-
-        {inputRechazado && (
-          <ModalInputContainer>
-            <ModalInput
-              placeholder="Escriba motivo de rechazo"
-              name="description"
-              height={"112px"}
-              onChange={e => setDescription(e.target.value)}
-            ></ModalInput>
-          </ModalInputContainer>
-        )}
-
-        {errorMsg && description.length <= 0 ? (
-          <SessionText color={"red"} marginLeft={"35px"} fontStyle={"bold"}>
-            {errorMsg}
-          </SessionText>
-        ) : null}
 
         <ButtonContainer justifyContent={"flex-end"} marginTop={"65px"}>
           <ModalButton
@@ -172,9 +125,9 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
           >
             <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
           </ModalButton>
-
           <ModalButton
             color="#62d0ff"
+            // marginLeft="450px"
             type="submit"
             border="none"
             onClick={e => {
@@ -188,4 +141,4 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
       </ModalContainer>
     </ModalBackground>
   );
-}
+};

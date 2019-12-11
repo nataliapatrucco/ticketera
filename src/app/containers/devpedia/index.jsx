@@ -4,7 +4,7 @@ import { Title, ClosedSection, Container } from "./style";
 import Open from "../../components/Open";
 import { useDispatch, useSelector } from "react-redux";
 
-export default () => {
+export default function DevpediaContainer() {
   const dispatch = useDispatch();
   const closed = useSelector(state => state.devpedia.closed);
   const searchedTickets = useSelector(state => state.devpedia.searched);
@@ -29,4 +29,4 @@ export default () => {
       )}
     </Container>
   );
-};
+}
