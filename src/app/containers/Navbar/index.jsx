@@ -19,7 +19,7 @@ import { fetchSearchedTickets } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
 // import { Notification } from "../../components/Notifications/style";
 
-export const Navbar = () => {
+export const Navbar = props => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const [notification, setNotification] = useState(false);
@@ -44,6 +44,10 @@ export const Navbar = () => {
 
   const handleClick = () => {
     setNotification(false);
+  };
+
+  const handleLogOut = () => {
+    dispatch(logOutUser()), props.history.push("/");
   };
 
   const handleSubmit = event => {
@@ -84,9 +88,7 @@ export const Navbar = () => {
         <UserName>{user.name}</UserName>
         <ButtonLogOut
           src="/images/logout.svg"
-          onClick={() =>
-            dispatch(logOutUser()).then(() => props.history.push("/"))
-          }
+          onClick={() => handleLogOut()}
         ></ButtonLogOut>
       </FancyDiv>
       {notification ? (

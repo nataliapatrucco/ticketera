@@ -158,14 +158,32 @@ const editComment = (req, res) => {
 };
 
 const userTickets = (req, res) => {
-  Ticket.findAll({
-    where: {
-      authorId: req.user.id
-    },
-    include: fullTicket
-  })
-    .then(tickets => res.status(200).send(tickets))
-    .catch(err => console.log(err));
+  if (req.user.isAdmin) {
+    Ticket.findAll({
+      where: {
+        statusId: {
+          [Op.ne]: 1
+        }
+      },
+      include: fullTicket
+    }).then(tickets => {
+      const filteredTickets = tickets.filter(
+        ticket => ticket.comment.replier.id === req.user.id
+      );
+      res.send(filteredTickets);
+    });
+  } else {
+    Ticket.findAll({ include: fullTicket })
+      .then(tickets => {
+        const filtertedUserTickets = tickets.filter(
+          ticket =>
+            ticket.authorId === req.user.id ||
+            ticket.users.some(user => user.id === req.user.id)
+        );
+        res.send(filtertedUserTickets);
+      })
+      .catch(err => console.log(err));
+  }
 };
 
 const fetchTicket = (req, res) => {
@@ -180,8 +198,16 @@ const fetchTicket = (req, res) => {
 };
 
 const createImage = (req, res) => {
+  console.log("baaaaaaaaaaaaaaaaaaaaaack", req.body);
   Ticket.findByPk(req.params.id)
-    .then(ticket => ticket.update({ images: [req.files[0].filename] }))
+    .then(ticket =>
+      ticket.update({
+        images: S.fn(
+          "array_cat",
+          req.body.map(f => f.filename)
+        )
+      })
+    )
     .then(() => res.sendStatus(201));
 };
 

@@ -105,8 +105,8 @@ export const ModalInput = styled.textarea`
 `;
 
 export const ModalButtonContainer = styled.div`
-  display:flex;
-  width: 710px;
+  display: inline-block;
+  /* width: 710px; */
   height: 68px;
   align-items: flex-end;
   justify-content: flex-end;
@@ -141,12 +141,17 @@ export const ModalButtonLabel = styled.label`
 `;
 
 export const ModalUploadBox = styled.div`
+  display: inline-block;
+  justify-content: row;
+
   margin-left: 30px;
   margin-top: 5px;
   background-color: rgba(255, 255, 255, 0.12);
   width: 80px;
   height: 80px;
   border: solid 1px rgba(255, 255, 255, 0.12);
+  /* position: relative;
+  bottom: 100px; */
 `;
 
 export const ModalUploadBoxPlus = styled.div`
@@ -175,4 +180,11 @@ export const Icon = styled.img`
   display: flex;
   width: 23px;
   height: auto;
+`;
+
+export const PreviewImg = styled.img`
+  display: inline-block;
+  max-width: 100px;
+  height: auto;
+  margin-left: 40px;
 `;
