@@ -108,14 +108,18 @@ export const ModalButtonContainer = styled.div`
   display: inline-block;
   /* width: 710px; */
   height: 68px;
+  align-items: flex-end;
+  justify-content: flex-end;
   border-radius: 4px;
+  margin-bottom: 16px;
+  
 `;
 
 export const ModalButton = styled.button`
   cursor: pointer;
   width: 114px;
   height: 36px;
-  margin-top: ${props => props.marginTop};
+  margin-right: ${props => props.marginRight};
   margin-left: ${props => props.marginLeft};
   border-radius: 4px;
   border: ${props => props.border};

@@ -20,7 +20,7 @@ export default function ProcessingHeader({ ticket }) {
         </Assistant>
         <UbicacionContainer>
           <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
-          <Ubicacion> en Sala 5 </Ubicacion>
+          <Ubicacion> {ticket.location}  </Ubicacion>
         </UbicacionContainer>
       </AssistantContainer>
       <Icon>RESPONDIENDO AHORA</Icon>
