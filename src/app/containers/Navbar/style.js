@@ -7,7 +7,6 @@ export const NavbarContainer = styled.div({
   paddingTop: "16px",
   paddingBottom: "15px",
   paddingLeft: "30px",
-  paddingRight: "0",
   flexDirection: "row",
   borderBottom: "solid 1.5px rgba(255, 255, 255, 0.3)"
 });
@@ -51,8 +50,16 @@ export const SearchIcon = styled.img({
 
 export const FancyDiv = styled.div({
   display: "flex",
+  flexDirection: "row",
   justifyContent: "space-around",
   alignItems: "center"
+});
+
+export const ProfileContainer = styled.div({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  cursor: "pointer"
 });
 
 export const ProfileImg = styled.img({
@@ -80,8 +87,9 @@ export const NotificationIcon = styled.div({
 export const NotificacionDiv = styled.div({
   display: "inline-block",
   position: "relative",
+  float: "left",
   textAlign: "center",
-  top: "4px"
+  top: "3px"
 });
 
 export const NotificationBell = styled.img({
@@ -91,20 +99,25 @@ export const NotificationBell = styled.img({
   border: "solid 1.5px rgba(255, 255, 255, 0.7)",
   borderRadius: "25px",
   padding: "6px",
-  marginRight: "10px"
+  marginRight: "10px",
+  cursor: "pointer",
 });
 
 export const UserName = styled.div({
   display: "flex",
+  float: "right",
   marginRight: "10px",
   opacity: "70%",
   color: "#ffffff",
-  marginRight: "36px",
   fontFamily: "Montserrat",
   fontWeight: "400",
   fontSize: "16px",
   lineHeight: "24px",
-  letterSpacing: "0.15px"
+  letterSpacing: "0.15px",
+  width: "160px",
+  overflowWrap: "break-word",
+  wordWrap: "break-word",
+  hyphens: "auto"
 });
 
 export const ButtonLogOut = styled.img`

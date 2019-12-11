@@ -5,7 +5,7 @@ export const QuestionStatusContainer = styled.div ({
     paddingLeft: "28px",
     float: 'left',
     display: "inline-block",
-    minWidth: "770px"
+    width: "770px",
 })
 
 export const QuestionStatus = styled.div`
