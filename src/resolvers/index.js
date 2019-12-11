@@ -8,7 +8,7 @@ const fullTicket = [
       {
         model: User,
         as: "replier",
-        attributes: ["name", "lastname", "img"]
+        attributes: ["id", "name", "lastname", "img"]
       }
     ]
   },
