@@ -98,14 +98,11 @@ export const answerTicket = (id, { description, status }) => dispatch => {
 };
 
 export const createNewImage = (id, image) => {
-  console.log("axioooooooooooooooooooooos", image);
   axios
-    .put(`/api/ticket/images/test/${id}`, image, {
-      // headers: {
-      //   "Content-Type": "multipart/form-data",
-      //   //charset: "utf-8",
-      //   boundary: "----WebKitFormBoundaryyrV7KO0BoCBuDbTL"
-      // }
+    .put(`/api/ticket/images/${id}`, image, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
     })
     .then(() => console.log("all good"))
     .catch(err => console.log("something wrong", err));

@@ -50,14 +50,14 @@ export default ({ ticket }) => {
                 <AddIcon src="/images/delete-resting.svg" alt="" />
                 ELIMINAR PREGUNTA
               </ButtonDelete>
-            ) : checkParticipants(ticket.users) ? (
+            ) : checkParticipants(ticket.users)  ? (
               <ButtonParticipants
                 onClick={() => handleRemove(ticket.id, ticket.statusId)}
               >
                 <AddIcon src="/images/add-active.svg" alt=""></AddIcon>
                 ME INTERESA
               </ButtonParticipants>
-            ) : (
+            ) : ticket.authorId !== user.id &&(
               <ButtonAddParticipants
                 onClick={() => handleAdd(ticket.id, ticket.statusId)}
               >
