@@ -6,7 +6,12 @@ import {
   DeleteButton,
   CancelButton
 } from "./style";
-import { deleteTicket, fetchOpen } from "../../redux/actions/tickets";
+import {
+  deleteTicket,
+  fetchOpen,
+  fetchProcessing,
+  fetchUserTickets
+} from "../../redux/actions/tickets";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalBackground } from "../modalBackground/style";
 
@@ -18,7 +23,10 @@ export default function DeleteTicketComponent({
   const dispatch = useDispatch();
 
   const handleClick = ticket => {
-    dispatch(deleteTicket(ticket)).then(() => dispatch(fetchOpen()));
+    setShowModal(false);
+    dispatch(deleteTicket(ticket))
+      .then(() => dispatch(fetchOpen()))
+      .then(() => dispatch(fetchUserTickets()));
   };
 
   return (
