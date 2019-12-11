@@ -89,7 +89,7 @@ export const Navbar = props => {
         </ProfileContainer>
         {/* <ButtonLogOut src="/images/logout.svg"  ></ButtonLogOut> */}
       </FancyDiv>
-      {options ? <UserModal /> : null}
+      {options ? <UserModal props={props} /> : null}
       {notification ? (
         <NotificationModal notifications={notifications} />
       ) : null}
