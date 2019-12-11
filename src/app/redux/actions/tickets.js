@@ -95,7 +95,8 @@ export const answerTicket = (id, { description, status }) => dispatch => {
   return axios.put(`/api/status/${id}`, { description, status });
 };
 
-export const createNewImage = (id, image) =>
+export const createNewImage = (id, image) => {
+  console.log("axioooooooooooooooooooooos", image);
   axios
     .put(`/api/ticket/images/test/${id}`, image, {
       // headers: {
@@ -106,3 +107,4 @@ export const createNewImage = (id, image) =>
     })
     .then(() => console.log("all good"))
     .catch(err => console.log("something wrong", err));
+};
