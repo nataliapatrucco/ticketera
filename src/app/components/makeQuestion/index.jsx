@@ -163,7 +163,7 @@ export const MakeQuestion = props => {
                 </Dropzone>
               </ModalUploadBox>
             </ModalButtonContainer>
-            <ModalButtonContainer>
+            <ModalButtonContainer justifyContent="flex-end">
               <ModalButton
                 color="transparent"
                 border="solid 1px rgba(255, 255, 255, 0.12);"
@@ -194,7 +194,7 @@ export const MakeQuestion = props => {
                 <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
               </ModalButton>
 
-              <ModalButton
+              {/* <ModalButton
                 color="transparent"
                 border="solid 1px rgba(255, 255, 255, 0.12);"
                 marginTop="30px"
@@ -205,7 +205,7 @@ export const MakeQuestion = props => {
                 }}
               >
                 <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
-              </ModalButton>
+              </ModalButton> */}
             </ModalButtonContainer>
           </ModalContainer>
         </ModalBackground>
