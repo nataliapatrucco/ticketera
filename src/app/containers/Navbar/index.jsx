@@ -13,7 +13,8 @@ import {
   NotificationBell,
   SearchIcon,
   UserName,
-  ButtonLogOut
+  ButtonLogOut,
+  ProfileContainer
 } from "./style";
 import { fetchSearchedTickets } from "../../redux/actions/search";
 import { logOutUser } from "../../redux/actions/user";
@@ -23,6 +24,7 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const [notification, setNotification] = useState(false);
+  const [Profile, setProfile] = useState(false)
   const [notifications, setNotifications] = useState([]);
 
   // Socket on ticket status update
@@ -42,9 +44,6 @@ export const Navbar = () => {
     setInput(event.target.value);
   };
 
-  const handleClick = () => {
-    setNotification(false);
-  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -69,7 +68,7 @@ export const Navbar = () => {
       <FancyDiv>
         <NotificacionDiv>
           <NotificationBell
-            onClick={() => setNotification(true)}
+            onClick={() => !notification ? setNotification(true) : setNotification(false)}
             src="/images/notificationbell.png"
           />
           {notifications.length ? (
@@ -78,20 +77,22 @@ export const Navbar = () => {
             ""
           )}
         </NotificacionDiv>
-
-        <ProfileImg src="/images/devman.jpg" />
+         <ProfileContainer>
+        <ProfileImg src="/images/devman.jpg"/>
 
         <UserName>{user.name}</UserName>
-        <ButtonLogOut src="/images/logout.svg"  onClick={() =>
-            dispatch(logOutUser()).then(() => props.history.push("/"))
-          }></ButtonLogOut>
+        </ProfileContainer>
+        {/* <ButtonLogOut src="/images/logout.svg"  ></ButtonLogOut> */}
       </FancyDiv>
       {notification ? (
         <NotificationModal
           notifications={notifications}
-          handleClick={handleClick}
         />
       ) : null}
     </NavbarContainer>
   );
 };
+
+
+// onClick={() =>
+//   dispatch(logOutUser()).then(() => props.history.push("/"))}

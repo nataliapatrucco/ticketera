@@ -10,12 +10,10 @@ import {
   AvatarContainer
 } from "./style";
 
-export default ({ handleClick, notifications }) => {
+export default ({ notifications }) => {
   return (
     <>
       {!notifications.length ? (
-        <>
-          <Container onClick={handleClick}>
             <ModalContainer>
               <TriangleContainer>
                 <Triangle></Triangle>
@@ -27,10 +25,7 @@ export default ({ handleClick, notifications }) => {
                 </Notification>
               </NotificationContainer>
             </ModalContainer>
-          </Container>
-        </>
       ) : (
-        <Container>
           <ModalContainer>
             <TriangleContainer>
               <Triangle></Triangle>
@@ -44,8 +39,7 @@ export default ({ handleClick, notifications }) => {
               ))}
             </NotificationContainer>
           </ModalContainer>
-        </Container>
-      )}
+          )}
     </>
   );
 };
