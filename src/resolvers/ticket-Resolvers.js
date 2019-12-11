@@ -198,13 +198,13 @@ const fetchTicket = (req, res) => {
 };
 
 const createImage = (req, res) => {
-  console.log("baaaaaaaaaaaaaaaaaaaaaack", req.body);
   Ticket.findByPk(req.params.id)
     .then(ticket =>
       ticket.update({
         images: S.fn(
-          "array_cat",
-          req.body.map(f => f.filename)
+          "array_append",
+          S.col("images"),
+          `/uploaded-images/${req.files[0].filename}`
         )
       })
     )

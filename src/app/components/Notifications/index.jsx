@@ -10,25 +10,22 @@ import {
   AvatarContainer
 } from "./style";
 
-export default function NotificationsComponent({ handleClick, notifications }) {
+export default ({ notifications }) => {
   return (
     <>
       {!notifications.length ? (
-        <Container onClick={handleClick}>
-          <ModalContainer>
-            <TriangleContainer>
-              <Triangle></Triangle>
-            </TriangleContainer>
-            <NotificationContainer>
-              <AvatarContainer src="images/github.png"></AvatarContainer>
-              <Notification>
-                No tenes notificaciones en este momento
-              </Notification>
-            </NotificationContainer>
-          </ModalContainer>
-        </Container>
+            <ModalContainer>
+              <TriangleContainer>
+                <Triangle></Triangle>
+              </TriangleContainer>
+              <NotificationContainer>
+                <AvatarContainer src="images/github.png"></AvatarContainer>
+                <Notification>
+                  No tenes notificaciones en este momento
+                </Notification>
+              </NotificationContainer>
+            </ModalContainer>
       ) : (
-        <Container onClick={handleClick}>
           <ModalContainer>
             <TriangleContainer>
               <Triangle></Triangle>
@@ -42,8 +39,7 @@ export default function NotificationsComponent({ handleClick, notifications }) {
               ))}
             </NotificationContainer>
           </ModalContainer>
-        </Container>
-      )}
+          )}
     </>
   );
 }

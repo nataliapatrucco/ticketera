@@ -1,27 +1,12 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-  background: transparent;
-  z-index: 50;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh; 
-  display: block;
-  overflow-y: hidden;
-`
 
-export const ModalContainer = styled.div`
-  
+export const ModalContainer = styled.div`  
   background-color: ##091e35;
-  position: fixed;
-  left: 64.7%;
+  position: absolute;
+  left: 63%;
   top: 9.1%;
-  display: block;
   z-index: 100;
-  height: 96px;
-  overflow-y: hidden;
 `
 
 export const TriangleContainer = styled.div`

@@ -49,14 +49,13 @@ export const MakeQuestion = props => {
 
   const handleSubmit = ticket => {
     createNewTicket(ticket)
-      .then(
-        ticket =>
-          image &&
+      .then(ticket => {
+        image &&
           image.map(element => {
             createNewImage(ticket.data.id, element);
             console.log("handleSubmittttttttttttttt", element);
-          })
-      )
+          });
+      })
       .then(() => dispatch(fetchOpen()))
       .then(() => setFile([]))
       .then(() => setShowModal(!showModal));
@@ -69,7 +68,9 @@ export const MakeQuestion = props => {
       setFile([...file, preview]);
     }
     const formData = new FormData();
-    formData.append("file", files);
+    for (const el of files) {
+      formData.append("file", el);
+    }
     setImage([...image, formData]);
   };
 
@@ -80,7 +81,10 @@ export const MakeQuestion = props => {
       setFile([...file, preview]);
     }
     const formData = new FormData();
-    formData.append("file", droppedFiles);
+    for (let el of droppedFiles) {
+      formData.append("file", el);
+    }
+
     setImage([...image, formData]);
   };
 
@@ -163,7 +167,7 @@ export const MakeQuestion = props => {
                 </Dropzone>
               </ModalUploadBox>
             </ModalButtonContainer>
-            <ModalButtonContainer>
+            <ModalButtonContainer justifyContent="flex-end">
               <ModalButton
                 color="transparent"
                 border="solid 1px rgba(255, 255, 255, 0.12);"
@@ -194,7 +198,7 @@ export const MakeQuestion = props => {
                 <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
               </ModalButton>
 
-              <ModalButton
+              {/* <ModalButton
                 color="transparent"
                 border="solid 1px rgba(255, 255, 255, 0.12);"
                 marginTop="30px"
@@ -205,7 +209,7 @@ export const MakeQuestion = props => {
                 }}
               >
                 <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
-              </ModalButton>
+              </ModalButton> */}
             </ModalButtonContainer>
           </ModalContainer>
         </ModalBackground>
