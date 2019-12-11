@@ -98,8 +98,7 @@ export default function Open({ ticket, index, params }) {
               <TicketTitle>{ticket.title}</TicketTitle>
             </Link>
             {ticket.content &&
-            ticket.content.length > 140 &&
-            ticket.statusId != 3 ? (
+            ticket.content.length > 140 && params !== ticket.slug ? (
               <div>
                 <TicketContent>
                   {" "}
