@@ -58,18 +58,20 @@ export const fetchFilteredUsers = users => dispatch =>
     dispatch(receiveFilteredUsers(res.data));
   });
 
-export const setUserAsAdmin = user => dispatch =>
+export const setUserAsAdmin = (user, input) => dispatch =>
   axios
     .put(`/api/user/users/${user.id}`)
     .then(res => res.data)
     .then(users => {
       dispatch(receiveUsers(users));
+      dispatch(fetchFilteredUsers(input));
     });
 
-export const removeAdmin = user => dispatch =>
+export const removeAdmin = (user, input) => dispatch =>
   axios
     .put(`/api/user/users/${user.id}`)
     .then(res => res.data)
     .then(users => {
       dispatch(receiveUsers(users));
+      dispatch(fetchFilteredUsers(input));
     });
