@@ -32,7 +32,7 @@ export const Container = styled.div({
 export const Header = styled.div({
   display: "flex",
   justifyContent: "space-between",
-  width: "710px",
+  width: "700px",
   backgroundColor: "#006088",
   borderRadius: "4px",
   height: "73px"
