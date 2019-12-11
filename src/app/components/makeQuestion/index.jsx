@@ -161,9 +161,22 @@ export const MakeQuestion = props => {
             </ModalButtonContainer>
             <ModalButtonContainer>
               <ModalButton
-                color="#62d0ff"
+                color="transparent"
+                border="solid 1px rgba(255, 255, 255, 0.12);"
                 marginTop="30px"
-                marginLeft="450px"
+                /*  marginLeft="10px" */
+                onClick={() => {
+                  setShowModal(!showModal);
+                }}
+              >
+                <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
+              </ModalButton>
+              <ModalButton
+                color="#62d0ff"
+                /*   marginTop="30px" */
+                marginRight="12px"
+                border="none"
+                marginLeft="12px"
                 type="submit"
                 onClick={e => {
                   e.preventDefault();

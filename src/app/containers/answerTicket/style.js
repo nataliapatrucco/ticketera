@@ -1,18 +1,25 @@
 import styled from "@emotion/styled";
 
 export const ModalBackground = styled.div({
+  display: "flex",
+  justifyContent: "center",
   position: "fixed",
+  height: "100%",
+  alignItems: "flex-end",
   top: 0,
   bottom: 0,
   left: 0,
   right: 0,
   backgroundColor: "rgba(0,0,0,0.3)",
-  padding: "50px",
+  padding: 50,
+  //marginBottom:"100px",
   zIndex: "10"
+
 });
 
 export const ModalContainer = styled.div({
   display: "flex",
+  //justifyContent: "center",
   flexDirection: "column",
   zIndex: "10",
   display: "flex",
@@ -64,6 +71,31 @@ export const TicketContent = styled.div({
   overflowWrap: "break-word"
 });
 
+export const StatusButton = styled.button`
+height: 36px;
+border-radius: 4px;
+border: solid 1px rgba(255, 255, 255, 0.12);
+background-color: transparent;
+outline: none;
+font-family: Montserrat;
+font-size: 14px;
+font-weight: 500;
+font-stretch: normal;
+font-style: normal;
+line-height: 1.14;
+letter-spacing: 1.25px;
+color: rgba(255, 255, 255, 0.6);
+:hover{
+  background-color: rgba(255, 255, 255, 0.12)
+}
+:focus{
+  color: white;
+  border: solid 1px white
+}
+color: ${props =>
+  props.primary ? 'white' : null};
+`;
+
 export const ModalInput = styled.textarea`
   display: flex;
   placeholder: ${props => props.placeholder};
@@ -81,7 +113,8 @@ export const ModalInput = styled.textarea`
   outline-color: transparent;
   border: none;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 10px; */
+ // margin: 10px;
   resize: none;
   overflow: hidden;
   outline: none;
@@ -90,7 +123,9 @@ export const ModalInput = styled.textarea`
 export const ButtonContainer = styled.div(
   {
     display: "flex",
-    flexDirection: "row",
+    /* flexDirection: "row",
+    justifyContent: "flex-end",
+    alignContent:"flex-end", */
     marginBottom: "16px",
     alignItems: "flex-end",
     width: "100%",
@@ -104,42 +139,14 @@ export const ButtonContainer = styled.div(
   })
 );
 
-export const StatusButton = styled.button(
-  {
-    //display: "inline-block",
-    //width: "113px",
-    height: "36px",
-    marginTop: "13px",
-    color: "rgba(255, 255, 255, 0.6)",
-    border: "solid 1px rgba(255, 255, 255, 0.12)",
-    backgroundColor: "transparent",
-    borderRadius: "4px",
-    outline: "none",
-    justifyContent: "center",
-    fontFamily: "Montserrat",
-    fontSize: "14px",
-    fontWeight: "500",
-    fontStretch: "normal",
-    fontStyle: "normal",
-    ":hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.12)"
-    },
-    ":focus": {
-      color: "white",
-      border: "solid 1px white"
-    }
-  },
-  props => ({
-    backgroundColor: props.backgroundColor,
-    color: props.color,
-    border: props.border
-  })
-);
+
+
 
 export const ModalButton = styled.button`
   cursor: pointer;
   width: 114px;
   height: 36px;
+  //margin-top: 50px;
   margin: ${props => props.margin};
   margin-right: ${props => props.marginRight};
   border-radius: 4px;
@@ -158,14 +165,14 @@ export const ModalButtonLabel = styled.label`
   font-style: normal;
   line-height: 1.14;
   letter-spacing: 1.25px;
-
   color: ${props => props.color};
 `;
 
 export const ModalInputContainer = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   margin-left: 32px;
-  display: flex;
+  /* display: flex; */
   width: 646px;
   height: ${props => props.height};
   border-radius: 4px;

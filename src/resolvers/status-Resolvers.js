@@ -28,6 +28,7 @@ const setStatus = function(req, res, next) {
                   description: null
                 })
                 .then(() => ticket.setStatus(STATUS.PROCESS))
+                .then(()=> ticket.update({location:req.body.description}))
                 .then(() =>
                   Ticket.findOne({
                     where: { id: req.params.id },
@@ -39,6 +40,7 @@ const setStatus = function(req, res, next) {
               ticket
                 .createComment({})
                 .then(comment => comment.setReplier(req.user.id))
+                .then(()=> ticket.update({location:req.body.description}))
                 .then(() => ticket.setStatus(STATUS.PROCESS))
                 .then(() =>
                   Ticket.findOne({

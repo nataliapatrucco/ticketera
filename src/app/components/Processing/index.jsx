@@ -31,7 +31,7 @@ export default function ProcessingComponent({ ticket }) {
         </AssistantContainer>
         <UbicacionContainer>
           <UbicacionIcon src="/images/icon-maps.svg"></UbicacionIcon>
-          <Ubicacion> en Sala 5 </Ubicacion>
+          <Ubicacion> {ticket.location} </Ubicacion>
         </UbicacionContainer>
         <TicketContainer>
           <AlumnContainer>
