@@ -34,7 +34,7 @@ import {
 
 export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
   const dispatch = useDispatch();
-  const [status, setStatus] = useState(ticketStatus);
+  const [status, setStatus] = useState(ticket.statusId);
   const [description, setDescription] = useState("");
   const [inputComp, setInputComp] = useState(false);
   const [inputResp, setInputResp] = useState(false);
@@ -42,12 +42,8 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
   const [errorMsg, setErrorMsg]= useState("")
   
 
-
-  const ticketStatus = useSelector(state => state.tickets.single.statusId)
-  
-
   const handleSubmit = id => {
-    if (!description.length > 0 && status === 3) {
+    if (!description.length > 0 && (status === 3|| status ===2)) {
       setErrorMsg("complete el campo");
     } else {
       dispatch(answerTicket(id, { status, description }))
@@ -57,7 +53,7 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
     }
   };
 
-  console.log(ticketStatus)
+  
   return (
     <ModalBackground>
        
@@ -88,10 +84,14 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
           </ModalUploadBox>
           <Line></Line>
         </UploadContainer>
-     {/*    {ticketStatus? } */}
+   
+
+
+
+
 
         <ButtonContainer justifyContent={"space-around"} marginTop={"8px"}>
-          <StatusButton 
+          <StatusButton primary={status==1}
             onClick={() => {
               setStatus(1),
               setInputResp(false),
@@ -105,6 +105,7 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
             PENDIENTE
           </StatusButton>
           <StatusButton
+          primary={status==2}
             onClick={() => {
               setStatus(2),
               setInputResp(!inputResp),
@@ -113,13 +114,12 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
               setErrorMsg("");
               setDescription("");
             }}
-          
-         /*    color: "white",
-      border: "solid 1px white" */
+         
           >
             RESPONDIENDO
           </StatusButton>
           <StatusButton
+          primary={status==3}
             onClick={() => {
               setStatus(3),
               setInputComp(!inputComp),
@@ -132,6 +132,7 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
             COMPLETADA
           </StatusButton>
           <StatusButton
+          primary={status==4}
             onClick={() => {
               setStatus(4),
               setInputResp(false),
