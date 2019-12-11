@@ -44,7 +44,8 @@ export default ({ ticket }) => {
       <AddButton>
         {!user.isAdmin ? (
           <>
-            {user.id === ticket.authorId && ticket.statusId == 1 ? (
+            {(user.id === ticket.authorId && ticket.statusId == 1) ||
+            ticket.statusId == 2 ? (
               <ButtonDelete onClick={() => setShowModal(!showModal)}>
                 <AddIcon src="/images/delete-resting.svg" alt="" />
                 ELIMINAR PREGUNTA
@@ -67,21 +68,33 @@ export default ({ ticket }) => {
           </>
         ) : (
           <>
-            <ButtonAnswer onClick={() => setShowAnswerModal(!showAnswerModal)}>
-              <AnswerIcon src="/images/answerIcon.svg" alt="" />
-              RESPONDER
-            </ButtonAnswer>
-            <ButtonDelete onClick={() => setShowModal(!showModal)}>
-              <AddIcon src="/images/delete-resting.svg" alt="" />
-              BORRAR PREGUNTA
-            </ButtonDelete>
-           
+            {ticket.statusId === 3 || ticket.statusId === 4 ? (
+              <ButtonAnswer
+                onClick={() => setShowAnswerModal(!showAnswerModal)}
+              >
+                <AnswerIcon src="/images/answerIcon.svg" alt="" />
+                EDITAR RESPUESTA
+              </ButtonAnswer>
+            ) : (
+              <>
+                <ButtonAnswer
+                  onClick={() => setShowAnswerModal(!showAnswerModal)}
+                >
+                  <AnswerIcon src="/images/answerIcon.svg" alt="" />
+                  RESPONDER
+                </ButtonAnswer>
+                <ButtonDelete onClick={() => setShowModal(!showModal)}>
+                  <AddIcon src="/images/delete-resting.svg" alt="" />
+                  BORRAR PREGUNTA
+                </ButtonDelete>
+              </>
+            )}
           </>
         )}
-         <ShareButton>
-           <ShareIcon className="share" src="/images/flecha-hacia-atras.svg"/>
-           COMPARTIR
-           </ShareButton>
+        <ShareButton>
+          <ShareIcon className="share" src="/images/flecha-hacia-atras.svg" />
+          COMPARTIR
+        </ShareButton>
       </AddButton>
       {showModal ? (
         <Modal
@@ -96,4 +109,3 @@ export default ({ ticket }) => {
     </>
   );
 };
-
