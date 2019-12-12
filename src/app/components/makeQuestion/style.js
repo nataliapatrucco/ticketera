@@ -192,3 +192,7 @@ export const PreviewImg = styled.img`
   height: auto;
   margin-left: 40px;
 `;
+
+export const Toasty = styled.div`
+  background-color: red;
+`;

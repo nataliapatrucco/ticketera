@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 //import { useDispatch } from "react-redux";
 import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastsContainer, ToastsStore } from "react-toasts";
 
 import {
   Container,
@@ -21,7 +22,6 @@ import {
   Icon,
   PreviewImg
 } from "./style";
-
 import { ModalBackground } from "../modalBackground/style";
 import {
   createNewTicket,
@@ -53,11 +53,11 @@ export const MakeQuestion = props => {
         image &&
           image.map(element => {
             createNewImage(ticket.data.id, element);
-            console.log("handleSubmittttttttttttttt", element);
           });
       })
       .then(() => dispatch(fetchOpen()))
       .then(() => setFile([]))
+      .then(() => ToastsStore.success("Agregaste una pregunta!"))
       .then(() => setShowModal(!showModal));
   };
 
@@ -90,6 +90,7 @@ export const MakeQuestion = props => {
 
   const user = useSelector(state => state.user.user);
 
+  const notify = () => toast("Wow so easy !");
 
   return (
     <Container>
@@ -101,6 +102,9 @@ export const MakeQuestion = props => {
       >
         ¿Cual es tu duda? ¿En que ejercicio te trabaste?
       </Question>
+
+      <ToastsContainer store={ToastsStore} />
+
       {showModal && (
         <ModalBackground>
           <ModalContainer>
@@ -192,7 +196,7 @@ export const MakeQuestion = props => {
                     title: state.title,
                     content: state.content
                   });
-                  console.log("staaaaaateeeeeee", image);
+                  notify();
                 }}
               >
                 <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
