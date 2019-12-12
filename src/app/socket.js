@@ -20,13 +20,6 @@ class Socket {
   on(eventName, callback) {
     this.socket && this.socket.on(eventName, callback);
   }
-
-  //   emitToParticipants (userIds) {
-  //     userIds.forEach(id => {
-  //         const a = this.connections[id]
-  //         a.emit('ticket-resolve')
-  //     })
-  //   }
 }
 
 export default new Socket();

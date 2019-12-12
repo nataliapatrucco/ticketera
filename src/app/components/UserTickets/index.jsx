@@ -17,16 +17,14 @@ export default function UserTicketsComponent() {
   const tickets = useSelector(state => state.tickets.userTickets);
   const open = useSelector(state => state.tickets.open);
   const processing = useSelector(state => state.tickets.processing);
-
   const dispatch = useDispatch();
   const { status } = useParams();
   let initialStatus = user && user.isAdmin ? 2 : 1;
   const [index, setIndex] = useState(initialStatus);
+
   useEffect(() => {
     dispatch(fetchUserTickets());
   }, []);
-  console.log("aaaaaaaaa", initialStatus);
-  console.log("bbbbbbbbbb", index);
 
   useEffect(() => {
     setIndex(STATUS_INDEX[status]);
