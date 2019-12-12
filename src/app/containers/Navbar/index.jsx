@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Socket from "../../socket";
 import { useDispatch, useSelector } from "react-redux";
 import NotificationModal from "../../components/Notifications/index";
@@ -28,6 +28,16 @@ export const Navbar = props => {
   const [notification, setNotification] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setshowNotifications] = useState(false);
+
+  // const favicon = document.getElementById("favicon");
+
+  // useEffect(() => {
+  //   if (notifications) {
+  //     favicon.href = "/src/public/images/favicorojo.ico";
+  //   } else {
+  //     favicon.href = "/src/public/images/faviconazul.ico";
+  //   }
+  // }, [notifications]);
 
   // Socket on ticket status update
   Socket.on("statusChanged", data => {
@@ -59,7 +69,7 @@ export const Navbar = props => {
     );
     setInput("");
   };
-
+  console.log("NOTIFICAIONES: ", notifications);
   return (
     <NavbarContainer>
       <form onSubmit={handleSubmit}>
@@ -99,7 +109,14 @@ export const Navbar = props => {
         </ProfileContainer>
         {/* <ButtonLogOut src="/images/logout.svg"  ></ButtonLogOut> */}
       </FancyDiv>
-      
     </NavbarContainer>
   );
 };
+
+// const favIconToggle = ({notifications}) => {
+//   if (notifications) {
+//     favIconToggle.href = "/src/public/images/favicorojo.ico"
+//   } else {
+//     favIconToggle.href = "/src/public/images/favicoazul.ico";
+//   }
+// }
