@@ -46,7 +46,7 @@ export const ModalContainer = styled.div({
   zIndex: "10",
   display: "flex",
   width: "710px",
-  height: "514px",
+  height: "575px",
   borderRadius: "4px",
   boxShadow:
     "0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.14)",
@@ -67,6 +67,7 @@ export const ModalQuestion = styled.div`
   color: white;
   margin-top: ${props => props.marginTop};
   margin-left: 32px;
+  margin-bottom: 32px;
 `;
 
 export const ModalClose = styled.button({});
@@ -105,14 +106,13 @@ export const ModalInput = styled.textarea`
 `;
 
 export const ModalButtonContainer = styled.div`
-  display: inline-block;
+  display: flex;
   /* width: 710px; */
   height: 68px;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: ${props => props.justifyContent};
   border-radius: 4px;
   margin-bottom: 16px;
-  
 `;
 
 export const ModalButton = styled.button`
@@ -141,11 +141,13 @@ export const ModalButtonLabel = styled.label`
 `;
 
 export const ModalUploadBox = styled.div`
-  display: inline-block;
-  justify-content: row;
-
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
   margin-left: 30px;
   margin-top: 5px;
+  // margin-bottom:
   background-color: rgba(255, 255, 255, 0.12);
   width: 80px;
   height: 80px;
@@ -157,7 +159,9 @@ export const ModalUploadBox = styled.div`
 export const ModalUploadBoxPlus = styled.div`
   cursor: pointer;
   margin-left: 25px;
+  margin-right: 25px;
   margin-top: 10px;
+  margin-bottom: 45px;
   width: 18.7px;
   height: 18.7px;
   color: rgba(255, 255, 255, 0.6);
@@ -187,4 +191,8 @@ export const PreviewImg = styled.img`
   max-width: 100px;
   height: auto;
   margin-left: 40px;
+`;
+
+export const Toasty = styled.div`
+  background-color: red;
 `;

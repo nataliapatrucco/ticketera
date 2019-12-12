@@ -12,19 +12,16 @@ export const ModalBackground = styled.div({
   right: 0,
   backgroundColor: "rgba(0,0,0,0.3)",
   padding: 50,
-  //marginBottom:"100px",
   zIndex: "10"
 
 });
 
 export const ModalContainer = styled.div({
   display: "flex",
-  //justifyContent: "center",
   flexDirection: "column",
   zIndex: "10",
   display: "flex",
   width: "710px",
-  //height: "455px",
   borderRadius: "4px",
   boxShadow:
     "0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.14)",
@@ -44,7 +41,7 @@ export const Container = styled.div({
 export const TicketTitle = styled.h3({
   display: "inline-block",
   height: "20px",
-  marginTop: "32px",
+  marginTop: "0px",
   marginLeft: "32px",
   marginBottom: "5px",
   fontSize: "20px",
@@ -59,7 +56,7 @@ export const TicketContent = styled.div({
   marginLeft: "32px",
   marginRight: "25px",
   height: "100px",
-  marginTop: "10px",
+  //marginTop: "10px",
   color: "#ffffff",
   opacity: "90%",
   fontSize: "14px",
@@ -84,16 +81,16 @@ font-stretch: normal;
 font-style: normal;
 line-height: 1.14;
 letter-spacing: 1.25px;
-color: rgba(255, 255, 255, 0.6);
+/* color: rgba(255, 255, 255, 0.6); */
+color: ${props =>
+  props.primary ? 'white' : 'rgba(255, 255, 255, 0.6)'};
+border: ${props =>
+    props.primary ? 'solid 1px white' : 'solid 1px rgba(255, 255, 255, 0.12)'};  
 :hover{
   background-color: rgba(255, 255, 255, 0.12)
 }
-:focus{
-  color: white;
-  border: solid 1px white
-}
-color: ${props =>
-  props.primary ? 'white' : null};
+
+
 `;
 
 export const ModalInput = styled.textarea`
@@ -123,9 +120,6 @@ export const ModalInput = styled.textarea`
 export const ButtonContainer = styled.div(
   {
     display: "flex",
-    /* flexDirection: "row",
-    justifyContent: "flex-end",
-    alignContent:"flex-end", */
     marginBottom: "16px",
     alignItems: "flex-end",
     width: "100%",
@@ -138,9 +132,6 @@ export const ButtonContainer = styled.div(
     marginTop: props.marginTop
   })
 );
-
-
-
 
 export const ModalButton = styled.button`
   cursor: pointer;
@@ -184,8 +175,6 @@ export const Line = styled.hr({
   marginRight: "25px",
   border: "solid 1px rgba(255, 255, 255, 0.12)",
   marginTop: "32px"
-  //opacity: "30%",
-  //borderRadius: "1px"
 });
 
 export const UploadContainer = styled.div({

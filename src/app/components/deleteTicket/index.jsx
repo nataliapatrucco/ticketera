@@ -6,9 +6,15 @@ import {
   DeleteButton,
   CancelButton
 } from "./style";
-import { deleteTicket, fetchOpen } from "../../redux/actions/tickets";
+import {
+  deleteTicket,
+  fetchOpen,
+  fetchProcessing,
+  fetchUserTickets
+} from "../../redux/actions/tickets";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalBackground } from "../modalBackground/style";
+import { ToastsContainer, ToastsStore } from "react-toasts";
 
 export default function DeleteTicketComponent({
   ticket,
@@ -18,11 +24,16 @@ export default function DeleteTicketComponent({
   const dispatch = useDispatch();
 
   const handleClick = ticket => {
-    dispatch(deleteTicket(ticket)).then(() => dispatch(fetchOpen()));
+    setShowModal(false);
+    dispatch(deleteTicket(ticket))
+      .then(() => ToastsStore.success("Eliminaste tu pregunta!"))
+      .then(() => dispatch(fetchOpen()))
+      .then(() => dispatch(fetchUserTickets()));
   };
 
   return (
     <ModalBackground>
+      <ToastsContainer store={ToastsStore} />
       <ModalContainer>
         <ModalQuestion>¿Querés eliminar esta pregunta?</ModalQuestion>
         <ButtonContainer>
