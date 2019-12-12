@@ -49,7 +49,7 @@ export default function Open({ ticket, index, params }) {
         <>
           {ticket.statusId === 4 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
-              <Img src="/images/devman.jpg" alt="foto usuario" />
+              <Img  src={ticket.comment.replier.img}  alt="foto usuario" />
               <Author>
                 <AuthorName>{ticket.comment.replier.name}</AuthorName>
                 <TicketDate color={"#cf6679"}>Rechazo esta pregunta</TicketDate>
@@ -62,7 +62,7 @@ export default function Open({ ticket, index, params }) {
             </Header>
           ) : ticket.statusId === 3 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
-              <Img src="/images/devman.jpg" alt="foto usuario" />
+              <Img src={ticket.comment.replier.img}  alt="foto usuario" />
               <Author>
                 <AuthorName>{ticket.comment.replier.name}</AuthorName>
                 <TicketDate color={"white"}>Respondió esta pregunta</TicketDate>
@@ -77,7 +77,7 @@ export default function Open({ ticket, index, params }) {
           ) : null}
 
           <Header>
-            <Img src="/images/perfil.jpeg" alt="foto usuario" />
+            <Img src={ticket.author.img}  alt="foto usuario" />
             <Author>
               <AuthorName>
                 {ticket.author.name} {ticket.author.lastname}

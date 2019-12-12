@@ -15,7 +15,7 @@ export default function ProcessingHeader({ ticket }) {
     <Header>
       <AssistantContainer>
         <Assistant>
-          <Img size="40px" src="/images/alumno.jpeg" margin="0 12px 0 0 "></Img>
+          <Img size="40px" src={ticket.comment.replier.img} margin="0 12px 0 0 "></Img>
           {`${ticket.comment.replier.name} ${ticket.comment.replier.lastname}`}
         </Assistant>
         <UbicacionContainer>
