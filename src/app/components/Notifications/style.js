@@ -34,6 +34,7 @@ export const NotificationContainer = styled.div`
 
 export const Notification = styled.p`
   float: right;
+  text-align: left;
   margin: 0;
   height: 70px;
   width: 288px;
