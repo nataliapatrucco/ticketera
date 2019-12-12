@@ -27,24 +27,34 @@ export const Navbar = props => {
   const [options, setOptions] = useState(false);
   const [notification, setNotification] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [showNotifications, setshowNotifications] = useState(false);
 
   // Socket on ticket status update
   Socket.on("statusChanged", data => {
     setNotifications([...notifications, data]);
+    setshowNotifications(true);
   });
 
   // Socket on Ticket Deleted
   Socket.on("deleted", data => {
+    setshowNotifications(true);
     setNotifications([...notifications, data]);
   });
 
   const user = useSelector(state => state.user.user);
   //   const profilePic = useSelector(state => state.user // SRC DE ProfilePic
 
+  const handleClick = () => {
+    if (options) {
+      setOptions(true);
+    } else {
+      setOptions(false);
+    }
+  };
+
   const handleChange = event => {
     setInput(event.target.value);
   };
-
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -69,20 +79,21 @@ export const Navbar = props => {
       <FancyDiv>
         <NotificacionDiv>
           <NotificationBell
-            onClick={() =>
-              !notification ? setNotification(true) : setNotification(false)
-            }
+            onClick={() => {
+              setshowNotifications(false);
+
+              !notification ? setNotification(true) : setNotification(false);
+            }}
             src="/images/notificationbell.png"
           />
-          {notifications.length ? (
-            <NotificationIcon> {notifications.length} </NotificationIcon>
+
+          {notifications.length && showNotifications ? (
+            <NotificationIcon>{notifications.length} </NotificationIcon>
           ) : (
             ""
           )}
         </NotificacionDiv>
-        <ProfileContainer
-          onClick={() => (!options ? setOptions(true) : setOptions(false))}
-        >
+        <ProfileContainer onClick={() => handleClick()}>
           <ProfileImg src="/images/devman.jpg" />
 
           <UserName>{user.name}</UserName>
@@ -96,5 +107,3 @@ export const Navbar = props => {
     </NavbarContainer>
   );
 };
-
-
