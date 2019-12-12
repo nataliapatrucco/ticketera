@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   answerTicket, //no es lo mismo que setStatus??
   fetchOpen, //busca los tickets por status
-  fetchProcessing //lista los que estan en proceso
+  fetchProcessing, //lista los que estan en proceso
+  fetchUserTickets
 } from "../../redux/actions/tickets";
 
 import {
@@ -48,6 +49,8 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
     } else {
       dispatch(answerTicket(id, { status, description }))
         .then(() => dispatch(fetchOpen()))
+        .then(() => dispatch(fetchUserTickets()))
+
         .then(() => setShowAnswerModal(false))
         .catch(err => setErrorMsg("Ingrese una respuesta"));
     }
