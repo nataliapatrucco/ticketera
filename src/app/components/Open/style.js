@@ -16,12 +16,15 @@ export const Ticket = styled.div(
   })
 );
 
-export const Header = styled.div({
-  display: "flex",
-  flexDirection: "row",
-  margin: "5px",
-  padding: "0",
-}, props => ({ backgroundColor: props.backgroundColor }) );
+export const Header = styled.div(
+  {
+    display: "flex",
+    flexDirection: "row",
+    margin: "5px",
+    padding: "0"
+  },
+  props => ({ backgroundColor: props.backgroundColor })
+);
 
 export const Img = styled.img({
   alignItems: "center",
@@ -343,3 +346,9 @@ export const ButtonAnswer = styled.div({
     }
   }
 });
+
+export const Image = styled.img`
+  max-width: 100px;
+  height: auto;
+  margin-right: 5px;
+`;

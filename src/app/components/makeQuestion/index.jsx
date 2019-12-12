@@ -87,8 +87,6 @@ export const MakeQuestion = props => {
     setImage([...image, formData]);
   };
 
-  const notify = () => toast("Wow so easy !");
-
   return (
     <Container>
       <Img src="images/perfil.jpeg" alt="foto"></Img>
@@ -193,7 +191,6 @@ export const MakeQuestion = props => {
                     title: state.title,
                     content: state.content
                   });
-                  notify();
                 }}
               >
                 <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>

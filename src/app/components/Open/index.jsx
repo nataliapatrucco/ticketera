@@ -28,7 +28,8 @@ import {
   ParticipantIcon,
   Line,
   BtnVerRespuesta,
-  LabelButton
+  LabelButton,
+  Image
 } from "./style";
 
 export default function Open({ ticket, index, params }) {
@@ -47,6 +48,8 @@ export default function Open({ ticket, index, params }) {
     <Ticket isHighlighted={isHighlighted(ticket)}>
       {ticket.author && (
         <>
+          {console.log(ticket)}
+          {console.log(ticket.images)}
           {ticket.statusId === 4 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
               <Img src="/images/devman.jpg" alt="foto usuario" />
@@ -98,7 +101,8 @@ export default function Open({ ticket, index, params }) {
               <TicketTitle>{ticket.title}</TicketTitle>
             </Link>
             {ticket.content &&
-            ticket.content.length > 140 && params !== ticket.slug ? (
+            ticket.content.length > 140 &&
+            params !== ticket.slug ? (
               <div>
                 <TicketContent>
                   {" "}
@@ -109,7 +113,14 @@ export default function Open({ ticket, index, params }) {
                 </Link>
               </div>
             ) : (
-              <TicketContent> {ticket.content}</TicketContent>
+              <TicketContent>
+                {" "}
+                {ticket.content}
+                {ticket.images &&
+                  ticket.images.map(image => {
+                    return <Image src={image}></Image>;
+                  })}
+              </TicketContent>
             )}
             {params === ticket.slug &&
               (ticket.statusId === 3 || ticket.statusId === 4) && (
