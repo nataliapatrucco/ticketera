@@ -95,10 +95,11 @@ export const Navbar = props => {
           <ProfileImg src="/images/devman.jpg" />
 
           <UserName>{user.name}</UserName>
+          {options ? <UserModal props={props} /> : null}
         </ProfileContainer>
         {/* <ButtonLogOut src="/images/logout.svg"  ></ButtonLogOut> */}
       </FancyDiv>
-      {options ? <UserModal props={props} /> : null}
+      
     </NavbarContainer>
   );
 };
