@@ -11,6 +11,10 @@ import {
 } from "./style";
 
 export default ({ notifications }) => {
+  // let favicon = document.querySelector("link[rel*='icon']").href
+  // const [icon, setIcon] = useState(favicon);
+ 
+
   return (
     <>
       {!notifications.length ? (
@@ -25,19 +29,19 @@ export default ({ notifications }) => {
                 </Notification>
               </NotificationContainer>
             </ModalContainer>
-      ) : (
-          <ModalContainer>
+      ) : ( 
+         <ModalContainer>
             <TriangleContainer>
               <Triangle></Triangle>
             </TriangleContainer>
+              {notifications.map(notification => (
             <NotificationContainer>
               <AvatarContainer src="images/github.png"></AvatarContainer>
-              {notifications.map(notification => (
                 <Link to={`/${notification.slug}`}>
                   <Notification> {notification.message}</Notification>
                 </Link>
-              ))}
             </NotificationContainer>
+              ))}
           </ModalContainer>
           )}
     </>

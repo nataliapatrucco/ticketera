@@ -79,6 +79,9 @@ export const Navbar = props => {
           ) : (
             ""
           )}
+          {notification ? (
+        <NotificationModal notifications={notifications} />
+      ) : null}
         </NotificacionDiv>
         <ProfileContainer
           onClick={() => (!options ? setOptions(true) : setOptions(false))}
@@ -90,9 +93,6 @@ export const Navbar = props => {
         {/* <ButtonLogOut src="/images/logout.svg"  ></ButtonLogOut> */}
       </FancyDiv>
       {options ? <UserModal props={props} /> : null}
-      {notification ? (
-        <NotificationModal notifications={notifications} />
-      ) : null}
     </NavbarContainer>
   );
 };
