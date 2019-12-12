@@ -2,6 +2,7 @@ import React, { useState, useSelector } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Dropzone from "react-dropzone";
+import { ToastsContainer, ToastsStore } from "react-toasts";
 
 import {
   Container,
@@ -57,6 +58,7 @@ export const MakeQuestion = props => {
       })
       .then(() => dispatch(fetchOpen()))
       .then(() => setFile([]))
+      .then(() => ToastsStore.success("Hey, you just clicked!"))
       .then(() => setShowModal(!showModal));
   };
 
@@ -188,12 +190,11 @@ export const MakeQuestion = props => {
                     title: state.title,
                     content: state.content
                   });
-                  console.log("staaaaaateeeeeee", image);
                 }}
               >
                 <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
               </ModalButton>
-
+              <ToastsContainer store={ToastsStore} />
               <ModalButton
                 color="transparent"
                 border="solid 1px rgba(255, 255, 255, 0.12);"
