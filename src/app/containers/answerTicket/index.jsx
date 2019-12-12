@@ -50,7 +50,6 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
       dispatch(answerTicket(id, { status, description }))
         .then(() => dispatch(fetchOpen()))
         .then(() => dispatch(fetchUserTickets()))
-
         .then(() => setShowAnswerModal(false))
         .catch(err => setErrorMsg("Ingrese una respuesta"));
     }
