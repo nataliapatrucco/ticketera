@@ -45,11 +45,7 @@ export const Navbar = props => {
   //   const profilePic = useSelector(state => state.user // SRC DE ProfilePic
 
   const handleClick = () => {
-    if (options) {
-      setOptions(true);
-    } else {
-      setOptions(false);
-    }
+    !options ? setOptions(true) : setOptions(false);
   };
 
   const handleChange = event => {
@@ -80,9 +76,8 @@ export const Navbar = props => {
         <NotificacionDiv>
           <NotificationBell
             onClick={() => {
-              setshowNotifications(false);
-
               !notification ? setNotification(true) : setNotification(false);
+              setshowNotifications(false);
             }}
             src="/images/notificationbell.png"
           />
@@ -92,6 +87,9 @@ export const Navbar = props => {
           ) : (
             ""
           )}
+          {notification ? (
+            <NotificationModal notifications={notifications} />
+          ) : null}
         </NotificacionDiv>
         <ProfileContainer onClick={() => handleClick()}>
           <ProfileImg src="/images/devman.jpg" />
@@ -101,9 +99,6 @@ export const Navbar = props => {
         {/* <ButtonLogOut src="/images/logout.svg"  ></ButtonLogOut> */}
       </FancyDiv>
       {options ? <UserModal props={props} /> : null}
-      {notification ? (
-        <NotificationModal notifications={notifications} />
-      ) : null}
     </NavbarContainer>
   );
 };

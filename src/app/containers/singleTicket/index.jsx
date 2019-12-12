@@ -6,7 +6,7 @@ import Open from "../../components/Open";
 import ProcessingHeader from "./partials/ProcessingHeader";
 import { fetchTicket } from "../../redux/actions/tickets";
 
-export default function SingleTicketContainer (props) {
+export default function SingleTicketContainer(props) {
   const ticket = useSelector(state => state.tickets.single);
   const dispatch = useDispatch();
   const open = useSelector(state => state.tickets.open);
@@ -19,7 +19,7 @@ export default function SingleTicketContainer (props) {
   return (
     <Container>
       <QuestionSection>
-        <Title onClick={() => props.history.push("/")}>VOLVER</Title>
+        <Title onClick={() => props.history.goBack()}>VOLVER</Title>
       </QuestionSection>
       {ticket.statusId === 2 ? <ProcessingHeader ticket={ticket} /> : ""}
       <Section>
@@ -28,4 +28,4 @@ export default function SingleTicketContainer (props) {
       </Section>
     </Container>
   );
-};
+}

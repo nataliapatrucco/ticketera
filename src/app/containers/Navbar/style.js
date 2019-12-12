@@ -85,7 +85,7 @@ export const NotificationIcon = styled.div({
 });
 
 export const NotificacionDiv = styled.div({
-  display: "inline-block",
+  display: "flex",
   position: "relative",
   float: "left",
   textAlign: "center",

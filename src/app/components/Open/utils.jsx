@@ -44,8 +44,7 @@ export default ({ ticket }) => {
       <AddButton>
         {!user.isAdmin ? (
           <>
-            {(user.id === ticket.authorId && ticket.statusId == 1) ||
-            ticket.statusId == 2 ? (
+            {(user.id === ticket.authorId && ticket.statusId == 1) ? (
               <ButtonDelete onClick={() => setShowModal(!showModal)}>
                 <AddIcon src="/images/delete-resting.svg" alt="" />
                 ELIMINAR PREGUNTA
