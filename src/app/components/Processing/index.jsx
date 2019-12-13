@@ -22,7 +22,7 @@ export default function ProcessingComponent({ ticket }) {
         <AssistantContainer>
           <Fotito
             size="24px"
-            src="/images/alumno.jpeg"
+            src={ticket.comment.replier.img}
             margin="0 12px 0 0 "
           ></Fotito>
           <Assistant>
@@ -36,7 +36,7 @@ export default function ProcessingComponent({ ticket }) {
         <TicketContainer>
           <AlumnContainer>
             <Fotito
-              src="/images/alumno.jpeg"
+              src={ticket.author.img}
               size="18px"
               margin="0 8px 0 0 "
             ></Fotito>

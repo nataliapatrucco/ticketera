@@ -51,6 +51,7 @@ export default function UsersComponent() {
         </form>
       </SearchContainer>
       <Container>
+        {console.log(filteredUsers)}
         {filteredUsers.length ? (
           <>
             <Title>USUARIOS ({filteredUsers.length})</Title>

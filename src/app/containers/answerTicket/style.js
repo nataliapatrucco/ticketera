@@ -89,8 +89,6 @@ border: ${props =>
 :hover{
   background-color: rgba(255, 255, 255, 0.12)
 }
-
-
 `;
 
 export const ModalInput = styled.textarea`

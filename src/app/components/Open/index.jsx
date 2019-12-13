@@ -48,17 +48,33 @@ export default function Open({ ticket, index, params }) {
   };
 
   const date = moment(ticket.createdAt).calendar();
+  {
+    console.log(ticket);
+  }
   return (
     <Ticket isHighlighted={isHighlighted(ticket)}>
       {ticket.author && (
         <>
           {ticket.statusId === 4 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
-              <Img src="/images/devman.jpg" alt="foto usuario" />
-              <Author>
-                <AuthorName>{ticket.comment.replier.name}</AuthorName>
-                <TicketDate color={"#cf6679"}>Rechazo esta pregunta</TicketDate>
-              </Author>
+              <Img src={ticket.comment.replier.img} alt="foto usuario" />
+
+              {ticket.comment.replier.id === user.id ? (
+                <Author>
+                  <AuthorName>{ticket.comment.replier.name}</AuthorName>
+                  <TicketDate color={"#cf6679"}>
+                    Rechazaste esta pregunta
+                  </TicketDate>
+                </Author>
+              ) : (
+                <Author>
+                  <AuthorName>{ticket.comment.replier.name}</AuthorName>
+                  <TicketDate color={"#cf6679"}>
+                    Rechazo esta pregunta
+                  </TicketDate>
+                </Author>
+              )}
+
               <Link to={`/${ticket.slug}`}>
                 <BtnVerRespuesta>
                   <LabelButton>VER RESPUESTA</LabelButton>
@@ -67,11 +83,22 @@ export default function Open({ ticket, index, params }) {
             </Header>
           ) : ticket.statusId === 3 && params !== ticket.slug ? (
             <Header backgroundColor={"rgba(255, 255, 255, 0.08)"}>
-              <Img src="/images/devman.jpg" alt="foto usuario" />
-              <Author>
-                <AuthorName>{ticket.comment.replier.name}</AuthorName>
-                <TicketDate color={"white"}>Respondió esta pregunta</TicketDate>
-              </Author>
+              <Img src={ticket.comment.replier.img} alt="foto usuario" />
+              {ticket.comment.replier.id === user.id ? (
+                <Author>
+                  <AuthorName>{ticket.comment.replier.name}</AuthorName>
+                  <TicketDate color={"white"}>
+                    Respondiste esta pregunta
+                  </TicketDate>
+                </Author>
+              ) : (
+                <Author>
+                  <AuthorName>{ticket.comment.replier.name}</AuthorName>
+                  <TicketDate color={"white"}>
+                    Respondió esta pregunta
+                  </TicketDate>
+                </Author>
+              )}
 
               <Link to={`/${ticket.slug}`}>
                 <BtnVerRespuesta backgroundColor={"#62d0ff"}>
@@ -82,7 +109,7 @@ export default function Open({ ticket, index, params }) {
           ) : null}
 
           <Header>
-            <Img src="/images/perfil.jpeg" alt="foto usuario" />
+            <Img src={ticket.author.img} alt="foto usuario" />
             <Author>
               <AuthorName>
                 {ticket.author.name} {ticket.author.lastname}

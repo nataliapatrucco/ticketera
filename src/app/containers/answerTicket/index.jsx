@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   answerTicket, //no es lo mismo que setStatus??
   fetchOpen, //busca los tickets por status
-  fetchProcessing //lista los que estan en proceso
+  fetchProcessing, //lista los que estan en proceso
+  fetchUserTickets
 } from "../../redux/actions/tickets";
 
 import {
@@ -48,6 +49,7 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
     } else {
       dispatch(answerTicket(id, { status, description }))
         .then(() => dispatch(fetchOpen()))
+        .then(() => dispatch(fetchUserTickets()))
         .then(() => setShowAnswerModal(false))
         .catch(err => setErrorMsg("Ingrese una respuesta"));
     }
@@ -85,11 +87,6 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
           <Line></Line>
         </UploadContainer>
    
-
-
-
-
-
         <ButtonContainer justifyContent={"space-around"} marginTop={"8px"}>
           <StatusButton primary={status==1}
             onClick={() => {
@@ -98,9 +95,7 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
               setInputComp(false),
               setInputRechazado(false);
               setErrorMsg("");
-              
             }} 
-
           >
             PENDIENTE
           </StatusButton>
@@ -114,7 +109,6 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
               setErrorMsg("");
               setDescription("");
             }}
-         
           >
             RESPONDIENDO
           </StatusButton>
@@ -145,8 +139,6 @@ export default function AnswerTicketContainer({ ticket, setShowAnswerModal }) {
             RECHAZADA
           </StatusButton>
         </ButtonContainer>
-
-
 
         {/* //muestra input */}
         {inputResp && (
