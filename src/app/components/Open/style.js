@@ -323,7 +323,7 @@ export const BtnVerRespuesta = styled.button(
     border: "none",
     color: "black",
     marginRight: "10px",
-    marginTop: "9px"
+    marginTop: "11px"
   },
   props => ({ backgroundColor: props.backgroundColor })
 );

@@ -38,7 +38,8 @@ export const Search = styled.input({
   outlineColor: "transparent",
   outlineStyle: "none",
   padding: 0,
-  textAlign: "left"
+  textAlign: "left",
+  marginLeft: "10px"
 });
 
 export const SearchIcon = styled.img({

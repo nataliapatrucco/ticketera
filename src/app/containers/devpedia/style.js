@@ -14,7 +14,7 @@ export const Title = styled.div({
 });
 
 export const ClosedSection = styled.section({
-  marginTop: "50px"
+  marginTop: "16px"
 });
 
 export const Container = styled.div({
