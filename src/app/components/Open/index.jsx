@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import SuperButton from "./utils";
@@ -28,11 +28,16 @@ import {
   ParticipantIcon,
   Line,
   BtnVerRespuesta,
-  LabelButton
+  LabelButton,
+  Image,
+  ModalImage
 } from "./style";
+import { ModalBackground } from "../modalBackground/style";
 
 export default function Open({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
+
+  const [showImage, setShowImage] = useState(null);
 
   const isHighlighted = ticket => {
     return (
@@ -109,9 +114,30 @@ export default function Open({ ticket, index, params }) {
                 </Link>
               </div>
             ) : (
-              <Link to={`/${ticket.slug}`}>
-                <TicketContent> {ticket.content}</TicketContent>
-              </Link>
+              <TicketContent>
+                {" "}
+                {ticket.content}
+                {ticket.images &&
+                  ticket.images.map(image => {
+                    return (
+                      <Image
+                        onClick={() => setShowImage(image)}
+                        src={image}
+                      ></Image>
+                    );
+                  })}
+                {showImage && (
+                  <ModalBackground>
+                    <div>
+                      <ModalImage
+                        src={showImage}
+                        alt=""
+                        onClick={() => setShowImage(null)}
+                      ></ModalImage>
+                    </div>
+                  </ModalBackground>
+                )}
+              </TicketContent>
             )}
             {params === ticket.slug &&
               (ticket.statusId === 3 || ticket.statusId === 4) && (
