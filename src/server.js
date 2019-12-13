@@ -27,8 +27,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 db.sync({ force: false }).then(() => {
-  const http = app.listen(3000, function() {
-    console.log("Example app listening on port 3000!");
+  const PORT = process.env.PORT || 3000;
+  const http = app.listen(PORT, function() {
+    console.log(`App listening on port ${PORT}!`);
   });
   socket.connect(http);
 });
