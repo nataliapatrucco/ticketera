@@ -16,9 +16,9 @@ import {
 export default function SidebarComponent() {
   const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
-  const  params  = useLocation();
-  console.log(params)
-  const status = user.isAdmin ? 'processing' : 'pending'
+  const params = useLocation();
+
+  const status = user.isAdmin ? "processing" : "pending";
   return (
     <Container>
       <Header>
@@ -35,7 +35,6 @@ export default function SidebarComponent() {
         </TitleContainer>
       </Link>
       <Link style={{ textDecoration: "none" }} to={`/userTickets/${status}`}>
-        
         <TitleContainer>
           <IconContainer>
             <Icon src="/images/pregunta.png" />

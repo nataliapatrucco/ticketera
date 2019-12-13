@@ -18,8 +18,6 @@ class Socket {
       let id = socket.handshake.query.token;
       this.sockets[id] = socket;
 
-      console.log("CONNECTION: user id", id);
-
       socket.on("delete-ticket", this.deleteTicket());
 
       socket.on("disconnect", this.disconnectUser());
@@ -40,7 +38,6 @@ class Socket {
   disconnectUser() {
     return id => {
       this.sockets[id] = null;
-      console.log("DISCONNECTION: user id", id);
     };
   }
 

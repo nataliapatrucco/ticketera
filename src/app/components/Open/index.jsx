@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import SuperButton from "./utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "moment/locale/es";
 moment.locale("es");
 
@@ -36,7 +36,7 @@ import { ModalBackground } from "../modalBackground/style";
 
 export default function Open({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
-
+  const url = useLocation();
   const [showImage, setShowImage] = useState(null);
 
   const isHighlighted = ticket => {
@@ -126,9 +126,13 @@ export default function Open({ ticket, index, params }) {
             )}
           </Header>
           <Body>
-            <Link to={`/${ticket.slug}`}>
+            {url.pathname.includes(ticket.slug) ? (
               <TicketTitle>{ticket.title}</TicketTitle>
-            </Link>
+            ) : (
+              <Link to={`/${ticket.slug}`}>
+                <TicketTitle>{ticket.title}</TicketTitle>
+              </Link>
+            )}
             {ticket.content &&
             ticket.content.length > 140 &&
             params !== ticket.slug ? (

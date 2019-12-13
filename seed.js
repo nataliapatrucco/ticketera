@@ -8,9 +8,7 @@ const promises = [
 ];
 
 Promise.all(promises).then(statusList => {
-  statusList.forEach(status => {
-    console.log(JSON.stringify(status));
-  });
+  statusList.forEach(status => {});
 
   process.exit();
 });

@@ -69,7 +69,7 @@ export const Navbar = props => {
     );
     setInput("");
   };
-  console.log("NOTIFICAIONES: ", notifications);
+
   return (
     <NavbarContainer>
       <form onSubmit={handleSubmit}>
