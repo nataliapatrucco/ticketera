@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Socket from "../../socket";
 import { useDispatch, useSelector } from "react-redux";
 import NotificationModal from "../../components/Notifications/index";
@@ -27,24 +27,40 @@ export const Navbar = props => {
   const [options, setOptions] = useState(false);
   const [notification, setNotification] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [showNotifications, setshowNotifications] = useState(false);
+
+  // const favicon = document.getElementById("favicon");
+
+  // useEffect(() => {
+  //   if (notifications) {
+  //     favicon.href = "/src/public/images/favicorojo.ico";
+  //   } else {
+  //     favicon.href = "/src/public/images/faviconazul.ico";
+  //   }
+  // }, [notifications]);
 
   // Socket on ticket status update
   Socket.on("statusChanged", data => {
     setNotifications([...notifications, data]);
+    setshowNotifications(true);
   });
 
   // Socket on Ticket Deleted
   Socket.on("deleted", data => {
+    setshowNotifications(true);
     setNotifications([...notifications, data]);
   });
 
   const user = useSelector(state => state.user.user);
   //   const profilePic = useSelector(state => state.user // SRC DE ProfilePic
 
+  const handleClick = () => {
+    !options ? setOptions(true) : setOptions(false);
+  };
+
   const handleChange = event => {
     setInput(event.target.value);
   };
-
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -53,7 +69,7 @@ export const Navbar = props => {
     );
     setInput("");
   };
-
+  console.log("NOTIFICAIONES: ", notifications);
   return (
     <NavbarContainer>
       <form onSubmit={handleSubmit}>
@@ -69,32 +85,38 @@ export const Navbar = props => {
       <FancyDiv>
         <NotificacionDiv>
           <NotificationBell
-            onClick={() =>
-              !notification ? setNotification(true) : setNotification(false)
-            }
+            onClick={() => {
+              !notification ? setNotification(true) : setNotification(false);
+              setshowNotifications(false);
+            }}
             src="/images/notificationbell.png"
           />
-          {notifications.length ? (
-            <NotificationIcon> {notifications.length} </NotificationIcon>
+
+          {notifications.length && showNotifications ? (
+            <NotificationIcon>{notifications.length} </NotificationIcon>
           ) : (
             ""
           )}
           {notification ? (
-        <NotificationModal notifications={notifications} />
-      ) : null}
+            <NotificationModal notifications={notifications} />
+          ) : null}
         </NotificacionDiv>
-        <ProfileContainer
-          onClick={() => (!options ? setOptions(true) : setOptions(false))}
-        >
+        <ProfileContainer onClick={() => handleClick()}>
           <ProfileImg src="/images/devman.jpg" />
 
           <UserName>{user.name}</UserName>
+          {options ? <UserModal props={props} /> : null}
         </ProfileContainer>
         {/* <ButtonLogOut src="/images/logout.svg"  ></ButtonLogOut> */}
       </FancyDiv>
-      {options ? <UserModal props={props} /> : null}
     </NavbarContainer>
   );
 };
 
-
+// const favIconToggle = ({notifications}) => {
+//   if (notifications) {
+//     favIconToggle.href = "/src/public/images/favicorojo.ico"
+//   } else {
+//     favIconToggle.href = "/src/public/images/favicoazul.ico";
+//   }
+// }

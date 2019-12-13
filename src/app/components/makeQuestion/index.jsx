@@ -55,6 +55,7 @@ export const MakeQuestion = props => {
           });
       })
       .then(() => dispatch(fetchOpen()))
+      .then(() => dispatch(fetchOpen()))
       .then(() => setFile([]))
       .then(() => ToastsStore.success("Agregaste una pregunta!"))
       .then(() => setShowModal(!showModal));
@@ -171,7 +172,6 @@ export const MakeQuestion = props => {
                 color="transparent"
                 border="solid 1px rgba(255, 255, 255, 0.12);"
                 marginTop="30px"
-                /*  marginLeft="10px" */
                 onClick={() => {
                   setShowModal(!showModal);
                 }}
@@ -180,7 +180,6 @@ export const MakeQuestion = props => {
               </ModalButton>
               <ModalButton
                 color="#62d0ff"
-                /*   marginTop="30px" */
                 marginRight="12px"
                 border="none"
                 marginLeft="12px"
@@ -195,19 +194,6 @@ export const MakeQuestion = props => {
               >
                 <ModalButtonLabel color="#071c34">PUBLICAR</ModalButtonLabel>
               </ModalButton>
-
-              {/* <ModalButton
-                color="transparent"
-                border="solid 1px rgba(255, 255, 255, 0.12);"
-                marginTop="30px"
-                marginLeft="10px"
-                onClick={() => {
-                  setShowModal(!showModal);
-                  setFile([]);
-                }}
-              >
-                <ModalButtonLabel color="#62d0ff">CANCELAR</ModalButtonLabel>
-              </ModalButton> */}
             </ModalButtonContainer>
           </ModalContainer>
         </ModalBackground>

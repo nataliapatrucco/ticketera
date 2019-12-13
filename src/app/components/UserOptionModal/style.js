@@ -1,16 +1,14 @@
 import styled from "@emotion/styled";
 
-// export const Container = styled.div`
-//   position: absolute;
-//   left: 86.4%;
-//   top: 10%;
+export const Container = styled.div`
+  position: absolute;
+  transform: translate(43%, 182%);
+  z-index: 100;
 
-// `
+`
 
 export const Triangle = styled.div`
-  position: absolute;
-  left: 86.4%;
-  top: 10%;
+
   width: 0;
   background-color: #091e35;
   border-bottom: 16px solid #132d46;
@@ -21,8 +19,6 @@ export const Triangle = styled.div`
 export const Body = styled.div`
   background-color: #132d46;
   position: absolute;
-  left: 84.8%;
-  top: 12.2%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -33,6 +29,7 @@ export const Body = styled.div`
   font-weight: 500;
   color: #ffffff87;
   z-index: 100;
+  transform: translate(-47%, 24%);
 `;
 
 export const Settings = styled.div`

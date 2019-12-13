@@ -348,7 +348,14 @@ export const ButtonAnswer = styled.div({
 });
 
 export const Image = styled.img`
+  cursor: pointer;
   max-width: 100px;
   height: auto;
   margin-right: 5px;
+`;
+
+export const ModalImage = styled.img`
+  cursor: pointer;
+  max-width: 700px;
+  height: auto;
 `;
