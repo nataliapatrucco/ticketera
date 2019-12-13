@@ -14,7 +14,7 @@ export default function AnswerComponent({ ticket }) {
   return (
     <AnswerContainer>
       <Header>
-        <Img src="/images/perfil.jpeg" alt="foto asistente" />
+        <Img src={ticket.comment.replier.img} alt="foto asistente" />
         <Author>
           <AuthorName>
             {ticket.comment.replier.name} {ticket.comment.replier.lastname}

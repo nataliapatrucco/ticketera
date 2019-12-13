@@ -51,14 +51,28 @@ export default function SidebarComponent() {
         </TitleContainer>
       </Link>
       {user.isAdmin ? (
-        <Link style={{ textDecoration: "none" }} to="/admin/users">
-          <TitleContainer>
-            <IconContainer>
-              <Icon src="/images/codificacion.png" />
-            </IconContainer>
-            <Title>USUARIOS</Title>
-          </TitleContainer>
-        </Link>
+        <div>
+          <Link style={{ textDecoration: "none" }} to="/admin/users">
+            <TitleContainer>
+              <IconContainer>
+                <Icon
+                  src="/images/people.svg"
+                  style={{ width: "150%", height: "150%" }}
+                />
+              </IconContainer>
+              <Title>USUARIOS</Title>
+            </TitleContainer>
+          </Link>
+
+          <Link style={{ textDecoration: "none" }}>
+            <TitleContainer>
+              <IconContainer>
+                <Icon src="/images/settings.svg" />
+              </IconContainer>
+              <Title>CONFIGURACIÓN</Title>
+            </TitleContainer>
+          </Link>
+        </div>
       ) : (
         ""
       )}

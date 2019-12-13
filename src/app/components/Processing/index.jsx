@@ -25,7 +25,7 @@ export default function ProcessingComponent({ ticket }) {
             <AssistantContainer>
               <Fotito
                 size="24px"
-                src="/images/alumno.jpeg"
+                src={ticket.comment.replier.img}
                 margin="0 12px 0 0 "
               ></Fotito>
               <Assistant>
