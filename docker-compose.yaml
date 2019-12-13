@@ -15,7 +15,8 @@ services:
       DB_PASS: admin
       DB_HOST: db
     ports:
-      - "80:3000"
+      - "3000:3000"
+      - "35729:35729"
     volumes:
       - ./src:/ticketera/src
     depends_on:

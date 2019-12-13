@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSearchedTickets } from "../../redux/actions/search";
 
@@ -10,14 +10,15 @@ import {
   TitleContainer,
   Title,
   Icon,
-  Section,
   IconContainer
 } from "./style";
 
 export default function SidebarComponent() {
   const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
-  const status = user.isAdmin ? "processing" : "pending";
+  const  params  = useLocation();
+  console.log(params)
+  const status = user.isAdmin ? 'processing' : 'pending'
   return (
     <Container>
       <Header>
@@ -34,6 +35,7 @@ export default function SidebarComponent() {
         </TitleContainer>
       </Link>
       <Link style={{ textDecoration: "none" }} to={`/userTickets/${status}`}>
+        
         <TitleContainer>
           <IconContainer>
             <Icon src="/images/pregunta.png" />

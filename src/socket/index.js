@@ -31,7 +31,8 @@ class Socket {
     return ticket => {
       this.sockets[ticket.authorId] &&
         this.sockets[ticket.authorId].emit("deleted", {
-          message: `Eliminamos tu ticket ${ticket.title}`
+          message: `Eliminamos tu ticket ${ticket.title}`,
+          state: false
         });
     };
   }
@@ -52,7 +53,8 @@ class Socket {
           } Cambió el estado de tu ticket: ${ticket.title} a 
               ${estados[ticket.statusId]}
             `,
-          slug: ticket.slug
+          slug: ticket.slug,
+          state: false
         });
 
       ticket.users
@@ -63,7 +65,8 @@ class Socket {
                     ticket.comment.replier.lastname
                   } cambió el estado del ticket: ${ticket.title} a
                     ${estados[ticket.statusId]}`,
-                  slug: ticket.slug
+                  slug: ticket.slug,
+                  state: false
                 })
               : ""
           )
