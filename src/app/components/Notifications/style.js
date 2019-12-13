@@ -5,8 +5,8 @@ export const ModalContainer = styled.div`
   background-color: #091e35;
   position: absolute;
   right: 50%;
-  top: 50%;
-  transform: translate(7.5%,25%); 
+  top: 79%;
+  transform: translate(7.5%,10%); 
   box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   z-index: 100;
 `

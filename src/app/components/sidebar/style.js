@@ -33,18 +33,19 @@ export const IconContainer = styled.div({
   
 })
 
-export const Icon = styled.img({
-  width: '100%',
-  height: '100%',
-});
+export const Icon = styled.img`
+  width: 100%;
+  height: 100%;
+  content: url(${props => props.source});
+`;
 
-export const Title = styled.div({
-  opacity: "90%",
-  fontFamily: "Montserrat",
-  fontSize: "14px",
-  fontWeight: "500",
-  letterSpacing: "0.75px",
-  color: "#ffffff",
-  textDecoration: "none",
-  margin: '1px 0 39px 10px'
-});
+export const Title = styled.div`
+  opacity: 90%;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.75px;
+  color: ${props => props.active? "#62d0ff" :  "#ffffff"};
+  text-decoration: none;
+  margin: 1px 0 39px 10px;
+`;

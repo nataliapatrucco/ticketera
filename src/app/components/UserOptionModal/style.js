@@ -8,7 +8,6 @@ export const Container = styled.div`
 `
 
 export const Triangle = styled.div`
-
   width: 0;
   background-color: #091e35;
   border-bottom: 16px solid #132d46;
@@ -29,15 +28,16 @@ export const Body = styled.div`
   font-weight: 500;
   color: #ffffff87;
   z-index: 100;
-  transform: translate(-47%, 24%);
+  transform: translate(-47%, 16%);
 `;
 
 export const Settings = styled.div`
   margin: 5px;
-  padding-bottom: 7px;
+  padding: 10px;
   border-bottom: 1px solid #ffffff40;
 `
 
 export const LogOut = styled.div`
 margin: 5px;
+padding: 10px;
 `

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSearchedTickets } from "../../redux/actions/search";
@@ -16,60 +16,109 @@ import {
 export default function SidebarComponent() {
   const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
-  const params = useLocation();
-
+  let match = useLocation();
+  const [icon, setIcon] = React.useState("dashboard");
   const status = user.isAdmin ? "processing" : "pending";
+
+  useEffect(() => console.log(icon), [icon]);
+
   return (
     <Container>
       <Header>
-        <Link to="/">
+        <Link onClick={() => setIcon("dashboard")} to="/">
           <P5 src="/images/logo2.png" />
         </Link>
       </Header>
-      <Link style={{ textDecoration: "none" }} to="/">
+      <Link
+        onClick={() => setIcon("dashboard")}
+        style={{ textDecoration: "none" }}
+        to="/"
+      >
         <TitleContainer>
           <IconContainer>
-            <Icon src="/images/salpicadero.png" />
+            <Icon
+              source={
+                icon == "dashboard"
+                  ? "/images/dashboard-active.svg"
+                  : "/images/dashboard.svg"
+              }
+            />
           </IconContainer>
-          <Title>DASHBOARD</Title>
+          <Title active={icon == "dashboard"} >DASHBOARD</Title>
         </TitleContainer>
       </Link>
-      <Link style={{ textDecoration: "none" }} to={`/userTickets/${status}`}>
+      <Link
+        onClick={() => setIcon("userTickets")}
+        style={{ textDecoration: "none" }}
+        to={`/userTickets/${status}`}
+      >
         <TitleContainer>
           <IconContainer>
-            <Icon src="/images/pregunta.png" />
+            <Icon
+              source={
+                icon == "userTickets"
+                  ? "/images/question-active.svg"
+                  : "/images/question.svg"
+              }
+            />
           </IconContainer>
-          <Title>MIS PREGUNTAS</Title>
+          <Title active={icon == "userTickets"}>MIS PREGUNTAS</Title>
         </TitleContainer>
       </Link>
-      <Link style={{ textDecoration: "none" }} to="/devpedia">
+      <Link
+        onClick={() => setIcon("devpedia")}
+        style={{ textDecoration: "none" }}
+        to="/devpedia"
+      >
         <TitleContainer onClick={() => dispatch(fetchSearchedTickets())}>
           <IconContainer>
-            <Icon src="/images/codificacion.png" />
+            <Icon
+              source={
+                icon == "devpedia"
+                  ? "/images/code-active.svg"
+                  : "/images/code.svg"
+              }
+            />
           </IconContainer>
-          <Title>DEVPEDIA</Title>
+          <Title active={icon == "devpedia"}>DEVPEDIA</Title>
         </TitleContainer>
       </Link>
       {user.isAdmin ? (
         <div>
-          <Link style={{ textDecoration: "none" }} to="/admin/users">
+          <Link
+            onClick={() => setIcon("users")}
+            style={{ textDecoration: "none" }}
+            to="/admin/users"
+          >
             <TitleContainer>
               <IconContainer>
                 <Icon
-                  src="/images/people.svg"
-                  style={{ width: "150%", height: "150%" }}
+                  source={
+                    icon == "users"
+                      ? "/images/people-active.svg"
+                      : "/images/people.svg"
+                  }
                 />
               </IconContainer>
-              <Title>USUARIOS</Title>
+              <Title active={icon == "users"}>USUARIOS</Title>
             </TitleContainer>
           </Link>
 
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            onClick={() => setIcon("setting")}
+            style={{ textDecoration: "none" }}
+          >
             <TitleContainer>
               <IconContainer>
-                <Icon src="/images/settings.svg" />
+                <Icon
+                  source={
+                    icon == "setting"
+                      ? "/images/settings-active.svg"
+                      : "/images/settings.svg"
+                  }
+                />
               </IconContainer>
-              <Title>CONFIGURACIÓN</Title>
+              <Title active={icon == "setting"}>CONFIGURACIÓN</Title>
             </TitleContainer>
           </Link>
         </div>

@@ -27,7 +27,6 @@ export default function MainContainer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.user.user);
- 
   // inicializa socket solo cuando tenga el usuario
   Socket.init(user.id);
 
@@ -45,7 +44,7 @@ export default function MainContainer(props) {
       ) : (
         <Container>
           <SideDiv>
-            <Sidebar />
+            <Sidebar props={props} />
           </SideDiv>
           <Section>
             <Navbar history={props.history} />

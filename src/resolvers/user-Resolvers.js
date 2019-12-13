@@ -14,7 +14,7 @@ const register = (req, res) => {
           }
         })
       )
-      .catch(err => console.log(err));
+      .catch(err => res.status(400).send(err));
   } else {
     res.status(400).send("Email and password are required.");
   }
