@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import SuperButton from "./utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "moment/locale/es";
 moment.locale("es");
 
@@ -28,11 +28,16 @@ import {
   ParticipantIcon,
   Line,
   BtnVerRespuesta,
-  LabelButton
+  LabelButton,
+  Image,
+  ModalImage
 } from "./style";
+import { ModalBackground } from "../modalBackground/style";
 
 export default function Open({ ticket, index, params }) {
   const user = useSelector(state => state.user.user);
+  const url = useLocation();
+  const [showImage, setShowImage] = useState(null);
 
   const isHighlighted = ticket => {
     return (
@@ -121,9 +126,13 @@ export default function Open({ ticket, index, params }) {
             )}
           </Header>
           <Body>
-            <Link to={`/${ticket.slug}`}>
+            {url.pathname.includes(ticket.slug) ? (
               <TicketTitle>{ticket.title}</TicketTitle>
-            </Link>
+            ) : (
+              <Link to={`/${ticket.slug}`}>
+                <TicketTitle>{ticket.title}</TicketTitle>
+              </Link>
+            )}
             {ticket.content &&
             ticket.content.length > 140 &&
             params !== ticket.slug ? (
@@ -136,9 +145,30 @@ export default function Open({ ticket, index, params }) {
                 </Link>
               </div>
             ) : (
-              <Link to={`/${ticket.slug}`}>
-                <TicketContent> {ticket.content}</TicketContent>
-              </Link>
+              <TicketContent>
+                {" "}
+                {ticket.content}
+                {ticket.images &&
+                  ticket.images.map(image => {
+                    return (
+                      <Image
+                        onClick={() => setShowImage(image)}
+                        src={image}
+                      ></Image>
+                    );
+                  })}
+                {showImage && (
+                  <ModalBackground>
+                    <div>
+                      <ModalImage
+                        src={showImage}
+                        alt=""
+                        onClick={() => setShowImage(null)}
+                      ></ModalImage>
+                    </div>
+                  </ModalBackground>
+                )}
+              </TicketContent>
             )}
             {params === ticket.slug &&
               (ticket.statusId === 3 || ticket.statusId === 4) && (

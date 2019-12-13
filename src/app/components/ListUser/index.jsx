@@ -10,11 +10,12 @@ import {
 } from "./style";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 
-export default function ListUser({ user, handleClick }) {
+export default function ListUser({ user, handleClick, img }) {
+  console.log(user)
   return (
     <Container>
       <Question>
-        <Img src={user.img}  alt="foto"></Img>
+        <Img src={user.img} ></Img>
         <UserData>{user.name}</UserData>
         <UserData>{user.lastname}</UserData>
       </Question>

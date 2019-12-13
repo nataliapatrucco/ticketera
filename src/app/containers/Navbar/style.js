@@ -38,7 +38,8 @@ export const Search = styled.input({
   outlineColor: "transparent",
   outlineStyle: "none",
   padding: 0,
-  textAlign: "left"
+  textAlign: "left",
+  marginLeft: "10px"
 });
 
 export const SearchIcon = styled.img({
@@ -75,10 +76,12 @@ export const ProfileImg = styled.img({
 export const NotificationIcon = styled.div({
   display: "inline-block",
   position: "relative",
-  bottom: "23px",
+  bottom: "6px",
   right: "23px",
+  alignContent: "center",
   borderRadius: "50%",
   width: "18px",
+  height: "18px",
   marginBottom: "10px",
   backgroundColor: "#fc0f03",
   color: "#ffffff"
@@ -100,7 +103,7 @@ export const NotificationBell = styled.img({
   borderRadius: "25px",
   padding: "6px",
   marginRight: "10px",
-  cursor: "pointer",
+  cursor: "pointer"
 });
 
 export const UserName = styled.div({

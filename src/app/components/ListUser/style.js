@@ -31,13 +31,20 @@ export const Question = styled.div({
 });
 
 export const Img = styled.img({
+  display: "flex",
+  width: "38px",
+  height: "38px",
+  justifyContent: "center",
+  borderRadius: "50%",
+  marginLeft: "10px",
+  marginRight: "12px"
   //   marginTop: "20px",
-  marginLeft: "20px",
+  /* marginLeft: "20px",
   width: "40px",
   height: "40px",
   borderRadius: "50%",
   backgroundImage:
-    "linear-gradient(to bottom, rgba(238, 238, 238, 0), rgba(0, 0, 0, 0.8) 100%)"
+    "linear-gradient(to bottom, rgba(238, 238, 238, 0), rgba(0, 0, 0, 0.8) 100%)" */
 });
 
 export const UserData = styled.p({

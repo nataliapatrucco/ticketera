@@ -14,7 +14,7 @@ const register = (req, res) => {
           }
         })
       )
-      .catch(err => console.log(err));
+      .catch(err => res.status(400).send(err));
   } else {
     res.status(400).send("Email and password are required.");
   }
@@ -70,7 +70,7 @@ const getUsers = (req, res) => {
   if (req.query.name) {
     User.findAll({
       order: [["id", "ASC"]],
-      attributes: ["id", "name", "lastname", "email", "isAdmin"],
+      attributes: ["id", "name", "lastname", "email", "isAdmin", "img"],
       where: {
         id: { [Op.ne]: req.user.id },
         [Op.or]: [{ name: { [Op.iLike]: `%${req.query.name}%` } }]
