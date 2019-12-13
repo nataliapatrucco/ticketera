@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 
 import { QuestionSection, Title, Section, Container } from "./style";
 import Open from "../../components/Open";
@@ -7,6 +8,8 @@ import ProcessingHeader from "./partials/ProcessingHeader";
 import { fetchTicket } from "../../redux/actions/tickets";
 
 export default function SingleTicketContainer(props) {
+  const url = useLocation();
+
   const ticket = useSelector(state => state.tickets.single);
   const dispatch = useDispatch();
   const open = useSelector(state => state.tickets.open);
