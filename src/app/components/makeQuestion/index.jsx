@@ -1,7 +1,8 @@
-import React, { useState, useSelector } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
 import Dropzone from "react-dropzone";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastsContainer, ToastsStore } from "react-toasts";
 
 import {
@@ -87,11 +88,13 @@ export const MakeQuestion = props => {
     setImage([...image, formData]);
   };
 
+  const user = useSelector(state => state.user.user);
+
   const notify = () => toast("Wow so easy !");
 
   return (
     <Container>
-      <Img src="images/perfil.jpeg" alt="foto"></Img>
+      <Img src={user.img} alt="foto"></Img>
       <Question
         onClick={() => {
           setShowModal(!showModal);

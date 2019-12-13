@@ -92,7 +92,7 @@ export const Navbar = props => {
           ) : null}
         </NotificacionDiv>
         <ProfileContainer onClick={() => handleClick()}>
-          <ProfileImg src="/images/devman.jpg" />
+          <ProfileImg src={user.img} />
 
           <UserName>{user.name}</UserName>
           {options ? <UserModal props={props} /> : null}

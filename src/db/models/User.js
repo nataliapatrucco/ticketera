@@ -32,7 +32,8 @@ User.init(
       type: S.TEXT
     },
     img: {
-      type: S.STRING
+      type: S.STRING,
+      defaultValue: "/images/anonimo.jpg"
     },
     isAdmin: {
       type: S.INTEGER,

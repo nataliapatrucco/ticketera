@@ -14,7 +14,7 @@ export default function ListUser({ user, handleClick }) {
   return (
     <Container>
       <Question>
-        <Img src="/images/perfil.jpeg" alt="foto"></Img>
+        <Img src={user.img}  alt="foto"></Img>
         <UserData>{user.name}</UserData>
         <UserData>{user.lastname}</UserData>
       </Question>
