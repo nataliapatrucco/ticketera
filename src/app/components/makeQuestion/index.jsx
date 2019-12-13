@@ -55,6 +55,7 @@ export const MakeQuestion = props => {
             createNewImage(ticket.data.id, element);
           });
       })
+      .then(() => setImage([]))
       .then(() => dispatch(fetchOpen()))
       .then(() => dispatch(fetchOpen()))
       .then(() => setFile([]))
@@ -90,8 +91,6 @@ export const MakeQuestion = props => {
   };
 
   const user = useSelector(state => state.user.user);
-
-
 
   return (
     <Container>

@@ -145,9 +145,8 @@ export default function Open({ ticket, index, params }) {
                 </Link>
               </div>
             ) : (
-              <TicketContent>
-                {" "}
-                {ticket.content}
+              <>
+                <TicketContent> {ticket.content}</TicketContent>
                 {ticket.images &&
                   ticket.images.map(image => {
                     return (
@@ -168,7 +167,7 @@ export default function Open({ ticket, index, params }) {
                     </div>
                   </ModalBackground>
                 )}
-              </TicketContent>
+              </>
             )}
             {params === ticket.slug &&
               (ticket.statusId === 3 || ticket.statusId === 4) && (
