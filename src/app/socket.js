@@ -7,7 +7,7 @@ class Socket {
 
   init(userId) {
     if (!this.socket && userId) {
-      this.socket = io(`http://localhost:${process.env.PORT}?token=${userId}`, {
+      this.socket = io(`/?token=${userId}`, {
         transport: ["websocket"]
       });
     }
