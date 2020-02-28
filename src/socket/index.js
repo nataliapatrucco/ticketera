@@ -43,7 +43,6 @@ class Socket {
 
   changeTicketStatus() {
     return ticket => {
-      console.log(ticket)
       this.sockets[ticket.authorId] &&
         this.sockets[ticket.authorId].emit("statusChanged", {
           message: `${ticket.comment.replier.name} ${
