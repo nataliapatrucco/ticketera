@@ -43,11 +43,12 @@ class Socket {
 
   changeTicketStatus() {
     return ticket => {
+      console.log(ticket)
       this.sockets[ticket.authorId] &&
         this.sockets[ticket.authorId].emit("statusChanged", {
           message: `${ticket.comment.replier.name} ${
             ticket.comment.replier.lastname
-          } Cambió el estado de tu ticket: ${ticket.title} a 
+          } cambió el estado de tu ticket: ${ticket.title} a 
               ${estados[ticket.statusId]}
             `,
           slug: ticket.slug,
